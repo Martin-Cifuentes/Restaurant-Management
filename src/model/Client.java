@@ -2,10 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
-public class Client {
-	public String name;
-	public String lastName;
-	public int id;
+public class Client extends Person{
+	public int opId;
 	public String adress;
 	public int phone;
 	public ArrayList <String> observations;
@@ -19,9 +17,8 @@ public class Client {
      * @param 
      */
 	public Client(String n,String ln, int id, String a,int p){
-		this.name = n;
-		this.lastName = ln;
-		this.id = id;
+		super(n, ln);
+		this.opId = id;
 		this.adress = a;
 		this.phone = p;
 		observations = new ArrayList <String>();
