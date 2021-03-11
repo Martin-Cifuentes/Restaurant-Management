@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="244.0" layoutY="89.0" prefHeight="34.0" prefWidth="257.0" text="Usuario" />
+      <Label layoutX="244.0" layoutY="204.0" prefHeight="34.0" prefWidth="257.0" text="Contraseña " />
+      <TextField fx:id="txtUsuario" layoutX="244.0" layoutY="123.0" prefHeight="25.0" prefWidth="257.0" />
+      <TextField fx:id="txtPassword" layoutX="244.0" layoutY="250.0" prefHeight="25.0" prefWidth="257.0" />
+   </children>
+</Pane>
