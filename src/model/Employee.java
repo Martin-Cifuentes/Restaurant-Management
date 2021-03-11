@@ -18,6 +18,19 @@ public class Employee extends Person {
 
 	
 	
+	public String getUserName() {
+		return "Este campo no es valido para este empleado";
+	}
+	
+	public void setUserName(String userName) {
+	}
+	
+	public String getPassword() {
+		return "Este campo no es valido para este empleado";
+	}
+	public void setPassword(String password) {
+	}
+
 	
 	
 }

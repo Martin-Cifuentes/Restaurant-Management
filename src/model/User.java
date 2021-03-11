@@ -1,7 +1,9 @@
 package model;
 
 public class User extends Employee{
+	
 	public String userName;
+
 	public String password;
 	/** 
 	* this constructor calls the super method Employee to create a User
@@ -15,10 +17,27 @@ public class User extends Employee{
     * @param userName String, nickname of the User
     * @param phone String, phone of the User
     */
-	public User(String n, String ln, int id, String a, int p,String un, String pa) {
+	public User(String n, String ln, int id, String un, String pa) {
 		super(n, ln, id);
 		this.userName = un;
 		this.password = pa;
 	}
+	@Override
+	public String getUserName() {
+		return userName;
+	}
+	@Override
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	@Override
+	public String getPassword() {
+		return password;
+	}
+	@Override
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
+	
 }
