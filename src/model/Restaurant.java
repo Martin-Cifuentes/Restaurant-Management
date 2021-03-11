@@ -22,22 +22,52 @@ public class Restaurant {
 		products = new ArrayList<Product>();
 	}
 	//se agrega un user
-	public void createUser(String name, String lastName, int id, String userName,String password) {
-		employes.add(new User(name,lastName,id,userName,password));
+	public void createUser(String name, String lastName, int id,int nOO ,String userName,String password) {
+		employes.add(new User(name,lastName,id,nOO,userName,password));
 	}
 	//se ve si se pone la contraseña correcta del admin
-	public String logInAdmin(String userName,String password) {
+	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
-		String message="No hay un usuario de administrador con este usuario o contraseña";
 		for(int c=0; c< employes.size() && !found;c++) {
 			if(employes.get(c) instanceof User) {
 				if(userName.equals(employes.get(c).getUserName()) && password.equals(employes.get(c).getPassword())) {
 					found=true;
-					message="Bienvenido "+employes.get(c).getName();
 				}
 			}
 		}
-		return message;
+		return found;
 	}
+	public Ingredient getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(Ingredient ingredients) {
+		this.ingredients = ingredients;
+	}
+	public ArrayList<Employee> getEmployes() {
+		return employes;
+	}
+	public void setEmployes(ArrayList<Employee> employes) {
+		this.employes = employes;
+	}
+	public ArrayList<Client> getClients() {
+		return clients;
+	}
+	public void setClients(ArrayList<Client> clients) {
+		this.clients = clients;
+	}
+	public ArrayList<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(ArrayList<Order> orders) {
+		this.orders = orders;
+	}
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(ArrayList<Product> products) {
+		this.products = products;
+	}
+	
+	
 	
 }
