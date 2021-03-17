@@ -10,9 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import model.Employee;
@@ -55,6 +57,19 @@ public class RestaurantGUI {
 	//Employee-page
 	@FXML
 	private TableColumn<Employee, Integer> tcNumOfOrders;
+	
+	@FXML
+    private TextField txtNameIgredient;
+
+    @FXML
+    private RadioButton rbtnAvailable;
+
+    @FXML
+    private ToggleGroup available;
+
+    @FXML
+    private RadioButton rbtnNotAvailable;
+
 
 	//admin-page
 	@FXML
@@ -86,7 +101,8 @@ public class RestaurantGUI {
 				e.printStackTrace();
 			}
 		}else {
-			System.out.println("f?");
+			//borrar esto en el futuro 
+			System.out.println("No encontro el usuario");
 		}
 	}
 
@@ -109,8 +125,6 @@ public class RestaurantGUI {
 	//main-page
 	@FXML
 	void btnAdmin(ActionEvent event) {
-
-
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-page.fxml"));
 			fxmlLoader.setController(this);
@@ -131,16 +145,79 @@ public class RestaurantGUI {
 	}
 
 	//Logged-in-page
-
     @FXML
     void btnEmpleados(ActionEvent event) {
     	try {
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Employee-page.fxml"));
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			loadTableView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    }
+    
+
+    //ingredient-page
+    @FXML
+    void btnAddIngredient(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addIngredient-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    //addIngredient-page
+    @FXML
+    void btnAddINgredient(ActionEvent event) {
+    	boolean avialable=false;
+    	if(rbtnAvailable.isSelected()) {
+    		avialable=true;
+    	}else if(rbtnNotAvailable.isSelected()) {
+    		avialable=false;
+    	}
+    	
+    	if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
+    		System.out.println("se creo un ingrediente");
+    	}else {
+    		System.out.println("no se creo ingrediente");
+    	}
+    }
+    
+    //addIngredient-page to ingredient-page
+    @FXML
+    void btnBackToIngredient(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    //Logged-in-page
+    @FXML
+    void btnLoadIngredient(ActionEvent event) {
+    	
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -148,11 +225,10 @@ public class RestaurantGUI {
 
     }
 
-
+    //Logged-in-page
 	public void loadTableView() {
 		ObservableList<Employee> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getEmployes());
-
 		tvEmployees.setItems(observableList);
 		tcName.setCellValueFactory(new PropertyValueFactory<Employee,String>("name")); 
 		tcLastName.setCellValueFactory(new PropertyValueFactory<Employee,String>("lastName")); 

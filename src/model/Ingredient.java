@@ -1,18 +1,10 @@
 package model;
 
-import java.util.ArrayList;
 
 public class Ingredient {
-	ArrayList<String> ingredients;
-	boolean avialable;
+	private String ingredients;
+	private boolean avialable;
 	
-	public ArrayList<String> getIngredients() {
-		return ingredients;
-	}
-	
-	public void setIngredients(ArrayList<String> ingredients) {
-		this.ingredients = ingredients;
-	}
 	
 	public boolean isAvialable() {
 		return avialable;
@@ -22,14 +14,25 @@ public class Ingredient {
 		this.avialable = avialable;
 	}
 	
-	public Ingredient(ArrayList<String> ingredients, boolean avialable) {
+	public String getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public Ingredient(String ingredients, boolean avialable) {
 		this.ingredients = ingredients;
 		this.avialable = avialable;
 	}
-	
+
 	public Ingredient() {
 	}
 	
+
 	
+
+
 	
 }

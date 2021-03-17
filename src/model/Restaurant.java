@@ -1,26 +1,43 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 
 public class Restaurant {
-	
-	private Ingredient ingredients;
+
+	private ArrayList<Ingredient> ingredients;
 	private ArrayList<Employee> employes;
 	private ArrayList<Client> clients;
 	private ArrayList<Order> orders;
 	private ArrayList<Product> products; 
-	
-	
-	
+
+
+
 	public Restaurant() {
-		super();
-		ingredients = new Ingredient();
+		ingredients = new ArrayList<Ingredient>();
 		employes = new ArrayList<Employee>();
 		clients = new ArrayList<Client>();
 		orders = new ArrayList<Order>();
 		products = new ArrayList<Product>();
 	}
+	//se añade un ingrediente
+	public boolean addIngredient(String name, boolean avialable) {
+		boolean found=false;
+		
+		for(int c=0;c<ingredients.size() && !found;c++) {
+			if(name==ingredients.get(c).getIngredients()) {
+				//error aqui TODO
+				found=true;
+			}
+		}
+		if(!found) {
+			ingredients.add(new Ingredient(name,avialable));
+		}
+		return found;
+	}
+
 	//se agrega un user
 	public void createUser(String name, String lastName, int id,int nOO ,String userName,String password) {
 		employes.add(new User(name,lastName,id,nOO,userName,password));
@@ -37,10 +54,11 @@ public class Restaurant {
 		}
 		return found;
 	}
-	public Ingredient getIngredients() {
+
+	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(Ingredient ingredients) {
+	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
 	public ArrayList<Employee> getEmployes() {
@@ -67,7 +85,7 @@ public class Restaurant {
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
-	
-	
-	
+
+
+
 }

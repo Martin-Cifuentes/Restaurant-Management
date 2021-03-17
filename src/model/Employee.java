@@ -15,7 +15,7 @@ public class Employee extends Person {
 	public Employee(String n, String ln, int id,int nOO) {
 		super(n, ln);
 		numOfOders=nOO;
-		id = id;
+		this.id = id;
 	}
 
 	
