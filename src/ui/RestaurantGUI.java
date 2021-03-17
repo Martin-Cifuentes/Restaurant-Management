@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -33,7 +34,7 @@ public class RestaurantGUI {
 	private TextField txtUsuario;
 	//admin-page
 	@FXML
-	private TextField txtPassword;
+    private PasswordField txtPassword;
 
 	//Employee-page
 	@FXML
@@ -163,7 +164,16 @@ public class RestaurantGUI {
 	
 	@FXML
     void btnAddEmployee(ActionEvent event) {
-
+		/*try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("sing-up-user.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
     }
 
 
