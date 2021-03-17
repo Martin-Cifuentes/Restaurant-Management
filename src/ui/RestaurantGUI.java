@@ -56,6 +56,27 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Employee, Integer> tcNumOfOrders;
 
+	//create-Employee
+	@FXML
+    private TextField txtEmployeeName;
+	//create-Employee
+    @FXML
+    private TextField txtEmployeeLastName;
+    //create-Employee
+    @FXML
+    private TextField txtEmployeeId;
+    //create-Employee
+    @FXML
+    private TextField txtNumOfOrders;
+    //create-Employee
+    /*@FXML
+    void addEmployee(ActionEvent event) {
+    	if(txtEmployeeName != null && txtEmployeeLastName != null && txtEmployeeId != null && txtNumOfOrders != null) {
+    		restaurant.createEmployee();
+    	}
+    }*/
+	
+	
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -164,8 +185,8 @@ public class RestaurantGUI {
 	
 	@FXML
     void btnAddEmployee(ActionEvent event) {
-		/*try {
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("sing-up-user.fxml"));
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Employee.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
@@ -173,7 +194,7 @@ public class RestaurantGUI {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
     }
 
 
