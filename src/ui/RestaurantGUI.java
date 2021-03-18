@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import model.Employee;
+import model.Ingredient;
 import model.Restaurant;
 
 public class RestaurantGUI {
@@ -89,11 +91,38 @@ public class RestaurantGUI {
 	//create-Employee
 	@FXML
 	private Label confirmEmployee;
-	
+
 	//addIngredients
-    @FXML
-    private Label lblAddIngredient;
-	
+	@FXML
+	private Label lblAddIngredient;
+	//ingredient
+	@FXML
+	private TableView<Ingredient> tvIngredients;
+	//ingredient
+	@FXML
+	private TableColumn<Ingredient, String> tcIngredient;
+	//ingredient
+	@FXML
+	private TableColumn<Ingredient, Boolean> tcAvialable;
+
+	//admin ingredient
+	@FXML
+	private RadioButton rbtnAdminIngredientsAvielable;
+	//admin ingredient
+	@FXML
+	private RadioButton rbtnAdminIngredientsNotAvailable;
+	//admin ingredient
+	@FXML
+	private Label lblNameIngredient;
+	//admin ingredient
+	@FXML
+	private ComboBox<String> cboxIngredients;
+	//admin ingredient
+	@FXML
+	private ToggleGroup adminIngredoeint;
+
+
+
 	@FXML
 	void addEmployee(ActionEvent event) {
 		try {
@@ -138,9 +167,6 @@ public class RestaurantGUI {
 		}
 
 	}
-
-
-
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -216,9 +242,6 @@ public class RestaurantGUI {
 	}
 
 	//Logged-in-page
-
-
-
 	@FXML
 	void btnEmpleados(ActionEvent event) {
 		try {
@@ -245,6 +268,22 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			loadTableViewIngredient();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	//ingredient-page to logged-in-page
+	@FXML
+	void btnGoToLoggedInPage(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -255,7 +294,6 @@ public class RestaurantGUI {
 	@FXML
 	void btnAddINgredient(ActionEvent event) {
 		boolean avialable=false;
-
 		if(rbtnAvailable.isSelected() || rbtnNotAvailable.isSelected()) {
 			if(rbtnAvailable.isSelected()) {
 				avialable=true;
@@ -282,6 +320,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			loadTableViewIngredient();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -317,6 +356,34 @@ public class RestaurantGUI {
 
 	}
 
+	//ingredient
+	public void loadTableViewIngredient() {
+		ObservableList<Ingredient> observableList;
+		observableList = FXCollections.observableArrayList(restaurant.getIngredients());
+		tvIngredients.setItems(observableList);
+		tcIngredient.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("ingredients")); 
+		tcAvialable.setCellValueFactory(new PropertyValueFactory<Ingredient,Boolean>("avialable")); 
+	}
+
+	//ingredient to admin ingredient
+	@FXML
+	void btnAdminIngredients(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-ingredients.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			for(int c=0;c<restaurant.getIngredients().size();c++) {
+				cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	@FXML
 	void btnAddEmployee(ActionEvent event) {
 		try {
@@ -332,7 +399,53 @@ public class RestaurantGUI {
 
 	}
 
+	//admin ingredient
+	@FXML
+	void btnAdminIngredientsToIngredients(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			loadTableViewIngredient();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
+	//admin ingredient
+	@FXML
+	void btnDeleteIngredient(ActionEvent event) {
+		restaurant.getIngredients().remove(cboxIngredients.getSelectionModel().getSelectedIndex());
+		cboxIngredients.getItems().clear();
+		for(int c=0;c<restaurant.getIngredients().size();c++) {
+			cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+		}
+	}
+	//admin ingredient
+	@FXML
+	void btnSaveIngredient(ActionEvent event) {
+		restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).setAvialable(rbtnAdminIngredientsAvielable.isSelected());
+	}
+
+	//admin ingredient
+	@FXML
+	void cBoxChangeIngredient(ActionEvent event) {
+		try{
+			lblNameIngredient.setText(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getIngredients());
+			if(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).isAvialable()) {
+				rbtnAdminIngredientsAvielable.setSelected(true);
+			}else {
+				rbtnAdminIngredientsNotAvailable.setSelected(true);
+			}
+		}catch(ArrayIndexOutOfBoundsException a){
+			lblNameIngredient.setText("El ingrediente fue borrrado");
+			rbtnAdminIngredientsAvielable.setSelected(false);
+			rbtnAdminIngredientsNotAvailable.setSelected(false);
+		}
+	}
 }
 
 
