@@ -80,60 +80,52 @@ public class RestaurantGUI {
 	@FXML
 	private TextField txtEmployeeLastName;
 	//create-Employee
-<<<<<<< HEAD
+
 	@FXML
 	private TextField txtEmployeeId;
 	//create-Employee
 	@FXML
 	private TextField txtNumOfOrders;
 	//create-Employee
-	/*@FXML
-=======
+	@FXML
+	private Label confirmEmployee;
+	
+	//addIngredients
     @FXML
-    private TextField txtEmployeeLastName;
-    //create-Employee
-    @FXML
-    private TextField txtEmployeeId;
-    //create-Employee
-    @FXML
-    private TextField txtNumOfOrders;
-    //create-Employee
-    @FXML
-    private Label confirmEmployee;
-    //create-Employee
-    @FXML
->>>>>>> 3f1f3e37993a32ef41d554c50fc7485df3d2e024
-    void addEmployee(ActionEvent event) {
-    	try {
-    		
-	    	if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
-	    	   !txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
-	    		
-	    		restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
-	    		txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
-	    		
-	    		confirmEmployee.setText("Empleado agregado correctamente");
-	    		confirmEmployee.setTextFill(Paint.valueOf("Green"));
-	    	}else {
-	    		
-	    		confirmEmployee.setText("Se deben llenar todos los espacios");
-	    		confirmEmployee.setTextFill(Paint.valueOf("RED"));
-	    	}
-    	}catch(NumberFormatException n) {
-    		
-    		confirmEmployee.setText("Los valores no corresponden");
-    		confirmEmployee.setTextFill(Paint.valueOf("RED"));
-    	}
-<<<<<<< HEAD
-    }*/
+    private Label lblAddIngredient;
+	
+	@FXML
+	void addEmployee(ActionEvent event) {
+		try {
+
+			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
+					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
+
+				restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
+						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
+
+				confirmEmployee.setText("Empleado agregado correctamente");
+				confirmEmployee.setTextFill(Paint.valueOf("Green"));
+			}else {
+
+				confirmEmployee.setText("Se deben llenar todos los espacios");
+				confirmEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmEmployee.setText("Los valores no corresponden");
+			confirmEmployee.setTextFill(Paint.valueOf("RED"));
+		}
+
+	}
 
 
-=======
-    }
-    //create-Employee
-    @FXML
-    void btnAtrasCrearEmpleados(ActionEvent event) {
-    	try {
+
+
+	//create-Employee
+	@FXML
+	void btnAtrasCrearEmpleados(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Employee-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -145,10 +137,10 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 
-    }
-	
-	
->>>>>>> 3f1f3e37993a32ef41d554c50fc7485df3d2e024
+	}
+
+
+
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -158,7 +150,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -224,17 +216,13 @@ public class RestaurantGUI {
 	}
 
 	//Logged-in-page
-<<<<<<< HEAD
+
+
+
 	@FXML
 	void btnEmpleados(ActionEvent event) {
 		try {
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
-=======
-    @FXML
-    void btnEmpleados(ActionEvent event) {
-    	try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Employee-page.fxml"));
->>>>>>> 3f1f3e37993a32ef41d554c50fc7485df3d2e024
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
@@ -273,12 +261,15 @@ public class RestaurantGUI {
 				avialable=true;
 			}
 			if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
-				System.out.println("se creo un ingrediente");
+				lblAddIngredient.setText("Se agregado ingrediente correctamente");
+				lblAddIngredient.setTextFill(Paint.valueOf("Green"));
 			}else {
-				System.out.println("no se creo ingrediente");
+				lblAddIngredient.setText("Ya hay un ingrediente con este nombre");
+				lblAddIngredient.setTextFill(Paint.valueOf("Red"));
 			}
 		}else {
-			System.out.println("porfavor llene todos los campos");
+			lblAddIngredient.setText("Por favor llene todos los campos");
+			lblAddIngredient.setTextFill(Paint.valueOf("Red"));
 		}
 	}
 
@@ -338,15 +329,15 @@ public class RestaurantGUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
+
 	}
-
-=======
-    }
-	
->>>>>>> 3f1f3e37993a32ef41d554c50fc7485df3d2e024
-
 
 
 }
+
+
+
+
+
+
 
