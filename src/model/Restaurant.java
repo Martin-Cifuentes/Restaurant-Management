@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 
 
 
@@ -25,10 +25,8 @@ public class Restaurant {
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
 		boolean found=false;
-		
 		for(int c=0;c<ingredients.size() && !found;c++) {
-			if(name==ingredients.get(c).getIngredients()) {
-				//error aqui TODO
+			if(name.equals(ingredients.get(c).getIngredients())) {
 				found=true;
 			}
 		}

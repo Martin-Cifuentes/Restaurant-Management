@@ -36,7 +36,7 @@ public class RestaurantGUI {
 	private TextField txtUsuario;
 	//admin-page
 	@FXML
-    private PasswordField txtPassword;
+	private PasswordField txtPassword;
 
 	//Employee-page
 	@FXML
@@ -57,41 +57,41 @@ public class RestaurantGUI {
 	//Employee-page
 	@FXML
 	private TableColumn<Employee, Integer> tcNumOfOrders;
-	
+
 	@FXML
-    private TextField txtNameIgredient;
+	private TextField txtNameIgredient;
 
-    @FXML
-    private RadioButton rbtnAvailable;
+	@FXML
+	private RadioButton rbtnAvailable;
 
-    @FXML
-    private ToggleGroup available;
+	@FXML
+	private ToggleGroup available;
 
-    @FXML
-    private RadioButton rbtnNotAvailable;
+	@FXML
+	private RadioButton rbtnNotAvailable;
 
 
 	//create-Employee
 	@FXML
-    private TextField txtEmployeeName;
+	private TextField txtEmployeeName;
 	//create-Employee
-    @FXML
-    private TextField txtEmployeeLastName;
-    //create-Employee
-    @FXML
-    private TextField txtEmployeeId;
-    //create-Employee
-    @FXML
-    private TextField txtNumOfOrders;
-    //create-Employee
-    /*@FXML
+	@FXML
+	private TextField txtEmployeeLastName;
+	//create-Employee
+	@FXML
+	private TextField txtEmployeeId;
+	//create-Employee
+	@FXML
+	private TextField txtNumOfOrders;
+	//create-Employee
+	/*@FXML
     void addEmployee(ActionEvent event) {
     	if(txtEmployeeName != null && txtEmployeeLastName != null && txtEmployeeId != null && txtNumOfOrders != null) {
     		restaurant.createEmployee();
     	}
     }*/
-	
-	
+
+
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -166,9 +166,9 @@ public class RestaurantGUI {
 	}
 
 	//Logged-in-page
-    @FXML
-    void btnEmpleados(ActionEvent event) {
-    	try {
+	@FXML
+	void btnEmpleados(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -179,13 +179,13 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 
-    }
-    
+	}
 
-    //ingredient-page
-    @FXML
-    void btnAddIngredient(ActionEvent event) {
-    	try {
+
+	//ingredient-page
+	@FXML
+	void btnAddIngredient(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addIngredient-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -195,29 +195,31 @@ public class RestaurantGUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
-    
-    //addIngredient-page
-    @FXML
-    void btnAddINgredient(ActionEvent event) {
-    	boolean avialable=false;
-    	if(rbtnAvailable.isSelected()) {
-    		avialable=true;
-    	}else if(rbtnNotAvailable.isSelected()) {
-    		avialable=false;
-    	}
-    	
-    	if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
-    		System.out.println("se creo un ingrediente");
-    	}else {
-    		System.out.println("no se creo ingrediente");
-    	}
-    }
-    
-    //addIngredient-page to ingredient-page
-    @FXML
-    void btnBackToIngredient(ActionEvent event) {
-    	try {
+	}
+
+	//addIngredient-page
+	@FXML
+	void btnAddINgredient(ActionEvent event) {
+		boolean avialable=false;
+
+		if(rbtnAvailable.isSelected() || rbtnNotAvailable.isSelected()) {
+			if(rbtnAvailable.isSelected()) {
+				avialable=true;
+			}
+			if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
+				System.out.println("se creo un ingrediente");
+			}else {
+				System.out.println("no se creo ingrediente");
+			}
+		}else {
+			System.out.println("porfavor llene todos los campos");
+		}
+	}
+
+	//addIngredient-page to ingredient-page
+	@FXML
+	void btnBackToIngredient(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -227,13 +229,12 @@ public class RestaurantGUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
-    
-    //Logged-in-page
-    @FXML
-    void btnLoadIngredient(ActionEvent event) {
-    	
-    	try {
+	}
+
+	//Logged-in-page
+	@FXML
+	void btnLoadIngredient(ActionEvent event) {
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -244,9 +245,9 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 
-    }
+	}
 
-    //Logged-in-page
+	//Logged-in-page
 	public void loadTableView() {
 		ObservableList<Employee> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getEmployes());
@@ -258,9 +259,9 @@ public class RestaurantGUI {
 
 
 	}
-	
+
 	@FXML
-    void btnAddEmployee(ActionEvent event) {
+	void btnAddEmployee(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Employee.fxml"));
 			fxmlLoader.setController(this);
@@ -271,7 +272,7 @@ public class RestaurantGUI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
 
 
