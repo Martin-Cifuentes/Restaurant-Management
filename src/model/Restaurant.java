@@ -43,6 +43,11 @@ public class Restaurant {
 	//se agrega un Employee
 	public void createEmployee(String name, String lastName, String id,int nOO) {
 		employes.add(new Employee(name,lastName,id,nOO));
+		/*boolean found=false;
+		for(int c=0;c<ingredients.size() && !found;c++) {
+			if(id.equals(ingredients.get(c).getIngredients())) {
+				found=true;
+			}*/
 	}
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
