@@ -2,9 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-
-
-
 public class Restaurant {
 
 	private ArrayList<Ingredient> ingredients;
@@ -12,8 +9,6 @@ public class Restaurant {
 	private ArrayList<Client> clients;
 	private ArrayList<Order> orders;
 	private ArrayList<Product> products; 
-
-
 
 	public Restaurant() {
 		ingredients = new ArrayList<Ingredient>();
