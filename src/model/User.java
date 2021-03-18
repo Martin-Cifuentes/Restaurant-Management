@@ -17,7 +17,7 @@ public class User extends Employee{
     * @param userName String, nickname of the User
     * @param phone String, phone of the User
     */
-	public User(String n, String ln, int id,int nOO, String un, String pa) {
+	public User(String n, String ln, String id,int nOO, String un, String pa) {
 		super(n, ln, id, nOO);
 		this.userName = un;
 		this.password = pa;

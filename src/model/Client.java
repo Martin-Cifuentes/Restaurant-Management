@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Client extends Person{
-	public int opId;
+	
 	public String adress;
 	public int phone;
 	public ArrayList <String> observations;
@@ -16,11 +16,24 @@ public class Client extends Person{
      * @param phone Stringn phone of the Client
      * @param 
      */
-	public Client(String n,String ln, int id, String a,int p){
-		super(n, ln);
-		this.opId = id;
+	public Client(String n,String ln, String id, String a,int p){
+		super(n, ln,id);
 		this.adress = a;
 		this.phone = p;
 		observations = new ArrayList <String>();
+	}
+	
+	public String getAdress() {
+		return lastName;
+	}
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+	
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 }
