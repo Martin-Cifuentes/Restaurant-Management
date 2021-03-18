@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Paint;
 import model.Employee;
 import model.Restaurant;
 
@@ -52,7 +54,7 @@ public class RestaurantGUI {
 
 	//Employee-page
 	@FXML
-	private TableColumn<Employee, Integer> tcId;
+	private TableColumn<Employee, String> tcId;
 
 	//Employee-page
 	@FXML
@@ -84,12 +86,48 @@ public class RestaurantGUI {
     @FXML
     private TextField txtNumOfOrders;
     //create-Employee
-    /*@FXML
+    @FXML
+    private Label confirmEmployee;
+    //create-Employee
+    @FXML
     void addEmployee(ActionEvent event) {
-    	if(txtEmployeeName != null && txtEmployeeLastName != null && txtEmployeeId != null && txtNumOfOrders != null) {
-    		restaurant.createEmployee();
+    	try {
+    		
+	    	if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
+	    	   !txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
+	    		
+	    		restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
+	    		txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
+	    		
+	    		confirmEmployee.setText("Empleado agregado correctamente");
+	    		confirmEmployee.setTextFill(Paint.valueOf("Green"));
+	    	}else {
+	    		
+	    		confirmEmployee.setText("Se deben llenar todos los espacios");
+	    		confirmEmployee.setTextFill(Paint.valueOf("RED"));
+	    	}
+    	}catch(NumberFormatException n) {
+    		
+    		confirmEmployee.setText("Los valores no corresponden");
+    		confirmEmployee.setTextFill(Paint.valueOf("RED"));
     	}
-    }*/
+    }
+    //create-Employee
+    @FXML
+    void btnAtrasCrearEmpleados(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Employee-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			loadTableView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+    }
 	
 	
 	//admin-page
@@ -101,6 +139,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,7 +168,7 @@ public class RestaurantGUI {
 
 	//main-page
 	public void loadMainPage(){
-		restaurant.createUser("Admin","SuperAdmin",1,0,"A","1");
+		restaurant.createUser("Admin","SuperAdmin","a003",0,"A","1");
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
@@ -169,11 +208,12 @@ public class RestaurantGUI {
     @FXML
     void btnEmpleados(ActionEvent event) {
     	try {
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ingredient-page.fxml"));
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Employee-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			loadTableView();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,7 +293,7 @@ public class RestaurantGUI {
 		tvEmployees.setItems(observableList);
 		tcName.setCellValueFactory(new PropertyValueFactory<Employee,String>("name")); 
 		tcLastName.setCellValueFactory(new PropertyValueFactory<Employee,String>("lastName")); 
-		tcId.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("id"));
+		tcId.setCellValueFactory(new PropertyValueFactory<Employee,String>("id"));
 		tcNumOfOrders.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("numOfOders"));
 
 
@@ -272,7 +312,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
     }
-
+	
 
 
 

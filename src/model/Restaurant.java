@@ -39,8 +39,12 @@ public class Restaurant {
 	}
 
 	//se agrega un user
-	public void createUser(String name, String lastName, int id,int nOO ,String userName,String password) {
+	public void createUser(String name, String lastName, String id,int nOO ,String userName,String password) {
 		employes.add(new User(name,lastName,id,nOO,userName,password));
+	}
+	//se agrega un Employee
+	public void createEmployee(String name, String lastName, String id,int nOO) {
+		employes.add(new Employee(name,lastName,id,nOO));
 	}
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
