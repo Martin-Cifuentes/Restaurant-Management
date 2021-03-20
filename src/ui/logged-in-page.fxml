@@ -9,7 +9,7 @@
       <Button layoutX="194.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadIngredient" text="Ingredientes" />
       <Button layoutX="104.0" layoutY="158.0" mnemonicParsing="false" text="Ordenes" />
       <Button layoutX="194.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Empleados" />
-      <Button layoutX="104.0" layoutY="190.0" mnemonicParsing="false" text="Clientes" />
+      <Button layoutX="104.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClients" text="Clientes" />
       <Button layoutX="194.0" layoutY="190.0" mnemonicParsing="false" text="Button" />
    </children>
 </Pane>

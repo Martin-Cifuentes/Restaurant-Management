@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
@@ -120,13 +121,18 @@ public class RestaurantGUI {
 	//admin ingredient
 	@FXML
 	private ToggleGroup adminIngredoeint;
-
+	
+	
+	@FXML
+    private ListView<String> listA;
+	
+	
 
 
 	@FXML
 	void addEmployee(ActionEvent event) {
 		try {
-
+			
 			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
 					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
 
@@ -257,8 +263,22 @@ public class RestaurantGUI {
 		}
 
 	}
-
-
+	//Logged-in-page
+	@FXML
+    void btnClients(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Clients-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			loadTableView();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+	
 	//ingredient-page
 	@FXML
 	void btnAddIngredient(ActionEvent event) {
@@ -352,8 +372,8 @@ public class RestaurantGUI {
 		tcLastName.setCellValueFactory(new PropertyValueFactory<Employee,String>("lastName")); 
 		tcId.setCellValueFactory(new PropertyValueFactory<Employee,String>("id"));
 		tcNumOfOrders.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("numOfOders"));
-
-
+		
+		
 	}
 
 	//ingredient
