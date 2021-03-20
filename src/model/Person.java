@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Person  {
+public abstract class Person extends History  {
 	public String name;
 	public String lastName;
 	public String id;

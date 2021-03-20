@@ -5,17 +5,21 @@ import java.util.ArrayList;
 public class Restaurant {
 
 	private ArrayList<Ingredient> ingredients;
-	private ArrayList<Employee> employes;
+	private ArrayList<Employee> employees;
 	private ArrayList<Client> clients;
 	private ArrayList<Order> orders;
 	private ArrayList<Product> products; 
+	private ArrayList<Ingredient> ingredientsForProduct;
+	private ArrayList<SizeAndPrice> sizeAndPrice;
 
 	public Restaurant() {
 		ingredients = new ArrayList<Ingredient>();
-		employes = new ArrayList<Employee>();
+		employees = new ArrayList<Employee>();
 		clients = new ArrayList<Client>();
 		orders = new ArrayList<Order>();
 		products = new ArrayList<Product>();
+		ingredientsForProduct = new  ArrayList<Ingredient>();
+		sizeAndPrice = new ArrayList<SizeAndPrice>();
 	}
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
@@ -30,26 +34,66 @@ public class Restaurant {
 		}
 		return found;
 	}
+	public void ingredientForProduct(Ingredient ingredient) {
+		ingredientsForProduct.add(ingredient);
+	}
 
+	public void resetProductIngredientArray() {
+		ingredientsForProduct.clear();
+	}
+	
+	public void sizeAndPriceForProduct(String a,Double b) {
+		sizeAndPrice.add(new SizeAndPrice(a, b));
+	}
+
+	public void resetsizeAndPriceArray() {
+		sizeAndPrice.clear();
+	}
+
+	public boolean addProduct( String name,double personalPrice,ArrayList<SizeAndPrice> sizeAndPrice, String type) {
+		boolean found=false;
+		for(int c=0;c<products.size() && !found;c++) {
+			if(name.equals(products.get(c).getName())) {
+				found=true;
+			}
+		}
+		if(!found) {
+			products.add(new Product( name,  sizeAndPrice,  type,  ingredients));
+		}
+		return found;
+	}
+
+
+	public ArrayList<Ingredient> getIngredientsForProduct() {
+		return ingredientsForProduct;
+	}
+	public void setIngredientsForProduct(ArrayList<Ingredient> ingredientsForProduct) {
+		this.ingredientsForProduct = ingredientsForProduct;
+	}
 	//se agrega un user
 	public void createUser(String name, String lastName, String id,int nOO ,String userName,String password) {
-		employes.add(new User(name,lastName,id,nOO,userName,password));
+		employees.add(new User(name,lastName,id,nOO,userName,password));
 	}
 	//se agrega un Employee
-	public void createEmployee(String name, String lastName, String id,int nOO) {
-		employes.add(new Employee(name,lastName,id,nOO));
-		/*boolean found=false;
-		for(int c=0;c<ingredients.size() && !found;c++) {
-			if(id.equals(ingredients.get(c).getIngredients())) {
+	public boolean createEmployee(String name, String lastName, String id,int nOO) {
+		
+		boolean found=false;
+		for(int c=0;c<employees.size() && !found;c++) {
+			if(id.equals(employees.get(c).id)) {
 				found=true;
-			}*/
+			}
+		}
+		if(found == false) {
+			employees.add(new Employee(name,lastName,id,nOO));
+		}
+		return found;
 	}
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
-		for(int c=0; c< employes.size() && !found;c++) {
-			if(employes.get(c) instanceof User) {
-				if(userName.equals(employes.get(c).getUserName()) && password.equals(employes.get(c).getPassword())) {
+		for(int c=0; c< employees.size() && !found;c++) {
+			if(employees.get(c) instanceof User) {
+				if(userName.equals(employees.get(c).getUserName()) && password.equals(employees.get(c).getPassword())) {
 					found=true;
 				}
 			}
@@ -64,10 +108,10 @@ public class Restaurant {
 		this.ingredients = ingredients;
 	}
 	public ArrayList<Employee> getEmployes() {
-		return employes;
+		return employees;
 	}
 	public void setEmployes(ArrayList<Employee> employes) {
-		this.employes = employes;
+		this.employees = employes;
 	}
 	public ArrayList<Client> getClients() {
 		return clients;
@@ -87,6 +131,13 @@ public class Restaurant {
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
+	public ArrayList<SizeAndPrice> getSizeAndPrice() {
+		return sizeAndPrice;
+	}
+	public void setSizeAndPrice(ArrayList<SizeAndPrice> sizeAndPrice) {
+		this.sizeAndPrice = sizeAndPrice;
+	}
+	
 
 
 

@@ -5,7 +5,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="104.0" layoutY="125.0" mnemonicParsing="false" text="Productos" />
+      <Button layoutX="104.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadProducts" text="Productos" />
       <Button layoutX="194.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadIngredient" text="Ingredientes" />
       <Button layoutX="104.0" layoutY="158.0" mnemonicParsing="false" text="Ordenes" />
       <Button layoutX="194.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Empleados" />
