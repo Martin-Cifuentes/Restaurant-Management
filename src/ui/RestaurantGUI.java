@@ -23,6 +23,7 @@ import javafx.scene.paint.Paint;
 import model.Employee;
 import model.Ingredient;
 import model.Restaurant;
+import model.SizeAndPrice;
 
 public class RestaurantGUI {
 
@@ -31,6 +32,8 @@ public class RestaurantGUI {
 	public RestaurantGUI() {
 		restaurant= new Restaurant();
 	}
+
+	private String currentUser;
 
 	//main-pane
 	@FXML
@@ -104,7 +107,6 @@ public class RestaurantGUI {
 	//ingredient
 	@FXML
 	private TableColumn<Ingredient, Boolean> tcAvialable;
-
 	//admin ingredient
 	@FXML
 	private RadioButton rbtnAdminIngredientsAvielable;
@@ -120,6 +122,33 @@ public class RestaurantGUI {
 	//admin ingredient
 	@FXML
 	private ToggleGroup adminIngredoeint;
+	//admin ingredient
+	@FXML
+	private Label lblIngredientCreatedBy;
+	//admin ingredient
+	@FXML
+	private Label lblIngredientLastEditedBy;
+	//addProduct-page
+	@FXML
+	private TextField txtPriceOfSizeOfProduct;
+	//addProduct-page
+	@FXML
+	private TextField txtTypeOfProduct;
+	//addProduct-page
+	@FXML
+	private TextField txtSizeOfProduct;
+	//addProduct-page
+	@FXML
+	private TextField txtNameOfProduct;
+	//addProduct-page
+	@FXML
+	private ComboBox<String> cboxIngredientsForProduct;
+	//addProduct-page
+	@FXML
+	private Label lblSizeAndPriceOfProducts;
+	//addProduct-page
+	@FXML
+	private Label lblIngredientsForProduct;
 
 
 
@@ -187,6 +216,7 @@ public class RestaurantGUI {
 	@FXML
 	void btnLogIn(ActionEvent event) {
 		if(restaurant.logInAdmin(txtUsuario.getText(), txtPassword.getText())) {
+			currentUser=txtUsuario.getText();
 			try {
 				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
 				fxmlLoader.setController(this);
@@ -258,6 +288,21 @@ public class RestaurantGUI {
 
 	}
 
+	//Employee to logged in page
+	@FXML
+	void btnBackToLoggedInPage(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 
 	//ingredient-page
 	@FXML
@@ -299,6 +344,8 @@ public class RestaurantGUI {
 				avialable=true;
 			}
 			if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
+				restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setCreatedBy(currentUser);
+				restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setLastEditedBy(currentUser);
 				lblAddIngredient.setText("Se agregado ingrediente correctamente");
 				lblAddIngredient.setTextFill(Paint.valueOf("Green"));
 			}else {
@@ -377,6 +424,8 @@ public class RestaurantGUI {
 			for(int c=0;c<restaurant.getIngredients().size();c++) {
 				cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
 			}
+			lblIngredientCreatedBy.setText("");
+			lblIngredientLastEditedBy.setText("");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -428,6 +477,7 @@ public class RestaurantGUI {
 	@FXML
 	void btnSaveIngredient(ActionEvent event) {
 		restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).setAvialable(rbtnAdminIngredientsAvielable.isSelected());
+		restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).setLastEditedBy(currentUser);
 	}
 
 	//admin ingredient
@@ -435,6 +485,8 @@ public class RestaurantGUI {
 	void cBoxChangeIngredient(ActionEvent event) {
 		try{
 			lblNameIngredient.setText(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getIngredients());
+			lblIngredientCreatedBy.setText(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getCreatedBy());
+			lblIngredientLastEditedBy.setText(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getLastEditedBy());
 			if(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).isAvialable()) {
 				rbtnAdminIngredientsAvielable.setSelected(true);
 			}else {
@@ -442,10 +494,63 @@ public class RestaurantGUI {
 			}
 		}catch(ArrayIndexOutOfBoundsException a){
 			lblNameIngredient.setText("El ingrediente fue borrrado");
+			lblIngredientCreatedBy.setText("");
+			lblIngredientLastEditedBy.setText("");
 			rbtnAdminIngredientsAvielable.setSelected(false);
 			rbtnAdminIngredientsNotAvailable.setSelected(false);
 		}
 	}
+	
+	//addProduct-page
+	@FXML
+	void btnAddProduct(ActionEvent event) {
+
+	}
+	
+	//addProduct-page
+	@FXML
+	void btnAddSizeAndPriceForProduct(ActionEvent event) {
+	 	restaurant.sizeAndPriceForProduct(txtSizeOfProduct.getText(), Double.parseDouble(txtPriceOfSizeOfProduct.getText()));
+	 	txtSizeOfProduct.clear();
+	 	txtPriceOfSizeOfProduct.clear();
+	 	lblIngredientsForProduct.setText(lblIngredientsForProduct.getText()+" "+restaurant.getSizeAndPrice().get(restaurant.getSizeAndPrice().size()-1).getSize()+" con precio de: "+restaurant.getSizeAndPrice().get(restaurant.getSizeAndPrice().size()-1).getPrice()+", ");
+	}
+	
+	//addProduct-page
+	@FXML
+	void btnIngredientForProduct(ActionEvent event) {
+
+	}
+	
+	//logged in page to products page
+    @FXML
+    void btnLoadProducts(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    void btnLoadAddProduct(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProduct-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
 }
 
 

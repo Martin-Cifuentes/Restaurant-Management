@@ -1,8 +1,8 @@
 package model;
 
 
-public class Ingredient {
-	private String ingredients;
+public class Ingredient extends History {
+	private String ingredients ;
 	private boolean avialable;
 	
 	

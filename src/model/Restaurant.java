@@ -9,6 +9,8 @@ public class Restaurant {
 	private ArrayList<Client> clients;
 	private ArrayList<Order> orders;
 	private ArrayList<Product> products; 
+	private ArrayList<Ingredient> ingredientsForProduct;
+	private ArrayList<SizeAndPrice> sizeAndPrice;
 
 	public Restaurant() {
 		ingredients = new ArrayList<Ingredient>();
@@ -16,6 +18,8 @@ public class Restaurant {
 		clients = new ArrayList<Client>();
 		orders = new ArrayList<Order>();
 		products = new ArrayList<Product>();
+		ingredientsForProduct = new  ArrayList<Ingredient>();
+		sizeAndPrice = new ArrayList<SizeAndPrice>();
 	}
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
@@ -30,7 +34,42 @@ public class Restaurant {
 		}
 		return found;
 	}
+	public void ingredientForProduct(Ingredient ingredient) {
+		ingredientsForProduct.add(ingredient);
+	}
 
+	public void resetProductIngredientArray() {
+		ingredientsForProduct.clear();
+	}
+	
+	public void sizeAndPriceForProduct(String a,Double b) {
+		sizeAndPrice.add(new SizeAndPrice(a, b));
+	}
+
+	public void resetsizeAndPriceArray() {
+		sizeAndPrice.clear();
+	}
+
+	public boolean addProduct( String name,double personalPrice,ArrayList<SizeAndPrice> sizeAndPrice, String type) {
+		boolean found=false;
+		for(int c=0;c<products.size() && !found;c++) {
+			if(name.equals(products.get(c).getName())) {
+				found=true;
+			}
+		}
+		if(!found) {
+			products.add(new Product( name,  sizeAndPrice,  type,  ingredients));
+		}
+		return found;
+	}
+
+
+	public ArrayList<Ingredient> getIngredientsForProduct() {
+		return ingredientsForProduct;
+	}
+	public void setIngredientsForProduct(ArrayList<Ingredient> ingredientsForProduct) {
+		this.ingredientsForProduct = ingredientsForProduct;
+	}
 	//se agrega un user
 	public void createUser(String name, String lastName, String id,int nOO ,String userName,String password) {
 		employes.add(new User(name,lastName,id,nOO,userName,password));
@@ -87,6 +126,13 @@ public class Restaurant {
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
+	public ArrayList<SizeAndPrice> getSizeAndPrice() {
+		return sizeAndPrice;
+	}
+	public void setSizeAndPrice(ArrayList<SizeAndPrice> sizeAndPrice) {
+		this.sizeAndPrice = sizeAndPrice;
+	}
+	
 
 
 
