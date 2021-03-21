@@ -16,11 +16,11 @@ public class Product extends History {
 		this.sizeAndPrice = sizeAndPrice;
 	}
 
-	public Product(String name, ArrayList<SizeAndPrice> sizeAndPrice, String type, ArrayList<Ingredient> ingredients) {
+	public Product(String name, String type) {
 		this.name = name;
-		this.sizeAndPrice = sizeAndPrice;
 		this.type = type;
-		this.ingredients = ingredients;
+		ingredients=new ArrayList<Ingredient>();
+		sizeAndPrice = new ArrayList<>();
 	}
 
 	public String getName() {
@@ -31,12 +31,22 @@ public class Product extends History {
 		this.name = name;
 	}
 
-
+	public int size() {
+		return ingredients.size();
+	}
 
 	public String getType() {
 		return type;
 	}
 
+	public void addIngredient(Ingredient e) {
+		ingredients.add(e);
+	}
+	
+	public void addSizeAndPrice(SizeAndPrice e) {
+		sizeAndPrice.add(e);
+	}
+	
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -48,8 +58,6 @@ public class Product extends History {
 	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-
-
 
 
 }

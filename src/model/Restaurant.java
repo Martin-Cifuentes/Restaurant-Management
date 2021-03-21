@@ -35,24 +35,29 @@ public class Restaurant {
 		}
 		return found;
 	}
+	
 	//add product
 	public void ingredientForProduct(Ingredient ingredient) {
 		ingredientsForProduct.add(ingredient);
 	}
+	
 	//add product
 	public void resetProductIngredientArray() {
 		ingredientsForProduct.clear();
 	}
+	
 	//add product
 	public void sizeAndPriceForProduct(String a,Double b) {
 		sizeAndPrice.add(new SizeAndPrice(a, b));
 	}
+	
 	//add product
 	public void resetsizeAndPriceArray() {
 		sizeAndPrice.clear();
 	}
+	
 	//add product
-	public boolean addProduct( String name, String type) {
+	public boolean addProduct( String name ,String type ) {
 		boolean found=false;
 		for(int c=0;c<products.size() && !found;c++) {
 			if(name.equals(products.get(c).getName())) {
@@ -60,10 +65,20 @@ public class Restaurant {
 			}
 		}
 		if(!found) {
-			products.add(new Product( name,  sizeAndPrice,  type,  ingredients));
+			products.add(new Product( name, type));
+			for(int c=0; c<ingredientsForProduct.size();c++) {
+				products.get(products.size()-1).addIngredient(ingredientsForProduct.get(c));
+			}
+			for(int c=0; c<sizeAndPrice.size();c++) {
+				products.get(products.size()-1).addSizeAndPrice(sizeAndPrice.get(c));
+			}
+			resetProductIngredientArray();
+			resetsizeAndPriceArray();
 		}
 		return found;
 	}
+	
+
 	//add product, checks if ingredient has already been added to a product
 	public boolean productCheckDoubleIngredient(String a) {
 		boolean found=false;
@@ -72,6 +87,7 @@ public class Restaurant {
 				found=true;
 			}
 		}
+	
 		return found;
 	}
 	//add product, checks if size has already been added to a product
