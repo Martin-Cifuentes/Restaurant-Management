@@ -1,5 +1,6 @@
 package ui;
 
+
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -14,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,7 +37,7 @@ public class RestaurantGUI {
 	}
 
 	private String currentUser;
-
+	public final static String SEP = "\n";
 	//main-pane
 	@FXML
 	private Pane mainPane;
@@ -190,13 +193,96 @@ public class RestaurantGUI {
 	private TableColumn<Product, String> tcTypeOfProduct;
 
 	//create-Client
+
+
+    
+    //create-Client
+    @FXML
+    private Button btnCreateClient;
+
+    @FXML
+    private Label tiltleCreateClient;
+
+    @FXML
+    private TextField txtClientName;
+
+    @FXML
+    private TextField txtClientLastName;
+
+    @FXML
+    private TextField txtClientID;
+
+    @FXML
+    private TextField txtClientAdress;
+
+    @FXML
+    private TextField txtClientPhone;
+
+    @FXML
+    private TextArea txtClientObservations;
+
+    /*@FXML
+    private Button btnModifyClient;*/
+    
+    @FXML
+    private Label labConfirmClient;
+
+    @FXML
+    void addClient(ActionEvent event) {
+try {
+			
+			if(!txtClientName.getText().equals("") && !txtClientLastName.getText().equals("") &&
+					!txtClientID.getText().equals("") && !txtClientAdress.getText().equals("") && !txtClientPhone.getText().equals("")) {
+				
+				String[]observations = txtClientObservations.getText().split(SEP);
+				boolean x = restaurant.createClient(txtClientName.getText(), txtClientLastName.getText(),
+						txtClientID.getText(),txtClientAdress.getText(), Integer.parseInt(txtClientPhone.getText()), observations );
+				if(x == false) {
+					labConfirmClient.setText("Cliente agregado correctamente");
+					labConfirmClient.setTextFill(Paint.valueOf("Green"));
+				}else {
+					labConfirmClient.setText("El cliente tiene un id que ya existe");
+					labConfirmClient.setTextFill(Paint.valueOf("RED"));
+				}
+				
+			}else {
+
+				labConfirmClient.setText("Se deben llenar todos los espacios");
+				labConfirmClient.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			labConfirmClient.setText("Los valores no corresponden");
+			labConfirmClient.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+
+    @FXML
+    void modifyClient(ActionEvent event) {
+
+    }
+    @FXML
+    void createClient(ActionEvent event) {
+    	
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Client.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
 	@FXML
 	void addEmployee(ActionEvent event) {
 		try {
 
 			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
 					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
-
+				
 				boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
 						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
 				if(x == false) {
@@ -556,6 +642,7 @@ public class RestaurantGUI {
 	//admin ingredient
 	@FXML
 	void btnDeleteIngredient(ActionEvent event) {
+		
 		restaurant.getIngredients().remove(cboxIngredients.getSelectionModel().getSelectedIndex());
 		cboxIngredients.getItems().clear();
 

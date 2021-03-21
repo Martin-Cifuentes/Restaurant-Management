@@ -16,11 +16,11 @@ public class Client extends Person{
      * @param phone Stringn phone of the Client
      * @param 
      */
-	public Client(String n,String ln, String id, String a,int p){
+	public Client(String n,String ln, String id, String a,int p, ArrayList<String> obs){
 		super(n, ln,id);
 		this.adress = a;
 		this.phone = p;
-		observations = new ArrayList <String>();
+		observations = obs;
 	}
 	
 	public String getAdress() {
