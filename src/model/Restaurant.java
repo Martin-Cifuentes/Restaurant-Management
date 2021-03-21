@@ -128,7 +128,7 @@ public class Restaurant {
 		return found;
 	}
 	//se agrega un cliente
-	public boolean createClient(String name, String lastName, String id,String adress, int phone, String[] obs) {
+	public boolean createClient(String name, String lastName, String id, String adress, String phone, String[] obs) {
 		ArrayList<String>observations = new ArrayList<String>();
 		for(int i = 0; i<obs.length; i++) {
 			observations.add(obs[i]);
@@ -139,10 +139,33 @@ public class Restaurant {
 				found=true;
 			}
 		}
+		
 		if(found == false) {
 			clients.add(new Client(name,lastName,id,adress,phone,observations));
 		}
 		return found;
+	}
+	/**
+	 *actualiza un cliente 
+	 */
+	public void updateClient(String name, String lastName, String id, String adress, String phone, String[] obs) {
+		ArrayList<String>observations = new ArrayList<String>();
+		for(int i = 0; i<obs.length; i++) {
+			observations.add(obs[i]);
+		}
+		Client client = new Client(name, lastName, id, adress, phone, observations);
+		int pos = searchClient(id);
+		clients.set(pos, client);
+	}
+	//buscar un cliente
+	public int searchClient(String id) {
+		int x = -1;
+		for(int i = 0; i< clients.size(); i++ ) {
+			if(clients.get(i).getId().equals(id)) {
+				x = i;
+			}
+		}
+		return x;
 	}
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {

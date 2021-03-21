@@ -11,13 +11,13 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="31.0" layoutY="136.0" mnemonicParsing="false" onAction="#createClient" text="Agregar cliente" />
-      <Button layoutX="31.0" layoutY="194.0" mnemonicParsing="false" text="Borrar" />
+      <Button layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#eraseClient" text="Borrar" />
       <Label layoutX="285.0" layoutY="19.0" text="Clientes">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tvClients" layoutX="210.0" layoutY="110.0" prefHeight="192.0" prefWidth="432.0">
+      <TableView fx:id="tvClients" layoutX="210.0" layoutY="110.0" onMouseClicked="#showClientInfo" prefHeight="192.0" prefWidth="432.0">
         <columns>
           <TableColumn fx:id="tcClientName" prefWidth="88.0" text="Nombre" />
           <TableColumn fx:id="tcClientLastName" prefWidth="89.0" text="Apellido" />
@@ -27,8 +27,8 @@
         </columns>
       </TableView>
       <Button layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReturnToLoggedInPage" text="Atras" />
-      <ListView layoutX="210.0" layoutY="350.0" prefHeight="143.0" prefWidth="356.0" />
+      <ListView fx:id="lvClients" layoutX="210.0" layoutY="350.0" prefHeight="143.0" prefWidth="356.0" />
       <Button layoutX="31.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClients" text="Actualizar" />
-      <Button layoutX="29.0" layoutY="242.0" mnemonicParsing="false" text="Modificar" />
+      <Button layoutX="29.0" layoutY="242.0" mnemonicParsing="false" onAction="#openModifyClient" text="Modificar" />
    </children>
 </Pane>
