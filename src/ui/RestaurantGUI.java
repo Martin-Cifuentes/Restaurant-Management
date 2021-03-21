@@ -23,6 +23,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import model.Client;
@@ -169,6 +170,9 @@ public class RestaurantGUI {
     private TableView<Client> tvClients;
 	
 	@FXML
+    private ListView<String> lvClients;
+	
+	@FXML
     private TableColumn<Client, String> tcClientName;
 
     @FXML
@@ -184,9 +188,6 @@ public class RestaurantGUI {
     private TableColumn<Client, Integer> tcClientPhone;
     
     //create-Client
-    @FXML
-    private Button btnCreateClient;
-
     @FXML
     private Label tiltleCreateClient;
 
@@ -207,24 +208,78 @@ public class RestaurantGUI {
 
     @FXML
     private TextArea txtClientObservations;
-
-    /*@FXML
-    private Button btnModifyClient;*/
     
     @FXML
     private Label labConfirmClient;
+    
+    //modify-Clients
+    @FXML
+    private TextField txtModifyClientName;
 
     @FXML
-    void addClient(ActionEvent event) {
-try {
-			
-			if(!txtClientName.getText().equals("") && !txtClientLastName.getText().equals("") &&
-					!txtClientID.getText().equals("") && !txtClientAdress.getText().equals("") && !txtClientPhone.getText().equals("")) {
+    private TextField txtModifyClientLastName;
+
+    @FXML
+    private Label labModifyClientID;
+
+    @FXML
+    private TextField txtModifyClientAdress;
+
+    @FXML
+    private TextField txtModifyClientPhone;
+
+    @FXML
+    private TextArea txtModifyClientObservations;
+
+    @FXML
+    private Label labConfirmModifyClient;
+
+    @FXML
+    void btnModifyClient(ActionEvent event) {
+    	try {
+    		String[]observations;
+			if(!txtModifyClientName.getText().equals("") && !txtModifyClientLastName.getText().equals("")
+					&& !txtModifyClientAdress.getText().equals("") && !txtModifyClientPhone.getText().equals("") ) {
 				
-				String[]observations = txtClientObservations.getText().split(SEP);
+				if(!txtModifyClientObservations.equals("")) {
+					observations = txtModifyClientObservations.getText().split(SEP);
+				}else {
+					observations = new String[1];
+				}
+				restaurant.updateClient(txtModifyClientName.getText(), txtModifyClientLastName.getText(),
+										labModifyClientID.getText(),txtModifyClientAdress.getText(),
+										txtModifyClientPhone.getText(), observations );
+				
+				labConfirmModifyClient.setText("Cliente modificado correctamente");
+				labConfirmModifyClient.setTextFill(Paint.valueOf("Green"));
+				
+				
+			}else {
+				labConfirmModifyClient.setText("Se deben llenar todos los espacios");
+				labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			labConfirmModifyClient.setText("Los valores no corresponden");
+			labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+    @FXML
+    void addClient(ActionEvent event) {
+    	try {
+    		String[]observations;
+			if(!txtClientName.getText().equals("") && !txtClientLastName.getText().equals("") &&
+					!txtClientID.getText().equals("") && !txtClientAdress.getText().equals("") &&
+					!txtClientPhone.getText().equals("") ) {
+				
+				if(!txtClientObservations.equals("")) {
+					observations = txtClientObservations.getText().split(SEP);
+				}else {
+					observations = new String[1];
+				}
 				boolean x = restaurant.createClient(txtClientName.getText(), txtClientLastName.getText(),
-						txtClientID.getText(),txtClientAdress.getText(), Integer.parseInt(txtClientPhone.getText()), observations );
-				if(x == false) {
+						txtClientID.getText(),txtClientAdress.getText(), txtClientPhone.getText(), observations );
+				if(!x) {
 					labConfirmClient.setText("Cliente agregado correctamente");
 					labConfirmClient.setTextFill(Paint.valueOf("Green"));
 				}else {
@@ -239,14 +294,67 @@ try {
 			}
 		}catch(NumberFormatException n) {
 
-			labConfirmClient.setText("Los valores no corresponden");
-			labConfirmClient.setTextFill(Paint.valueOf("RED"));
+			labConfirmModifyClient.setText("Los valores no corresponden");
+			labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
 		}
+    }
+    //create-Client
+    @FXML
+    void showClientInfo(MouseEvent event) {
+    	if(tvClients.getSelectionModel().getSelectedItem() != null) {
+    		
+			Client client = tvClients.getSelectionModel().getSelectedItem();
+			
+			int pos = restaurant.searchClient(client.getId());
+			ObservableList<String> clientObs = FXCollections.observableArrayList(restaurant.getClients().get(pos).getObservations());
+			lvClients.setItems(clientObs);
+    	}
     }
 
     @FXML
-    void modifyClient(ActionEvent event) {
-
+    void openModifyClient(ActionEvent event) {
+    	if(tvClients.getSelectionModel().getSelectedItem() != null) {
+    		
+			Client client = tvClients.getSelectionModel().getSelectedItem();
+			
+			int pos = restaurant.searchClient(client.getId());
+			//restaurant.getClients().remove(pos);
+			
+			String ModObs = "";
+			for(int i = 0; i < client.observations.size(); i++) {
+				ModObs += client.observations.get(i) + "\n";
+			}
+			
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Client.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			txtModifyClientName.setText(client.getName());
+			txtModifyClientLastName.setText(client.getLastName());
+			labModifyClientID.setText(client.getId());
+			txtModifyClientAdress.setText(client.getAdress());
+			txtModifyClientPhone.setText(client.getPhone());
+			txtModifyClientObservations.setText(ModObs);
+			
+			
+    	}
+    }
+    @FXML
+    void eraseClient(ActionEvent event) {
+    	if(tvClients.getSelectionModel().getSelectedItem() != null) {
+    		
+			Client client = tvClients.getSelectionModel().getSelectedItem();
+			
+			int pos = restaurant.searchClient(client.getId());
+			restaurant.getClients().remove(pos);
+			
+    	}
     }
     @FXML
     void createClient(ActionEvent event) {
@@ -292,7 +400,7 @@ try {
 
 	}
 
-
+	
 
 
 	//create-Employee
@@ -418,7 +526,7 @@ try {
 			e.printStackTrace();
 		}
 	}
-																										//tv Clients-page
+	//tv Clients-page
 	public void loadTableViewClient() {
 		ObservableList<Client> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getClients());
