@@ -7,27 +7,28 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="44.0" layoutY="32.0" mnemonicParsing="false" text="atras" />
-      <Button layoutX="263.0" layoutY="399.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="95.0" text="Crear" />
+      <Button layoutX="44.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnClients" text="atras" />
+      <Button fx:id="btnCreateClient" layoutX="116.0" layoutY="410.0" mnemonicParsing="false" onAction="#addClient" prefHeight="25.0" prefWidth="95.0" text="Crear" />
       <Label layoutX="105.0" layoutY="100.0" text="Nombre" />
       <Label layoutX="105.0" layoutY="140.0" text="Apellido" />
       <Label layoutX="121.0" layoutY="182.0" text="ID" />
       <Label layoutX="100.0" layoutY="221.0" text="Dirteccion" />
       <Label layoutX="98.0" layoutY="259.0" text="Telefono" />
-      <Label layoutX="216.0" layoutY="20.0" text="Crear Cliente">
+      <Label fx:id="tiltleCreateClient" layoutX="216.0" layoutY="20.0" text="Crear Cliente">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <TextField fx:id="clientName" layoutX="182.0" layoutY="96.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextField fx:id="clientLastName" layoutX="182.0" layoutY="136.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextField fx:id="clientID" layoutX="182.0" layoutY="178.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextField fx:id="clientAdress" layoutX="182.0" layoutY="217.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextField fx:id="clientPhone" layoutX="182.0" layoutY="255.0" prefHeight="25.0" prefWidth="203.0" />
-      <TextArea fx:id="clientObservations" layoutX="181.0" layoutY="299.0" prefHeight="68.0" prefWidth="290.0" promptText="Cada observación se separa con un salto de linea" />
+      <TextField fx:id="txtClientName" layoutX="182.0" layoutY="96.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="txtClientLastName" layoutX="182.0" layoutY="136.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="txtClientID" layoutX="182.0" layoutY="178.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="txtClientAdress" layoutX="182.0" layoutY="217.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextField fx:id="txtClientPhone" layoutX="182.0" layoutY="255.0" prefHeight="25.0" prefWidth="203.0" />
+      <TextArea fx:id="txtClientObservations" layoutX="181.0" layoutY="299.0" prefHeight="68.0" prefWidth="290.0" promptText="Cada observación se separa con un salto de linea" />
       <Label layoutX="86.0" layoutY="325.0" text="Observaciones" />
+      <Button fx:id="btnModifyClient" layoutX="424.0" layoutY="410.0" mnemonicParsing="false" onAction="#modifyClient" prefHeight="25.0" prefWidth="95.0" text="Modificar" />
+      <Label fx:id="labConfirmClient" layoutX="296.0" layoutY="383.0" />
    </children>
 </Pane>

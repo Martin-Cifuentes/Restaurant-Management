@@ -20,6 +20,7 @@ public class Restaurant {
 		products = new ArrayList<Product>();
 		ingredientsForProduct = new  ArrayList<Ingredient>();
 		sizeAndPrice = new ArrayList<SizeAndPrice>();
+		
 	}
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
@@ -85,6 +86,23 @@ public class Restaurant {
 		}
 		if(found == false) {
 			employees.add(new Employee(name,lastName,id,nOO));
+		}
+		return found;
+	}
+	//se agrega un cliente
+	public boolean createClient(String name, String lastName, String id,String adress, int phone, String[] obs) {
+		ArrayList<String>observations = new ArrayList<String>();
+		for(int i = 0; i<obs.length; i++) {
+			observations.add(obs[i]);
+		}
+		boolean found=false;
+		for(int c=0;c<clients.size() && !found;c++) {
+			if(id.equals(clients.get(c).id)) {
+				found=true;
+			}
+		}
+		if(found == false) {
+			clients.add(new Client(name,lastName,id,adress,phone,observations));
 		}
 		return found;
 	}
