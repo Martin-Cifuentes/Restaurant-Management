@@ -170,14 +170,10 @@ public class RestaurantGUI {
 	private TableView<Client> tvClients;
 
 	@FXML
-<<<<<<< HEAD
     private ListView<String> lvClients;
 	
 	@FXML
     private TableColumn<Client, String> tcClientName;
-=======
-	private TableColumn<Client, String> tcClientName;
->>>>>>> de085201dba9c9524ea63a978b748ac9ec8d80c6
 
 	@FXML
 	private TableColumn<Client, String> tcClientLastName;
