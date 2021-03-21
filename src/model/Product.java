@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class Product {
+public class Product extends History {
 	private String name;
 	private ArrayList<SizeAndPrice> sizeAndPrice;
 	private String type;
