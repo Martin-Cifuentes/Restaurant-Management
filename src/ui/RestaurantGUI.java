@@ -164,6 +164,12 @@ public class RestaurantGUI {
 	@FXML
 	private Label lblAddProductWarning;
 
+	//admin ingredient
+	@FXML
+	private Label lblAdminIngredientWarning;
+
+
+
 	//Client-page
 	@FXML
 	private TableView<Client> tvClients;
@@ -192,48 +198,45 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Product, String> tcTypeOfProduct;
 
+
 	//create-Client
+	@FXML
+	private Button btnCreateClient;
 
+	@FXML
+	private Label tiltleCreateClient;
 
-    
-    //create-Client
-    @FXML
-    private Button btnCreateClient;
+	@FXML
+	private TextField txtClientName;
 
-    @FXML
-    private Label tiltleCreateClient;
+	@FXML
+	private TextField txtClientLastName;
 
-    @FXML
-    private TextField txtClientName;
+	@FXML
+	private TextField txtClientID;
 
-    @FXML
-    private TextField txtClientLastName;
+	@FXML
+	private TextField txtClientAdress;
 
-    @FXML
-    private TextField txtClientID;
+	@FXML
+	private TextField txtClientPhone;
 
-    @FXML
-    private TextField txtClientAdress;
+	@FXML
+	private TextArea txtClientObservations;
 
-    @FXML
-    private TextField txtClientPhone;
-
-    @FXML
-    private TextArea txtClientObservations;
-
-    /*@FXML
+	/*@FXML
     private Button btnModifyClient;*/
-    
-    @FXML
-    private Label labConfirmClient;
 
-    @FXML
-    void addClient(ActionEvent event) {
-try {
-			
+	@FXML
+	private Label labConfirmClient;
+
+	@FXML
+	void addClient(ActionEvent event) {
+		try {
+
 			if(!txtClientName.getText().equals("") && !txtClientLastName.getText().equals("") &&
 					!txtClientID.getText().equals("") && !txtClientAdress.getText().equals("") && !txtClientPhone.getText().equals("")) {
-				
+
 				String[]observations = txtClientObservations.getText().split(SEP);
 				boolean x = restaurant.createClient(txtClientName.getText(), txtClientLastName.getText(),
 						txtClientID.getText(),txtClientAdress.getText(), Integer.parseInt(txtClientPhone.getText()), observations );
@@ -244,7 +247,7 @@ try {
 					labConfirmClient.setText("El cliente tiene un id que ya existe");
 					labConfirmClient.setTextFill(Paint.valueOf("RED"));
 				}
-				
+
 			}else {
 
 				labConfirmClient.setText("Se deben llenar todos los espacios");
@@ -255,16 +258,16 @@ try {
 			labConfirmClient.setText("Los valores no corresponden");
 			labConfirmClient.setTextFill(Paint.valueOf("RED"));
 		}
-    }
+	}
 
-    @FXML
-    void modifyClient(ActionEvent event) {
+	@FXML
+	void modifyClient(ActionEvent event) {
 
-    }
-    @FXML
-    void createClient(ActionEvent event) {
-    	
-    	try {
+	}
+	@FXML
+	void createClient(ActionEvent event) {
+
+		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Client.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -274,7 +277,7 @@ try {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    }
+	}
 
 	@FXML
 	void addEmployee(ActionEvent event) {
@@ -282,7 +285,7 @@ try {
 
 			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
 					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
-				
+
 				boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
 						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
 				if(x == false) {
@@ -642,18 +645,45 @@ try {
 	//admin ingredient
 	@FXML
 	void btnDeleteIngredient(ActionEvent event) {
-		
-		restaurant.getIngredients().remove(cboxIngredients.getSelectionModel().getSelectedIndex());
-		cboxIngredients.getItems().clear();
+		boolean found = false;
+		for(int c=0;c<restaurant.getProducts().size() && !found;c++) {
+			for(int i=0; i<restaurant.getProducts().get(c).getIngredients().size() && !found;i++) {
 
-		for(int c=0;c<restaurant.getIngredients().size();c++) {
-			cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+				if(restaurant.getProducts().get(c).getIngredients().get(i).getIngredients().equals(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getIngredients())) {
+					found=true;
+				}
+			}
 		}
+		if(found) {
+			lblAdminIngredientWarning.setText("No se puede borrar el ingrediente porque un producto lo esta usando");
+			lblAdminIngredientWarning.setTextFill(Paint.valueOf("Red"));
+		}else {
+			restaurant.getIngredients().remove(cboxIngredients.getSelectionModel().getSelectedIndex());
+			cboxIngredients.getItems().clear();
+
+			for(int c=0;c<restaurant.getIngredients().size();c++) {
+				cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+			}
+		}
+
 	}
 	//admin ingredient
 	@FXML
 	void btnSaveIngredient(ActionEvent event) {
 		//poner if para que no saque error
+
+		boolean found = false;
+		for(int c=0;c<restaurant.getProducts().size() && !found;c++) {
+			for(int i=0; i<restaurant.getProducts().get(c).getIngredients().size() && !found;i++) {
+				if(restaurant.getProducts().get(c).getIngredients().get(i).getIngredients().equals(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getIngredients())) {
+					System.out.println(restaurant.getProducts().get(c).getIngredients().get(i).isAvialable());
+					restaurant.getProducts().get(c).getIngredients().get(i).setAvialable(rbtnAdminIngredientsAvielable.isSelected());
+					restaurant.getProducts().get(c).getIngredients().get(i).setLastEditedBy(currentUser);
+					System.out.println(restaurant.getProducts().get(c).getIngredients().get(i).isAvialable());
+					
+				}
+			}
+		}
 		restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).setAvialable(rbtnAdminIngredientsAvielable.isSelected());
 		restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).setLastEditedBy(currentUser);
 	}
@@ -687,12 +717,10 @@ try {
 			lblAddProductWarning.setText("Llene todo los campos");
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}else {
-			if(!restaurant.addProduct(txtNameOfProduct.getText(), txtTypeOfProduct.getText())) {
+			if(!restaurant.addProduct(txtNameOfProduct.getText() ,txtTypeOfProduct.getText())) {
 				lblAddProductWarning.setText("Se creo el producto: "+txtNameOfProduct.getText()+" con exito");
 				lblAddProductWarning.setTextFill(Paint.valueOf("Green"));
-				restaurant.resetsizeAndPriceArray();
 				lblSizeAndPriceOfProducts.setText("");
-				restaurant.resetProductIngredientArray();
 				lblIngredientsForProduct.setText("");
 				restaurant.getProducts().get(restaurant.getProducts().size()-1).setCreatedBy(currentUser);
 				restaurant.getProducts().get(restaurant.getProducts().size()-1).setLastEditedBy(currentUser);
@@ -771,11 +799,10 @@ try {
 	@FXML
 	void btnIngredientForProduct(ActionEvent event) {
 		lblAddProductWarning.setText("");
-
-
 		if(cboxIngredientsForProduct.getSelectionModel().getSelectedIndex()!=-1) {
 			if(!restaurant.productCheckDoubleIngredient(restaurant.getIngredients().get(cboxIngredientsForProduct.getSelectionModel().getSelectedIndex()).getIngredients())) {
-				restaurant.ingredientForProduct( restaurant.getIngredients().get(cboxIngredientsForProduct.getSelectionModel().getSelectedIndex()));
+				restaurant.ingredientForProduct(restaurant.getIngredients().get(cboxIngredientsForProduct.getSelectionModel().getSelectedIndex()));
+
 				lblIngredientsForProduct.setText(lblIngredientsForProduct.getText()+" "+restaurant.getIngredientsForProduct().get(restaurant.getIngredientsForProduct().size()-1).getIngredients()+" , ");
 			}else {
 				lblAddProductWarning.setText("Este ingrediente ya fue añadido");
@@ -786,6 +813,8 @@ try {
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
+
+
 
 
 
@@ -840,6 +869,8 @@ try {
 			e.printStackTrace();
 		}
 	}
+	
+	//product load tv
 	public void loadTableViewProduct() {
 		ObservableList<Product> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getProducts());
@@ -848,6 +879,20 @@ try {
 		tcTypeOfProduct.setCellValueFactory(new PropertyValueFactory<Product,String>("type")); 
 	}
 
+	//products to admin products
+    @FXML
+    void btnProductsToAdminProducts(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 }
 
 
