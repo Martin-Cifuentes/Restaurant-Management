@@ -127,6 +127,24 @@ public class Restaurant {
 		}
 		return found;
 	}
+	/**
+	 * se modifica un empleado
+	 */
+	public void updateEmployee(String name, String lastName, String id, int nOO) {
+		Employee employee = new Employee(name, lastName, id, nOO);
+		int pos = searchEmployee(id);
+		employees.set(pos, employee);
+	}
+	//buscar un cliente
+	public int searchClient(String id) {
+		int x = -1;
+		for(int i = 0; i< clients.size(); i++ ) {
+			if(clients.get(i).getId().equals(id)) {
+				x = i;
+			}
+		}
+		return x;
+	}
 	//se agrega un cliente
 	public boolean createClient(String name, String lastName, String id, String adress, String phone, String[] obs) {
 		ArrayList<String>observations = new ArrayList<String>();
@@ -157,16 +175,19 @@ public class Restaurant {
 		int pos = searchClient(id);
 		clients.set(pos, client);
 	}
-	//buscar un cliente
-	public int searchClient(String id) {
+	/**
+	/buscar un empleado
+	*/
+	public int searchEmployee(String id) {
 		int x = -1;
-		for(int i = 0; i< clients.size(); i++ ) {
-			if(clients.get(i).getId().equals(id)) {
+		for(int i = 0; i< employees.size(); i++ ) {
+			if(employees.get(i).getId().equals(id)) {
 				x = i;
 			}
 		}
 		return x;
 	}
+	
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;

@@ -176,14 +176,10 @@ public class RestaurantGUI {
 	private TableView<Client> tvClients;
 
 	@FXML
-<<<<<<< HEAD
     private ListView<String> lvClients;
 	
 	@FXML
     private TableColumn<Client, String> tcClientName;
-=======
-	private TableColumn<Client, String> tcClientName;
->>>>>>> 4d8b0e9ee9adbb5d923235ca10c005f6db5c3840
 
 	@FXML
 	private TableColumn<Client, String> tcClientLastName;
@@ -197,8 +193,7 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Client, Integer> tcClientPhone;
 
-	@FXML
-	private ListView<String> lvClients;
+	
 	//product page
 	@FXML
 	private TableView<Product> tvProducts;
@@ -263,6 +258,112 @@ public class RestaurantGUI {
 
 	@FXML
 	private Label labConfirmModifyClient;
+	//modify-employee
+	 @FXML
+	    private TextField txtModifyEmployeeName;
+
+	    @FXML
+	    private TextField txtModifyEmployeeLastName;
+
+	    @FXML
+	    private Label labModifyEmployeeId;
+
+	    @FXML
+	    private TextField txtModifyNumOfOrders;
+
+	    @FXML
+	    private Label confirmModifyEmployee;
+
+	    @FXML
+	    void modifyEmployee(ActionEvent event) {
+	    	try {
+
+				if(!txtModifyEmployeeName.getText().equals("") && !txtModifyEmployeeLastName.getText().equals("") &&
+						!labModifyEmployeeId.getText().equals("") && !txtModifyNumOfOrders.getText().equals("")) {
+
+					restaurant.updateEmployee(txtModifyEmployeeName.getText(), txtModifyEmployeeLastName.getText(),
+							labModifyEmployeeId.getText(), Integer.parseInt(txtModifyNumOfOrders.getText()) );
+					
+					confirmModifyEmployee.setText("Empleado modificado correctamente");
+					confirmModifyEmployee.setTextFill(Paint.valueOf("Green"));
+
+				}else {
+
+					confirmModifyEmployee.setText("Se deben llenar todos los espacios");
+					confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+				}
+			}catch(NumberFormatException n) {
+
+				confirmModifyEmployee.setText("Los valores no corresponden");
+				confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+	    }
+	    @FXML
+	    void btnOpenModifyEmployee(ActionEvent event) {
+	    	if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+				Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+				
+				try {
+					FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Employee.fxml"));
+					fxmlLoader.setController(this);
+					Parent login;
+					login = fxmlLoader.load();
+					mainPane.getChildren().setAll(login);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				txtModifyEmployeeName.setText(employee.getName());
+				txtModifyEmployeeLastName.setText(employee.getLastName());
+				labModifyEmployeeId.setText(employee.getId());
+				txtModifyNumOfOrders.setText(String.valueOf(employee.getNumOfOders()));
+
+
+			}
+	    }
+
+	    @FXML
+	    void eraseEmployee(ActionEvent event) {
+	    	if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+				Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+
+				int pos = restaurant.searchEmployee(employee.getId());
+				restaurant.getEmployes().remove(pos);
+
+			}
+	    }
+	    @FXML
+		void addEmployee(ActionEvent event) {
+			try {
+
+				if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
+						!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
+
+					boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
+							txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
+					if(x == false) {
+						confirmEmployee.setText("Empleado agregado correctamente");
+						confirmEmployee.setTextFill(Paint.valueOf("Green"));
+					}else {
+						confirmEmployee.setText("El empleado tiene un id que ya existe");
+						confirmEmployee.setTextFill(Paint.valueOf("RED"));
+					}
+
+				}else {
+
+					confirmEmployee.setText("Se deben llenar todos los espacios");
+					confirmEmployee.setTextFill(Paint.valueOf("RED"));
+				}
+			}catch(NumberFormatException n) {
+
+				confirmEmployee.setText("Los valores no corresponden");
+				confirmEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+
+		}
 
 	@FXML
 	void btnModifyClient(ActionEvent event) {
@@ -330,12 +431,7 @@ public class RestaurantGUI {
 		}
 
 	}
-
-	@FXML
-	void modifyClient(ActionEvent event) {
-
-	}
-
+	
 	//create-Client
 	@FXML
 	void showClientInfo(MouseEvent event) {
@@ -352,9 +448,6 @@ public class RestaurantGUI {
 		if(tvClients.getSelectionModel().getSelectedItem() != null) {
 
 			Client client = tvClients.getSelectionModel().getSelectedItem();
-
-			int pos = restaurant.searchClient(client.getId());
-			//restaurant.getClients().remove(pos);
 
 			String ModObs = "";
 			for(int i = 0; i < client.observations.size(); i++) {
@@ -408,45 +501,7 @@ public class RestaurantGUI {
 		}
 	}
 
-
-
-
-
-
-
-
-	@FXML
-	void addEmployee(ActionEvent event) {
-		try {
-
-			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
-					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
-
-				boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
-						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
-				if(x == false) {
-					confirmEmployee.setText("Empleado agregado correctamente");
-					confirmEmployee.setTextFill(Paint.valueOf("Green"));
-				}else {
-					confirmEmployee.setText("El empleado tiene un id que ya existe");
-					confirmEmployee.setTextFill(Paint.valueOf("RED"));
-				}
-
-			}else {
-
-				confirmEmployee.setText("Se deben llenar todos los espacios");
-				confirmEmployee.setTextFill(Paint.valueOf("RED"));
-			}
-		}catch(NumberFormatException n) {
-
-			confirmEmployee.setText("Los valores no corresponden");
-			confirmEmployee.setTextFill(Paint.valueOf("RED"));
-		}
-
-	}
-
-
-
+	
 
 	//create-Employee
 	@FXML
@@ -464,6 +519,7 @@ public class RestaurantGUI {
 		}
 
 	}
+	
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -515,7 +571,6 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
-
 
 	//main-page
 	@FXML
@@ -571,6 +626,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+	
 	//tv Clients-page
 	public void loadTableViewClient() {
 		ObservableList<Client> observableList;
@@ -582,6 +638,7 @@ public class RestaurantGUI {
 		tcClientAdress.setCellValueFactory(new PropertyValueFactory<Client,String>("adress"));
 		tcClientPhone.setCellValueFactory(new PropertyValueFactory<Client,Integer>("phone"));
 	}
+	
 	@FXML
 	void btnReturnToLoggedInPage(ActionEvent event) {
 		try {
@@ -595,6 +652,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+	
 	//Employee to logged in page
 	@FXML
 	void btnBackToLoggedInPage(ActionEvent event) {
@@ -614,7 +672,6 @@ public class RestaurantGUI {
 		}
 
 	}
-
 
 	//ingredient-page
 	@FXML
@@ -681,7 +738,6 @@ public class RestaurantGUI {
 			mainPane.getChildren().setAll(login);
 			loadTableViewIngredient();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -697,7 +753,6 @@ public class RestaurantGUI {
 			mainPane.getChildren().setAll(login);
 			loadTableViewIngredient();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -712,8 +767,6 @@ public class RestaurantGUI {
 		tcLastName.setCellValueFactory(new PropertyValueFactory<Employee,String>("lastName")); 
 		tcId.setCellValueFactory(new PropertyValueFactory<Employee,String>("id"));
 		tcNumOfOrders.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("numOfOders"));
-
-
 	}
 
 	//ingredient
@@ -723,7 +776,6 @@ public class RestaurantGUI {
 		tvIngredients.setItems(observableList);
 		tcIngredient.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("ingredients")); 
 		tcAvialable.setCellValueFactory(new PropertyValueFactory<Ingredient,Boolean>("avialable")); 
-
 	}
 
 	//ingredient to admin ingredient
@@ -801,8 +853,8 @@ public class RestaurantGUI {
 				cboxIngredients.getItems().add(restaurant.getIngredients().get(c).getIngredients());
 			}
 		}
-
 	}
+	
 	//admin ingredient
 	@FXML
 	void btnSaveIngredient(ActionEvent event) {
@@ -865,10 +917,8 @@ public class RestaurantGUI {
 				lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 			}
 		}
-
-
-
 	}
+	
 	//addProduct-page
 	@FXML
 	void btnClearSizeAndPrice(ActionEvent event) {
@@ -895,6 +945,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+	
 	//addProduct-page
 	@FXML
 	void btnClearIngredientsForProduct(ActionEvent event) {
@@ -929,8 +980,8 @@ public class RestaurantGUI {
 				lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 			}
 		}
-
 	}
+	
 	//addProduct-page
 	@FXML
 	void btnIngredientForProduct(ActionEvent event) {
@@ -949,10 +1000,6 @@ public class RestaurantGUI {
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
-
-
-
-
 
 	//logged in page to products page 
 	@FXML
@@ -1025,7 +1072,6 @@ public class RestaurantGUI {
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
