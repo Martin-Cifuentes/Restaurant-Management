@@ -9,9 +9,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="63.0" layoutY="132.0" mnemonicParsing="false" onAction="#btnAddEmployee" text="Añadir Empleados" />
-      <Button layoutX="99.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnBackToLoggedInPage" text="atras" />
-      <TableView fx:id="tvEmployees" layoutX="252.0" layoutY="106.0" prefHeight="200.0" prefWidth="434.0">
+      <Button layoutX="554.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnAddEmployee" text="Añadir Empleados" />
+      <Button layoutX="56.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnBackToLoggedInPage" text="atras" />
+      <TableView fx:id="tvEmployees" layoutX="133.0" layoutY="211.0" prefHeight="240.0" prefWidth="434.0">
         <columns>
           <TableColumn fx:id="tcName" prefWidth="96.0" text="Nombre" />
           <TableColumn fx:id="tcLastName" prefWidth="103.0" text="Apellido" />
@@ -24,5 +24,8 @@
             <Font size="32.0" />
          </font>
       </Label>
+      <Button layoutX="238.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnOpenModifyEmployee" text="Modificar" />
+      <Button layoutX="395.0" layoutY="125.0" mnemonicParsing="false" onAction="#eraseEmployee" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
+      <Button layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Actualizar" />
    </children>
 </Pane>
