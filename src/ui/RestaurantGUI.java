@@ -169,21 +169,13 @@ public class RestaurantGUI {
 	@FXML
 	private Label lblAdminIngredientWarning;
 
-
-
 	//Client-page
 	@FXML
 	private TableView<Client> tvClients;
 
 	@FXML
-<<<<<<< HEAD
-    private ListView<String> lvClients;
-	
-	@FXML
-    private TableColumn<Client, String> tcClientName;
-=======
 	private TableColumn<Client, String> tcClientName;
->>>>>>> 4d8b0e9ee9adbb5d923235ca10c005f6db5c3840
+
 
 	@FXML
 	private TableColumn<Client, String> tcClientLastName;
@@ -264,6 +256,57 @@ public class RestaurantGUI {
 	@FXML
 	private Label labConfirmModifyClient;
 
+	//product admin
+	@FXML
+	private ComboBox<String> cboxProducts;
+	//product admin
+	@FXML
+	private ComboBox<String> cboxIngredientsOfProduct;
+	//product admin
+	@FXML
+	private ComboBox<String> cboxSizeAndPriceOfProduct;
+	//product admin
+	@FXML
+	private TextField txtPriceOfSizeOfProductAdmin;
+	//product admin
+	@FXML
+	private TextField txtTypeOfProductAdmin;
+	//product admin
+	@FXML
+	private TextField txtNameOfProductAdmin;
+	//product admin
+	@FXML
+	private Label lblCreatedByProduct;
+	//product admin
+	@FXML
+	private Label lblLastEditedByProduct;
+	//product admin
+	@FXML
+	private TextField txtSizeOfProductAdmin;
+	//product admin
+	@FXML
+	private Label lblAvialableIngredientProduct;
+	//product admin
+	@FXML
+	private Label lblProductAdminWarnings;
+
+	//add ingredient and size price
+	@FXML
+	private TextField txtAddPriceForProductAdmin;
+	//add ingredient and size price
+	@FXML
+	private TextField txtAddSizeToProductAdmin;
+	//add ingredient and size price
+	@FXML
+	private Button btnAddIngredientAndSizePriceToAdminProduct;
+	//add ingredient and size price
+	@FXML
+	private ComboBox<String> cboxAddIngredientAdmin;
+	//product admin
+	private int selectedProduct;
+
+
+
 	@FXML
 	void btnModifyClient(ActionEvent event) {
 		try {
@@ -331,11 +374,6 @@ public class RestaurantGUI {
 
 	}
 
-	@FXML
-	void modifyClient(ActionEvent event) {
-
-	}
-
 	//create-Client
 	@FXML
 	void showClientInfo(MouseEvent event) {
@@ -353,8 +391,6 @@ public class RestaurantGUI {
 
 			Client client = tvClients.getSelectionModel().getSelectedItem();
 
-			int pos = restaurant.searchClient(client.getId());
-			//restaurant.getClients().remove(pos);
 
 			String ModObs = "";
 			for(int i = 0; i < client.observations.size(); i++) {
@@ -407,13 +443,6 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
-
-
-
-
-
-
-
 
 	@FXML
 	void addEmployee(ActionEvent event) {
@@ -889,6 +918,8 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			restaurant.resetProductIngredientArray();
+			restaurant.resetsizeAndPriceArray();
 			loadTableViewProduct();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -997,9 +1028,12 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			for(int c=0;c<restaurant.getIngredients().size();c++) {
-				cboxIngredientsForProduct.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+			if(!restaurant.getIngredients().isEmpty()) {
+				for(int c=0;c<restaurant.getIngredients().size();c++) {
+					cboxIngredientsForProduct.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+				}
 			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1024,11 +1058,236 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			for(int c=0;c<restaurant.getProducts().size();c++) {
+				cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	//product admin
+	@FXML
+	void btnCboxIngredientsOfProduct(ActionEvent event) {
+		if(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()).isAvialable()) {
+				lblAvialableIngredientProduct.setText("Esta disponible");
+			}else {
+				lblAvialableIngredientProduct.setText("No esta disponible");
+			}
+
+		}
+	}
+	//product admin
+	@FXML
+	void btnCboxProducts(ActionEvent event) {
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		if(cboxProducts.getSelectionModel().getSelectedIndex()!=-1) {
+			txtNameOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getName());
+			txtTypeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getType());
+			lblLastEditedByProduct.setText("Ultimo cambio por: "+restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getLastEditedBy());
+			lblCreatedByProduct.setText("Creado por: "+restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getCreatedBy());
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size();c++) {
+				cboxIngredientsOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(c).getIngredients());
+			}
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size();c++) {
+				cboxSizeAndPriceOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(c).getSize());
+			}
+		}
+	}
+	//product admin
+	@FXML
+	void btnCboxSizeAndPriceOfProduct(ActionEvent event) {
+		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
+			txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
+		}
+	}
+	//product admin
+	@FXML
+	void btnChangePriceOfSizeOfProduct(ActionEvent event) {
+		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			try {
+				if(!txtSizeOfProduct.getText().equals("")) {
+					restaurant.getProducts().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).setSize(txtSizeOfProduct.getText());
+				}
+				if(!txtPriceOfSizeOfProductAdmin.getText().equals("")) {
+					restaurant.getProducts().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).setPrice(Double.parseDouble(txtPriceOfSizeOfProductAdmin.getText()));
+				}
+				txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
+				txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
+			}catch(NumberFormatException e) {
+				lblProductAdminWarnings.setText("inserte un numero valido");
+				lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+			}
+		}
+	}
+	//product admin
+	@FXML
+	void btnDeleteIngredientFromProduct(ActionEvent event) {
+		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size()==1) {
+			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 ingrediente");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}else {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().remove(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex());
+			cboxIngredientsOfProduct.getItems().clear();
+			lblProductAdminWarnings.setText("Se borro el ingrediente");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+			lblAvialableIngredientProduct.setText("Disponibilidad");
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size();c++) {
+				cboxIngredientsOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(c).getIngredients());
+			}
+		}
+	}
+
+	//product admin
+	@FXML
+	void btnDeleteSizeAndPrice(ActionEvent event) {
+		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size()==1) {
+			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 tamaño");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}else{
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().remove(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex());
+			cboxSizeAndPriceOfProduct.getItems().clear();
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size();c++) {
+				cboxSizeAndPriceOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(c).getSize());
+			}
+			txtSizeOfProductAdmin.clear();
+			txtPriceOfSizeOfProductAdmin.clear();
+		}
+	}
+	//product admin
+	@FXML
+	void btnDeleteProductAdmin(ActionEvent event) {
+		restaurant.getProducts().remove(cboxProducts.getSelectionModel().getSelectedIndex());
+		txtSizeOfProductAdmin.clear();
+		txtPriceOfSizeOfProductAdmin.clear();
+		txtNameOfProductAdmin.clear();
+		txtTypeOfProductAdmin.clear();
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		cboxProducts.getItems().clear();
+		for(int c=0;c<restaurant.getProducts().size();c++) {
+			cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+		}
+		lblAvialableIngredientProduct.setText("Disponibilidad");
+		lblProductAdminWarnings.setText("Se borro el producto");
+		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+		lblLastEditedByProduct.setText("Ultimo cambio por: ");
+		lblCreatedByProduct.setText("Creado por: ");
+	}
+
+	@FXML
+	void btnSaveChangesAdmin(ActionEvent event) {
+		if(!txtNameOfProductAdmin.getText().equals("")) {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setName(txtNameOfProductAdmin.getText());
+		}
+		if(!txtTypeOfProductAdmin.getText().equals("")) {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setType(txtTypeOfProductAdmin.getText());
+		}
+		restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setLastEditedBy(currentUser+"a");
+		cboxProducts.getItems().clear();
+		for(int c=0;c<restaurant.getProducts().size();c++) {
+			cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+		}
+		txtSizeOfProductAdmin.clear();
+		txtPriceOfSizeOfProductAdmin.clear();
+		txtNameOfProductAdmin.clear();
+		txtTypeOfProductAdmin.clear();
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		lblAvialableIngredientProduct.setText("Disponibilidad");
+		lblProductAdminWarnings.setText("Se guardo el producto");
+		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+		lblLastEditedByProduct.setText("Ultimo cambio por: ");
+		lblCreatedByProduct.setText("Creado por: ");
+
+	}
+
+
+	//product admin to product
+	@FXML
+	void btnAdminProductToProduct(ActionEvent event) {
+
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	//product admin to product
+	@FXML
+	void btnAddIngredientAndSizePriceToProductPage(ActionEvent event) {
+		selectedProduct=cboxProducts.getSelectionModel().getSelectedIndex();
+		if(selectedProduct!=-1) {
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addIngredientAndSizePrice-page.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+				for(int c=0;c<restaurant.getIngredients().size();c++) {
+					cboxAddIngredientAdmin.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			lblProductAdminWarnings.setText("seleccione un producto por favor");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}
+	}
+
+	//add ingredient and size price
+	@FXML
+	void btnAddIngredientToProduct(ActionEvent event) {
+		boolean found= false;
+		for(int c=0;c<restaurant.getProducts().get(selectedProduct).getIngredients().size()&&!found;c++) {
+			if(restaurant.getProducts().get(selectedProduct).getIngredients().get(c).getIngredients().equals(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()).getIngredients())){
+				found =true;
+			}
+		}
+		if(found) {
+			//TODO TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+			System.out.println("broooooooooooooooooooooooo que ya la tiene");
+		}else {
+			restaurant.getProducts().get(selectedProduct).getIngredients().add(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()));
+		}
+	}
+	//add ingredient and size price
+	@FXML
+	void btnAddIngredientAndSizePriceToAdminProduct(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			for(int c=0;c<restaurant.getProducts().size();c++) {
+				cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	//add ingredient and size price
+	@FXML
+	void btnAddSizeAndPriceToProduct(ActionEvent event) {
+
+	}
+
+
 }
 
 
