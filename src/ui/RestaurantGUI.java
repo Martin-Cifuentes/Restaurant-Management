@@ -170,17 +170,15 @@ public class RestaurantGUI {
 	@FXML
 	private Label lblAdminIngredientWarning;
 
-
-
 	//Client-page
 	@FXML
 	private TableView<Client> tvClients;
 
 	@FXML
-    private ListView<String> lvClients;
-	
-	@FXML
-    private TableColumn<Client, String> tcClientName;
+	private TableColumn<Client, String> tcClientName;
+
+	private ListView<String> lvClients;
+
 
 	@FXML
 	private TableColumn<Client, String> tcClientLastName;
@@ -194,6 +192,10 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Client, Integer> tcClientPhone;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 253c78d4bc89c674101abce8003d23387452704d
 	//product page
 	@FXML
 	private TableView<Product> tvProducts;
@@ -259,6 +261,7 @@ public class RestaurantGUI {
 	private Label labConfirmModifyClient;
 	
 	//modify-employee
+<<<<<<< HEAD
 	 @FXML
     private TextField txtModifyEmployeeName;
 
@@ -584,6 +587,136 @@ public class RestaurantGUI {
 			confirmEmployee.setText("Los valores no corresponden");
 			confirmEmployee.setTextFill(Paint.valueOf("RED"));
 		}
+=======
+	@FXML
+	private TextField txtModifyEmployeeName;
+
+	@FXML
+	private TextField txtModifyEmployeeLastName;
+
+	@FXML
+	private Label labModifyEmployeeId;
+
+	@FXML
+	private TextField txtModifyNumOfOrders;
+
+	@FXML
+	private Label confirmModifyEmployee;
+
+	@FXML
+	void modifyEmployee(ActionEvent event) {
+		try {
+
+			if(!txtModifyEmployeeName.getText().equals("") && !txtModifyEmployeeLastName.getText().equals("") &&
+					!labModifyEmployeeId.getText().equals("") && !txtModifyNumOfOrders.getText().equals("")) {
+
+				restaurant.updateEmployee(txtModifyEmployeeName.getText(), txtModifyEmployeeLastName.getText(),
+						labModifyEmployeeId.getText(), Integer.parseInt(txtModifyNumOfOrders.getText()) );
+
+				confirmModifyEmployee.setText("Empleado modificado correctamente");
+				confirmModifyEmployee.setTextFill(Paint.valueOf("Green"));
+
+			}else {
+
+				confirmModifyEmployee.setText("Se deben llenar todos los espacios");
+				confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmModifyEmployee.setText("Los valores no corresponden");
+			confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+		}
+	}
+	@FXML
+	void btnOpenModifyEmployee(ActionEvent event) {
+		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Employee.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			txtModifyEmployeeName.setText(employee.getName());
+			txtModifyEmployeeLastName.setText(employee.getLastName());
+			labModifyEmployeeId.setText(employee.getId());
+			txtModifyNumOfOrders.setText(String.valueOf(employee.getNumOfOders()));
+
+
+		}
+	}
+
+	@FXML
+	void eraseEmployee(ActionEvent event) {
+		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+
+			int pos = restaurant.searchEmployee(employee.getId());
+			restaurant.getEmployes().remove(pos);
+
+		}
+	}
+	
+
+	//product admin
+	@FXML
+	private ComboBox<String> cboxProducts;
+	//product admin
+	@FXML
+	private ComboBox<String> cboxIngredientsOfProduct;
+	//product admin
+	@FXML
+	private ComboBox<String> cboxSizeAndPriceOfProduct;
+	//product admin
+	@FXML
+	private TextField txtPriceOfSizeOfProductAdmin;
+	//product admin
+	@FXML
+	private TextField txtTypeOfProductAdmin;
+	//product admin
+	@FXML
+	private TextField txtNameOfProductAdmin;
+	//product admin
+	@FXML
+	private Label lblCreatedByProduct;
+	//product admin
+	@FXML
+	private Label lblLastEditedByProduct;
+	//product admin
+	@FXML
+	private TextField txtSizeOfProductAdmin;
+	//product admin
+	@FXML
+	private Label lblAvialableIngredientProduct;
+	//product admin
+	@FXML
+	private Label lblProductAdminWarnings;
+
+	//add ingredient and size price
+	@FXML
+	private TextField txtAddPriceForProductAdmin;
+	//add ingredient and size price
+	@FXML
+	private TextField txtAddSizeToProductAdmin;
+	//add ingredient and size price
+	@FXML
+	private Button btnAddIngredientAndSizePriceToAdminProduct;
+	//add ingredient and size price
+	@FXML
+	private ComboBox<String> cboxAddIngredientAdmin;
+	//product admin
+	private int selectedProduct;
+
+
+>>>>>>> 253c78d4bc89c674101abce8003d23387452704d
 
 	}
 
@@ -653,7 +786,7 @@ public class RestaurantGUI {
 		}
 
 	}
-	
+
 	//create-Client
 	@FXML
 	void showClientInfo(MouseEvent event) {
@@ -723,7 +856,37 @@ public class RestaurantGUI {
 		}
 	}
 
-	
+	@FXML
+	void addEmployee(ActionEvent event) {
+		try {
+
+			if(!txtEmployeeName.getText().equals("") && !txtEmployeeLastName.getText().equals("") &&
+					!txtEmployeeId.getText().equals("") && !txtNumOfOrders.getText().equals("")) {
+
+				boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
+						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
+				if(x == false) {
+					confirmEmployee.setText("Empleado agregado correctamente");
+					confirmEmployee.setTextFill(Paint.valueOf("Green"));
+				}else {
+					confirmEmployee.setText("El empleado tiene un id que ya existe");
+					confirmEmployee.setTextFill(Paint.valueOf("RED"));
+				}
+
+			}else {
+
+				confirmEmployee.setText("Se deben llenar todos los espacios");
+				confirmEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmEmployee.setText("Los valores no corresponden");
+			confirmEmployee.setTextFill(Paint.valueOf("RED"));
+		}
+
+	}
+
+
 
 	//create-Employee
 	@FXML
@@ -741,7 +904,7 @@ public class RestaurantGUI {
 		}
 
 	}
-	
+
 	//admin-page
 	@FXML
 	void btnAtras(ActionEvent event) {
@@ -848,6 +1011,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	//tv Users-page
 		public void loadTableViewUsers() {
 			ObservableList<User> observableList;
@@ -861,6 +1025,9 @@ public class RestaurantGUI {
 			
 		}
 	
+=======
+
+>>>>>>> 253c78d4bc89c674101abce8003d23387452704d
 	//tv Clients-page
 	public void loadTableViewClient() {
 		ObservableList<Client> observableList;
@@ -872,7 +1039,7 @@ public class RestaurantGUI {
 		tcClientAdress.setCellValueFactory(new PropertyValueFactory<Client,String>("adress"));
 		tcClientPhone.setCellValueFactory(new PropertyValueFactory<Client,Integer>("phone"));
 	}
-	
+
 	@FXML
 	void btnReturnToLoggedInPage(ActionEvent event) {
 		try {
@@ -886,7 +1053,7 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
-	
+
 	//Employee to logged in page
 	@FXML
 	void btnBackToLoggedInPage(ActionEvent event) {
@@ -1088,7 +1255,7 @@ public class RestaurantGUI {
 			}
 		}
 	}
-	
+
 	//admin ingredient
 	@FXML
 	void btnSaveIngredient(ActionEvent event) {
@@ -1152,7 +1319,7 @@ public class RestaurantGUI {
 			}
 		}
 	}
-	
+
 	//addProduct-page
 	@FXML
 	void btnClearSizeAndPrice(ActionEvent event) {
@@ -1173,13 +1340,15 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			restaurant.resetProductIngredientArray();
+			restaurant.resetsizeAndPriceArray();
 			loadTableViewProduct();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	//addProduct-page
 	@FXML
 	void btnClearIngredientsForProduct(ActionEvent event) {
@@ -1215,7 +1384,7 @@ public class RestaurantGUI {
 			}
 		}
 	}
-	
+
 	//addProduct-page
 	@FXML
 	void btnIngredientForProduct(ActionEvent event) {
@@ -1278,9 +1447,12 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			for(int c=0;c<restaurant.getIngredients().size();c++) {
-				cboxIngredientsForProduct.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+			if(!restaurant.getIngredients().isEmpty()) {
+				for(int c=0;c<restaurant.getIngredients().size();c++) {
+					cboxIngredientsForProduct.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+				}
 			}
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1305,10 +1477,229 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			for(int c=0;c<restaurant.getProducts().size();c++) {
+				cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	//product admin
+	@FXML
+	void btnCboxIngredientsOfProduct(ActionEvent event) {
+		if(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()).isAvialable()) {
+				lblAvialableIngredientProduct.setText("Esta disponible");
+			}else {
+				lblAvialableIngredientProduct.setText("No esta disponible");
+			}
+
+		}
+	}
+	//product admin
+	@FXML
+	void btnCboxProducts(ActionEvent event) {
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		if(cboxProducts.getSelectionModel().getSelectedIndex()!=-1) {
+			txtNameOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getName());
+			txtTypeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getType());
+			lblLastEditedByProduct.setText("Ultimo cambio por: "+restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getLastEditedBy());
+			lblCreatedByProduct.setText("Creado por: "+restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getCreatedBy());
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size();c++) {
+				cboxIngredientsOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(c).getIngredients());
+			}
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size();c++) {
+				cboxSizeAndPriceOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(c).getSize());
+			}
+		}
+	}
+	//product admin
+	@FXML
+	void btnCboxSizeAndPriceOfProduct(ActionEvent event) {
+		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
+			txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
+		}
+	}
+	//product admin
+	@FXML
+	void btnChangePriceOfSizeOfProduct(ActionEvent event) {
+		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
+			try {
+				if(!txtSizeOfProduct.getText().equals("")) {
+					restaurant.getProducts().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).setSize(txtSizeOfProduct.getText());
+				}
+				if(!txtPriceOfSizeOfProductAdmin.getText().equals("")) {
+					restaurant.getProducts().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).setPrice(Double.parseDouble(txtPriceOfSizeOfProductAdmin.getText()));
+				}
+				txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
+				txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
+			}catch(NumberFormatException e) {
+				lblProductAdminWarnings.setText("inserte un numero valido");
+				lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+			}
+		}
+	}
+	//product admin
+	@FXML
+	void btnDeleteIngredientFromProduct(ActionEvent event) {
+		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size()==1) {
+			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 ingrediente");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}else {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().remove(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex());
+			cboxIngredientsOfProduct.getItems().clear();
+			lblProductAdminWarnings.setText("Se borro el ingrediente");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+			lblAvialableIngredientProduct.setText("Disponibilidad");
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size();c++) {
+				cboxIngredientsOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(c).getIngredients());
+			}
+		}
+	}
+
+	//product admin
+	@FXML
+	void btnDeleteSizeAndPrice(ActionEvent event) {
+		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size()==1) {
+			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 tamaño");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}else{
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().remove(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex());
+			cboxSizeAndPriceOfProduct.getItems().clear();
+			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size();c++) {
+				cboxSizeAndPriceOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(c).getSize());
+			}
+			txtSizeOfProductAdmin.clear();
+			txtPriceOfSizeOfProductAdmin.clear();
+		}
+	}
+	//product admin
+	@FXML
+	void btnDeleteProductAdmin(ActionEvent event) {
+		restaurant.getProducts().remove(cboxProducts.getSelectionModel().getSelectedIndex());
+		txtSizeOfProductAdmin.clear();
+		txtPriceOfSizeOfProductAdmin.clear();
+		txtNameOfProductAdmin.clear();
+		txtTypeOfProductAdmin.clear();
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		cboxProducts.getItems().clear();
+		for(int c=0;c<restaurant.getProducts().size();c++) {
+			cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+		}
+		lblAvialableIngredientProduct.setText("Disponibilidad");
+		lblProductAdminWarnings.setText("Se borro el producto");
+		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+		lblLastEditedByProduct.setText("Ultimo cambio por: ");
+		lblCreatedByProduct.setText("Creado por: ");
+	}
+
+	@FXML
+	void btnSaveChangesAdmin(ActionEvent event) {
+		if(!txtNameOfProductAdmin.getText().equals("")) {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setName(txtNameOfProductAdmin.getText());
+		}
+		if(!txtTypeOfProductAdmin.getText().equals("")) {
+			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setType(txtTypeOfProductAdmin.getText());
+		}
+		restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setLastEditedBy(currentUser+"a");
+		cboxProducts.getItems().clear();
+		for(int c=0;c<restaurant.getProducts().size();c++) {
+			cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+		}
+		txtSizeOfProductAdmin.clear();
+		txtPriceOfSizeOfProductAdmin.clear();
+		txtNameOfProductAdmin.clear();
+		txtTypeOfProductAdmin.clear();
+		cboxIngredientsOfProduct.getItems().clear();
+		cboxSizeAndPriceOfProduct.getItems().clear();
+		lblAvialableIngredientProduct.setText("Disponibilidad");
+		lblProductAdminWarnings.setText("Se guardo el producto");
+		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
+		lblLastEditedByProduct.setText("Ultimo cambio por: ");
+		lblCreatedByProduct.setText("Creado por: ");
+
+	}
+
+
+	//product admin to product
+	@FXML
+	void btnAdminProductToProduct(ActionEvent event) {
+
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	//product admin to product
+	@FXML
+	void btnAddIngredientAndSizePriceToProductPage(ActionEvent event) {
+		selectedProduct=cboxProducts.getSelectionModel().getSelectedIndex();
+		if(selectedProduct!=-1) {
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addIngredientAndSizePrice-page.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+				for(int c=0;c<restaurant.getIngredients().size();c++) {
+					cboxAddIngredientAdmin.getItems().add(restaurant.getIngredients().get(c).getIngredients());
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			lblProductAdminWarnings.setText("seleccione un producto por favor");
+			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
+		}
+	}
+
+	//add ingredient and size price
+	@FXML
+	void btnAddIngredientToProduct(ActionEvent event) {
+		boolean found= false;
+		for(int c=0;c<restaurant.getProducts().get(selectedProduct).getIngredients().size()&&!found;c++) {
+			if(restaurant.getProducts().get(selectedProduct).getIngredients().get(c).getIngredients().equals(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()).getIngredients())){
+				found =true;
+			}
+		}
+		if(found) {
+			//TODO TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+			System.out.println("broooooooooooooooooooooooo que ya la tiene");
+		}else {
+			restaurant.getProducts().get(selectedProduct).getIngredients().add(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()));
+		}
+	}
+	//add ingredient and size price
+	@FXML
+	void btnAddIngredientAndSizePriceToAdminProduct(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-product-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			for(int c=0;c<restaurant.getProducts().size();c++) {
+				cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+<<<<<<< HEAD
 	
 	@FXML
 	void btnBackToMainPage(ActionEvent event) {
@@ -1322,6 +1713,15 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+=======
+	//add ingredient and size price
+	@FXML
+	void btnAddSizeAndPriceToProduct(ActionEvent event) {
+
+	}
+
+
+>>>>>>> 253c78d4bc89c674101abce8003d23387452704d
 }
 
 
