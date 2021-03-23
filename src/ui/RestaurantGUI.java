@@ -28,6 +28,7 @@ import model.Employee;
 import model.Ingredient;
 import model.Product;
 import model.Restaurant;
+import model.SizeAndPrice;
 
 public class RestaurantGUI {
 
@@ -333,7 +334,7 @@ public class RestaurantGUI {
 
 		}
 	}
-	
+
 
 	//product admin
 	@FXML
@@ -381,6 +382,10 @@ public class RestaurantGUI {
 	//add ingredient and size price
 	@FXML
 	private ComboBox<String> cboxAddIngredientAdmin;
+	//add ingredient and size price
+	@FXML
+	private Label lblAddIngredientAndSizePriceWarning;
+
 	//product admin
 	private int selectedProduct;
 
@@ -1321,16 +1326,24 @@ public class RestaurantGUI {
 	@FXML
 	void btnAddIngredientToProduct(ActionEvent event) {
 		boolean found= false;
-		for(int c=0;c<restaurant.getProducts().get(selectedProduct).getIngredients().size()&&!found;c++) {
-			if(restaurant.getProducts().get(selectedProduct).getIngredients().get(c).getIngredients().equals(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()).getIngredients())){
-				found =true;
+		try {
+			for(int c=0;c<restaurant.getProducts().get(selectedProduct).getIngredients().size()&&!found;c++) {
+				if(restaurant.getProducts().get(selectedProduct).getIngredients().get(c).getIngredients().equals(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()).getIngredients())){
+					found =true;
+				}
 			}
-		}
-		if(found) {
-			//TODO TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-			System.out.println("broooooooooooooooooooooooo que ya la tiene");
-		}else {
-			restaurant.getProducts().get(selectedProduct).getIngredients().add(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()));
+			if(found) {
+
+				lblAddIngredientAndSizePriceWarning.setText("El producto ya tiene este ingrediente");
+				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
+			}else {
+				restaurant.getProducts().get(selectedProduct).getIngredients().add(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()));
+				lblAddIngredientAndSizePriceWarning.setText("Se añadio el ingrediente al producto");
+				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Green"));
+			}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			lblAddIngredientAndSizePriceWarning.setText("Seleccione un ingrediente");
+			lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
 	//add ingredient and size price
@@ -1352,6 +1365,34 @@ public class RestaurantGUI {
 	//add ingredient and size price
 	@FXML
 	void btnAddSizeAndPriceToProduct(ActionEvent event) {
+		if(txtPriceOfSizeOfProductAdmin.getText().equals("") || txtSizeOfProductAdmin.getText().equals("")) {
+			lblAddIngredientAndSizePriceWarning.setText("Llene todos los campos para el tamaño");
+			lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
+		}else {
+			try {
+
+				boolean found= false;
+
+				for(int c=0;c<restaurant.getProducts().get(selectedProduct).getSizeAndPrice().size()&&!found;c++) {
+					if(restaurant.getProducts().get(selectedProduct).getSizeAndPrice().get(c).getSize().equals(txtAddSizeToProductAdmin.getText())){
+						found =true;
+					}
+				}
+
+				if(found) {
+					lblAddIngredientAndSizePriceWarning.setText("Este producto ya tiene este tamaño");
+					lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
+				}else {
+					restaurant.getProducts().get(selectedProduct).addSizeAndPrice(new SizeAndPrice(txtAddSizeToProductAdmin.getText(),Double.parseDouble(txtAddSizeToProductAdmin.getText())));
+					lblAddIngredientAndSizePriceWarning.setText("Se añadio un tamaño");
+					lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Green"));
+				}
+
+			}catch (NumberFormatException e) {
+				lblAddIngredientAndSizePriceWarning.setText("Entre un numero valido");
+				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
+			}
+		}
 
 	}
 
