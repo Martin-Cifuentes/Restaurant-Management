@@ -39,6 +39,11 @@ public abstract class Person extends History  {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", lastName=" + lastName + ", id=" + id + "]";
+	}
 	
 	
 }

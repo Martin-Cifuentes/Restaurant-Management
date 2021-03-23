@@ -2,7 +2,7 @@ package model;
 
 public class Employee extends Person {
 	
-	private int numOfOders;
+	private int numOfOrders;
 	
 	/** 
      * this constructor method creates a Employee objet
@@ -13,30 +13,22 @@ public class Employee extends Person {
 	
 	public Employee(String n, String ln, String id,int nOO) {
 		super(n, ln, id);
-		numOfOders=nOO;
+		numOfOrders=nOO;
 	}
 
 	
 	
-	public int getNumOfOders() {
-		return numOfOders;
+	public int getNumOfOrders() {
+		return numOfOrders;
 	}
 	
-	public void setNumOfOders(int numOfOders) {
-		this.numOfOders = numOfOders;
+	public void setNumOfOrders(int numOfOders) {
+		this.numOfOrders = numOfOders;
 	}
 
-	public String getUserName() {
-		return "Este campo no es valido para este empleado";
-	}
-	
-	public void setUserName(String userName) {
-	}
-	
-	public String getPassword() {
-		return "Este campo no es valido para este empleado";
-	}
-	public void setPassword(String password) {
+	@Override
+	public String toString() {
+		return "Employee [numOfOders=" + numOfOrders + ", name=" + name + ", lastName=" + lastName + ", id=" + id + "]";
 	}
 
 	

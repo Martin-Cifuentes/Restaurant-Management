@@ -28,7 +28,11 @@ import model.Employee;
 import model.Ingredient;
 import model.Product;
 import model.Restaurant;
+
 import model.SizeAndPrice;
+
+import model.User;
+
 
 public class RestaurantGUI {
 
@@ -81,8 +85,8 @@ public class RestaurantGUI {
 
 	@FXML
 	private RadioButton rbtnNotAvailable;
-
-
+	
+	
 	//create-Employee
 	@FXML
 	private TextField txtEmployeeName;
@@ -192,7 +196,6 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Client, Integer> tcClientPhone;
 
-
 	//product page
 	@FXML
 	private TableView<Product> tvProducts;
@@ -207,10 +210,9 @@ public class RestaurantGUI {
 	//create-Client
 	@FXML
 	private Button btnCreateClient;
-	//create-Client
+	
 	@FXML
 	private Label tiltleCreateClient;
-
 
 	@FXML
 	private TextField txtClientName;
@@ -257,7 +259,294 @@ public class RestaurantGUI {
 
 	@FXML
 	private Label labConfirmModifyClient;
-	//modify-employee
+	
+
+    
+    //Users-page
+    @FXML
+    private TableView<User> tvUsers;
+    
+    @FXML
+    private TableColumn<User, String> tcUserUserName;
+
+    @FXML
+    private TableColumn<User, String> tcUserName;
+
+    @FXML
+    private TableColumn<User, String> tcUserLastName;
+
+    @FXML
+    private TableColumn<User, String> tcUserID;
+
+    @FXML
+    private TableColumn<User, Integer> tcUserNoo;
+    
+    //createUser
+    
+    @FXML
+    private TextField txtUserUserName;
+
+    @FXML
+    private PasswordField txtUserPassword;
+    
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private TextField txtUserLastName;
+
+    @FXML
+    private TextField txtUserID;
+
+    @FXML
+    private TextField txtUserNoo;
+    
+    @FXML
+    private Label confirmCreateUser;
+
+    //modify-User
+    @FXML
+    private TextField txtModifyUsersUserName;
+    
+    @FXML
+    private PasswordField txtModifyUserPassword;
+    
+    @FXML
+    private TextField txtModifyUsersName;
+    
+    @FXML
+    private TextField txtModifyUsersLastName;
+    
+    @FXML
+    private Label labModifyUserID;
+    
+    @FXML
+    private TextField txtModifyUsersNoo;
+
+    @FXML
+    private Label confirmModifyUser;
+    
+    @FXML
+    void modifyUser(ActionEvent event) {
+    	try {
+
+			if(!txtModifyUsersUserName.getText().equals("") && !txtModifyUserPassword.getText().equals("") &&
+					!txtModifyUsersName.getText().equals("") && !txtModifyUsersLastName.getText().equals("") &&
+					!labModifyUserID.getText().equals("") && !txtModifyUsersNoo.getText().equals("")) {
+
+				restaurant.updateUser(txtModifyUsersUserName.getText(), txtModifyUserPassword.getText(),
+										txtModifyUsersName.getText(),txtModifyUsersLastName.getText(),
+										labModifyUserID.getText(),Integer.parseInt(txtModifyUsersNoo.getText()) );
+				
+				confirmModifyUser.setText("Usuario modificado correctamente");
+				confirmModifyUser.setTextFill(Paint.valueOf("Green"));
+
+			}else {
+
+				confirmModifyUser.setText("Se deben llenar todos los espacios");
+				confirmModifyUser.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmModifyUser.setText("Los valores no corresponden");
+			confirmModifyUser.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+    
+    @FXML
+    void addUser(ActionEvent event) {
+    	try {
+
+			if(!txtUserUserName.getText().equals("") && !txtUserPassword.getText().equals("") &&
+					!txtUserName.getText().equals("") && !txtUserLastName.getText().equals("") &&
+					!txtUserID.getText().equals("") && !txtUserNoo.getText().equals("")) {
+
+				boolean x = restaurant.createUser(txtUserName.getText(), txtUserLastName.getText(),
+							txtUserID.getText(),Integer.parseInt(txtUserNoo.getText()),
+									txtUserUserName.getText(),txtUserPassword.getText());
+				if(x == false) {
+					confirmCreateUser.setText("Usuario agregado correctamente");
+					confirmCreateUser.setTextFill(Paint.valueOf("Green"));
+				}else {
+					confirmCreateUser.setText("El usuario tiene un id que ya existe");
+					confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+				}
+
+			}else {
+
+				confirmCreateUser.setText("Se deben llenar todos los espacios");
+				confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmCreateUser.setText("Los valores no corresponden");
+			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+    @FXML
+    void btnAtrasCrearUsers(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Users-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    		loadTableViewUsers();
+    	} catch (IOException e) {
+    		// TODO Auto-generated catch block
+    		e.printStackTrace();
+    	}
+    }
+    
+    @FXML
+    void eraseUser(ActionEvent event) {
+    	System.out.println("entró al método");
+    	if(tvUsers.getSelectionModel().getSelectedItem() != null) {
+    		System.out.println("entró al if");
+			User user = tvUsers.getSelectionModel().getSelectedItem();
+
+			int pos = restaurant.searchEmployee(user.getId());
+			restaurant.getEmployes().remove(pos);
+			
+		}
+    	
+    }
+
+    @FXML
+    void createUser(ActionEvent event) {
+    	try {		
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-User.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    @FXML
+    void btnOpenModifyUser(ActionEvent event) {
+    	
+		if(tvUsers.getSelectionModel().getSelectedItem() != null) {
+
+			User user = tvUsers.getSelectionModel().getSelectedItem();
+
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-User.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			txtModifyUsersName.setText(user.getName());
+			txtModifyUsersLastName.setText(user.getLastName());
+			labModifyUserID.setText(user.getId());
+			txtModifyUsersUserName.setText(user.getUserName());
+			txtModifyUsersNoo.setText(String.valueOf(user.getNumOfOrders()));
+			txtModifyUserPassword.setText(user.getPassword());
+		}else {
+			System.out.println("f");
+		}
+	}
+    
+  //Users page to logged in page
+  	@FXML
+  	void btnUsersToLoggedInPage(ActionEvent event) {
+  		try {
+  			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
+  			fxmlLoader.setController(this);
+  			Parent login;
+  			login = fxmlLoader.load();
+  			mainPane.getChildren().setAll(login);
+  			
+  		} catch (IOException e) {
+  			// TODO Auto-generated catch block
+  			e.printStackTrace();
+  		}
+  	}
+  	
+    @FXML
+    void btnUsers(ActionEvent event) {
+    	try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Users-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			loadTableViewUsers();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    @FXML
+    void modifyEmployee(ActionEvent event) {
+    	try {
+
+			if(!txtModifyEmployeeName.getText().equals("") && !txtModifyEmployeeLastName.getText().equals("") &&
+					!labModifyEmployeeId.getText().equals("") && !txtModifyNumOfOrders.getText().equals("")) {
+
+				restaurant.updateEmployee(txtModifyEmployeeName.getText(), txtModifyEmployeeLastName.getText(),
+						labModifyEmployeeId.getText(), Integer.parseInt(txtModifyNumOfOrders.getText()) );
+				
+				confirmModifyEmployee.setText("Empleado modificado correctamente");
+				confirmModifyEmployee.setTextFill(Paint.valueOf("Green"));
+
+			}else {
+
+				confirmModifyEmployee.setText("Se deben llenar todos los espacios");
+				confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch(NumberFormatException n) {
+
+			confirmModifyEmployee.setText("Los valores no corresponden");
+			confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+    @FXML
+    void btnOpenModifyEmployee(ActionEvent event) {
+    	if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+			
+			try {
+				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Employee.fxml"));
+				fxmlLoader.setController(this);
+				Parent login;
+				login = fxmlLoader.load();
+				mainPane.getChildren().setAll(login);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			txtModifyEmployeeName.setText(employee.getName());
+			txtModifyEmployeeLastName.setText(employee.getLastName());
+			labModifyEmployeeId.setText(employee.getId());
+			txtModifyNumOfOrders.setText(String.valueOf(employee.getNumOfOrders()));
+
+
+		}
+    }
+
+    @FXML
+    void eraseEmployee(ActionEvent event) {
+    	if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
+
+			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
+
+			int pos = restaurant.searchEmployee(employee.getId());
+			restaurant.getEmployes().remove(pos);
+
+		}
+    }
+   
+
 	@FXML
 	private TextField txtModifyEmployeeName;
 
@@ -273,67 +562,6 @@ public class RestaurantGUI {
 	@FXML
 	private Label confirmModifyEmployee;
 
-	@FXML
-	void modifyEmployee(ActionEvent event) {
-		try {
-
-			if(!txtModifyEmployeeName.getText().equals("") && !txtModifyEmployeeLastName.getText().equals("") &&
-					!labModifyEmployeeId.getText().equals("") && !txtModifyNumOfOrders.getText().equals("")) {
-
-				restaurant.updateEmployee(txtModifyEmployeeName.getText(), txtModifyEmployeeLastName.getText(),
-						labModifyEmployeeId.getText(), Integer.parseInt(txtModifyNumOfOrders.getText()) );
-
-				confirmModifyEmployee.setText("Empleado modificado correctamente");
-				confirmModifyEmployee.setTextFill(Paint.valueOf("Green"));
-
-			}else {
-
-				confirmModifyEmployee.setText("Se deben llenar todos los espacios");
-				confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
-			}
-		}catch(NumberFormatException n) {
-
-			confirmModifyEmployee.setText("Los valores no corresponden");
-			confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
-		}
-	}
-	@FXML
-	void btnOpenModifyEmployee(ActionEvent event) {
-		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
-
-			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
-
-			try {
-				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Employee.fxml"));
-				fxmlLoader.setController(this);
-				Parent login;
-				login = fxmlLoader.load();
-				mainPane.getChildren().setAll(login);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			txtModifyEmployeeName.setText(employee.getName());
-			txtModifyEmployeeLastName.setText(employee.getLastName());
-			labModifyEmployeeId.setText(employee.getId());
-			txtModifyNumOfOrders.setText(String.valueOf(employee.getNumOfOders()));
-
-
-		}
-	}
-
-	@FXML
-	void eraseEmployee(ActionEvent event) {
-		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
-
-			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
-
-			int pos = restaurant.searchEmployee(employee.getId());
-			restaurant.getEmployes().remove(pos);
-
-		}
-	}
 
 
 	//product admin
@@ -390,6 +618,9 @@ public class RestaurantGUI {
 	private int selectedProduct;
 
 
+
+
+	
 
 	@FXML
 	void btnModifyClient(ActionEvent event) {
@@ -568,7 +799,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			loadTableView();
+			loadTableViewEmployees();
 		} catch (IOException e) {
 
 			e.printStackTrace();
@@ -659,7 +890,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			loadTableView();
+			loadTableViewEmployees();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -682,6 +913,20 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+
+	//tv Users-page
+		public void loadTableViewUsers() {
+			ObservableList<User> observableList;
+			observableList = FXCollections.observableArrayList(restaurant.getUsers());
+			tvUsers.setItems(observableList);
+			tcUserName.setCellValueFactory(new PropertyValueFactory<User,String>("name")); 
+			tcUserLastName.setCellValueFactory(new PropertyValueFactory<User,String>("lastName")); 
+			tcUserID.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+			tcUserNoo.setCellValueFactory(new PropertyValueFactory<User,Integer>("numOfOrders"));
+			tcUserUserName.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
+			
+		}
+	
 
 	//tv Clients-page
 	public void loadTableViewClient() {
@@ -720,7 +965,7 @@ public class RestaurantGUI {
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
 
-			loadTableView();
+			loadTableViewEmployees();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -815,14 +1060,14 @@ public class RestaurantGUI {
 	}
 
 	//Logged-in-page
-	public void loadTableView() {
+	public void loadTableViewEmployees() {
 		ObservableList<Employee> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getEmployes());
 		tvEmployees.setItems(observableList);
 		tcName.setCellValueFactory(new PropertyValueFactory<Employee,String>("name")); 
 		tcLastName.setCellValueFactory(new PropertyValueFactory<Employee,String>("lastName")); 
 		tcId.setCellValueFactory(new PropertyValueFactory<Employee,String>("id"));
-		tcNumOfOrders.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("numOfOders"));
+		tcNumOfOrders.setCellValueFactory(new PropertyValueFactory<Employee,Integer>("numOfOrders"));
 	}
 
 	//ingredient
@@ -1362,6 +1607,21 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+
+	
+	@FXML
+	void btnBackToMainPage(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	//add ingredient and size price
 	@FXML
 	void btnAddSizeAndPriceToProduct(ActionEvent event) {

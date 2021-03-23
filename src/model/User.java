@@ -22,21 +22,22 @@ public class User extends Employee{
 		this.userName = un;
 		this.password = pa;
 	}
-	@Override
 	public String getUserName() {
 		return userName;
 	}
-	@Override
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	@Override
 	public String getPassword() {
 		return password;
 	}
-	@Override
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", lastName=" + lastName
+				+ ", id=" + id + "]";
 	}
 
 	

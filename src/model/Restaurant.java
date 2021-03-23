@@ -110,9 +110,9 @@ public class Restaurant {
 		this.ingredientsForProduct = ingredientsForProduct;
 	}
 	//se agrega un user
-	public void createUser(String name, String lastName, String id,int nOO ,String userName,String password) {
+	/*public void createUser(String name, String lastName, String id,int nOO ,String userName,String password) {
 		employees.add(new User(name,lastName,id,nOO,userName,password));
-	}
+	}*/
 	//se agrega un Employee
 	public boolean createEmployee(String name, String lastName, String id,int nOO) {
 
@@ -126,6 +126,31 @@ public class Restaurant {
 			employees.add(new Employee(name,lastName,id,nOO));
 		}
 		return found;
+	}
+	/**
+	 * se agrega un usuario
+	 */
+	public boolean createUser(String name, String lastName, String id,int nOO, String userName, String password) {
+
+		boolean found=false;
+		for(int c=0;c<employees.size() && !found;c++) {
+			if(id.equals(employees.get(c).getId())) {
+				found=true;
+			}
+		}
+		if(found == false) {
+			employees.add(new User(name,lastName,id,nOO,userName,password));
+			
+		}
+		return found;
+	}
+	/**
+	 * se modifica un usuario
+	 */
+	public void updateUser(String userName, String password,String name, String lastName, String id, int nOO) {
+		User user = new User(name, lastName, id, nOO, userName, password);
+		int pos = searchEmployee(id);
+		employees.set(pos, user);
 	}
 	/**
 	 * se modifica un empleado
@@ -188,12 +213,13 @@ public class Restaurant {
 		return x;
 	}
 	
+	
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
 		for(int c=0; c< employees.size() && !found;c++) {
 			if(employees.get(c) instanceof User) {
-				if(userName.equals(employees.get(c).getUserName()) && password.equals(employees.get(c).getPassword())) {
+				if(userName.equals(((User)employees.get(c)).getUserName()) && password.equals(((User)employees.get(c)).getPassword())) {
 					found=true;
 				}
 			}
@@ -201,6 +227,21 @@ public class Restaurant {
 		return found;
 	}
 
+	public ArrayList<User> getUsers(){
+		ArrayList<User> users = new ArrayList<User>();
+		for(int i = 0; i < employees.size(); i++ ) {
+			if(employees.get(i) instanceof User) {
+				users.add((User) employees.get(i));
+			}
+		}
+		
+		return users;
+	}
+	@Override
+	public String toString() {
+		return "Restaurant [employees=" + employees + "]" + "Restaurant [users=" + this.getUsers() + "]" ;
+		
+	}
 	public ArrayList<Ingredient> getIngredients() {
 		return ingredients;
 	}
