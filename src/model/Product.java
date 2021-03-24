@@ -42,11 +42,11 @@ public class Product extends History {
 	public void addIngredient(Ingredient e) {
 		ingredients.add(e);
 	}
-	
+
 	public void addSizeAndPrice(SizeAndPrice e) {
 		sizeAndPrice.add(e);
 	}
-	
+
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -57,6 +57,42 @@ public class Product extends History {
 
 	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public String sizeAndPriceToString() {
+		String s="Tamaños: ";
+		for(int c=0;c<sizeAndPrice.size();c++) {
+			s+=sizeAndPrice.get(c).getSize()+" con precio de: "+sizeAndPrice.get(c).getPrice()+"$ \n";
+		}
+		return s;
+	}
+
+	public String ingredientsToString() {
+		String s="";
+		for(int c=0;c<ingredients.size();c++) {
+			if(c==0) {
+				s="Ingredientes: "+ingredients.get(c).getIngredients()+", ";
+			}else if(c%3==0) {
+				if(c==ingredients.size()-1) {
+					s+="\ny "+ingredients.get(c).getIngredients();
+				}else if(c==ingredients.size()-2){
+					s+="\n"+ingredients.get(c).getIngredients()+" ";
+				}else {
+					s+="\n"+ingredients.get(c).getIngredients()+", ";
+				}
+
+			}else {
+				if(c==ingredients.size()-1) {
+					s+=" y "+ingredients.get(c).getIngredients();
+				}else if(c==ingredients.size()-2){
+					s+=ingredients.get(c).getIngredients()+" ";
+				}else {
+					s+=ingredients.get(c).getIngredients()+", ";
+				}
+
+			}
+		}
+		return s;
 	}
 
 

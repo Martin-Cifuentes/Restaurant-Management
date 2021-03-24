@@ -36,6 +36,7 @@ public class Restaurant {
 		return found;
 	}
 	
+	
 	//add product
 	public void ingredientForProduct(Ingredient ingredient) {
 		ingredientsForProduct.add(ingredient);
