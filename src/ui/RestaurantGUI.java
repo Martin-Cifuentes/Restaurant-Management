@@ -40,6 +40,7 @@ public class RestaurantGUI {
 
 	public RestaurantGUI() {
 		restaurant= new Restaurant();
+
 	}
 
 	private String currentUser;
@@ -636,8 +637,11 @@ public class RestaurantGUI {
 	@FXML
 	private Label lblNUmberOfProducts;
 	//menu page
-    @FXML
-    private Label lblWarningMenu;
+	@FXML
+	private Label lblWarningMenu;
+	//menu page
+	private int currentProductSelected;
+
 
 
 
@@ -900,6 +904,7 @@ public class RestaurantGUI {
 	//main-page
 	@FXML
 	void btnMenu(ActionEvent event) {
+		currentProductSelected=0;
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("menu-page.fxml"));
 			fxmlLoader.setController(this);
@@ -910,25 +915,42 @@ public class RestaurantGUI {
 				lblWarningMenu.setText("No hay productos");
 				lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			}else {
-				lblNameOfProductMenu.setText(restaurant.getProducts().get(0).getName());
-				lblTypeOfProductMenu.setText(restaurant.getProducts().get(0).getType());
-				lblSizeAndPriceOfProductMenu.setText(restaurant.getProducts().get(0).sizeAndPriceToString());
-				lblIngredientOfProductMenu.setText(restaurant.getProducts().get(0).ingredientsToString());
+				restaurant.resetMenuProducts();
+				lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
+				lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
+				lblSizeAndPriceOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+				lblIngredientOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+				lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 			}
 			lblSizeAndPriceOfProductMenu.setWrapText(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 
-
-	
+	//menu page
 	@FXML
 	void btnBackProduct(ActionEvent event) {
-		
-	}
+		try {
+			currentProductSelected--;
+			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
+			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
+		}catch(NullPointerException e) {
+			lblWarningMenu.setText("Este es el primer producto, no hay anterior");
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
+			currentProductSelected++;
+		}catch(IndexOutOfBoundsException e) {
+			lblWarningMenu.setText("Este es el primer producto, no hay anterior");
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
+			currentProductSelected++;
+		}
 
+	}
+	//menu page
 	@FXML
 	void btnMenutoMain(ActionEvent event) {
 		try {
@@ -942,16 +964,63 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
-
+	//menu page
 	@FXML
 	void btnNextProduct(ActionEvent event) {
-
+		try {
+			currentProductSelected++;
+			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
+			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
+		}catch(NullPointerException e) {
+			lblWarningMenu.setText("Este es el ultimo producto");
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
+			currentProductSelected--;
+		}catch(IndexOutOfBoundsException e) {
+			lblWarningMenu.setText("Este es el ultimo producto");
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
+			currentProductSelected--;
+		}
 	}
-
+	//menu page
 	@FXML
 	void btnSearchProduct(ActionEvent event) {
+		currentProductSelected=0;
+		restaurant.searchMenuProducts(txtSearchProduct.getText());
+		if(restaurant.getMenuProducts().isEmpty()) {
+			lblWarningMenu.setText("No hay productos relacionados con "+txtSearchProduct.getText());
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));	
+		}else {
+			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
+			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
+		}
 
 	}
+	
+
+    @FXML
+    void btnResetSearch(ActionEvent event) {
+    	restaurant.resetMenuProducts();
+    	txtSearchProduct.clear();
+    	if(restaurant.getProducts().isEmpty()) {
+			lblWarningMenu.setText("No hay productos");
+			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
+		}else {
+			restaurant.resetMenuProducts();
+			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
+			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
+		}
+		lblSizeAndPriceOfProductMenu.setWrapText(true);
+    	
+    }
 
 
 

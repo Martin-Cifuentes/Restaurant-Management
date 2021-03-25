@@ -11,6 +11,7 @@ public class Restaurant {
 	private ArrayList<Product> products; 
 	private ArrayList<Ingredient> ingredientsForProduct;
 	private ArrayList<SizeAndPrice> sizeAndPrice;
+	private ArrayList<Product> menuProducts; 
 
 	public Restaurant() {
 		ingredients = new ArrayList<Ingredient>();
@@ -20,6 +21,7 @@ public class Restaurant {
 		products = new ArrayList<Product>();
 		ingredientsForProduct = new  ArrayList<Ingredient>();
 		sizeAndPrice = new ArrayList<SizeAndPrice>();
+		menuProducts= new ArrayList<Product>();
 		
 	}
 	//se añade un ingrediente
@@ -34,6 +36,30 @@ public class Restaurant {
 			ingredients.add(new Ingredient(name,avialable));
 		}
 		return found;
+	}
+	//menu page
+	public void resetMenuProducts() {
+	menuProducts.clear();
+	boolean add=true;
+		for(int c=0;c<products.size();c++) {
+			add=true;
+			for(int i=0;i<products.get(c).getIngredients().size();i++) {
+				if(!products.get(c).getIngredients().get(i).isAvialable()) {
+					add=false;
+				}
+				if(add) {
+					menuProducts.add(products.get(c));
+				}
+			}
+		}
+	}
+	//menu page
+	public void searchMenuProducts(String search) {
+		for(int c=0;c<menuProducts.size();c++) {
+			if(!menuProducts.get(c).getName().contains(search)) {
+				menuProducts.remove(c);
+			}
+		}
 	}
 	
 	
@@ -279,7 +305,14 @@ public class Restaurant {
 	public void setSizeAndPrice(ArrayList<SizeAndPrice> sizeAndPrice) {
 		this.sizeAndPrice = sizeAndPrice;
 	}
+	public ArrayList<Product> getMenuProducts() {
+		return menuProducts;
+	}
+	public void setMenuProducts(ArrayList<Product> menuProducts) {
+		this.menuProducts = menuProducts;
+	}
 
+	
 
 
 
