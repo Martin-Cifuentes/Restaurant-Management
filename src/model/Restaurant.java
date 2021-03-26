@@ -1,28 +1,29 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Restaurant {
 
-	private ArrayList<Ingredient> ingredients;
-	private ArrayList<Employee> employees;
-	private ArrayList<Client> clients;
-	private ArrayList<Order> orders;
-	private ArrayList<Product> products; 
-	private ArrayList<Ingredient> ingredientsForProduct;
-	private ArrayList<SizeAndPrice> sizeAndPrice;
-	private ArrayList<Product> menuProducts; 
-
+	private List<Ingredient> ingredients;
+	private List<Employee> employees;
+	private List<Client> clients;
+	private List<Order> orders;
+	private List<Product> products; 
+	private List<Ingredient> ingredientsForProduct;
+	private List<SizeAndPrice> sizeAndPrice;
+	private List<Product> menuProducts; 
+	
 	public Restaurant() {
-		ingredients = new ArrayList<Ingredient>();
-		employees = new ArrayList<Employee>();
-		clients = new ArrayList<Client>();
-		orders = new ArrayList<Order>();
-		products = new ArrayList<Product>();
-		ingredientsForProduct = new  ArrayList<Ingredient>();
-		sizeAndPrice = new ArrayList<SizeAndPrice>();
-		menuProducts= new ArrayList<Product>();
-		
+		ingredients = new ArrayList<>();
+		employees = new ArrayList<>();
+		clients = new ArrayList<>();
+		orders = new ArrayList<>();
+		products = new ArrayList<>();
+		ingredientsForProduct = new  ArrayList<>();
+		sizeAndPrice = new ArrayList<>();
+		menuProducts= new ArrayList<>();
 	}
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
@@ -61,7 +62,10 @@ public class Restaurant {
 			}
 		}
 	}
-	
+	//ingredients
+	public void sortIngredients() {
+		Collections.sort(ingredients);
+	}
 	
 	//add product
 	public void ingredientForProduct(Ingredient ingredient) {
@@ -129,7 +133,7 @@ public class Restaurant {
 	}
 
 	//add product
-	public ArrayList<Ingredient> getIngredientsForProduct() {
+	public List<Ingredient> getIngredientsForProduct() {
 		return ingredientsForProduct;
 	}
 	//add product
@@ -269,43 +273,43 @@ public class Restaurant {
 		return "Restaurant [employees=" + employees + "]" + "Restaurant [users=" + this.getUsers() + "]" ;
 		
 	}
-	public ArrayList<Ingredient> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-	public ArrayList<Employee> getEmployes() {
+	public List<Employee> getEmployes() {
 		return employees;
 	}
 	public void setEmployes(ArrayList<Employee> employes) {
 		this.employees = employes;
 	}
-	public ArrayList<Client> getClients() {
+	public List<Client> getClients() {
 		return clients;
 	}
 	public void setClients(ArrayList<Client> clients) {
 		this.clients = clients;
 	}
-	public ArrayList<Order> getOrders() {
+	public List<Order> getOrders() {
 		return orders;
 	}
 	public void setOrders(ArrayList<Order> orders) {
 		this.orders = orders;
 	}
-	public ArrayList<Product> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 	public void setProducts(ArrayList<Product> products) {
 		this.products = products;
 	}
-	public ArrayList<SizeAndPrice> getSizeAndPrice() {
+	public List<SizeAndPrice> getSizeAndPrice() {
 		return sizeAndPrice;
 	}
 	public void setSizeAndPrice(ArrayList<SizeAndPrice> sizeAndPrice) {
 		this.sizeAndPrice = sizeAndPrice;
 	}
-	public ArrayList<Product> getMenuProducts() {
+	public List<Product> getMenuProducts() {
 		return menuProducts;
 	}
 	public void setMenuProducts(ArrayList<Product> menuProducts) {

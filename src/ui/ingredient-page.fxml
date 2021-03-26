@@ -16,5 +16,6 @@
           <TableColumn fx:id="tcAvialable" prefWidth="120.0" text="Disponible" />
         </columns>
       </TableView>
+      <Button layoutX="106.0" layoutY="179.0" mnemonicParsing="false" onAction="#btnOrganizeIngredients" text="Organizar por nombre" />
    </children>
 </Pane>

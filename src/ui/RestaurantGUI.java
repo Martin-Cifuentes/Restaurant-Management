@@ -1001,13 +1001,13 @@ public class RestaurantGUI {
 		}
 
 	}
-	
 
-    @FXML
-    void btnResetSearch(ActionEvent event) {
-    	restaurant.resetMenuProducts();
-    	txtSearchProduct.clear();
-    	if(restaurant.getProducts().isEmpty()) {
+	//menu page
+	@FXML
+	void btnResetSearch(ActionEvent event) {
+		restaurant.resetMenuProducts();
+		txtSearchProduct.clear();
+		if(restaurant.getProducts().isEmpty()) {
 			lblWarningMenu.setText("No hay productos");
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 		}else {
@@ -1019,8 +1019,8 @@ public class RestaurantGUI {
 			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 		}
 		lblSizeAndPriceOfProductMenu.setWrapText(true);
-    	
-    }
+
+	}
 
 
 
@@ -1200,6 +1200,12 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 
+	}
+	//ingredient-page
+	@FXML
+	void btnOrganizeIngredients(ActionEvent event) {
+		restaurant.sortIngredients();
+		loadTableViewIngredient();
 	}
 
 	//Logged-in-page

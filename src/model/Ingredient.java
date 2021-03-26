@@ -1,7 +1,8 @@
 package model;
 
 
-public class Ingredient extends History {
+
+public class Ingredient extends History implements Comparable<Ingredient>{
 	private String ingredients ;
 	private boolean avialable;
 	
@@ -28,6 +29,11 @@ public class Ingredient extends History {
 	}
 
 	public Ingredient() {
+	}
+
+	@Override
+	public int compareTo(Ingredient o) {
+		return ingredients.compareTo(o.getIngredients());
 	}
 	
 
