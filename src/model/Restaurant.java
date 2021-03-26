@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Restaurant {
 	private List<Ingredient> ingredientsForProduct;
 	private List<SizeAndPrice> sizeAndPrice;
 	private List<Product> menuProducts; 
-	
+
 	public Restaurant() {
 		ingredients = new ArrayList<>();
 		employees = new ArrayList<>();
@@ -40,8 +41,8 @@ public class Restaurant {
 	}
 	//menu page
 	public void resetMenuProducts() {
-	menuProducts.clear();
-	boolean add=true;
+		menuProducts.clear();
+		boolean add=true;
 		for(int c=0;c<products.size();c++) {
 			add=true;
 			for(int i=0;i<products.get(c).getIngredients().size();i++) {
@@ -62,31 +63,87 @@ public class Restaurant {
 			}
 		}
 	}
+
+	public void selectionSort() {
+		Product tmpProduct=null;
+		for (int j = 0; j < products.size()-1; j++) {
+			int min=j;
+			for (int k = 1+j; k < products.size(); k++) {
+				if(products.get(k).getName().compareTo(products.get(min).getName())<0) {
+					min=k;
+				}
+				tmpProduct=products.get(min);
+				products.remove(min);
+				products.add(min,products.get(j));
+				products.remove(j);
+				products.add(j,tmpProduct);
+
+			}
+		}
+	}
+
+	//bubble sort for clients
+	public void bubbleSortForClients() {
+		Client tmpClient= null;
+		for(int c=0; c < clients.size();c++) {
+			for(int i=c+1; i < clients.size();i++) {
+				if(clients.get(i).getId().compareTo(clients.get(c).getId())<0) {
+					tmpClient=clients.get(i);
+					clients.remove(i);
+					clients.add(i,clients.get(c));
+					clients.remove(c);
+					clients.add(c,tmpClient);
+				}
+			}
+		}
+
+	}
+
+	//binary sort for client search
+	public int binarySearchForClients(String id) {
+		int l=0;
+		int size=clients.size()-1;
+		int found=-1;
+		while(l<=size) {
+			int m=l+(size-1)/2;
+			int answer = id.compareTo(clients.get(m).getId());
+			if(answer==0) {
+				found=answer;
+			}else if(answer >0) {
+				l=m+1;
+			}else {
+				size=m-1;
+			}
+		}
+		return found;
+	}
+
+
 	//ingredients
 	public void sortIngredients() {
 		Collections.sort(ingredients);
 	}
-	
+
 	//add product
 	public void ingredientForProduct(Ingredient ingredient) {
 		ingredientsForProduct.add(ingredient);
 	}
-	
+
 	//add product
 	public void resetProductIngredientArray() {
 		ingredientsForProduct.clear();
 	}
-	
+
 	//add product
 	public void sizeAndPriceForProduct(String a,Double b) {
 		sizeAndPrice.add(new SizeAndPrice(a, b));
 	}
-	
+
 	//add product
 	public void resetsizeAndPriceArray() {
 		sizeAndPrice.clear();
 	}
-	
+
 	//add product
 	public boolean addProduct( String name ,String type ) {
 		boolean found=false;
@@ -108,7 +165,7 @@ public class Restaurant {
 		}
 		return found;
 	}
-	
+
 
 	//add product, checks if ingredient has already been added to a product
 	public boolean productCheckDoubleIngredient(String a) {
@@ -118,7 +175,7 @@ public class Restaurant {
 				found=true;
 			}
 		}
-	
+
 		return found;
 	}
 	//add product, checks if size has already been added to a product
@@ -171,7 +228,7 @@ public class Restaurant {
 		}
 		if(found == false) {
 			employees.add(new User(name,lastName,id,nOO,userName,password));
-			
+
 		}
 		return found;
 	}
@@ -213,7 +270,7 @@ public class Restaurant {
 				found=true;
 			}
 		}
-		
+
 		if(found == false) {
 			clients.add(new Client(name,lastName,id,adress,phone,observations));
 		}
@@ -233,7 +290,7 @@ public class Restaurant {
 	}
 	/**
 	/buscar un empleado
-	*/
+	 */
 	public int searchEmployee(String id) {
 		int x = -1;
 		for(int i = 0; i< employees.size(); i++ ) {
@@ -243,8 +300,8 @@ public class Restaurant {
 		}
 		return x;
 	}
-	
-	
+
+
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
@@ -265,13 +322,13 @@ public class Restaurant {
 				users.add((User) employees.get(i));
 			}
 		}
-		
+
 		return users;
 	}
 	@Override
 	public String toString() {
 		return "Restaurant [employees=" + employees + "]" + "Restaurant [users=" + this.getUsers() + "]" ;
-		
+
 	}
 	public List<Ingredient> getIngredients() {
 		return ingredients;
@@ -316,7 +373,7 @@ public class Restaurant {
 		this.menuProducts = menuProducts;
 	}
 
-	
+
 
 
 

@@ -641,7 +641,30 @@ public class RestaurantGUI {
 	private Label lblWarningMenu;
 	//menu page
 	private int currentProductSelected;
-
+	//search client
+	@FXML
+	private Label lblNameOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblLastNameOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblIdOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblAdressOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblPhoneOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblObservationsOfSearchedClient;
+	//search client
+	@FXML
+	private Label lblWarningsForSearchClientPage;
+	//search client
+	@FXML
+	private TextField txtIdForSearch;
 
 
 
@@ -725,6 +748,57 @@ public class RestaurantGUI {
 			lvClients.setItems(clientObs);
 		}
 	}
+
+	//client page to search client page
+	@FXML
+	void btnSearchClient(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("searchClient-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			mainPane.getChildren().setAll(login);
+			if(!restaurant.getClients().isEmpty()) {
+				restaurant.bubbleSortForClients();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	//search client page
+	@FXML
+	void bntSearchForId(ActionEvent event) {
+		int found= restaurant.binarySearchForClients(txtIdForSearch.getText());
+		if(found==-1) {
+			lblWarningsForSearchClientPage.setText("f estupida estoy re mamado de todo");
+			lblWarningsForSearchClientPage.setTextFill(Paint.valueOf("RED"));
+		}
+	}
+	//search client page
+	@FXML
+	void btnBackToClientPage(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Clients-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+			if(!restaurant.getClients().isEmpty()) {
+				restaurant.bubbleSortForClients();
+			}
+			loadTableViewClient();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
+
 
 	@FXML
 	void openModifyClient(ActionEvent event) {
@@ -1050,7 +1124,11 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			if(!restaurant.getClients().isEmpty()) {
+				restaurant.bubbleSortForClients();
+			}
 			loadTableViewClient();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1510,6 +1588,8 @@ public class RestaurantGUI {
 
 	//product load tv
 	public void loadTableViewProduct() {
+		if(!restaurant.getProducts().isEmpty())
+			restaurant.selectionSort();
 		ObservableList<Product> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getProducts());
 		tvProducts.setItems(observableList);
