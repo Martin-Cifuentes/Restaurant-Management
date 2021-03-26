@@ -21,8 +21,8 @@
       <ComboBox fx:id="cboxIngredientsForProduct" layoutX="148.0" layoutY="294.0" prefWidth="150.0" />
       <Label layoutX="147.0" layoutY="277.0" text="Ingredientes" />
       <Button layoutX="317.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnIngredientForProduct" text="Añadir ingrediente" />
-      <Label layoutX="147.0" layoutY="334.0" text="Tamaños y precios:" />
-      <Label layoutX="147.0" layoutY="364.0" text="Ingredientes: " />
+      <Label layoutX="147.0" layoutY="334.0" prefHeight="17.0" prefWidth="535.0" text="Tamaños y precios para añadir:" />
+      <Label layoutX="147.0" layoutY="364.0" prefHeight="17.0" prefWidth="501.0" text="Ingredientes para añadir: " />
       <Label fx:id="lblSizeAndPriceOfProducts" layoutX="250.0" layoutY="334.0" />
       <Label fx:id="lblIngredientsForProduct" layoutX="219.0" layoutY="364.0" />
       <Label fx:id="lblAddProductWarning" layoutX="148.0" layoutY="424.0" prefHeight="17.0" prefWidth="512.0" />

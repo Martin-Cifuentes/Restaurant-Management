@@ -997,6 +997,7 @@ public class RestaurantGUI {
 				lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 			}
 			lblSizeAndPriceOfProductMenu.setWrapText(true);
+			lblIngredientOfProductMenu.setWrapText(true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
