@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
@@ -26,6 +28,7 @@ import javafx.scene.paint.Paint;
 import model.Client;
 import model.Employee;
 import model.Ingredient;
+import model.Order;
 import model.Product;
 import model.Restaurant;
 
@@ -314,7 +317,151 @@ public class RestaurantGUI {
 
 	@FXML
 	private TextField txtModifyUsersName;
+	
+	
+	//Orders-page
+	@FXML
+    private TableView<Order> tvOrders;
 
+    @FXML
+    private ListView<String> lvOrdersObs;
+
+    @FXML
+    private TableView<Product> tvOrdersProducts;
+    
+    //create-Order
+    @FXML
+    private TextArea txtOrderObs;
+
+    @FXML
+    private TextField txtClientOrderName;
+
+    @FXML
+    private TextField txtEmployeeOrderName;
+
+    @FXML
+    private DatePicker calendarDate;
+
+    @FXML
+    private TableView<Product> tvListOrderProducts;
+
+    @FXML
+    private Label labConfirmOrder;
+    
+//addProductToOrder-page
+    @FXML
+    private Label labConfirmProductToOrder;
+
+    @FXML
+    private TextField txtProductCant;
+
+    @FXML
+    private ChoiceBox<String> cbProductsToOrder;
+
+    @FXML
+    void btnAddProductToOrder(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void btnBackToCreateOrder(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+
+//create-Order
+    @FXML
+    void addOrder(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void btnOpenSearchProduct(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToOrder-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+    @FXML
+    void btnBackToOrders(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+    
+//Orders-page
+    @FXML
+    void btnEraseOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnOpenAddOrder(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+
+    @FXML
+    void btnOpenModifyPage(ActionEvent event) {
+    	
+    }
+
+    @FXML
+    void btnOrdersToLoggedIn(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Logged-in-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+	
+	@FXML
+    void btnOrdersPage(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
 	@FXML
 	private TextField txtModifyUsersLastName;
 
