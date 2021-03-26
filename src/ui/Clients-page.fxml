@@ -30,5 +30,6 @@
       <ListView fx:id="lvClients" layoutX="210.0" layoutY="350.0" prefHeight="143.0" prefWidth="356.0" />
       <Button layoutX="31.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClients" text="Actualizar" />
       <Button layoutX="29.0" layoutY="242.0" mnemonicParsing="false" onAction="#openModifyClient" text="Modificar" />
+      <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnSearchClient" text="Buscar cliente " />
    </children>
 </Pane>
