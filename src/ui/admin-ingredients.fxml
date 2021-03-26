@@ -24,6 +24,6 @@
       <Label layoutX="237.0" layoutY="233.0" text="Ultimo cambio por:" />
       <Label fx:id="lblIngredientCreatedBy" layoutX="307.0" layoutY="200.0" text="Label" />
       <Label fx:id="lblIngredientLastEditedBy" layoutX="352.0" layoutY="233.0" text="Label" />
-      <Label fx:id="lblAdminIngredientWarning" layoutX="237.0" layoutY="317.0" prefHeight="17.0" prefWidth="286.0" />
+      <Label fx:id="lblAdminIngredientWarning" layoutX="189.0" layoutY="315.0" prefHeight="17.0" prefWidth="471.0" />
    </children>
 </Pane>
