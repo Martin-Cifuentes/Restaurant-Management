@@ -614,7 +614,7 @@ public class RestaurantGUI {
 	//add ingredient and size price
 	@FXML
 	private Label lblAddIngredientAndSizePriceWarning;
-
+	
 	//product admin
 	private int selectedProduct;
 
