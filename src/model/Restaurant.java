@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Restaurant {
 
@@ -22,6 +24,39 @@ public class Restaurant {
 		sizeAndPrice = new ArrayList<SizeAndPrice>();
 		
 	}
+	
+	public void createOrder(State state, String clientName, String employeeName, Date date, String[] observations, Product[] products, int[] qOfProducts) {
+		String code = randomCode();
+		for(int i = 0; i < orders.size(); i++) {
+			if(code == orders.get(i).getCode()) {
+				code = randomCode();
+				i = 0;
+			}
+		}
+		Order order = new Order(code, state, clientName, employeeName, date, observations, products, qOfProducts );
+		orders.add(order);
+		
+	}
+	/**
+	 * 
+	 * @param longitud
+	 * @return
+	 */
+	public String randomCode() {
+        String box = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String code = "";
+        for (int x = 0; x < 10; x++) {
+            int randInt = randNum(0, box.length() - 1);
+            char randChar = box.charAt(randInt);
+            code += randChar;
+        }
+        return code;
+    }
+
+    public int randNum(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+	
 	//se añade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) {
 		boolean found=false;
@@ -183,7 +218,7 @@ public class Restaurant {
 			}
 		}
 		
-		if(found == false) {
+		if(!found) {
 			clients.add(new Client(name,lastName,id,adress,phone,observations));
 		}
 		return found;
