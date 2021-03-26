@@ -98,7 +98,14 @@ public class Restaurant {
 			}
 		}
 	}
-
+	//comparator for employee
+	public void sortEmployee() {
+		EmployeeIdComparator afc= new EmployeeIdComparator();
+		Collections.sort(employees,afc);
+	}
+	
+	
+	//selection sort for products
 	public void selectionSort() {
 		Product tmpProduct=null;
 		for (int j = 0; j < products.size()-1; j++) {

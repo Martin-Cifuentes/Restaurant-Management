@@ -1288,6 +1288,9 @@ public class RestaurantGUI {
 
 	//Logged-in-page
 	public void loadTableViewEmployees() {
+		if(!restaurant.getEmployes().isEmpty()) {
+			restaurant.sortEmployee();
+		}
 		ObservableList<Employee> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getEmployes());
 		tvEmployees.setItems(observableList);
