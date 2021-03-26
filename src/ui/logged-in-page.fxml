@@ -7,7 +7,7 @@
    <children>
       <Button layoutX="104.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadProducts" text="Productos" />
       <Button layoutX="194.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadIngredient" text="Ingredientes" />
-      <Button fx:id="btnOrdersPage" layoutX="104.0" layoutY="158.0" mnemonicParsing="false" text="Ordenes" />
+      <Button fx:id="btnOrdersPage" layoutX="104.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Ordenes" />
       <Button layoutX="194.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Empleados" />
       <Button layoutX="104.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClients" text="Clientes" />
       <Button layoutX="194.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnUsers" text="Users" />
