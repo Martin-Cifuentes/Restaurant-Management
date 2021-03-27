@@ -1,12 +1,17 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Client extends Person{
+public class Client extends Person implements Serializable{
 	
-	public String adress;
-	public String phone;
-	public ArrayList <String> observations;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;
+	private String adress;
+	private String phone;
+	private ArrayList <String> observations;
 	/** 
      * this constructor method creates a Client objet
      * @param name String, name of the Client
@@ -23,6 +28,12 @@ public class Client extends Person{
 		this.observations = obs;
 	}
 	
+	
+	public Client(String n, String ln, String id) {
+		super(n, ln, id);
+	}
+
+
 	public String getAdress() {
 		return adress;
 	}

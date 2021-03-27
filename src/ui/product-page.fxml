@@ -16,5 +16,6 @@
           <TableColumn fx:id="tcTypeOfProduct" prefWidth="96.0" text="Tipo" />
         </columns>
       </TableView>
+      <Button layoutX="134.0" layoutY="251.0" mnemonicParsing="false" onAction="#btnImportProductData" text="Importar Productos" />
    </children>
 </Pane>

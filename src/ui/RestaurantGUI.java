@@ -43,7 +43,7 @@ public class RestaurantGUI {
 
 	public RestaurantGUI() {
 		restaurant= new Restaurant();
-
+		
 	}
 
 	private String currentUser;
@@ -107,7 +107,9 @@ public class RestaurantGUI {
 	//create-Employee
 	@FXML
 	private Label confirmEmployee;
-
+	//ingredient page
+    @FXML
+    private Label lblIngredientPageWarning;
 	//addIngredients
 	@FXML
 	private Label lblAddIngredient;
@@ -529,6 +531,9 @@ public class RestaurantGUI {
 
 			confirmCreateUser.setText("Los valores no corresponden");
 			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	@FXML
@@ -943,7 +948,19 @@ public class RestaurantGUI {
 		}
 	}
 
-
+    @FXML
+    void btnImportClients(ActionEvent event) {
+    	try {
+    		restaurant.importClients(currentUser);
+    		restaurant.saveData();
+    		if(!restaurant.getClients().isEmpty()) {
+				restaurant.bubbleSortForClients();
+			}
+			loadTableViewClient();
+    	}catch (IOException e) {
+			// TODO: handle exception
+		}
+    }
 
 
 
@@ -954,8 +971,8 @@ public class RestaurantGUI {
 			Client client = tvClients.getSelectionModel().getSelectedItem();
 
 			String ModObs = "";
-			for(int i = 0; i < client.observations.size(); i++) {
-				ModObs += client.observations.get(i) + "\n";
+			for(int i = 0; i < client.getObservations().size(); i++) {
+				ModObs += client.getObservations().get(i) + "\n";
 			}
 
 			try {
@@ -1014,6 +1031,7 @@ public class RestaurantGUI {
 
 				boolean x = restaurant.createEmployee(txtEmployeeName.getText(), txtEmployeeLastName.getText(),
 						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
+				
 				if(x == false) {
 					confirmEmployee.setText("Empleado agregado correctamente");
 					confirmEmployee.setTextFill(Paint.valueOf("Green"));
@@ -1031,7 +1049,10 @@ public class RestaurantGUI {
 
 			confirmEmployee.setText("Los valores no corresponden");
 			confirmEmployee.setTextFill(Paint.valueOf("RED"));
-		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 
 	}
 
@@ -1063,7 +1084,6 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1093,17 +1113,26 @@ public class RestaurantGUI {
 
 	//main-page
 	public void loadMainPage(){
-		restaurant.createUser("Admin","SuperAdmin","a003",0,"A","1");
+		
 		try {
+			restaurant.loadIngredientsData();
+			restaurant.loadEmployeesData();
+			restaurant.loadProductsData();
+			restaurant.loadClientsData();
+			//restaurant.createUser("Admin","SuperAdmin","a003",0,"A","1");
+			restaurant.saveData();
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
 		} catch (IOException e) {
+		
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} 
 	}
 
 	//main-page
@@ -1116,7 +1145,6 @@ public class RestaurantGUI {
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -1358,6 +1386,19 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+	
+	//ingredient-page
+    @FXML
+    void btnImportIngredients(ActionEvent event) {
+    	try {
+    	restaurant.importIngredientData(currentUser);
+    	loadTableViewIngredient();
+    	restaurant.saveData();
+    	}catch(IOException e) {
+    		lblIngredientPageWarning.setText("No se encontro el archivo de ingredientes");
+    		lblIngredientPageWarning.setTextFill(Paint.valueOf("Red"));
+    	}
+    }
 
 	//ingredient-page to logged-in-page
 	@FXML
@@ -1382,14 +1423,19 @@ public class RestaurantGUI {
 			if(rbtnAvailable.isSelected()) {
 				avialable=true;
 			}
-			if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
-				restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setCreatedBy(currentUser);
-				restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setLastEditedBy(currentUser);
-				lblAddIngredient.setText("Se agregado ingrediente correctamente");
-				lblAddIngredient.setTextFill(Paint.valueOf("Green"));
-			}else {
-				lblAddIngredient.setText("Ya hay un ingrediente con este nombre");
-				lblAddIngredient.setTextFill(Paint.valueOf("Red"));
+			try {
+				if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
+					restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setCreatedBy(currentUser);
+					restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setLastEditedBy(currentUser);
+					lblAddIngredient.setText("Se agregado ingrediente correctamente");
+					lblAddIngredient.setTextFill(Paint.valueOf("Green"));
+				}else {
+					lblAddIngredient.setText("Ya hay un ingrediente con este nombre");
+					lblAddIngredient.setTextFill(Paint.valueOf("Red"));
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}else {
 			lblAddIngredient.setText("Por favor llene todos los campos");
@@ -1543,10 +1589,9 @@ public class RestaurantGUI {
 		for(int c=0;c<restaurant.getProducts().size() && !found;c++) {
 			for(int i=0; i<restaurant.getProducts().get(c).getIngredients().size() && !found;i++) {
 				if(restaurant.getProducts().get(c).getIngredients().get(i).getIngredients().equals(restaurant.getIngredients().get(cboxIngredients.getSelectionModel().getSelectedIndex()).getIngredients())) {
-					System.out.println(restaurant.getProducts().get(c).getIngredients().get(i).isAvialable());
 					restaurant.getProducts().get(c).getIngredients().get(i).setAvialable(rbtnAdminIngredientsAvielable.isSelected());
 					restaurant.getProducts().get(c).getIngredients().get(i).setLastEditedBy(currentUser);
-					System.out.println(restaurant.getProducts().get(c).getIngredients().get(i).isAvialable());
+
 
 				}
 			}
@@ -1584,16 +1629,21 @@ public class RestaurantGUI {
 			lblAddProductWarning.setText("Llene todo los campos");
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}else {
-			if(!restaurant.addProduct(txtNameOfProduct.getText() ,txtTypeOfProduct.getText())) {
-				lblAddProductWarning.setText("Se creo el producto: "+txtNameOfProduct.getText()+" con exito");
-				lblAddProductWarning.setTextFill(Paint.valueOf("Green"));
-				lblSizeAndPriceOfProducts.setText("");
-				lblIngredientsForProduct.setText("");
-				restaurant.getProducts().get(restaurant.getProducts().size()-1).setCreatedBy(currentUser);
-				restaurant.getProducts().get(restaurant.getProducts().size()-1).setLastEditedBy(currentUser);
-			}else {
-				lblAddProductWarning.setText("Ya hay un producto: "+txtNameOfProduct.getText());
-				lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
+			try {
+				if(!restaurant.addProduct(txtNameOfProduct.getText() ,txtTypeOfProduct.getText())) {
+					lblAddProductWarning.setText("Se creo el producto: "+txtNameOfProduct.getText()+" con exito");
+					lblAddProductWarning.setTextFill(Paint.valueOf("Green"));
+					lblSizeAndPriceOfProducts.setText("");
+					lblIngredientsForProduct.setText("");
+					restaurant.getProducts().get(restaurant.getProducts().size()-1).setCreatedBy(currentUser);
+					restaurant.getProducts().get(restaurant.getProducts().size()-1).setLastEditedBy(currentUser);
+				}else {
+					lblAddProductWarning.setText("Ya hay un producto: "+txtNameOfProduct.getText());
+					lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}
@@ -1697,6 +1747,19 @@ public class RestaurantGUI {
 			e.printStackTrace();
 		}
 	}
+	
+	//product page
+    @FXML
+    void btnImportProductData(ActionEvent event) {
+    	try {
+    		restaurant.importProductData(currentUser);
+    		loadTableViewProduct();
+    		restaurant.saveData();
+    	}catch (IOException e) {
+			// TODO: handle exception
+    		e.printStackTrace();
+		}
+    }
 
 	//product page to add product page
 	@FXML
@@ -1725,11 +1788,6 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			if(!restaurant.getIngredients().isEmpty()) {
-				for(int c=0;c<restaurant.getIngredients().size();c++) {
-					cboxIngredientsForProduct.getItems().add(restaurant.getIngredients().get(c).getIngredients());
-				}
-			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -1916,6 +1974,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			loadTableViewProduct();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
