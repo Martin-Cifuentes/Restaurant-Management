@@ -56,4 +56,8 @@ public class Client extends Person implements Serializable{
 		this.observations = observations;
 	}
 	
+	public String observationsToString(){
+		return observations.toString();
+	}
+	
 }

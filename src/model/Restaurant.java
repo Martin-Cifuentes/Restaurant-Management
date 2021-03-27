@@ -26,6 +26,8 @@ public class Restaurant {
 	private List<Ingredient> ingredientsForProduct;
 	private List<SizeAndPrice> sizeAndPrice;
 	private List<Product> menuProducts; 
+	private long start;
+	private long time;
 
 	public Restaurant() {
 		ingredients = new ArrayList<>();
@@ -139,7 +141,7 @@ public class Restaurant {
 		Client tmpClient= null;
 		for(int c=0; c < clients.size();c++) {
 			for(int i=c+1; i < clients.size();i++) {
-				if(clients.get(i).getName().compareTo(clients.get(c).getName())<0) {
+				if(clients.get(i).getId().compareTo(clients.get(c).getId())<0) {
 					tmpClient=clients.get(i);
 					clients.remove(i);
 					clients.add(i,clients.get(c));
@@ -153,21 +155,29 @@ public class Restaurant {
 
 	//binary sort for client search
 	public int binarySearchForClients(String id) {
-		int l=0;
-		int size=clients.size()-1;
+		start=System.nanoTime();
+		int l = 0;
+		int size = clients.size() - 1;
 		int found=-1;
-		while(l<=size) {
-			int m=l+(size-1)/2;
+		while (l <= size) {
+			int m = l + (size - l) / 2;
 			int answer = id.compareTo(clients.get(m).getId());
-			if(answer==0) {
-				found=answer;
-			}else if(answer >0) {
-				l=m+1;
+			if (answer == 0) {
+				found= m;
+			}
+			if (answer > 0) {
+				l = m + 1;
+
 			}else {
-				size=m-1;
+				size = m - 1;
 			}
 		}
+		time=System.nanoTime()-start;
 		return found;
+	}
+
+	public long getTime() {
+		return time;
 	}
 
 
@@ -520,6 +530,17 @@ public class Restaurant {
 			loaded = true;
 		}
 		return loaded;
+	}
+
+	public void clearData() throws IOException {
+		clients.clear();
+		products.clear();
+		ingredients.clear();
+		sizeAndPrice.clear();
+		employees.clear();
+		menuProducts.clear();
+		menuProducts.clear();
+		createUser("Admin","SuperAdmin","a003",0,"A","1");
 	}
 
 	@Override

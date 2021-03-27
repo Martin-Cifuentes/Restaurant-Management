@@ -31,6 +31,6 @@
       <Button layoutX="31.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClients" text="Actualizar" />
       <Button layoutX="29.0" layoutY="242.0" mnemonicParsing="false" onAction="#openModifyClient" text="Modificar" />
       <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnSearchClient" text="Buscar cliente " />
-      <Button layoutX="29.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnImportClients" text="Importar clientes" />
+      <Button layoutX="27.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnImportClients" text="Importar clientes" />
    </children>
 </Pane>

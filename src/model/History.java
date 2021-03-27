@@ -2,13 +2,14 @@ package model;
 
 import java.io.Serializable;
 
-public class History implements Serializable {
+public abstract class History implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String createdBy="";
 	private String lastEditedBy="";
+	
 	public String getCreatedBy() {
 		return createdBy;
 	}

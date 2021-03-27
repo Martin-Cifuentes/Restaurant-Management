@@ -67,7 +67,7 @@ public class Product extends History implements Serializable {
 	public String sizeAndPriceToString() {
 		String s="Tamaños: ";
 		for(int c=0;c<sizeAndPrice.size();c++) {
-			s+=sizeAndPrice.get(c).getSize()+" con precio de: "+sizeAndPrice.get(c).getPrice()+"$ \n";
+			s+=sizeAndPrice.get(c).getSize()+" con precio de: $"+sizeAndPrice.get(c).getPrice()+" \n";
 		}
 		return s;
 	}

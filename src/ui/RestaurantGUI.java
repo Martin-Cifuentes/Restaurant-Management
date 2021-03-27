@@ -201,6 +201,9 @@ public class RestaurantGUI {
 
 	@FXML
 	private TableColumn<Client, Integer> tcClientPhone;
+	
+    @FXML
+    private Label lblTimeOfSearch;
 
 	//product page
 	@FXML
@@ -924,9 +927,17 @@ public class RestaurantGUI {
 	@FXML
 	void bntSearchForId(ActionEvent event) {
 		int found= restaurant.binarySearchForClients(txtIdForSearch.getText());
+		lblTimeOfSearch.setText(""+restaurant.getTime());
 		if(found==-1) {
-			lblWarningsForSearchClientPage.setText("f estupida estoy re mamado de todo");
+			lblWarningsForSearchClientPage.setText("No se encontro un cliente con esta id");
 			lblWarningsForSearchClientPage.setTextFill(Paint.valueOf("RED"));
+		}else {
+			lblNameOfSearchedClient.setText(restaurant.getClients().get(found).getName());
+			lblLastNameOfSearchedClient.setText(restaurant.getClients().get(found).getLastName());
+			lblIdOfSearchedClient.setText(restaurant.getClients().get(found).getId());
+			lblAdressOfSearchedClient.setText(restaurant.getClients().get(found).getAdress());
+			lblPhoneOfSearchedClient.setText(restaurant.getClients().get(found).getPhone());
+			lblObservationsOfSearchedClient.setText(restaurant.getClients().get(found).observationsToString());
 		}
 	}
 	//search client page
@@ -1110,6 +1121,24 @@ public class RestaurantGUI {
 			System.out.println("No encontro el usuario");
 		}
 	}
+    @FXML
+    void btnDeleteSavedFiles(ActionEvent event) {
+    	try {
+			restaurant.clearData();
+			restaurant.loadClientsData();
+			restaurant.loadEmployeesData();
+			restaurant.loadIngredientsData();
+			restaurant.loadProductsData();
+			restaurant.saveData();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+
 
 	//main-page
 	public void loadMainPage(){
