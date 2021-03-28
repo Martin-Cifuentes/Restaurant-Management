@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 
-
-public class Ingredient extends History implements Comparable<Ingredient>{
+public class Ingredient extends History implements Comparable<Ingredient>, Serializable{
+	private static final long serialVersionUID = 1;
 	private String ingredients ;
 	private boolean avialable;
 	

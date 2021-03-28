@@ -1,6 +1,12 @@
 package model;
 
-public abstract class Person extends History  {
+import java.io.Serializable;
+
+public abstract class Person extends History implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;
 	public String name;
 	public String lastName;
 	public String id;

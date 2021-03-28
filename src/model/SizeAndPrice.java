@@ -1,6 +1,12 @@
 package model;
 
-public class SizeAndPrice {
+import java.io.Serializable;
+
+public class SizeAndPrice implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;
 	private String size;
 	private double price;
 	

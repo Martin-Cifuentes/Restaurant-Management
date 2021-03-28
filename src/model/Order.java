@@ -1,5 +1,6 @@
 package model;
 
+
 import java.util.ArrayList;
 
 public class Order {
@@ -24,37 +25,54 @@ public class Order {
 		this.quantityOfProduct = qp;
 	}
 
+
+
 	public String getCode() {
 		return code;
 	}
+
+
 
 	public void setCode(String code) {
 		this.code = code;
 	}
 
+
+
 	public State getState() {
 		return state;
 	}
+
+
 
 	public void setState(State state) {
 		this.state = state;
 	}
 
+
+
 	public String getRequestClient() {
 		return requestClient;
 	}
+
+
 
 	public void setRequestClient(String requestClient) {
 		this.requestClient = requestClient;
 	}
 
+
+
 	public String getDeliverEmployee() {
 		return deliverEmployee;
 	}
 
+
+
 	public void setDeliverEmployee(String deliverEmployee) {
 		this.deliverEmployee = deliverEmployee;
 	}
+
 
 	public String getDate() {
 		return date;
@@ -95,6 +113,8 @@ public class Order {
 	public void setQuantityOfProduct(ArrayList<Integer> quantityOfProduct) {
 		this.quantityOfProduct = quantityOfProduct;
 	}
+
+	
 	
 	public ArrayList<String> getQuantityOfProductStr() {
 		ArrayList<String> prodAm = new ArrayList<String>();

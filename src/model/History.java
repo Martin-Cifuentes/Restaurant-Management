@@ -1,8 +1,15 @@
 package model;
 
-public class History {
+import java.io.Serializable;
+
+public abstract class History implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String createdBy="";
 	private String lastEditedBy="";
+	
 	public String getCreatedBy() {
 		return createdBy;
 	}

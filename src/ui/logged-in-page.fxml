@@ -12,5 +12,6 @@
       <Button layoutX="104.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClients" text="Clientes" />
       <Button layoutX="194.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnUsers" text="Users" />
       <Button layoutX="42.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnBackToMainPage" text="Atras" />
+      <Button layoutX="104.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnDeleteSavedFiles" text="Borrar todos los datos guardados" />
    </children>
 </Pane>

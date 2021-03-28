@@ -1,8 +1,13 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Product extends History {
+public class Product extends History implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1;
 	private String name;
 	private ArrayList<SizeAndPrice> sizeAndPrice;
 	private String type;
@@ -62,7 +67,7 @@ public class Product extends History {
 	public String sizeAndPriceToString() {
 		String s="Tamaños: ";
 		for(int c=0;c<sizeAndPrice.size();c++) {
-			s+=sizeAndPrice.get(c).getSize()+" con precio de: "+sizeAndPrice.get(c).getPrice()+"$ \n";
+			s+=sizeAndPrice.get(c).getSize()+" con precio de: $"+sizeAndPrice.get(c).getPrice()+" \n";
 		}
 		return s;
 	}

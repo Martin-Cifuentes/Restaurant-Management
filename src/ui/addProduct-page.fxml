@@ -21,10 +21,10 @@
       <ComboBox fx:id="cboxIngredientsForProduct" layoutX="148.0" layoutY="294.0" prefWidth="150.0" />
       <Label layoutX="147.0" layoutY="277.0" text="Ingredientes" />
       <Button layoutX="317.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnIngredientForProduct" text="Añadir ingrediente" />
-      <Label layoutX="147.0" layoutY="334.0" text="Tamaños y precios:" />
-      <Label layoutX="147.0" layoutY="364.0" text="Ingredientes: " />
-      <Label fx:id="lblSizeAndPriceOfProducts" layoutX="250.0" layoutY="334.0" />
-      <Label fx:id="lblIngredientsForProduct" layoutX="219.0" layoutY="364.0" />
+      <Label layoutX="141.0" layoutY="335.0" prefHeight="17.0" prefWidth="165.0" text="Tamaños y precios para añadir:" />
+      <Label layoutX="147.0" layoutY="364.0" prefHeight="17.0" prefWidth="148.0" text="Ingredientes para añadir: " />
+      <Label fx:id="lblSizeAndPriceOfProducts" layoutX="341.0" layoutY="335.0" prefHeight="17.0" prefWidth="330.0" />
+      <Label fx:id="lblIngredientsForProduct" layoutX="311.0" layoutY="364.0" prefHeight="17.0" prefWidth="336.0" />
       <Label fx:id="lblAddProductWarning" layoutX="148.0" layoutY="424.0" prefHeight="17.0" prefWidth="512.0" />
       <Button layoutX="422.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnClearSizeAndPrice" text="Borrar tamaños y precios" />
       <Button layoutX="143.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnAddProduct" text="Crear producto" />
