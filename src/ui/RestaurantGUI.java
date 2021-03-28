@@ -57,6 +57,9 @@ public class RestaurantGUI {
 	//admin-page
 	@FXML
 	private PasswordField txtPassword;
+	//admin-page
+    @FXML
+    private Label lblAdminPagewarning;
 
 	//Employee-page
 	@FXML
@@ -1117,8 +1120,8 @@ public class RestaurantGUI {
 				e.printStackTrace();
 			}
 		}else {
-			//borrar esto en el futuro 
-			System.out.println("No encontro el usuario");
+			lblAdminPagewarning.setText("El usuario o contraseña no es correcto");
+			lblAdminPagewarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
     @FXML
