@@ -1,36 +1,28 @@
 package model;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
-public class Order implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1;
-	private String code;
-	private State state;
-	private String requestClient;
-	private String deliverEmployee;
-	private Date date;
-	private List<String> observations;
-	private List<Product> productsList;
-	private double price;
-	private int[] quantityOfProduct;
-	
-	
+import java.util.ArrayList;
 
-	public Order(String code, State state, String requestClient, String deliverEmployee, Date date,List<String> observations, List<Product> productsList, double price, int[] quantityOfProduct) {
-		this.code = code;
-		this.state = state;
-		this.requestClient = requestClient;
-		this.deliverEmployee = deliverEmployee;
-		this.date = date;
-		this.observations = observations;
-		this.productsList = productsList;
-		this.price = price;
-		this.quantityOfProduct = quantityOfProduct;
+public class Order {
+	public String code;
+	public State state;
+	public String requestClient;
+	public String deliverEmployee;
+	public String date;
+	public ArrayList<String> observations;
+	public ArrayList<Product> productsList;
+	public ArrayList<String> productsSizes;
+	public ArrayList<Integer> quantityOfProduct;
+	
+	public Order(String c, State s, String rc, String de, String d, ArrayList<String> o, ArrayList<Product> pl, ArrayList<Integer> qp) {
+		this.code = c;//
+		this.state = s;//
+		this.requestClient = rc;//
+		this.deliverEmployee = de;//
+		this.date = d;//
+		this.observations = o;//
+		this.productsList = pl;
+		this.quantityOfProduct = qp;
 	}
 
 
@@ -82,65 +74,74 @@ public class Order implements Serializable {
 	}
 
 
-
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-
-
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-
-
-
-	public List<String> getObservations() {
+	
+	public ArrayList<String> getObservations() {
 		return observations;
 	}
 
-
-
-	public void setObservations(List<String> observations) {
+	public void setObservations(ArrayList<String> observations) {
 		this.observations = observations;
 	}
 
-
-
-	public List<Product> getProductsList() {
+	public ArrayList<Product> getProductsList() {
 		return productsList;
 	}
 
-
-
-	public void setProductsList(List<Product> productsList) {
+	public void setProductsList(ArrayList<Product> productsList) {
 		this.productsList = productsList;
 	}
-
-
-
-	public double getPrice() {
-		return price;
+	
+	public ArrayList<String> getProductsNames() {
+		ArrayList<String> prodNames = new ArrayList<String>();
+		for(int i = 0; i < productsList.size(); i++) {
+			prodNames.add(productsList.get(i).getName());
+		}
+		return prodNames;
 	}
 
-
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-
-
-	public int[] getQuantityOfProduct() {
+	public ArrayList<Integer> getQuantityOfProduct() {
 		return quantityOfProduct;
 	}
 
-
-
-	public void setQuantityOfProduct(int[] quantityOfProduct) {
+	public void setQuantityOfProduct(ArrayList<Integer> quantityOfProduct) {
 		this.quantityOfProduct = quantityOfProduct;
 	}
 
 	
+	
+	public ArrayList<String> getQuantityOfProductStr() {
+		ArrayList<String> prodAm = new ArrayList<String>();
+		for(int i = 0; i < quantityOfProduct.size(); i++) {
+			prodAm.add(String.valueOf(quantityOfProduct.get(i)));
+		}
+		return prodAm;
+	}
+	public ArrayList<Double> getProductsPricesList(){
+		ArrayList<Double> prodPrice = new ArrayList<Double>();
+		for(int i = 0; i < productsList.size(); i++) {
+			for(int j = i; j < productsList.get(i).getSizeAndPrice().size(); j++) {
+				if(productsSizes.get(i).equals(productsList.get(i).getSizeAndPrice().get(j).getSize())) {
+					prodPrice.add(productsList.get(i).getSizeAndPrice().get(j).getPrice());
+				}
+			}
+			
+		}
+		return prodPrice;
+	}
+
+	public ArrayList<String> getProductsSizes() {
+		return productsSizes;
+	}
+
+	public void setProductsSizes(ArrayList<String> productsSizes) {
+		this.productsSizes = productsSizes;
+	}
 	
 }

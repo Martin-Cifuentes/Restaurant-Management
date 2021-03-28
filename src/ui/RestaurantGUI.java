@@ -33,7 +33,6 @@ import model.Product;
 import model.Restaurant;
 
 import model.SizeAndPrice;
-
 import model.User;
 
 
@@ -189,7 +188,8 @@ public class RestaurantGUI {
 
 	@FXML
 	private TableColumn<Client, String> tcClientName;
-
+	
+	@FXML
 	private ListView<String> lvClients;
 
 
@@ -333,9 +333,37 @@ public class RestaurantGUI {
 
     @FXML
     private ListView<String> lvOrdersObs;
+    
+    @FXML
+    private TableColumn<Order, String> tcOrderCode;
 
     @FXML
-    private TableView<Product> tvOrdersProducts;
+    private TableColumn<Order, String> tcOrderState;
+
+    @FXML
+    private TableColumn<Order, String> tcOrderClient;
+
+    @FXML
+    private TableColumn<Order, String> tcOrderEmployee;
+
+    @FXML
+    private TableColumn<Order, String> tcOrderDate;
+    
+    @FXML
+    private ListView<String> lvOrderProductsPrice;
+
+    @FXML
+    private ListView<String> lvOrderProductsCant;
+
+    @FXML
+    private ListView<String> lvOrderProducts;
+    
+    @FXML
+    private ListView<String> lvOrderProductsSize;
+
+    @FXML
+    private Label labTotalPrice;
+
     
     //create-Order
     @FXML
@@ -351,7 +379,7 @@ public class RestaurantGUI {
     private DatePicker calendarDate;
 
     @FXML
-    private TableView<Product> tvListOrderProducts;
+    private TableView<Order> tvListOrderProducts;
 
     @FXML
     private Label labConfirmOrder;
@@ -365,12 +393,27 @@ public class RestaurantGUI {
 
     @FXML
     private ChoiceBox<String> cbProductsToOrder;
+    
+    @FXML
+    private ChoiceBox<String> cbProductsSize;
 
     @FXML
     void btnAddProductToOrder(ActionEvent event) {
     	
     }
-
+    
+    @FXML
+    void findProduct(ActionEvent event) {
+    	if(cbProductsToOrder.getValue() != null) {
+	    	String prodName = cbProductsToOrder.getValue();
+	    	int pos = restaurant.searchProduct(prodName);
+	    	ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProducts().get(pos).getSizes());
+	    	cbProductsSize.setItems(observableList);
+    	}
+    	
+    }
+    
+   
     @FXML
     void btnBackToCreateOrder(ActionEvent event) {
     	try {
@@ -388,9 +431,40 @@ public class RestaurantGUI {
 //create-Order
     @FXML
     void addOrder(ActionEvent event) {
-    	
-    }
+    	/*try {
 
+			if(!txtOrderObs.getText().equals("") && !txtClientOrderName.getText().equals("") &&
+					!txtEmployeeOrderName.getText().equals("") && !calendarDate.getPromptText().equals("") &&
+					 && !txtUserNoo.getText().equals("")) {
+
+
+			}else {
+
+				confirmCreateUser.setText("Se deben llenar todos los espacios");
+				confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+				boolean x = restaurant.createUser(txtUserName.getText(), txtUserLastName.getText(),
+						txtUserID.getText(),Integer.parseInt(txtUserNoo.getText()),
+						txtUserUserName.getText(),txtUserPassword.getText());
+				if(x == false) {
+					confirmCreateUser.setText("Usuario agregado correctamente");
+					confirmCreateUser.setTextFill(Paint.valueOf("Green"));
+				}else {
+					confirmCreateUser.setText("El usuario tiene un id que ya existe");
+					confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+				}
+			}
+		}catch(NumberFormatException n) {
+
+			confirmCreateUser.setText("Los valores no corresponden");
+			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+		}*/
+    }
+    
+    @FXML
+    void btnEraseProductFromOrder(ActionEvent event) {
+
+    }
+    
     @FXML
     void btnOpenSearchProduct(ActionEvent event) {
     	try {
@@ -399,6 +473,8 @@ public class RestaurantGUI {
     		Parent login;
     		login = fxmlLoader.load();
     		mainPane.getChildren().setAll(login);
+    		ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProductsNames());
+	    	cbProductsSize.setItems(observableList);
     	} catch (IOException e) {
     		
     		e.printStackTrace();
@@ -421,9 +497,49 @@ public class RestaurantGUI {
 //Orders-page
     @FXML
     void btnEraseOrder(ActionEvent event) {
+    	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+			Order order = tvOrders.getSelectionModel().getSelectedItem();
 
+			int pos = restaurant.searchOrder(order.getCode());
+			restaurant.getOrders().remove(pos);
+		}
     }
-
+    
+    public void loadTableViewOrders() {
+		ObservableList<Order> observableList;
+		observableList = FXCollections.observableArrayList(restaurant.getOrders());
+		tvOrders.setItems(observableList);
+		tcOrderCode.setCellValueFactory(new PropertyValueFactory<Order,String>("code")); 
+		tcOrderState.setCellValueFactory(new PropertyValueFactory<Order,String>("state")); 
+		tcOrderClient.setCellValueFactory(new PropertyValueFactory<Order,String>("requestClient")); 
+		tcOrderEmployee.setCellValueFactory(new PropertyValueFactory<Order,String>("deliverEmployee"));
+		tcOrderDate.setCellValueFactory(new PropertyValueFactory<Order,String>("date"));
+	}
+    
+    @FXML
+	void showOrderInfo(MouseEvent event) {
+		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+			//listView Observations
+			Order order = tvOrders.getSelectionModel().getSelectedItem();
+			int pos = restaurant.searchOrder(order.getCode());
+			ObservableList<String> orderObs = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getObservations());
+			lvOrdersObs.setItems(orderObs);
+			//listView Products
+			ObservableList<String> orderProd = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getProductsNames());
+			lvOrderProducts.setItems(orderProd);
+			//listView Products amount
+			ObservableList<String> orderProdCant = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getQuantityOfProductStr());
+			lvOrderProductsCant.setItems(orderProdCant);
+			//listView Products prices
+			ObservableList<String> orderProdPrices = FXCollections.observableArrayList(restaurant.getTotalPriceForOrderProduct(pos));
+			lvOrderProductsPrice.setItems(orderProdPrices);
+			//listView Products sizes
+			ObservableList<String> orderProdSizes = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getProductsSizes());
+			lvOrderProductsSize.setItems(orderProdSizes);
+			//label total
+			labTotalPrice.setText(restaurant.getTotalPriceOfOrder(pos));
+		}
+	}
     @FXML
     void btnOpenAddOrder(ActionEvent event) {
     	try {
@@ -559,7 +675,6 @@ public class RestaurantGUI {
 
 	@FXML
 	void eraseUser(ActionEvent event) {
-		System.out.println("entró al método");
 		if(tvUsers.getSelectionModel().getSelectedItem() != null) {
 			System.out.println("entró al if");
 			User user = tvUsers.getSelectionModel().getSelectedItem();

@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
 import java.util.List;
@@ -39,17 +38,49 @@ public class Restaurant {
 		sizeAndPrice = new ArrayList<>();
 		menuProducts= new ArrayList<>();
 	}
+	
+	public void createOrder(State state, String clientName, String employeeName, String date, String[] observations, Product[] products, int[] qOfProducts) {
+		String code = randomCode();
 
-	public void createOrder(String code, State state, String requestClient, String deliverEmployee, Date date,List<String> observations, List<Product> productsList, double price, int[] quantityOfProduct) {
-		code = randomCode();
-		for(int i = 0; i < orders.size(); i++) {
-			if(code == orders.get(i).getCode()) {
-				code = randomCode();
-				i = 0;
+		//Order order = new Order(code, state, clientName, employeeName, date, observations, products, qOfProducts );
+		//orders.add(order);
+		
+	}
+	public ArrayList<String> getProductsNames(){
+		ArrayList<String> names = new ArrayList<String>();
+		for(int i = 0; i<products.size(); i++) {
+			names.add(products.get(i).getName());
+		}
+		return names;
+	}
+	
+	public int searchProduct(String name) {
+		int pos = 0;
+		for(int i = 0; i < products.size(); i++) {
+			if(products.get(i).getName().equals(name)) {
+				pos = i;
 			}
 		}
-		Order order = new Order( code,  state,  requestClient,  deliverEmployee,  date, observations,  productsList,  price,  quantityOfProduct);
-		orders.add(order);
+		return pos;
+	}
+	
+	public ArrayList<String> getTotalPriceForOrderProduct(int o) {
+		ArrayList<String> totals = new ArrayList<String>();
+		for(int i = 0; i < orders.size(); i++) {
+			totals.add(String.valueOf(orders.get(o).getProductsPricesList().get(i) * orders.get(o).getQuantityOfProduct().get(i)));
+			
+		}
+		
+		return totals;
+	}
+	
+	public String getTotalPriceOfOrder(int o) {
+		String total = "";
+		ArrayList<String> totals = getTotalPriceForOrderProduct(o);
+		for(int i = 0; i < orders.size(); i++) {
+			total += totals.get(i);
+		}
+		return total;
 	}
 	/**
 	 * 
@@ -366,7 +397,19 @@ public class Restaurant {
 		}
 		return x;
 	}
-
+	
+	/**
+	/buscar una orden
+	 */
+	public int searchOrder(String code) {
+		int x = -1;
+		for(int i = 0; i< orders.size(); i++ ) {
+			if(orders.get(i).getCode().equals(code)) {
+				x = i;
+			}
+		}
+		return x;
+	}
 
 	//se ve si se pone la contraseña correcta del admin
 	public boolean logInAdmin(String userName,String password) {
