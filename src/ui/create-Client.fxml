@@ -14,7 +14,7 @@
       <Label layoutX="105.0" layoutY="100.0" text="Nombre" />
       <Label layoutX="105.0" layoutY="140.0" text="Apellido" />
       <Label layoutX="121.0" layoutY="182.0" text="ID" />
-      <Label layoutX="100.0" layoutY="221.0" text="Dirteccion" />
+      <Label layoutX="100.0" layoutY="221.0" text="Dirección" />
       <Label layoutX="98.0" layoutY="259.0" text="Telefono" />
       <Label layoutX="216.0" layoutY="20.0" text="Crear Cliente">
          <font>

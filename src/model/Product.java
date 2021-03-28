@@ -66,7 +66,23 @@ public class Product extends History {
 		}
 		return s;
 	}
-
+	
+	public ArrayList<String> getSizes(){
+		ArrayList<String> sizes = new ArrayList<String>();
+		for(int i = 0; i < sizeAndPrice.size(); i++) {
+			sizes.add(sizeAndPrice.get(i).getSize());
+		}
+		return sizes;
+	}
+	
+	public ArrayList<Double> getPrices(){
+		ArrayList<Double> prices = new ArrayList<Double>();
+		for(int i = 0; i < sizeAndPrice.size(); i++) {
+			prices.add(sizeAndPrice.get(i).getPrice());
+		}
+		return prices;
+	}
+	
 	public String ingredientsToString() {
 		String s="";
 		for(int c=0;c<ingredients.size();c++) {

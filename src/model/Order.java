@@ -1,18 +1,19 @@
 package model;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 public class Order {
 	public String code;
 	public State state;
 	public String requestClient;
 	public String deliverEmployee;
-	public Date date;
-	public String[] observations;
-	public Product[] productsList;
-	public int[] quantityOfProduct;
+	public String date;
+	public ArrayList<String> observations;
+	public ArrayList<Product> productsList;
+	public ArrayList<String> productsSizes;
+	public ArrayList<Integer> quantityOfProduct;
 	
-	public Order(String c, State s, String rc, String de, Date d, String[] o, Product[] pl, int[] qp) {
+	public Order(String c, State s, String rc, String de, String d, ArrayList<String> o, ArrayList<Product> pl, ArrayList<Integer> qp) {
 		this.code = c;//
 		this.state = s;//
 		this.requestClient = rc;//
@@ -55,36 +56,72 @@ public class Order {
 		this.deliverEmployee = deliverEmployee;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-
-	public String[] getObservations() {
+	
+	public ArrayList<String> getObservations() {
 		return observations;
 	}
 
-	public void setObservations(String[] observations) {
+	public void setObservations(ArrayList<String> observations) {
 		this.observations = observations;
 	}
 
-	public Product[] getProductsList() {
+	public ArrayList<Product> getProductsList() {
 		return productsList;
 	}
 
-	public void setProductsList(Product[] productsList) {
+	public void setProductsList(ArrayList<Product> productsList) {
 		this.productsList = productsList;
 	}
+	
+	public ArrayList<String> getProductsNames() {
+		ArrayList<String> prodNames = new ArrayList<String>();
+		for(int i = 0; i < productsList.size(); i++) {
+			prodNames.add(productsList.get(i).getName());
+		}
+		return prodNames;
+	}
 
-	public int[] getQuantityOfProduct() {
+	public ArrayList<Integer> getQuantityOfProduct() {
 		return quantityOfProduct;
 	}
 
-	public void setQuantityOfProduct(int[] quantityOfProduct) {
+	public void setQuantityOfProduct(ArrayList<Integer> quantityOfProduct) {
 		this.quantityOfProduct = quantityOfProduct;
+	}
+	
+	public ArrayList<String> getQuantityOfProductStr() {
+		ArrayList<String> prodAm = new ArrayList<String>();
+		for(int i = 0; i < quantityOfProduct.size(); i++) {
+			prodAm.add(String.valueOf(quantityOfProduct.get(i)));
+		}
+		return prodAm;
+	}
+	public ArrayList<Double> getProductsPricesList(){
+		ArrayList<Double> prodPrice = new ArrayList<Double>();
+		for(int i = 0; i < productsList.size(); i++) {
+			for(int j = i; j < productsList.get(i).getSizeAndPrice().size(); j++) {
+				if(productsSizes.get(i).equals(productsList.get(i).getSizeAndPrice().get(j).getSize())) {
+					prodPrice.add(productsList.get(i).getSizeAndPrice().get(j).getPrice());
+				}
+			}
+			
+		}
+		return prodPrice;
+	}
+
+	public ArrayList<String> getProductsSizes() {
+		return productsSizes;
+	}
+
+	public void setProductsSizes(ArrayList<String> productsSizes) {
+		this.productsSizes = productsSizes;
 	}
 	
 }

@@ -17,7 +17,7 @@
       <Label layoutX="42.0" layoutY="100.0" text="Nombre del Cliente" />
       <Label layoutX="42.0" layoutY="166.0" text="Empleado a cargo" />
       <Label layoutX="375.0" layoutY="166.0" text="Productos" />
-      <Button layoutX="461.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct" text="buscar producto" />
+      <Button layoutX="461.0" layoutY="162.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct" prefHeight="25.0" prefWidth="101.0" text="Buscar producto" />
       <TextArea fx:id="txtOrderObs" layoutX="42.0" layoutY="306.0" prefHeight="82.0" prefWidth="286.0" promptText="Cada observacion se separa con un salto de linea" />
       <TextField fx:id="txtClientOrderName" layoutX="165.0" layoutY="96.0" />
       <TextField fx:id="txtEmployeeOrderName" layoutX="165.0" layoutY="162.0" />
@@ -31,7 +31,7 @@
       <Label layoutX="45.0" layoutY="231.0" text="Estado de entrega" />
       <DatePicker fx:id="calendarDate" layoutX="461.0" layoutY="96.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="387.0" layoutY="100.0" text="Fecha" />
-      <TableView fx:id="tvListOrderProducts" layoutX="418.0" layoutY="227.0" prefHeight="161.0" prefWidth="149.0">
+      <TableView fx:id="tvListOrderProducts" layoutX="413.0" layoutY="231.0" prefHeight="161.0" prefWidth="149.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Producto" />
           <TableColumn prefWidth="75.0" text="Cantidad" />
@@ -39,5 +39,6 @@
       </TableView>
       <Button layoutX="38.0" layoutY="37.0" mnemonicParsing="false" onAction="#btnBackToOrders" text="Atras" />
       <Label fx:id="labConfirmOrder" layoutX="334.0" layoutY="407.0" />
+      <Button layoutX="461.0" layoutY="194.0" mnemonicParsing="false" onAction="#btnEraseProductFromOrder" text="Borrar producto" />
    </children>
 </Pane>
