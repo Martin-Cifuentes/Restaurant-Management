@@ -1,9 +1,9 @@
 package model;
 public class OrderItem {
-	public Product product;
-	public String productSize;
-	public double productPrice;
-	public int productAmount;
+	private Product product;
+	private String productSize;
+	private double productPrice;
+	private int productAmount;
 	public OrderItem(Product pl, String ps, double pp, int qp) {
 		this.product = pl;
 		this.productSize = ps;
