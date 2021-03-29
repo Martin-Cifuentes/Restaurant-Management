@@ -11,8 +11,9 @@
       <Label layoutX="222.0" layoutY="89.0" prefHeight="34.0" prefWidth="257.0" text="Usuario" />
       <Label layoutX="222.0" layoutY="216.0" prefHeight="34.0" prefWidth="257.0" text="Contraseña " />
       <TextField fx:id="txtUsuario" layoutX="222.0" layoutY="123.0" prefHeight="25.0" prefWidth="257.0" />
-      <Button layoutX="308.0" layoutY="316.0" mnemonicParsing="false" onAction="#btnLogIn" text="Iniciar sesión" />
+      <Button layoutX="308.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnLogIn" text="Iniciar sesión" />
       <Button layoutX="634.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnAtras" text="atras" />
       <PasswordField fx:id="txtPassword" layoutX="222.0" layoutY="250.0" prefHeight="25.0" prefWidth="257.0" />
+      <Label fx:id="lblAdminPagewarning" layoutX="222.0" layoutY="300.0" prefHeight="17.0" prefWidth="274.0" />
    </children>
 </Pane>
