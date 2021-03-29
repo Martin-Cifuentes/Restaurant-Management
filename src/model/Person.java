@@ -7,9 +7,9 @@ public abstract class Person extends History implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1;
-	public String name;
-	public String lastName;
-	public String id;
+	private String name;
+	private String lastName;
+	private String id;
 	
 	/** 
      * this constructor method creates a Person objet

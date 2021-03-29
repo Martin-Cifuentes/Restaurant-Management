@@ -9,9 +9,9 @@ public class User extends Employee implements Serializable{
 	 */
 	private static final long serialVersionUID = 1;
 
-	public String userName;
+	private String userName;
 
-	public String password;
+	private String password;
 	/** 
 	* this constructor calls the super method Employee to create a User
     * <b>pre:</b> it needs the normal Employee data and some extra User data
@@ -43,8 +43,8 @@ public class User extends Employee implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", password=" + password + ", name=" + name + ", lastName=" + lastName
-				+ ", id=" + id + "]";
+		return "User [userName=" + userName + ", password=" + password + ", name=" + getName() + ", lastName=" + getLastName()
+				+ ", id=" + getId() + "]";
 	}
 
 	

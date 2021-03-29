@@ -34,7 +34,7 @@ public class Employee extends Person implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Employee [numOfOders=" + numOfOrders + ", name=" + name + ", lastName=" + lastName + ", id=" + id + "]";
+		return "Employee [numOfOders=" + numOfOrders + ", name=" + getName() + ", lastName=" + getLastName() + ", id=" + getId() + "]";
 	}
 
 	
