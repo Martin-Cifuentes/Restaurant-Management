@@ -24,12 +24,14 @@ public class Restaurant {
 	private List<Product> products; 
 	private List<Ingredient> ingredientsForProduct;
 	private List<SizeAndPrice> sizeAndPrice;
+	private List<OrderItem> orderItems;
 	private List<Product> menuProducts; 
 	private long start;
 	private long time;
 
 	public Restaurant() {
 		ingredients = new ArrayList<>();
+		orderItems = new ArrayList<>();
 		employees = new ArrayList<>();
 		clients = new ArrayList<>();
 		orders = new ArrayList<>();
@@ -39,13 +41,28 @@ public class Restaurant {
 		menuProducts= new ArrayList<>();
 	}
 	
-	public void createOrder(State state, String clientName, String employeeName, String date, String[] observations, Product[] products, int[] qOfProducts) {
+	public void createOrder(State state, String clientName, String employeeName, String date, String[] obs) {
 		String code = randomCode();
-
-		//Order order = new Order(code, state, clientName, employeeName, date, observations, products, qOfProducts );
-		//orders.add(order);
+		int exist = searchOrder(code);
 		
+		ArrayList<String>observations = new ArrayList<String>();
+		for(int i = 0; i<obs.length; i++) {
+			observations.add(obs[i]);
+		}
+		
+		if(exist > 0) {
+			Order order = new Order(code, state, clientName, employeeName, date, observations, (ArrayList<OrderItem>) orderItems);
+			orders.add(order);
+		}else {
+			createOrder(state,clientName,employeeName,date,obs);
+		}
 	}
+	
+	public void addOrderItem(Product product, String size, double price, int amount) {
+		OrderItem item = new OrderItem(product,size,price,amount);
+		orderItems.add(item);
+	}
+	
 	public ArrayList<String> getProductsNames(){
 		ArrayList<String> names = new ArrayList<String>();
 		for(int i = 0; i<products.size(); i++) {
@@ -634,7 +651,15 @@ public class Restaurant {
 		this.menuProducts = menuProducts;
 	}
 
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
+	}
 
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
+	
+	
 
 
 

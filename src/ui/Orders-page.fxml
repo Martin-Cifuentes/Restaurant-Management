@@ -28,16 +28,18 @@
             <TableColumn fx:id="tcOrderDate" prefWidth="79.0" text="Fecha" />
         </columns>
       </TableView>
-      <ListView fx:id="lvOrdersObs" layoutX="122.0" layoutY="387.0" prefHeight="128.0" prefWidth="161.0" />
-      <Label layoutX="122.0" layoutY="362.0" text="Observaciones" />
+      <ListView fx:id="lvOrdersObs" layoutX="58.0" layoutY="387.0" prefHeight="128.0" prefWidth="161.0" />
+      <Label layoutX="58.0" layoutY="362.0" text="Observaciones" />
       <Button layoutX="32.0" layoutY="81.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Actualizar" />
-      <Label layoutX="626.0" layoutY="402.0" prefHeight="17.0" prefWidth="32.0" text="Total:" />
-      <Label fx:id="labTotalPrice" layoutX="616.0" layoutY="434.0" prefHeight="17.0" prefWidth="52.0" />
-      <ListView fx:id="lvOrderProductsPrice" layoutX="502.0" layoutY="387.0" prefHeight="128.0" prefWidth="95.0" />
-      <ListView fx:id="lvOrderProductsCant" layoutX="400.0" layoutY="387.0" prefHeight="128.0" prefWidth="95.0" />
-      <ListView fx:id="lvOrderProducts" layoutX="299.0" layoutY="387.0" prefHeight="128.0" prefWidth="95.0" />
-      <Label layoutX="322.0" layoutY="362.0" text="Producto" />
-      <Label layoutX="424.0" layoutY="362.0" text="Cantidad" />
-      <Label layoutX="533.0" layoutY="362.0" text="Precio" />
+      <Label layoutX="610.0" layoutY="403.0" prefHeight="17.0" prefWidth="32.0" text="Total:" />
+      <Label fx:id="labTotalPrice" layoutX="600.0" layoutY="431.0" prefHeight="17.0" prefWidth="52.0" />
+      <TableView fx:id="tvOrderItems" layoutX="233.0" layoutY="362.0" prefHeight="155.0" prefWidth="337.0">
+        <columns>
+          <TableColumn fx:id="tcOrderProduct" prefWidth="85.0" text="Producto" />
+          <TableColumn fx:id="tcOrderProductAmount" prefWidth="81.0" text="Cantidad" />
+            <TableColumn fx:id="tcOrderProductSize" prefWidth="85.0" text="Tamaño" />
+            <TableColumn fx:id="tcOrderProductPrice" prefWidth="85.0" text="Precio" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
