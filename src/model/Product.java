@@ -63,7 +63,17 @@ public class Product extends History implements Serializable {
 	public void setIngredients(ArrayList<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-
+	
+	public int searchSize(String size) {
+		int pos = 0;
+		for(int i = 0; i < sizeAndPrice.size(); i++) {
+			if(size.equals(sizeAndPrice.get(i).getSize())){
+				pos = i;
+			}
+		}
+		return pos;
+	}
+	
 	public String sizeAndPriceToString() {
 		String s="Tamaños: ";
 		for(int c=0;c<sizeAndPrice.size();c++) {
@@ -115,6 +125,7 @@ public class Product extends History implements Serializable {
 		}
 		return s;
 	}
-
+	
+	
 
 }

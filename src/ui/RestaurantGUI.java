@@ -2,6 +2,7 @@ package ui;
 
 
 import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,10 +30,12 @@ import model.Client;
 import model.Employee;
 import model.Ingredient;
 import model.Order;
+import model.OrderItem;
 import model.Product;
 import model.Restaurant;
 
 import model.SizeAndPrice;
+import model.State;
 import model.User;
 
 
@@ -346,7 +349,7 @@ public class RestaurantGUI {
     @FXML
     private TableColumn<Order, String> tcOrderDate;
     
-    @FXML
+    /*@FXML
     private ListView<String> lvOrderProductsPrice;
 
     @FXML
@@ -356,7 +359,22 @@ public class RestaurantGUI {
     private ListView<String> lvOrderProducts;
     
     @FXML
-    private ListView<String> lvOrderProductsSize;
+    private ListView<String> lvOrderProductsSize;*/
+    
+    @FXML
+    private TableView<OrderItem> tvOrderItems;
+    
+    @FXML
+    private TableColumn<OrderItem, String> tcOrderProduct;
+
+    @FXML
+    private TableColumn<OrderItem, Integer> tcOrderProductAmount;
+
+    @FXML
+    private TableColumn<OrderItem, String> tcOrderProductSize;
+
+    @FXML
+    private TableColumn<OrderItem, Double> tcOrderProductPrice;
 
     @FXML
     private Label labTotalPrice;
@@ -371,13 +389,22 @@ public class RestaurantGUI {
 
     @FXML
     private TextField txtEmployeeOrderName;
+    
+    @FXML
+    private ChoiceBox<String> cbOrderState;
 
     @FXML
     private DatePicker calendarDate;
 
     @FXML
-    private TableView<Order> tvListOrderProducts;
+    private TableView<OrderItem> tvListOrderProducts;
+    
+    @FXML
+    private TableColumn<OrderItem, String> tcCreateOrderProduct;
 
+    @FXML
+    private TableColumn<OrderItem, Integer> tcCreateOrderProductAmount;
+    
     @FXML
     private Label labConfirmOrder;
     
@@ -396,7 +423,15 @@ public class RestaurantGUI {
 
     @FXML
     void btnAddProductToOrder(ActionEvent event) {
-    	
+    	if(!txtProductCant.getText().equals("") && !cbProductsToOrder.getValue().equals("") && !cbProductsSize.getValue().equals("")) {
+    		int pos = restaurant.searchProduct(cbProductsToOrder.getValue());
+    		int sizePos = restaurant.getProducts().get(pos).searchSize(cbProductsSize.getValue());
+    		double price = restaurant.getProducts().get(pos).getSizeAndPrice().get(sizePos).getPrice();
+    		restaurant.addOrderItem(restaurant.getProducts().get(pos), cbProductsSize.getValue(),
+    								   price, Integer.parseInt(txtProductCant.getText()));
+    	}else {
+    		System.out.println("null");
+    	}
     }
     
     @FXML
@@ -428,33 +463,48 @@ public class RestaurantGUI {
 //create-Order
     @FXML
     void addOrder(ActionEvent event) {
-    	/*try {
+    	String[] observations;
+    	try {
 
 			if(!txtOrderObs.getText().equals("") && !txtClientOrderName.getText().equals("") &&
-					!txtEmployeeOrderName.getText().equals("") && !calendarDate.getPromptText().equals("") &&
-					 && !txtUserNoo.getText().equals("")) {
-
-
+					!txtEmployeeOrderName.getText().equals("") && !calendarDate.getPromptText().equals("") && restaurant.getOrderItems() != null && !cbOrderState.getValue().equals("")) {
+				
+				
+				if(!txtClientObservations.getText().equals("")) {
+					observations = txtClientObservations.getText().split(SEP);
+				}else {
+					observations = new String[1];
+				}
+				
+				State state = null;
+				if(!txtOrderObs.getText().equalsIgnoreCase("SOLICITADO")) {
+					state = State.SOLICITADO;
+				}else if(!txtOrderObs.getText().equalsIgnoreCase("ENVIADO")) {
+					state = State.ENVIADO;
+				}else if(!txtOrderObs.getText().equalsIgnoreCase("ENTREGADO")) {
+					state = State.ENTREGADO;
+				}else if(!txtOrderObs.getText().equalsIgnoreCase("EN_PROCESO")) {
+					state = State.EN_PROCESO;
+				}
+				
+				restaurant.createOrder(state, txtClientOrderName.getText(),
+						txtEmployeeOrderName.getText(), calendarDate.getPromptText() ,
+						observations);
+				
+				confirmCreateUser.setText("Orden agregada correctamente");
+				confirmCreateUser.setTextFill(Paint.valueOf("Green"));
+				
 			}else {
 
 				confirmCreateUser.setText("Se deben llenar todos los espacios");
 				confirmCreateUser.setTextFill(Paint.valueOf("RED"));
-				boolean x = restaurant.createUser(txtUserName.getText(), txtUserLastName.getText(),
-						txtUserID.getText(),Integer.parseInt(txtUserNoo.getText()),
-						txtUserUserName.getText(),txtUserPassword.getText());
-				if(x == false) {
-					confirmCreateUser.setText("Usuario agregado correctamente");
-					confirmCreateUser.setTextFill(Paint.valueOf("Green"));
-				}else {
-					confirmCreateUser.setText("El usuario tiene un id que ya existe");
-					confirmCreateUser.setTextFill(Paint.valueOf("RED"));
-				}
+				
 			}
 		}catch(NumberFormatException n) {
 
 			confirmCreateUser.setText("Los valores no corresponden");
 			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
-		}*/
+		}
     }
     
     @FXML
@@ -471,7 +521,7 @@ public class RestaurantGUI {
     		login = fxmlLoader.load();
     		mainPane.getChildren().setAll(login);
     		ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProductsNames());
-	    	cbProductsSize.setItems(observableList);
+    		cbProductsToOrder.setItems(observableList);
     	} catch (IOException e) {
     		
     		e.printStackTrace();
@@ -496,7 +546,6 @@ public class RestaurantGUI {
     void btnEraseOrder(ActionEvent event) {
     	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
-
 			int pos = restaurant.searchOrder(order.getCode());
 			restaurant.getOrders().remove(pos);
 		}
@@ -513,7 +562,26 @@ public class RestaurantGUI {
 		tcOrderDate.setCellValueFactory(new PropertyValueFactory<Order,String>("date"));
 	}
     
-    @FXML
+    void showOrderInfo(MouseEvent event) {
+		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+			//tv
+			Order order = tvOrders.getSelectionModel().getSelectedItem();
+			int pos = restaurant.searchOrder(order.getCode());
+			ObservableList<OrderItem> observableList;
+			observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
+			tvOrderItems.setItems(observableList);
+			tcOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
+			tcOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount")); 
+			tcOrderProductSize.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productSize")); 
+			tcOrderProductPrice.setCellValueFactory(new PropertyValueFactory<OrderItem,Double>("productPrice"));
+			//lv
+			ObservableList<String> orderObs = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getObservations());
+			lvOrdersObs.setItems(orderObs);
+			//lab
+			labTotalPrice.setText(restaurant.getTotalPriceOfOrder(pos));
+		}
+    }
+    /*@FXML
 	void showOrderInfo(MouseEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			//listView Observations
@@ -536,7 +604,18 @@ public class RestaurantGUI {
 			//label total
 			labTotalPrice.setText(restaurant.getTotalPriceOfOrder(pos));
 		}
-	}
+	}*/
+    
+    void loadTvProductsFromOrder() {
+    	if(restaurant.getOrderItems() != null) {
+    		ObservableList<OrderItem> observableList;
+    		observableList = FXCollections.observableArrayList(restaurant.getOrderItems());
+        	tvListOrderProducts.setItems(observableList);
+        	tcCreateOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
+        	tcCreateOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount"));
+    	}
+    	
+    }
     @FXML
     void btnOpenAddOrder(ActionEvent event) {
     	try {
@@ -545,6 +624,9 @@ public class RestaurantGUI {
     		Parent login;
     		login = fxmlLoader.load();
     		mainPane.getChildren().setAll(login);
+    		loadTvProductsFromOrder();
+    		ObservableList<String> observableList = FXCollections.observableArrayList("SOLICITADO","ENVIADO","ENTREGADO","EN PROCESO");
+    		cbOrderState.setItems(observableList);
     	} catch (IOException e) {
     		
     		e.printStackTrace();
