@@ -59,6 +59,7 @@ public class Restaurant {
 	}
 	
 	public ArrayList<String> getemployeesNames() {
+		return null;
 		
 	}
 	
@@ -331,7 +332,7 @@ public class Restaurant {
 
 		boolean found=false;
 		for(int c=0;c<employees.size() && !found;c++) {
-			if(id.equals(employees.get(c).id)) {
+			if(id.equals(employees.get(c).getId())) {
 				found=true;
 			}
 		}
@@ -393,7 +394,7 @@ public class Restaurant {
 		}
 		boolean found=false;
 		for(int c=0;c<clients.size() && !found;c++) {
-			if(id.equals(clients.get(c).id)) {
+			if(id.equals(clients.get(c).getId())) {
 				found=true;
 			}
 		}
