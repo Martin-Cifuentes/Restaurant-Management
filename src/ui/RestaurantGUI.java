@@ -332,28 +332,27 @@ public class RestaurantGUI {
 
 	//Orders-page
 	@FXML
+	private TableView<Order> tvOrders;
 
-    private TableView<Order> tvOrders;
+	@FXML
+	private ListView<String> lvOrdersObs;
 
-    @FXML
-    private ListView<String> lvOrdersObs;
-    
-    @FXML
-    private TableColumn<Order, String> tcOrderCode;
+	@FXML
+	private TableColumn<Order, String> tcOrderCode;
 
-    @FXML
-    private TableColumn<Order, String> tcOrderState;
+	@FXML
+	private TableColumn<Order, String> tcOrderState;
 
-    @FXML
-    private TableColumn<Order, String> tcOrderClient;
+	@FXML
+	private TableColumn<Order, String> tcOrderClient;
 
-    @FXML
-    private TableColumn<Order, String> tcOrderEmployee;
+	@FXML
+	private TableColumn<Order, String> tcOrderEmployee;
 
-    @FXML
-    private TableColumn<Order, String> tcOrderDate;
-    
-    /*@FXML
+	@FXML
+	private TableColumn<Order, String> tcOrderDate;
+
+	/*@FXML
     private ListView<String> lvOrderProductsPrice;
 
     @FXML
@@ -361,44 +360,32 @@ public class RestaurantGUI {
 
     @FXML
     private ListView<String> lvOrderProducts;
-    
+
     @FXML
     private ListView<String> lvOrderProductsSize;*/
-    
-    @FXML
-    private TableView<OrderItem> tvOrderItems;
-    
-    @FXML
-    private TableColumn<OrderItem, String> tcOrderProduct;
 
-    @FXML
-    private TableColumn<OrderItem, Integer> tcOrderProductAmount;
+	@FXML
+	private TableView<OrderItem> tvOrderItems;
 
-    @FXML
-    private TableColumn<OrderItem, String> tcOrderProductSize;
+	@FXML
+	private TableColumn<OrderItem, String> tcOrderProduct;
 
-    @FXML
-    private TableColumn<OrderItem, Double> tcOrderProductPrice;
+	@FXML
+	private TableColumn<OrderItem, Integer> tcOrderProductAmount;
 
-    @FXML
-    private Label labTotalPrice;
+	@FXML
+	private TableColumn<OrderItem, String> tcOrderProductSize;
 
-    
-    //create-Order
-    @FXML
-    private TextArea txtOrderObs;
+	@FXML
+	private TableColumn<OrderItem, Double> tcOrderProductPrice;
 
-    @FXML
-    private TextField txtClientOrderName;
+	@FXML
+	private Label labTotalPrice;
 
-    @FXML
-    private TextField txtEmployeeOrderName;
-    
-    @FXML
-    private ChoiceBox<String> cbOrderState;
 
-    @FXML
-    private DatePicker calendarDate;
+	//create-Order
+	@FXML
+	private TextArea txtOrderObs;
 
     @FXML
     private Label labConfirmOrder;
@@ -421,14 +408,26 @@ public class RestaurantGUI {
     @FXML
     private Label labConfirmProductToOrder;
 
-    @FXML
-    private TextField txtProductCant;
+	@FXML
+	private TextField txtProductCant;
 
-    @FXML
-    private ChoiceBox<String> cbProductsToOrder;
-    
-    @FXML
-    private ChoiceBox<String> cbProductsSize;
+	@FXML
+	private ChoiceBox<String> cbProductsToOrder;
+
+	@FXML
+	private ChoiceBox<String> cbProductsSize;
+	@FXML
+	private TextField txtClientOrderName;
+
+	@FXML
+	private TextField txtEmployeeOrderName;
+
+	@FXML
+	private ChoiceBox<String> cbOrderState;
+
+	@FXML
+	private DatePicker calendarDate;
+
 
     @FXML
     void btnAddProductToOrder(ActionEvent event) {
@@ -480,14 +479,14 @@ public class RestaurantGUI {
 
 			if(!txtOrderObs.getText().equals("") && !txtClientOrderName.getText().equals("") &&
 					!txtEmployeeOrderName.getText().equals("") && !calendarDate.getPromptText().equals("") && restaurant.getOrderItems() != null && !cbOrderState.getValue().equals("")) {
-				
-				
+
+
 				if(!txtClientObservations.getText().equals("")) {
 					observations = txtClientObservations.getText().split(SEP);
 				}else {
 					observations = new String[1];
 				}
-				
+
 				State state = null;
 				if(!txtOrderObs.getText().equalsIgnoreCase("SOLICITADO")) {
 					state = State.SOLICITADO;
@@ -498,7 +497,7 @@ public class RestaurantGUI {
 				}else if(!txtOrderObs.getText().equalsIgnoreCase("EN_PROCESO")) {
 					state = State.EN_PROCESO;
 				}
-				
+
 				restaurant.createOrder(state, txtClientOrderName.getText(),
 						txtEmployeeOrderName.getText(), calendarDate.getPromptText() ,
 						observations);
@@ -510,7 +509,7 @@ public class RestaurantGUI {
 
 				labConfirmOrder.setText("Se deben llenar todos los espacios");
 				labConfirmOrder.setTextFill(Paint.valueOf("RED"));
-				
+
 			}
 		}catch(NumberFormatException n) {
 
@@ -573,10 +572,11 @@ public class RestaurantGUI {
     }
     
 //Orders-page
-    @FXML
-    void btnEraseOrder(ActionEvent event) {
-    	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 
+	//Orders-page
+	@FXML
+	public void btnEraseOrder(ActionEvent event) {
+		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
 			int pos = restaurant.searchOrder(order.getCode());
 			restaurant.getOrders().remove(pos);
@@ -593,8 +593,12 @@ public class RestaurantGUI {
 		tcOrderEmployee.setCellValueFactory(new PropertyValueFactory<Order,String>("deliverEmployee"));
 		tcOrderDate.setCellValueFactory(new PropertyValueFactory<Order,String>("date"));
 	}
-    
-    void showOrderInfo(MouseEvent event) {
+
+
+
+
+	@FXML
+	public void showOrderInfo(MouseEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			//tv
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
@@ -612,9 +616,9 @@ public class RestaurantGUI {
 			//lab
 			labTotalPrice.setText(restaurant.getTotalPriceOfOrder(pos));
 		}
-    }
-    /*@FXML
-	void showOrderInfo(MouseEvent event) {
+	}
+	/*@FXML
+	public void showOrderInfo(MouseEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			//listView Observations
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
@@ -689,34 +693,34 @@ public class RestaurantGUI {
     void btnOpenModifyPage(ActionEvent event) {
     	
     }
-
-    @FXML
-    void btnOrdersToLoggedIn(ActionEvent event) {
-    	try {
-    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Logged-in-page.fxml"));
-    		fxmlLoader.setController(this);
-    		Parent login;
-    		login = fxmlLoader.load();
-    		mainPane.getChildren().setAll(login);
-    	} catch (IOException e) {
-    		
-    		e.printStackTrace();
-    	}
-    }
-	
+    
 	@FXML
-    void btnOrdersPage(ActionEvent event) {
-    	try {
-    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
-    		fxmlLoader.setController(this);
-    		Parent login;
-    		login = fxmlLoader.load();
-    		mainPane.getChildren().setAll(login);
-    	} catch (IOException e) {
-    		
-    		e.printStackTrace();
-    	}
-    }
+	public void btnOrdersToLoggedIn(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Logged-in-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	public void btnOrdersPage(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
 	private TextField txtModifyUsersLastName;
@@ -731,7 +735,7 @@ public class RestaurantGUI {
 	private Label confirmModifyUser;
 
 	@FXML
-	void modifyUser(ActionEvent event) {
+	public void modifyUser(ActionEvent event) {
 		try {
 
 			if(!txtModifyUsersUserName.getText().equals("") && !txtModifyUserPassword.getText().equals("") &&
@@ -758,7 +762,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void addUser(ActionEvent event) {
+	public void addUser(ActionEvent event) {
 		try {
 
 			if(!txtUserUserName.getText().equals("") && !txtUserPassword.getText().equals("") &&
@@ -791,7 +795,7 @@ public class RestaurantGUI {
 		}
 	}
 	@FXML
-	void btnAtrasCrearUsers(ActionEvent event) {
+	public void btnAtrasCrearUsers(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Users-page.fxml"));
 			fxmlLoader.setController(this);
@@ -806,7 +810,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void eraseUser(ActionEvent event) {
+	public void eraseUser(ActionEvent event) {
 		if(tvUsers.getSelectionModel().getSelectedItem() != null) {
 			System.out.println("entró al if");
 			User user = tvUsers.getSelectionModel().getSelectedItem();
@@ -819,7 +823,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void createUser(ActionEvent event) {
+	public void createUser(ActionEvent event) {
 		try {		
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-User.fxml"));
 			fxmlLoader.setController(this);
@@ -833,7 +837,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenModifyUser(ActionEvent event) {
+	public void btnOpenModifyUser(ActionEvent event) {
 
 		if(tvUsers.getSelectionModel().getSelectedItem() != null) {
 
@@ -862,7 +866,7 @@ public class RestaurantGUI {
 
 	//Users page to logged in page
 	@FXML
-	void btnUsersToLoggedInPage(ActionEvent event) {
+	public void btnUsersToLoggedInPage(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
 			fxmlLoader.setController(this);
@@ -877,7 +881,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnUsers(ActionEvent event) {
+	public void btnUsers(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Users-page.fxml"));
 			fxmlLoader.setController(this);
@@ -891,7 +895,7 @@ public class RestaurantGUI {
 		}
 	}
 	@FXML
-	void modifyEmployee(ActionEvent event) {
+	public void modifyEmployee(ActionEvent event) {
 		try {
 
 			if(!txtModifyEmployeeName.getText().equals("") && !txtModifyEmployeeLastName.getText().equals("") &&
@@ -915,7 +919,7 @@ public class RestaurantGUI {
 		}
 	}
 	@FXML
-	void btnOpenModifyEmployee(ActionEvent event) {
+	public void btnOpenModifyEmployee(ActionEvent event) {
 		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
 
 			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
@@ -941,7 +945,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void eraseEmployee(ActionEvent event) {
+	public void eraseEmployee(ActionEvent event) {
 		if(tvEmployees.getSelectionModel().getSelectedItem() != null) {
 
 			Employee employee = tvEmployees.getSelectionModel().getSelectedItem();
@@ -2042,7 +2046,7 @@ public class RestaurantGUI {
 
 	//product page to add product page
 	@FXML
-	void btnLoadAddProduct(ActionEvent event) {
+	public void btnLoadAddProduct(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProduct-page.fxml"));
 			fxmlLoader.setController(this);
@@ -2060,7 +2064,7 @@ public class RestaurantGUI {
 
 	//product page to logged in page
 	@FXML
-	void btnProductToLoggedInPage(ActionEvent event) {
+	public void btnProductToLoggedInPage(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
 			fxmlLoader.setController(this);
@@ -2087,7 +2091,7 @@ public class RestaurantGUI {
 
 	//products to admin products
 	@FXML
-	void btnProductsToAdminProducts(ActionEvent event) {
+	public void btnProductsToAdminProducts(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-product-page.fxml"));
 			fxmlLoader.setController(this);
@@ -2105,7 +2109,7 @@ public class RestaurantGUI {
 
 	//product admin
 	@FXML
-	void btnCboxIngredientsOfProduct(ActionEvent event) {
+	public void btnCboxIngredientsOfProduct(ActionEvent event) {
 		if(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
 			if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()).isAvialable()) {
 				lblAvialableIngredientProduct.setText("Esta disponible");
@@ -2117,7 +2121,7 @@ public class RestaurantGUI {
 	}
 	//product admin
 	@FXML
-	void btnCboxProducts(ActionEvent event) {
+	public void btnCboxProducts(ActionEvent event) {
 		cboxIngredientsOfProduct.getItems().clear();
 		cboxSizeAndPriceOfProduct.getItems().clear();
 		if(cboxProducts.getSelectionModel().getSelectedIndex()!=-1) {
@@ -2135,7 +2139,7 @@ public class RestaurantGUI {
 	}
 	//product admin
 	@FXML
-	void btnCboxSizeAndPriceOfProduct(ActionEvent event) {
+	public void btnCboxSizeAndPriceOfProduct(ActionEvent event) {
 		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
 			txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
 			txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
@@ -2143,7 +2147,7 @@ public class RestaurantGUI {
 	}
 	//product admin
 	@FXML
-	void btnChangePriceOfSizeOfProduct(ActionEvent event) {
+	public void btnChangePriceOfSizeOfProduct(ActionEvent event) {
 		if(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
 			try {
 				if(!txtSizeOfProduct.getText().equals("")) {
@@ -2162,7 +2166,7 @@ public class RestaurantGUI {
 	}
 	//product admin
 	@FXML
-	void btnDeleteIngredientFromProduct(ActionEvent event) {
+	public void btnDeleteIngredientFromProduct(ActionEvent event) {
 		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size()==1) {
 			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 ingrediente");
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
@@ -2180,7 +2184,7 @@ public class RestaurantGUI {
 
 	//product admin
 	@FXML
-	void btnDeleteSizeAndPrice(ActionEvent event) {
+	public void btnDeleteSizeAndPrice(ActionEvent event) {
 		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size()==1) {
 			lblProductAdminWarnings.setText("El producto debe tener por lo menos 1 tamaño");
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
@@ -2196,7 +2200,7 @@ public class RestaurantGUI {
 	}
 	//product admin
 	@FXML
-	void btnDeleteProductAdmin(ActionEvent event) {
+	public void btnDeleteProductAdmin(ActionEvent event) {
 		restaurant.getProducts().remove(cboxProducts.getSelectionModel().getSelectedIndex());
 		txtSizeOfProductAdmin.clear();
 		txtPriceOfSizeOfProductAdmin.clear();
@@ -2216,7 +2220,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnSaveChangesAdmin(ActionEvent event) {
+	public void btnSaveChangesAdmin(ActionEvent event) {
 		if(!txtNameOfProductAdmin.getText().equals("")) {
 			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).setName(txtNameOfProductAdmin.getText());
 		}
@@ -2245,7 +2249,7 @@ public class RestaurantGUI {
 
 	//product admin to product
 	@FXML
-	void btnAdminProductToProduct(ActionEvent event) {
+	public void btnAdminProductToProduct(ActionEvent event) {
 
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("product-page.fxml"));
@@ -2263,7 +2267,7 @@ public class RestaurantGUI {
 
 	//product admin to product
 	@FXML
-	void btnAddIngredientAndSizePriceToProductPage(ActionEvent event) {
+	public void btnAddIngredientAndSizePriceToProductPage(ActionEvent event) {
 		selectedProduct=cboxProducts.getSelectionModel().getSelectedIndex();
 		if(selectedProduct!=-1) {
 			try {
@@ -2287,7 +2291,7 @@ public class RestaurantGUI {
 
 	//add ingredient and size price
 	@FXML
-	void btnAddIngredientToProduct(ActionEvent event) {
+	public void btnAddIngredientToProduct(ActionEvent event) {
 		boolean found= false;
 		try {
 			for(int c=0;c<restaurant.getProducts().get(selectedProduct).getIngredients().size()&&!found;c++) {
@@ -2311,7 +2315,7 @@ public class RestaurantGUI {
 	}
 	//add ingredient and size price
 	@FXML
-	void btnAddIngredientAndSizePriceToAdminProduct(ActionEvent event) {
+	public void btnAddIngredientAndSizePriceToAdminProduct(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("admin-product-page.fxml"));
 			fxmlLoader.setController(this);
@@ -2328,7 +2332,7 @@ public class RestaurantGUI {
 
 
 	@FXML
-	void btnBackToMainPage(ActionEvent event) {
+	public void btnBackToMainPage(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
@@ -2342,7 +2346,7 @@ public class RestaurantGUI {
 
 	//add ingredient and size price
 	@FXML
-	void btnAddSizeAndPriceToProduct(ActionEvent event) {
+	public void btnAddSizeAndPriceToProduct(ActionEvent event) {
 		if(txtPriceOfSizeOfProductAdmin.getText().equals("") || txtSizeOfProductAdmin.getText().equals("")) {
 			lblAddIngredientAndSizePriceWarning.setText("Llene todos los campos para el tamaño");
 			lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));

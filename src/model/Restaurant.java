@@ -58,6 +58,10 @@ public class Restaurant {
 		}
 	}
 	
+	public ArrayList<String> getemployeesNames() {
+		
+	}
+	
 	public void addOrderItem(Product product, String size, double price, int amount) {
 		OrderItem item = new OrderItem(product,size,price,amount);
 		orderItems.add(item);
