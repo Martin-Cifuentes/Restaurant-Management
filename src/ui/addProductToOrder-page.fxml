@@ -9,9 +9,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnBackToCreateOrder" text="Atras" />
+      <Button layoutX="32.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Atras" />
       <Button layoutX="269.0" layoutY="278.0" mnemonicParsing="false" onAction="#btnAddProductToOrder" text="Agregar" />
-      <Label fx:id="labConfirmProductToOrder" layoutX="261.0" layoutY="238.0" prefHeight="17.0" prefWidth="75.0" />
+      <Label fx:id="labConfirmProductToOrder" layoutX="261.0" layoutY="249.0" prefHeight="17.0" prefWidth="75.0" />
       <Label layoutX="214.0" layoutY="53.0" text="Añadir Producto">
          <font>
             <Font size="24.0" />

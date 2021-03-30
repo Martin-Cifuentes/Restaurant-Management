@@ -58,9 +58,27 @@ public class Restaurant {
 		}
 	}
 	
+	public ArrayList<String> getemployeesNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		for(int i = 0; i < employees.size(); i++) {
+			names.add(employees.get(i).getName());
+		}
+		return names;
+	}
+	
 	public void addOrderItem(Product product, String size, double price, int amount) {
 		OrderItem item = new OrderItem(product,size,price,amount);
 		orderItems.add(item);
+	}
+	
+	public int searchOrderItem(String name) {
+		int pos = 0;
+		for(int i = 0; i<orderItems.size(); i++) {
+			if(name.equals(orderItems.get(i).getProductName())) {
+				pos = i;
+			}
+		}
+		return pos;
 	}
 	
 	public ArrayList<String> getProductsNames(){
