@@ -12,14 +12,14 @@
    <children>
       <Button layoutX="36.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOrdersToLoggedIn" text="Atras" />
       <Button layoutX="562.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Agregar Orden" />
-      <Button layoutX="225.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar" />
-      <Button layoutX="400.0" layoutY="106.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
+      <Button layoutX="225.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar" />
+      <Button layoutX="400.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
       <Label layoutX="292.0" layoutY="26.0" text="Ordenes">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <TableView fx:id="tvOrders" layoutX="122.0" layoutY="152.0" prefHeight="204.0" prefWidth="448.0">
+      <TableView fx:id="tvOrders" layoutX="122.0" layoutY="131.0" onMouseClicked="#showOrderInfo" prefHeight="204.0" prefWidth="448.0">
         <columns>
           <TableColumn fx:id="tcOrderCode" prefWidth="118.0" text="Código" />
           <TableColumn fx:id="tcOrderState" prefWidth="88.0" text="Estado" />
@@ -28,12 +28,12 @@
             <TableColumn fx:id="tcOrderDate" prefWidth="79.0" text="Fecha" />
         </columns>
       </TableView>
-      <ListView fx:id="lvOrdersObs" layoutX="58.0" layoutY="387.0" prefHeight="128.0" prefWidth="161.0" />
-      <Label layoutX="58.0" layoutY="362.0" text="Observaciones" />
+      <ListView fx:id="lvOrdersObs" layoutX="58.0" layoutY="367.0" prefHeight="128.0" prefWidth="161.0" />
+      <Label layoutX="61.0" layoutY="343.0" text="Observaciones" />
       <Button layoutX="32.0" layoutY="81.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Actualizar" />
       <Label layoutX="610.0" layoutY="403.0" prefHeight="17.0" prefWidth="32.0" text="Total:" />
       <Label fx:id="labTotalPrice" layoutX="600.0" layoutY="431.0" prefHeight="17.0" prefWidth="52.0" />
-      <TableView fx:id="tvOrderItems" layoutX="233.0" layoutY="362.0" prefHeight="155.0" prefWidth="337.0">
+      <TableView fx:id="tvOrderItems" layoutX="232.0" layoutY="343.0" prefHeight="155.0" prefWidth="337.0">
         <columns>
           <TableColumn fx:id="tcOrderProduct" prefWidth="85.0" text="Producto" />
           <TableColumn fx:id="tcOrderProductAmount" prefWidth="81.0" text="Cantidad" />

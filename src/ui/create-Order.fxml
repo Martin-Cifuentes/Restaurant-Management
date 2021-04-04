@@ -5,7 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -15,8 +14,6 @@
       <Label layoutX="41.0" layoutY="137.0" text="Nombre del Cliente" />
       <Label layoutX="41.0" layoutY="224.0" text="Empleado a cargo" />
       <TextArea fx:id="txtOrderObs" layoutX="376.0" layoutY="224.0" prefHeight="82.0" prefWidth="286.0" promptText="Cada observacion se separa con un salto de linea" />
-      <TextField fx:id="txtClientOrderName" layoutX="165.0" layoutY="133.0" />
-      <TextField fx:id="txtEmployeeOrderName" layoutX="165.0" layoutY="220.0" />
       <Label layoutX="376.0" layoutY="203.0" text="Observaciones" />
       <Label layoutX="223.0" layoutY="28.0" text="Crear Orden Paso 2">
          <font>
@@ -26,9 +23,11 @@
       <Label layoutX="41.0" layoutY="317.0" text="Estado de entrega" />
       <DatePicker fx:id="calendarDate" layoutX="448.0" layoutY="133.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="384.0" layoutY="137.0" text="Fecha" />
-      <Button layoutX="37.0" layoutY="71.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Cancelar" />
-      <Label fx:id="labConfirmOrder" layoutX="52.0" layoutY="375.0" prefHeight="17.0" prefWidth="591.0" />
+      <Button layoutX="39.0" layoutY="71.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Salir" />
       <ChoiceBox fx:id="cbOrderState" layoutX="164.0" layoutY="313.0" prefWidth="150.0" />
       <Button layoutX="37.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Atras" />
+      <ChoiceBox fx:id="cbAbleClients" layoutX="164.0" layoutY="133.0" prefHeight="25.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbAbleEmployees" layoutX="164.0" layoutY="220.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label fx:id="labConfirmOrder" layoutX="333.0" layoutY="367.0" />
    </children>
 </Pane>

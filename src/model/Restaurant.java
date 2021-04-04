@@ -50,7 +50,7 @@ public class Restaurant {
 			observations.add(obs[i]);
 		}
 		
-		if(exist > 0) {
+		if(exist < 0) {
 			Order order = new Order(code, state, clientName, employeeName, date, observations, (ArrayList<OrderItem>) orderItems);
 			orders.add(order);
 		}else {
@@ -62,6 +62,14 @@ public class Restaurant {
 		ArrayList<String> names = new ArrayList<String>();
 		for(int i = 0; i < employees.size(); i++) {
 			names.add(employees.get(i).getName());
+		}
+		return names;
+	}
+	
+	public ArrayList<String> getClientsNames() {
+		ArrayList<String> names = new ArrayList<String>();
+		for(int i = 0; i < clients.size(); i++) {
+			names.add(clients.get(i).getName());
 		}
 		return names;
 	}
@@ -101,7 +109,7 @@ public class Restaurant {
 	
 	public ArrayList<String> getTotalPriceForOrderProduct(int o) {
 		ArrayList<String> totals = new ArrayList<String>();
-		for(int i = 0; i < orders.size(); i++) {
+		for(int i = 0; i < orders.get(o).getProductsPricesList().size(); i++) {
 			totals.add(String.valueOf(orders.get(o).getProductsPricesList().get(i) * orders.get(o).getQuantityOfProduct().get(i)));
 			
 		}
@@ -112,7 +120,7 @@ public class Restaurant {
 	public String getTotalPriceOfOrder(int o) {
 		String total = "";
 		ArrayList<String> totals = getTotalPriceForOrderProduct(o);
-		for(int i = 0; i < orders.size(); i++) {
+		for(int i = 0; i < totals.size(); i++) {
 			total += totals.get(i);
 		}
 		return total;

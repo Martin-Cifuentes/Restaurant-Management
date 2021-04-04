@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="218.0" layoutY="25.0" text="Crear Orden Paso 1">
@@ -26,6 +25,6 @@
       <Button layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Actualizar tabla" />
       <Button layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Cancelar" />
       <Button layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnOpenAddOrder" text="Continuar" />
-      <Label fx:id="labConfirmAddOrderS1" layoutX="320.0" layoutY="403.0" prefHeight="17.0" prefWidth="44.0" />
+      <Label fx:id="labConfirmAddOrderS1" layoutX="328.0" layoutY="401.0" />
    </children>
 </Pane>
