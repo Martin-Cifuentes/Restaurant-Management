@@ -623,9 +623,11 @@ public class RestaurantGUI {
 	@FXML
 	public void showOrderInfo(MouseEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+			
 			//tv
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
 			int pos = restaurant.searchOrder(order.getCode());
+
 			System.out.println(pos + " " + order);
 			loadTvShowProductsFromOrder(pos);
 			//lv
@@ -636,11 +638,22 @@ public class RestaurantGUI {
 		}
 	}
 	
+	
+/*	
+	ObservableList<User> observableList;
+	observableList = FXCollections.observableArrayList(restaurant.getUsers());
+	tvUsers.setItems(observableList);
+	tcUserName.setCellValueFactory(new PropertyValueFactory<User,String>("name")); 
+	tcUserLastName.setCellValueFactory(new PropertyValueFactory<User,String>("lastName")); 
+	tcUserID.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
+	tcUserNoo.setCellValueFactory(new PropertyValueFactory<User,Integer>("numOfOrders"));
+	tcUserUserName.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
+*/
 	void loadTvShowProductsFromOrder(int pos) {
     	//if(!restaurant.getOrders().get(pos).getItems().isEmpty()) {
 		ObservableList<OrderItem> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
-		System.out.println(restaurant.getOrders().get(pos));
+	
 		tvOrderItems.setItems(observableList);
 		tcOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
 		tcOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount")); 

@@ -44,7 +44,11 @@ public class Restaurant {
 	public void createOrder(State state, String clientName, String employeeName, String date, String[] obs) {
 		String code = randomCode();
 		int exist = searchOrder(code);
-		ArrayList<OrderItem> oI = (ArrayList<OrderItem>) orderItems;
+
+		ArrayList<OrderItem> oI = new ArrayList<>();
+		oI.addAll(orderItems);
+		
+		
 		ArrayList<String>observations = new ArrayList<String>();
 		for(int i = 0; i<obs.length; i++) {
 			observations.add(obs[i]);
@@ -53,7 +57,6 @@ public class Restaurant {
 		if(exist < 0) {
 			Order order = new Order(code, state, clientName, employeeName, date, observations, oI);
 			orders.add(order);
-			
 		}else {
 			createOrder(state,clientName,employeeName,date,obs);
 		}
