@@ -11,6 +11,12 @@ public class OrderItem {
 		this.productAmount = qp;
 	}
 	
+	@Override
+	public String toString() {
+		return "OrderItem [product=" + product + ", productSize=" + productSize + ", productPrice=" + productPrice
+				+ ", productAmount=" + productAmount + "]";
+	}
+
 	public String getProductName() {
 		return product.getName();
 	}

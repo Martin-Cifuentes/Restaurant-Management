@@ -462,14 +462,16 @@ public class RestaurantGUI {
     }
     
     @FXML
-    void findProduct(ActionEvent event) {
+    void findProduct(MouseEvent event) {
     	if(cbProductsToOrder.getValue() != null) {
 	    	String prodName = cbProductsToOrder.getValue();
 	    	int pos = restaurant.searchProduct(prodName);
 	    	ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProducts().get(pos).getSizes());
 	    	cbProductsSize.setItems(observableList);
+    	}else {
+    		labConfirmProductToOrder.setText("Ingrese primero el producto para poder ver sus tamaños");
+    		labConfirmProductToOrder.setTextFill(Paint.valueOf("orange"));
     	}
-    	
     }
     
    
@@ -635,16 +637,16 @@ public class RestaurantGUI {
 	}
 	
 	void loadTvShowProductsFromOrder(int pos) {
-    	if(restaurant.getOrderItems() != null) {
-    		ObservableList<OrderItem> observableList;
-    		observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
-    		System.out.println(restaurant.getOrders().get(pos).getItems());
-    		tvOrderItems.setItems(observableList);
-    		tcOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
-			tcOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount")); 
-			tcOrderProductSize.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productSize")); 
-			tcOrderProductPrice.setCellValueFactory(new PropertyValueFactory<OrderItem,Double>("productPrice"));
-    	}
+    	//if(!restaurant.getOrders().get(pos).getItems().isEmpty()) {
+		ObservableList<OrderItem> observableList;
+		observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
+		System.out.println(restaurant.getOrders().get(pos));
+		tvOrderItems.setItems(observableList);
+		tcOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
+		tcOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount")); 
+		tcOrderProductSize.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productSize")); 
+		tcOrderProductPrice.setCellValueFactory(new PropertyValueFactory<OrderItem,Double>("productPrice"));
+    	
     	
     }
     

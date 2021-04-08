@@ -29,6 +29,14 @@ public class Order {
 	
 	
 	
+	@Override
+	public String toString() {
+		return "Order [code=" + code + ", state=" + state + ", requestClient=" + requestClient + ", deliverEmployee="
+				+ deliverEmployee + ", date=" + date + ", observations=" + observations + ", items=" + items + "]";
+	}
+
+
+
 	public String getCode() {
 		return code;
 	}
