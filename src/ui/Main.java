@@ -1,5 +1,6 @@
 package ui;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +9,6 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-
 	private RestaurantGUI restaurantGUI;
 	public Main() {
 		restaurantGUI= new RestaurantGUI();
@@ -18,7 +18,7 @@ public class Main extends Application {
 	}
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
+		
 		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-pane.fxml"));
 		fxmlLoader.setController(restaurantGUI);
 		Parent root= fxmlLoader.load();

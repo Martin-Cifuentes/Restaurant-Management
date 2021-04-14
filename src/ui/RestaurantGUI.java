@@ -2,7 +2,10 @@ package ui;
 
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,14 +48,19 @@ public class RestaurantGUI {
 
 	public RestaurantGUI() {
 		restaurant= new Restaurant();
-
 	}
+
 
 	private String currentUser;
 	public final static String SEP = "\n";
 	//main-pane
 	@FXML
 	private Pane mainPane;
+	//main page
+	@FXML
+	private Label lbldateAndTime;
+
+
 	//admin-page
 	@FXML
 	private TextField txtUsuario;
@@ -387,43 +395,43 @@ public class RestaurantGUI {
 	@FXML
 	private TextArea txtOrderObs;
 
-    @FXML
-    private Label labConfirmOrder;
-    
-    @FXML
-    private Label labConfirmAddOrderS1;
-    
-    /*@FXML
+	@FXML
+	private Label labConfirmOrder;
+
+	@FXML
+	private Label labConfirmAddOrderS1;
+
+	/*@FXML
 	private TextField txtClientOrderName;
-    
-    @FXML
-	private TextField txtEmployeeOrderName;*/
-    @FXML
-    private ChoiceBox<String> cbAbleClients;
 
     @FXML
-    private ChoiceBox<String> cbAbleEmployees;
+	private TextField txtEmployeeOrderName;*/
+	@FXML
+	private ChoiceBox<String> cbAbleClients;
+
+	@FXML
+	private ChoiceBox<String> cbAbleEmployees;
 
 	@FXML
 	private ChoiceBox<String> cbOrderState;
 
 	@FXML
 	private DatePicker calendarDate;
-    
-//create-Order1
-    
-    @FXML
-    private TableView<OrderItem> tvListOrderProducts;
-    
-    @FXML
-    private TableColumn<OrderItem, String> tcCreateOrderProduct;
 
-    @FXML
-    private TableColumn<OrderItem, Integer> tcCreateOrderProductAmount;
-    
-//addProductToOrder-page
-    @FXML
-    private Label labConfirmProductToOrder;
+	//create-Order1
+
+	@FXML
+	private TableView<OrderItem> tvListOrderProducts;
+
+	@FXML
+	private TableColumn<OrderItem, String> tcCreateOrderProduct;
+
+	@FXML
+	private TableColumn<OrderItem, Integer> tcCreateOrderProductAmount;
+
+	//addProductToOrder-page
+	@FXML
+	private Label labConfirmProductToOrder;
 
 	@FXML
 	private TextField txtProductCant;
@@ -517,8 +525,6 @@ public class RestaurantGUI {
 
 				labConfirmModifyOrder.setText("Se deben llenar todos los espacios");
 				labConfirmModifyOrder.setTextFill(Paint.valueOf("RED"));
-				
-				
 
 			}
 		}catch(NumberFormatException n) {
@@ -663,62 +669,64 @@ public class RestaurantGUI {
 
     
 
-    @FXML
-    void btnAddProductToOrder(ActionEvent event) {
-    	try {
-    		if(Integer.parseInt(txtProductCant.getText()) != 0 && !cbProductsToOrder.getValue().equals("") && !cbProductsSize.getValue().equals("")) {
-        		int pos = restaurant.searchProduct(cbProductsToOrder.getValue());
-        		int sizePos = restaurant.getProducts().get(pos).searchSize(cbProductsSize.getValue());
-        		double price = restaurant.getProducts().get(pos).getSizeAndPrice().get(sizePos).getPrice();
-        		restaurant.addOrderItem(restaurant.getProducts().get(pos), cbProductsSize.getValue(),
-        								   price, Integer.parseInt(txtProductCant.getText()));
-        		
-        		labConfirmProductToOrder.setText("Producto agregado correctamente a orden");
-        		labConfirmProductToOrder.setTextFill(Paint.valueOf("Green"));
-        	}else {
-        		labConfirmProductToOrder.setText("Se deben llenar todos los espacios");
-        		labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
-        	}
-    	}catch (NumberFormatException nfe) {
-    		labConfirmProductToOrder.setText("Los valores no corresponden");
-    		labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
-    	}
-    	
-    }
-    
-    @FXML
-    void findProduct(MouseEvent event) {
-    	if(cbProductsToOrder.getValue() != null) {
-	    	String prodName = cbProductsToOrder.getValue();
-	    	int pos = restaurant.searchProduct(prodName);
-	    	ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProducts().get(pos).getSizes());
-	    	cbProductsSize.setItems(observableList);
-    	}else {
-    		labConfirmProductToOrder.setText("Ingrese primero el producto para poder ver sus tamaños");
-    		labConfirmProductToOrder.setTextFill(Paint.valueOf("orange"));
-    	}
-    }
-    
-   
-    @FXML
-    void btnBackToCreateOrder(ActionEvent event) {
-    	try {
-    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
-    		fxmlLoader.setController(this);
-    		Parent login;
-    		login = fxmlLoader.load();
-    		mainPane.getChildren().setAll(login);
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
-    }
 
-//create-Order
-    @FXML
-    void addOrder(ActionEvent event) {
-    	String[] observations;
-    	
-    	try {
+
+	@FXML
+	void btnAddProductToOrder(ActionEvent event) {
+		try {
+			if(Integer.parseInt(txtProductCant.getText()) != 0 && !cbProductsToOrder.getValue().equals("") && !cbProductsSize.getValue().equals("")) {
+				int pos = restaurant.searchProduct(cbProductsToOrder.getValue());
+				int sizePos = restaurant.getProducts().get(pos).searchSize(cbProductsSize.getValue());
+				double price = restaurant.getProducts().get(pos).getSizeAndPrice().get(sizePos).getPrice();
+				restaurant.addOrderItem(restaurant.getProducts().get(pos), cbProductsSize.getValue(),
+						price, Integer.parseInt(txtProductCant.getText()));
+
+				labConfirmProductToOrder.setText("Producto agregado correctamente a orden");
+				labConfirmProductToOrder.setTextFill(Paint.valueOf("Green"));
+			}else {
+				labConfirmProductToOrder.setText("Se deben llenar todos los espacios");
+				labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
+			}
+		}catch (NumberFormatException nfe) {
+			labConfirmProductToOrder.setText("Los valores no corresponden");
+			labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
+		}
+
+	}
+
+	@FXML
+	void findProduct(MouseEvent event) {
+		if(cbProductsToOrder.getValue() != null) {
+			String prodName = cbProductsToOrder.getValue();
+			int pos = restaurant.searchProduct(prodName);
+			ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProducts().get(pos).getSizes());
+			cbProductsSize.setItems(observableList);
+		}else {
+			labConfirmProductToOrder.setText("Ingrese primero el producto para poder ver sus tamaños");
+			labConfirmProductToOrder.setTextFill(Paint.valueOf("orange"));
+		}
+	}
+
+
+	@FXML
+	void btnBackToCreateOrder(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	//create-Order
+	@FXML
+	void addOrder(ActionEvent event) {
+		String[] observations;
+
+		try {
 
 			if(!cbAbleClients.getValue().equals("") && !cbAbleEmployees.getValue().equals("") &&
 					!String.valueOf(calendarDate.getValue()).equals("") && !restaurant.getOrderItems().isEmpty()
@@ -745,15 +753,15 @@ public class RestaurantGUI {
 				restaurant.createOrder(state, cbAbleClients.getValue(),
 						cbAbleEmployees.getValue(), String.valueOf(calendarDate.getValue()) ,
 						observations);
-				
+
 				labConfirmOrder.setText("Orden agregada correctamente");
 				labConfirmOrder.setTextFill(Paint.valueOf("Green"));
-				
+
 			}else {
 
 				labConfirmOrder.setText("Se deben llenar todos los espacios");
 				labConfirmOrder.setTextFill(Paint.valueOf("RED"));
-				
+
 				System.out.println("observaciones: " + txtOrderObs.getText() + " cliente: " + cbAbleClients.getValue() 
 				+ " empleado: " + cbAbleEmployees.getValue() + " dia: " + calendarDate.getValue() + 
 				" orderitems: " + restaurant.getOrderItems() + " estado: " + cbOrderState.getValue());
@@ -794,6 +802,7 @@ public class RestaurantGUI {
     
 //Orders-page
 
+
 	//Orders-page
 	@FXML
 	public void btnEraseOrder(ActionEvent event) {
@@ -821,7 +830,7 @@ public class RestaurantGUI {
 	@FXML
 	public void showOrderInfo(MouseEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
-			
+
 			//tv
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
 			int pos = restaurant.searchOrder(order.getCode());
@@ -835,23 +844,13 @@ public class RestaurantGUI {
 			labTotalPrice.setText(restaurant.getTotalPriceOfOrder(pos));
 		}
 	}
-	
-	
-/*	
-	ObservableList<User> observableList;
-	observableList = FXCollections.observableArrayList(restaurant.getUsers());
-	tvUsers.setItems(observableList);
-	tcUserName.setCellValueFactory(new PropertyValueFactory<User,String>("name")); 
-	tcUserLastName.setCellValueFactory(new PropertyValueFactory<User,String>("lastName")); 
-	tcUserID.setCellValueFactory(new PropertyValueFactory<User,String>("id"));
-	tcUserNoo.setCellValueFactory(new PropertyValueFactory<User,Integer>("numOfOrders"));
-	tcUserUserName.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
-*/
+
+
+
 	void loadTvShowProductsFromOrder(int pos) {
-    	//if(!restaurant.getOrders().get(pos).getItems().isEmpty()) {
 		ObservableList<OrderItem> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
-	
+
 		tvOrderItems.setItems(observableList);
 		tcOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
 		tcOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount")); 
@@ -1094,7 +1093,7 @@ public class RestaurantGUI {
 			txtModifyUsersNoo.setText(String.valueOf(user.getNumOfOrders()));
 			txtModifyUserPassword.setText(user.getPassword());
 		}else {
-			System.out.println("f");
+			//System.out.println("f");
 		}
 	}
 
@@ -1205,6 +1204,7 @@ public class RestaurantGUI {
 
 	@FXML
 	private Label confirmModifyEmployee;
+
 
 
 
@@ -1629,18 +1629,17 @@ public class RestaurantGUI {
 
 
 	//main-page
+	private Thread time;
 	public void loadMainPage(){
 		State state = State.EN_PROCESO;
 		String [] obs = new String[2];
 		obs[0] = "a";
 		obs[1] = "b";
-		
 		try {
 			restaurant.loadIngredientsData();
 			restaurant.loadEmployeesData();
 			restaurant.loadProductsData();
 			restaurant.loadClientsData();
-			//restaurant.createUser("Admin","SuperAdmin","a003",0,"A","1");
 			restaurant.saveData();
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
@@ -1654,13 +1653,32 @@ public class RestaurantGUI {
 			restaurant.createOrder(state, restaurant.getClientsNames().get(0), restaurant.getemployeesNames().get(0), "14/04/2021", obs);
 			restaurant.getOrderItems().clear();
 			
-		} catch (IOException e) {
+			lbldateAndTime.setText(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()  +" "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond() );
 
+		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		time = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(;;){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							lbldateAndTime.setText(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()  +" "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond() );
+						}
+					});
+				}
+			}
+		});
+		time.start();
 	}
 
 	//main-page
@@ -1672,6 +1690,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			time.interrupt();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -1688,6 +1707,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			time.interrupt();
 			if(restaurant.getProducts().isEmpty()) {
 				lblWarningMenu.setText("No hay productos");
 				lblWarningMenu.setTextFill(Paint.valueOf("Red"));
@@ -2624,4 +2644,9 @@ public class RestaurantGUI {
 	}
 
 
+
+
 }
+
+
+
