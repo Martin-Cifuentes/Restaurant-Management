@@ -1,7 +1,5 @@
 package ui;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +9,6 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-
 	private RestaurantGUI restaurantGUI;
 	public Main() {
 		restaurantGUI= new RestaurantGUI();
@@ -32,24 +29,4 @@ public class Main extends Application {
 		restaurantGUI.loadMainPage();
 		
 	}
-	/*
-	public void thread(Stage primaryStage){
-		Thread time= new Thread() {
-			public void run() {
-				while(primaryStage.isShowing()) {
-					primaryStage.setTitle(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()+"    "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond());
-					//LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond();
-					//LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear();
-					try {
-						sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-			}
-		};time.run();
-		}
-		*/
 }

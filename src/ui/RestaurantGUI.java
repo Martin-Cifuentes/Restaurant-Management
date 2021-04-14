@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,11 +49,6 @@ public class RestaurantGUI {
 	public RestaurantGUI() {
 		restaurant= new Restaurant();
 	}
-	
-	//NO ESTA EN EL DIAGRAMA
-	//private String displayTime;
-
-	//private String date;
 
 
 	private String currentUser;
@@ -60,6 +56,11 @@ public class RestaurantGUI {
 	//main-pane
 	@FXML
 	private Pane mainPane;
+	//main page
+	@FXML
+	private Label lbldateAndTime;
+
+
 	//admin-page
 	@FXML
 	private TextField txtUsuario;
@@ -998,6 +999,7 @@ public class RestaurantGUI {
 
 
 
+
 	//product admin
 	@FXML
 	private ComboBox<String> cboxProducts;
@@ -1419,33 +1421,44 @@ public class RestaurantGUI {
 
 
 	//main-page
+	private Thread time;
 	public void loadMainPage(){
-		//thread();
-
-
-
 		try {
 			restaurant.loadIngredientsData();
 			restaurant.loadEmployeesData();
 			restaurant.loadProductsData();
 			restaurant.loadClientsData();
-			//restaurant.createUser("Admin","SuperAdmin","a003",0,"A","1");
 			restaurant.saveData();
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-
+			lbldateAndTime.setText(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()  +" "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond() );
 		} catch (IOException e) {
-
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-
-
+		time = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				for(;;){
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+					}
+					Platform.runLater(new Runnable() {
+						@Override
+						public void run() {
+							lbldateAndTime.setText(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()  +" "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond() );
+						}
+					});
+				}
+			}
+		});
+		time.start();
 	}
 
 	//main-page
@@ -1457,6 +1470,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			time.interrupt();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -1473,6 +1487,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			time.interrupt();
 			if(restaurant.getProducts().isEmpty()) {
 				lblWarningMenu.setText("No hay productos");
 				lblWarningMenu.setTextFill(Paint.valueOf("Red"));
@@ -2410,24 +2425,6 @@ public class RestaurantGUI {
 
 
 
-	public void thd() {
-		Thread time= new Thread() {
-			public void run() {
-				for(;;) {
-					displayTime=LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond();
-					date=LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear();
-					try {
-						sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-
-			}
-		};
-		time.start();
-	}
 
 }
 
