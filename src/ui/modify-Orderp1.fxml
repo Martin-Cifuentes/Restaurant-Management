@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="149.0" layoutY="25.0" text="Modificar Productos de Orden">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tvListModifyOrderProducts" layoutX="255.0" layoutY="178.0" prefHeight="200.0" prefWidth="175.0">
+        <columns>
+          <TableColumn fx:id="tcModifyOrderProduct" prefWidth="87.0" text="Producto" />
+          <TableColumn fx:id="tcModifyOrderProductAmount" prefWidth="91.0" text="Cantidad" />
+        </columns>
+      </TableView>
+      <Button layoutX="204.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct2" text="Buscar producto" />
+      <Button layoutX="380.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEraseProductFromModifyOrder" text="Borrar producto" />
+      <Button layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Actualizar tabla" />
+      <Button layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Cancelar" />
+      <Button layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#modifyOrderProducts" text="Modificar" />
+      <Label fx:id="labConfirmModifyOrderS1" layoutX="328.0" layoutY="401.0" />
+      <Label fx:id="labOrderCode2" layoutX="522.0" layoutY="256.0" />
+      <Label layoutX="501.0" layoutY="220.0" text="Código:" />
+   </children>
+</Pane>

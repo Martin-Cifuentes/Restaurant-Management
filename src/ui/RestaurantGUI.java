@@ -434,9 +434,234 @@ public class RestaurantGUI {
 	@FXML
 	private ChoiceBox<String> cbProductsSize;
 	
+//modify-Orderp1
+	@FXML
+    private TableView<OrderItem> tvListModifyOrderProducts;
 
-	
+    @FXML
+    private TableColumn<OrderItem, String> tcModifyOrderProduct;
 
+    @FXML
+    private TableColumn<OrderItem, Integer> tcModifyOrderProductAmount;
+
+    @FXML
+    private Label labConfirmModifyOrderS1;
+    
+//modify-Orderp2
+    @FXML
+    private TextArea txtModifyOrderObs;
+
+    @FXML
+    private DatePicker modifyCalendarDate;
+
+    @FXML
+    private ChoiceBox<String> cbModifyOrderState;
+
+    @FXML
+    private ChoiceBox<String> cbModifyAbleClients;
+
+    @FXML
+    private ChoiceBox<String> cbModifyAbleEmployees;
+
+    @FXML
+    private Label labConfirmModifyOrder;
+    
+    @FXML
+    private Label oldDate;
+    
+    @FXML
+    private Label labOrderCode;
+    
+    @FXML
+    private Label labOrderCode2;
+
+    @FXML
+    void modifyOrder(ActionEvent event) {
+    	String[] observations;
+    	
+    	try {
+
+			if(!cbModifyAbleClients.getValue().equals("") && !cbModifyAbleEmployees.getValue().equals("") &&
+					!cbModifyOrderState.getValue().equals("")) {
+				String date = String.valueOf(modifyCalendarDate.getValue());
+				if(date.equalsIgnoreCase("null")) {
+					date = oldDate.getText();
+				}
+				
+				if(!txtModifyOrderObs.getText().equals("")) {
+					observations = txtModifyOrderObs.getText().split(SEP);
+				}else {
+					observations = new String[1];
+				}
+
+				State state = null;
+				if(cbModifyOrderState.getValue().equalsIgnoreCase("SOLICITADO")) {
+					state = State.SOLICITADO;
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase("ENVIADO")) {
+					state = State.ENVIADO;
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase("ENTREGADO")) {
+					state = State.ENTREGADO;
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase("EN PROCESO")) {
+					state = State.EN_PROCESO;
+				}
+				
+				
+				
+				restaurant.updateOrder(labOrderCode.getText() ,state, cbModifyAbleClients.getValue(),
+						cbModifyAbleEmployees.getValue(), date ,observations);
+				
+				labConfirmModifyOrder.setText("Orden modificada correctamente");
+				labConfirmModifyOrder.setTextFill(Paint.valueOf("Green"));
+				
+			}else {
+
+				labConfirmModifyOrder.setText("Se deben llenar todos los espacios");
+				labConfirmModifyOrder.setTextFill(Paint.valueOf("RED"));
+				
+				
+
+			}
+		}catch(NumberFormatException n) {
+
+			labConfirmModifyOrder.setText("Los valores no corresponden");
+			labConfirmModifyOrder.setTextFill(Paint.valueOf("RED"));
+		}
+    }
+    
+    @FXML
+    void modifyOrderProducts(ActionEvent event) {
+    	System.out.println(labOrderCode2.getText());
+    	restaurant.updateOrderProducts(labOrderCode2.getText());
+    }
+    
+    @FXML
+    void btnOpenModifyOrder2(ActionEvent event) {
+    	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+    		Order order = tvOrders.getSelectionModel().getSelectedItem();
+    		//int pos = restaurant.searchOrder(order.getCode());
+	    	if(restaurant.getOrderItems().isEmpty()) {
+	    		try {
+	        		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Orderp2.fxml"));
+	        		fxmlLoader.setController(this);
+	        		Parent login;
+	        		login = fxmlLoader.load();
+	        		mainPane.getChildren().setAll(login);
+	        		ObservableList<String> observableListStates = FXCollections.observableArrayList("SOLICITADO","ENVIADO","ENTREGADO","EN PROCESO");
+	        		ObservableList<String> observableListClients = FXCollections.observableArrayList(restaurant.getClientsNames());
+	        		ObservableList<String> observableListEmployees = FXCollections.observableArrayList(restaurant.getemployeesNames());
+	        		cbModifyOrderState.setItems(observableListStates);
+	        		cbModifyAbleClients.setItems(observableListClients);
+	        		cbModifyAbleEmployees.setItems(observableListEmployees);
+	        		
+	        		//modify
+	        		cbModifyOrderState.setValue(order.getStateString());
+	        		cbModifyAbleClients.setValue(order.getRequestClient());
+	        		cbModifyAbleEmployees.setValue(order.getDeliverEmployee());
+	        		txtModifyOrderObs.setText(order.getObservationsStr());
+	        		labOrderCode.setText(order.getCode());
+	        		oldDate.setText(order.getDate());
+	        		
+	        	} catch (IOException e) {
+	        		
+	        		e.printStackTrace();
+	        	}
+	    	}else {
+	    		
+	    		labConfirmAddOrderS1.setText("Se debe agregar por lo menos un producto");
+	    		labConfirmAddOrderS1.setTextFill(Paint.valueOf("RED"));
+	    	}
+    	}
+    }
+    
+    @FXML
+    void btnCloseCreateOrder(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    		restaurant.getOrderItems().clear();
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+
+    @FXML
+    void btnEraseProductFromModifyOrder(ActionEvent event) {
+    	if(tvListModifyOrderProducts.getSelectionModel().getSelectedItem() != null) {
+    		OrderItem prod = tvListModifyOrderProducts.getSelectionModel().getSelectedItem();
+    		int o = restaurant.searchOrderItem(prod.getProductName(), prod.getProductSize());
+    		restaurant.getOrderItems().remove(o);
+    	}
+    }
+    
+    @FXML
+    void btnOpenModifyPage(ActionEvent event) {
+    	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
+    		Order order = tvOrders.getSelectionModel().getSelectedItem();
+    		int pos = restaurant.searchOrder(order.getCode());
+    		try {
+        		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Orderp1.fxml"));
+        		fxmlLoader.setController(this);
+        		Parent login;
+        		login = fxmlLoader.load();
+        		mainPane.getChildren().setAll(login);
+        		labOrderCode2.setText(order.getCode());
+        		loadTvModifyProductsFromOrder(pos);
+        	} catch (IOException e) {
+        		e.printStackTrace();
+        	}
+    		
+    	}
+    }
+    
+    void loadTvModifyProductsFromOrder(int pos) {
+    	if(restaurant.getOrderItems().isEmpty()) {
+    		restaurant.getOrderItems().addAll(restaurant.getOrders().get(pos).getItems());
+    	}
+    	//restaurant.getOrders().get(pos).getItems().clear();
+		ObservableList<OrderItem> observableList;
+		observableList = FXCollections.observableArrayList(restaurant.getOrderItems());
+		tvListModifyOrderProducts.setItems(observableList);
+		tcModifyOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
+		tcModifyOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount"));
+    }
+
+    @FXML
+    void btnOpenSearchProduct(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToOrder-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    		ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProductsNames());
+    		cbProductsToOrder.setItems(observableList);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+    
+    @FXML
+    void btnOpenSearchProduct2(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToModifyOrder-page.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    		ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProductsNames());
+    		cbProductsToOrder.setItems(observableList);
+    	} catch (IOException e) {
+    		
+    		e.printStackTrace();
+    	}
+    }
+
+    
 
     @FXML
     void btnAddProductToOrder(ActionEvent event) {
@@ -507,13 +732,13 @@ public class RestaurantGUI {
 				}
 
 				State state = null;
-				if(!txtOrderObs.getText().equalsIgnoreCase("SOLICITADO")) {
+				if(cbOrderState.getValue().equalsIgnoreCase("SOLICITADO")) {
 					state = State.SOLICITADO;
-				}else if(!txtOrderObs.getText().equalsIgnoreCase("ENVIADO")) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase("ENVIADO")) {
 					state = State.ENVIADO;
-				}else if(!txtOrderObs.getText().equalsIgnoreCase("ENTREGADO")) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase("ENTREGADO")) {
 					state = State.ENTREGADO;
-				}else if(!txtOrderObs.getText().equalsIgnoreCase("EN_PROCESO")) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase("EN PROCESO")) {
 					state = State.EN_PROCESO;
 				}
 
@@ -536,8 +761,8 @@ public class RestaurantGUI {
 			}
 		}catch(NumberFormatException n) {
 
-			confirmCreateUser.setText("Los valores no corresponden");
-			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
+			labConfirmOrder.setText("Los valores no corresponden");
+			labConfirmOrder.setTextFill(Paint.valueOf("RED"));
 		}
     }
     
@@ -545,26 +770,12 @@ public class RestaurantGUI {
     void btnEraseProductFromOrder(ActionEvent event) {
     	if(tvListOrderProducts.getSelectionModel().getSelectedItem() != null) {
     		OrderItem prod = tvListOrderProducts.getSelectionModel().getSelectedItem();
-    		int o = restaurant.searchOrderItem(prod.getProduct().getName());
+    		int o = restaurant.searchOrderItem(prod.getProduct().getName(),prod.getProductSize());
     		restaurant.getOrderItems().remove(o);
     	}
     }
     
-    @FXML
-    void btnOpenSearchProduct(ActionEvent event) {
-    	try {
-    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToOrder-page.fxml"));
-    		fxmlLoader.setController(this);
-    		Parent login;
-    		login = fxmlLoader.load();
-    		mainPane.getChildren().setAll(login);
-    		ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProductsNames());
-    		cbProductsToOrder.setItems(observableList);
-    	} catch (IOException e) {
-    		
-    		e.printStackTrace();
-    	}
-    }
+    
     @FXML
     void btnBackToOrders(ActionEvent event) {
     	try {
@@ -579,20 +790,7 @@ public class RestaurantGUI {
     	}
     }
     
-    @FXML
-    void btnCloseCreateOrder(ActionEvent event) {
-    	try {
-    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
-    		fxmlLoader.setController(this);
-    		Parent login;
-    		login = fxmlLoader.load();
-    		mainPane.getChildren().setAll(login);
-    		restaurant.getOrderItems().clear();
-    	} catch (IOException e) {
-    		
-    		e.printStackTrace();
-    	}
-    }
+   
     
 //Orders-page
 
@@ -671,8 +869,8 @@ public class RestaurantGUI {
         	tcCreateOrderProduct.setCellValueFactory(new PropertyValueFactory<OrderItem,String>("productName")); 
         	tcCreateOrderProductAmount.setCellValueFactory(new PropertyValueFactory<OrderItem,Integer>("productAmount"));
     	}
-    	
     }
+    
     @FXML
     void btnOpenAddOrder(ActionEvent event) {
     	if(!restaurant.getOrderItems().isEmpty()) {
@@ -716,8 +914,17 @@ public class RestaurantGUI {
     }
     
     @FXML
-    void btnOpenModifyPage(ActionEvent event) {
-    	
+    void btnUpdateModifyPage(ActionEvent event) {
+    	try {
+    		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Orderp1.fxml"));
+    		fxmlLoader.setController(this);
+    		Parent login;
+    		login = fxmlLoader.load();
+    		mainPane.getChildren().setAll(login);
+    		loadTvProductsFromOrder();
+    	} catch (IOException e) {
+    		e.printStackTrace();
+    	}
     }
     
 	@FXML
@@ -1423,7 +1630,11 @@ public class RestaurantGUI {
 
 	//main-page
 	public void loadMainPage(){
-
+		State state = State.EN_PROCESO;
+		String [] obs = new String[2];
+		obs[0] = "a";
+		obs[1] = "b";
+		
 		try {
 			restaurant.loadIngredientsData();
 			restaurant.loadEmployeesData();
@@ -1436,6 +1647,13 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			
+			//prev Order
+			OrderItem oi = new OrderItem(restaurant.getProducts().get(0), restaurant.getProducts().get(0).getSizes().get(0), restaurant.getProducts().get(0).getPrices().get(0), 4);
+			restaurant.getOrderItems().add(oi);
+			restaurant.createOrder(state, restaurant.getClientsNames().get(0), restaurant.getemployeesNames().get(0), "14/04/2021", obs);
+			restaurant.getOrderItems().clear();
+			
 		} catch (IOException e) {
 
 			e.printStackTrace();

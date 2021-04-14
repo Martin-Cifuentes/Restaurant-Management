@@ -12,8 +12,8 @@
    <children>
       <Button layoutX="36.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOrdersToLoggedIn" text="Atras" />
       <Button layoutX="562.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Agregar Orden" />
-      <Button layoutX="225.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar" />
-      <Button layoutX="400.0" layoutY="87.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
+      <Button layoutX="284.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar Productos" />
+      <Button layoutX="421.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
       <Label layoutX="292.0" layoutY="26.0" text="Ordenes">
          <font>
             <Font size="29.0" />
@@ -41,5 +41,6 @@
             <TableColumn fx:id="tcOrderProductPrice" prefWidth="85.0" text="Precio" />
         </columns>
       </TableView>
+      <Button layoutX="168.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyOrder2" text="Modificar Orden" />
    </children>
 </Pane>

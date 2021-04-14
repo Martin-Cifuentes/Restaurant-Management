@@ -48,6 +48,20 @@ public class Order {
 	public State getState() {
 		return state;
 	}
+	
+	public String getStateString() {
+		String stateStr = "";
+		if(state == State.SOLICITADO) {
+			stateStr = "SOLICITADO";
+		}else if(state == State.ENVIADO) {
+			stateStr = "ENVIADO";
+		}else if(state == State.ENTREGADO) {
+			stateStr = "ENTREGADO";
+		}else if(state == State.EN_PROCESO){
+			stateStr = "EN PROCESO";
+		}
+		return stateStr;
+	}
 
 	public void setState(State state) {
 		this.state = state;
@@ -79,6 +93,14 @@ public class Order {
 	
 	public ArrayList<String> getObservations() {
 		return observations;
+	}
+	
+	public String getObservationsStr() {
+		String obs = "";
+		for(int i = 0; i < observations.size(); i++) {
+			obs += observations.get(i) + "\n";
+		}
+		return obs;
 	}
 
 	public void setObservations(ArrayList<String> observations) {

@@ -41,6 +41,27 @@ public class Restaurant {
 		menuProducts= new ArrayList<>();
 	}
 	
+	public void updateOrderProducts(String code) {
+		int pos = searchOrder(code);
+		orders.get(pos).getItems().clear();
+		ArrayList<OrderItem> oI = new ArrayList<>();
+		oI.addAll(orderItems);
+		orders.get(pos).getItems().addAll(oI);
+		orderItems.clear();
+	}
+	
+	public void updateOrder(String code, State state, String clientName, String employeeName, String date, String[] obs) {
+		ArrayList<String>observations = new ArrayList<String>();
+		for(int i = 0; i<obs.length; i++) {
+			observations.add(obs[i]);
+		}
+		int pos = searchOrder(code);
+		Order order = new Order(code, state, clientName, employeeName, date, observations, orders.get(pos).getItems());
+		System.out.println(order);
+		orders.set(pos,order);
+		
+	}
+	
 	public void createOrder(State state, String clientName, String employeeName, String date, String[] obs) {
 		String code = randomCode();
 		int exist = searchOrder(code);
@@ -83,10 +104,10 @@ public class Restaurant {
 		orderItems.add(item);
 	}
 	
-	public int searchOrderItem(String name) {
+	public int searchOrderItem(String name, String size) {
 		int pos = 0;
 		for(int i = 0; i<orderItems.size(); i++) {
-			if(name.equals(orderItems.get(i).getProductName())) {
+			if(name.equals(orderItems.get(i).getProductName()) && size.equals(orderItems.get(i).getProductSize())) {
 				pos = i;
 			}
 		}
