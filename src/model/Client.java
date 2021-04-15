@@ -27,6 +27,7 @@ public class Client extends Person implements Serializable{
 		this.phone = p;
 		this.observations = obs;
 	}
+	public Client() {}
 	
 	
 	public Client(String n, String ln, String id) {

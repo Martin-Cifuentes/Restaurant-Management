@@ -1,9 +1,11 @@
 package ui;
 
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -59,7 +61,8 @@ public class RestaurantGUI {
 	//main page
 	@FXML
 	private Label lbldateAndTime;
-
+	//used to change the yyyy-MM-dd format
+	private DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
 	//admin-page
 	@FXML
@@ -150,6 +153,18 @@ public class RestaurantGUI {
 	//admin ingredient
 	@FXML
 	private ToggleGroup adminIngredoeint;
+	//Export orders
+    @FXML
+    private DatePicker dPDate1;
+    //Export orders
+    @FXML
+    private DatePicker dPDate2;
+    //Export orders
+    @FXML
+    private Label lblExportOrderscsvWarning;
+    //Export orders
+    @FXML
+    private TextField txtSep;
 
 
 
@@ -491,7 +506,7 @@ public class RestaurantGUI {
 
 			if(!cbModifyAbleClients.getValue().equals("") && !cbModifyAbleEmployees.getValue().equals("") &&
 					!cbModifyOrderState.getValue().equals("")) {
-				String date = String.valueOf(modifyCalendarDate.getValue());
+				String date = String.valueOf(dateTimeFormatter.format(modifyCalendarDate.getValue()));
 				if(date.equalsIgnoreCase("null")) {
 					date = oldDate.getText();
 				}
@@ -760,7 +775,7 @@ public class RestaurantGUI {
 				}
 
 				restaurant.createOrder(state, cbAbleClients.getValue(),
-						cbAbleEmployees.getValue(), String.valueOf(calendarDate.getValue()) ,
+						cbAbleEmployees.getValue(), String.valueOf(dateTimeFormatter.format(calendarDate.getValue())) ,
 						observations);
 
 				labConfirmOrder.setText("Orden agregada correctamente");
@@ -1590,6 +1605,7 @@ public class RestaurantGUI {
 	@FXML
 	public void btnAtras(ActionEvent event) {
 		try {
+			
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -1651,6 +1667,7 @@ public class RestaurantGUI {
 			restaurant.loadClientsData();
 			restaurant.loadOrderData();
 			restaurant.saveData();
+
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -1836,11 +1853,37 @@ public class RestaurantGUI {
 			mainPane.getChildren().setAll(login);
 			loadTableViewEmployees();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 	}
+	
+	//Logged-in-page
+    @FXML
+    void btnGoToExportOrderscsv(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ExportOrdercsv.fxml"));
+			fxmlLoader.setController(this);
+			Parent login;
+			login = fxmlLoader.load();
+			mainPane.getChildren().setAll(login);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    //export orders csv
+    
+    @FXML
+    void btnExportOrders(ActionEvent event) {
+    	try {
+			restaurant.exportData(dateTimeFormatter.format(dPDate1.getValue()).toString(), dateTimeFormatter.format(dPDate1.getValue()).toString(), txtSep.getText());
+			lblExportOrderscsvWarning.setText("Se genero el archivo con exito");
+			lblExportOrderscsvWarning.setTextFill(Paint.valueOf("Green"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
 
 	//Logged-in-page
 	@FXML

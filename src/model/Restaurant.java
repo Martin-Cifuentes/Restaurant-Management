@@ -4,11 +4,13 @@ package model;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
@@ -41,7 +43,7 @@ public class Restaurant {
 		sizeAndPrice = new ArrayList<>();
 		menuProducts= new ArrayList<>();
 	}
-	
+
 	public void updateOrderProducts(String code) {
 		int pos = searchOrder(code);
 		orders.get(pos).getItems().clear();
@@ -50,7 +52,7 @@ public class Restaurant {
 		orders.get(pos).getItems().addAll(oI);
 		orderItems.clear();
 	}
-	
+
 	public void updateOrder(String code, State state, String clientName, String employeeName, String date, String[] obs) {
 		ArrayList<String>observations = new ArrayList<String>();
 		for(int i = 0; i<obs.length; i++) {
@@ -60,22 +62,22 @@ public class Restaurant {
 		Order order = new Order(code, state, clientName, employeeName, date, observations, orders.get(pos).getItems());
 		System.out.println(order);
 		orders.set(pos,order);
-		
+
 	}
-	
+
 	public void createOrder(State state, String clientName, String employeeName, String date, String[] obs) {
 		String code = randomCode();
 		int exist = searchOrder(code);
 
 		ArrayList<OrderItem> oI = new ArrayList<>();
 		oI.addAll(orderItems);
-		
-		
+
+
 		ArrayList<String>observations = new ArrayList<String>();
 		for(int i = 0; i<obs.length; i++) {
 			observations.add(obs[i]);
 		}
-		
+
 		if(exist < 0) {
 			Order order = new Order(code, state, clientName, employeeName, date, observations, oI);
 			orders.add(order);
@@ -83,7 +85,7 @@ public class Restaurant {
 			createOrder(state,clientName,employeeName,date,obs);
 		}
 	}
-	
+
 	public ArrayList<String> getemployeesNames() {
 		ArrayList<String> names = new ArrayList<String>();
 		for(int i = 0; i < employees.size(); i++) {
@@ -91,7 +93,7 @@ public class Restaurant {
 		}
 		return names;
 	}
-	
+
 	public ArrayList<String> getClientsNames() {
 		ArrayList<String> names = new ArrayList<String>();
 		for(int i = 0; i < clients.size(); i++) {
@@ -99,12 +101,12 @@ public class Restaurant {
 		}
 		return names;
 	}
-	
+
 	public void addOrderItem(Product product, String size, double price, int amount) {
 		OrderItem item = new OrderItem(product,size,price,amount);
 		orderItems.add(item);
 	}
-	
+
 	public int searchOrderItem(String name, String size) {
 		int pos = 0;
 		for(int i = 0; i<orderItems.size(); i++) {
@@ -114,7 +116,7 @@ public class Restaurant {
 		}
 		return pos;
 	}
-	
+
 	public ArrayList<String> getProductsNames(){
 		ArrayList<String> names = new ArrayList<String>();
 		for(int i = 0; i<products.size(); i++) {
@@ -122,7 +124,7 @@ public class Restaurant {
 		}
 		return names;
 	}
-	
+
 	public int searchProduct(String name) {
 		int pos = 0;
 		for(int i = 0; i < products.size(); i++) {
@@ -132,17 +134,17 @@ public class Restaurant {
 		}
 		return pos;
 	}
-	
+
 	public ArrayList<String> getTotalPriceForOrderProduct(int o) {
 		ArrayList<String> totals = new ArrayList<String>();
 		for(int i = 0; i < orders.get(o).getProductsPricesList().size(); i++) {
 			totals.add(String.valueOf(orders.get(o).getProductsPricesList().get(i) * orders.get(o).getQuantityOfProduct().get(i)));
-			
+
 		}
-		
+
 		return totals;
 	}
-	
+
 	public String getTotalPriceOfOrder(int o) {
 		String total = "";
 		ArrayList<String> totals = getTotalPriceForOrderProduct(o);
@@ -466,7 +468,7 @@ public class Restaurant {
 		}
 		return x;
 	}
-	
+
 	/**
 	/buscar una orden
 	 */
@@ -509,13 +511,12 @@ public class Restaurant {
 		while(line!=null) {
 			String[] parts= line.split(",");
 			employees.add(new Employee(parts[0], parts[1], parts[2], 0));
-			ingredients.add(new Ingredient(parts[0],Boolean.parseBoolean(parts[1])));
-			ingredients.get(ingredients.size()-1).setCreatedBy(user);
-			ingredients.get(ingredients.size()-1).setLastEditedBy(user);
+			employees.get(employees.size()-1).setCreatedBy(user);
+			employees.get(employees.size()-1).setLastEditedBy(user);
 			line=br.readLine();
 		}
 		br.close();
-		
+
 		br = new BufferedReader(new FileReader("data/ImportOrders.csv"));
 		line= br.readLine();
 		ArrayList<String> o = new ArrayList<>();
@@ -525,24 +526,24 @@ public class Restaurant {
 			String[] parts= line.split(",");
 			o.add(parts[2]);
 			int stateChooser=0;
-				Random random = new Random();
-				stateChooser=  random.nextInt(4 - 1 + 1) + 1;
-				oi.add(new OrderItem(products.get(c), products.get(c).getSizeAndPrice().get(0).getSize(), products.get(c).getSizeAndPrice().get(0).getPrice(), Integer.parseInt(parts[3])));
-				if(stateChooser==1) {
-					orders.add(new Order(parts[0], State.valueOf("SOLICITADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
-				}else if(stateChooser==2) {
-					orders.add(new Order(parts[0], State.valueOf("ENVIADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
-				}else if(stateChooser==3){
-					orders.add(new Order(parts[0], State.valueOf("ENTREGADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
-				}else {
-					orders.add(new Order(parts[0], State.valueOf("EN_PROCESO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
-				}
-			
+			Random random = new Random();
+			stateChooser=  random.nextInt(4 - 1 + 1) + 1;
+			oi.add(new OrderItem(products.get(c), products.get(c).getSizeAndPrice().get(0).getSize(), products.get(c).getSizeAndPrice().get(0).getPrice(), Integer.parseInt(parts[3])));
+			if(stateChooser==1) {
+				orders.add(new Order(parts[0], State.valueOf("SOLICITADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+			}else if(stateChooser==2) {
+				orders.add(new Order(parts[0], State.valueOf("ENVIADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+			}else if(stateChooser==3){
+				orders.add(new Order(parts[0], State.valueOf("ENTREGADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+			}else {
+				orders.add(new Order(parts[0], State.valueOf("EN_PROCESO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+			}
+			c++;
 			line=br.readLine();
 		}
 		br.close();
 	}
-	
+
 	//se importan ingredientes
 	public void importIngredientData(String user) throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader("data/ImportIngredientData.txt"));
@@ -649,7 +650,7 @@ public class Restaurant {
 		}
 		return loaded;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public boolean loadClientsData() throws IOException, ClassNotFoundException{
 		File f = new File("data/SaveClientInfo.ap2");
@@ -710,8 +711,49 @@ public class Restaurant {
 		sizeAndPrice.clear();
 		employees.clear();
 		menuProducts.clear();
-		menuProducts.clear();
+		orders.clear();
+		orderItems.clear();
 		createUser("Admin","SuperAdmin","a003",0,"A","1");
+	}
+	//TODO
+	public boolean compareDates(String d1,String d2,String d3) {
+		boolean found=true;
+		String[] d1Parts= d1.split("/");
+		String[] d2Parts= d2.split("/");
+		String[] d3Parts= d3.split("/");
+		if(Integer.parseInt(d1Parts[2])<=Integer.parseInt(d3Parts[2]) &&  Integer.parseInt(d2Parts[2])>=Integer.parseInt(d3Parts[2])) {
+			if(Integer.parseInt(d1Parts[1])<=Integer.parseInt(d3Parts[1]) &&  Integer.parseInt(d2Parts[1])>=Integer.parseInt(d3Parts[1])){
+				if(Integer.parseInt(d1Parts[0])<=Integer.parseInt(d3Parts[0]) &&  Integer.parseInt(d2Parts[0])>=Integer.parseInt(d3Parts[0])){
+
+				}else {
+					found = false;
+				}
+			}else {
+				found = false;
+			}
+		}else {
+			found = false;
+		}
+		return found;
+	}
+	//TODO 
+	public void exportData(String d1,String d2,String sep) throws FileNotFoundException {
+		PrintWriter pw= new PrintWriter("data/exportOrders.csv");
+		for(int c=0;c<orders.size();c++) {
+			Client tempClient = new Client();
+			if(compareDates(d1, d2, orders.get(c).getDate())){		
+				boolean found=false;
+				for(int i=0;i<clients.size() && !found;i++) {
+					if(clients.get(i).getName().equals(orders.get(c).getRequestClient())){
+						found=true;
+						tempClient=clients.get(i);
+					}
+				}
+				pw.println(orders.get(c).getRequestClient()+""+sep+""+tempClient.getAdress()+""+sep+""+tempClient.getPhone()+""+sep+""+orders.get(c).deliverEmployee+""+sep+""+orders.get(c).getStateString()+""+sep+""+orders.get(c).getDate()+""+sep+""+orders.get(c).getObservationsStrWhitoutLinejump()+""+orders.get(c).exportProduct(sep));
+			}
+			
+		}
+		pw.close();
 	}
 
 	@Override
@@ -769,8 +811,8 @@ public class Restaurant {
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
-	
-	
+
+
 
 
 

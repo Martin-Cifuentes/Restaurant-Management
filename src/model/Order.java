@@ -107,6 +107,13 @@ public class Order implements Serializable {
 		}
 		return obs;
 	}
+	public String getObservationsStrWhitoutLinejump() {
+		String obs = "";
+		for(int i = 0; i < observations.size(); i++) {
+			obs += observations.get(i) + " ";
+		}
+		return obs;
+	}
 
 	public void setObservations(ArrayList<String> observations) {
 		this.observations = observations;
@@ -160,7 +167,14 @@ public class Order implements Serializable {
 		return productsSizes;
 	}
 
-
+	public String exportProduct(String sep) {
+		String export="";
+		for(int c=0;c<items.size();c++){
+			export+=sep+""+items.get(c).getProductName()+""+sep+""+items.get(c).getProductAmount()+""+sep+""+items.get(c).getProductPrice();
+		}
+		return export;
+	}
+	
 
 	public ArrayList<OrderItem> getItems() {
 		return items;

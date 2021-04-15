@@ -22,6 +22,9 @@ public abstract class Person extends History implements Serializable {
 		this.id = id;
 	}
 
+	public Person() {}
+
+	
 	public String getName() {
 		return name;
 	}
