@@ -42,5 +42,6 @@
         </columns>
       </TableView>
       <Button layoutX="168.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyOrder2" text="Modificar Orden" />
+      <Button layoutX="11.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnImportOrders" text="Importar ordenes" />
    </children>
 </Pane>

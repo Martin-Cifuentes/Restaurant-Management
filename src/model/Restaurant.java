@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Restaurant {
 
@@ -502,9 +503,48 @@ public class Restaurant {
 
 		return users;
 	}
+	public void importOrders(String user) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader("data/ImportEmployees.csv"));
+		String line= br.readLine();
+		while(line!=null) {
+			String[] parts= line.split(",");
+			employees.add(new Employee(parts[0], parts[1], parts[2], 0));
+			ingredients.add(new Ingredient(parts[0],Boolean.parseBoolean(parts[1])));
+			ingredients.get(ingredients.size()-1).setCreatedBy(user);
+			ingredients.get(ingredients.size()-1).setLastEditedBy(user);
+			line=br.readLine();
+		}
+		br.close();
+		
+		br = new BufferedReader(new FileReader("data/ImportOrders.csv"));
+		line= br.readLine();
+		ArrayList<String> o = new ArrayList<>();
+		ArrayList<OrderItem> oi = new ArrayList<>();
+		int c=0;
+		while(line!=null) {
+			String[] parts= line.split(",");
+			o.add(parts[2]);
+			int stateChooser=0;
+				Random random = new Random();
+				stateChooser=  random.nextInt(4 - 1 + 1) + 1;
+				oi.add(new OrderItem(products.get(c), products.get(c).getSizeAndPrice().get(0).getSize(), products.get(c).getSizeAndPrice().get(0).getPrice(), Integer.parseInt(parts[3])));
+				if(stateChooser==1) {
+					orders.add(new Order(parts[0], State.valueOf("SOLICITADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				}else if(stateChooser==2) {
+					orders.add(new Order(parts[0], State.valueOf("ENVIADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				}else if(stateChooser==3){
+					orders.add(new Order(parts[0], State.valueOf("ENTREGADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				}else {
+					orders.add(new Order(parts[0], State.valueOf("EN_PROCESO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				}
+			
+			line=br.readLine();
+		}
+		br.close();
+	}
+	
 	//se importan ingredientes
 	public void importIngredientData(String user) throws IOException{
-
 		BufferedReader br = new BufferedReader(new FileReader("data/ImportIngredientData.txt"));
 		String line= br.readLine();
 		while(line!=null) {
@@ -559,40 +599,60 @@ public class Restaurant {
 		BufferedReader br = new BufferedReader(new FileReader("data/ImportClientData.txt"));
 		String line= br.readLine();
 		ArrayList<String> obs=new ArrayList<String>();
+		ArrayList<String> obsSend=new ArrayList<String>();
 		while(line!=null) {
 			String[] parts= line.split(",");
 			obs.add(parts[5]);
 			obs.add(parts[6]);
-			clients.add(new Client(parts[0],parts[1],parts[2], parts[3],parts[4],obs));
+			obsSend.addAll(obs);
+			clients.add(new Client(parts[0],parts[1],parts[2], parts[3],parts[4],obsSend));
 			clients.get(clients.size()-1).setCreatedBy(user);
 			clients.get(clients.size()-1).setLastEditedBy(user);
 			line=br.readLine();
+			obs.clear();
 		}
 		br.close();
 	}
 
 	public void saveData() throws IOException{
-		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/SaveClientInfo.txt"));
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/SaveClientInfo.ap2"));
 		oos.writeObject(clients);
 		oos.close();
-		oos = new ObjectOutputStream(new FileOutputStream("data/SaveIngredientInfo.txt"));
+		oos = new ObjectOutputStream(new FileOutputStream("data/SaveIngredientInfo.ap2"));
 		oos.writeObject(ingredients);
 		oos.close();
 		oos = new ObjectOutputStream(new FileOutputStream("data/SaveEmployeeInfo.ap2"));
 		oos.writeObject(employees);
 		oos.close();
-		oos = new ObjectOutputStream(new FileOutputStream("data/SaveProductInfo.txt"));
+		oos = new ObjectOutputStream(new FileOutputStream("data/SaveProductInfo.ap2"));
 		oos.writeObject(products);
 		oos.close();
-		oos = new ObjectOutputStream(new FileOutputStream("data/SaveClientInfo.txt"));
+		oos = new ObjectOutputStream(new FileOutputStream("data/SaveClientInfo.ap2"));
 		oos.writeObject(clients);
+		oos.close();
+		oos = new ObjectOutputStream(new FileOutputStream("data/SaveOrderData.ap2"));
+		oos.writeObject(orders);
 		oos.close();
 
 	}
 
 	@SuppressWarnings("unchecked")
+	public boolean loadOrderData() throws IOException, ClassNotFoundException{
+		File f = new File("data/SaveOrderData.ap2");
+		boolean loaded = false;
+
+		if(f.exists()){
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			orders = (ArrayList<Order>)ois.readObject();
+			ois.close();
+			loaded = true;
+		}
+		return loaded;
+	}
+	
+	@SuppressWarnings("unchecked")
 	public boolean loadClientsData() throws IOException, ClassNotFoundException{
-		File f = new File("data/SaveClientInfo.txt");
+		File f = new File("data/SaveClientInfo.ap2");
 		boolean loaded = false;
 
 		if(f.exists()){
@@ -606,7 +666,7 @@ public class Restaurant {
 
 	@SuppressWarnings("unchecked")
 	public boolean loadIngredientsData() throws IOException, ClassNotFoundException{
-		File f = new File("data/SaveIngredientInfo.txt");
+		File f = new File("data/SaveIngredientInfo.ap2");
 		boolean loaded = false;
 		if(f.exists()){
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
@@ -632,7 +692,7 @@ public class Restaurant {
 
 	@SuppressWarnings("unchecked")
 	public boolean loadProductsData() throws IOException, ClassNotFoundException{
-		File f = new File("data/SaveProductInfo.txt");
+		File f = new File("data/SaveProductInfo.ap2");
 		boolean loaded = false;
 		if(f.exists()){
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));

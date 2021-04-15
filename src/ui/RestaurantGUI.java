@@ -535,6 +535,15 @@ public class RestaurantGUI {
     }
     
     @FXML
+    void btnImportOrders(ActionEvent event){
+    	try {
+			restaurant.importOrders(currentUser);
+			restaurant.saveData();
+		} catch (IOException e) {
+		}
+    }
+    
+    @FXML
     void modifyOrderProducts(ActionEvent event) {
     	System.out.println(labOrderCode2.getText());
     	restaurant.updateOrderProducts(labOrderCode2.getText());
@@ -544,7 +553,7 @@ public class RestaurantGUI {
     void btnOpenModifyOrder2(ActionEvent event) {
     	if(tvOrders.getSelectionModel().getSelectedItem() != null) {
     		Order order = tvOrders.getSelectionModel().getSelectedItem();
-    		//int pos = restaurant.searchOrder(order.getCode());
+    		
 	    	if(restaurant.getOrderItems().isEmpty()) {
 	    		try {
 	        		FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Orderp2.fxml"));
@@ -756,7 +765,10 @@ public class RestaurantGUI {
 
 				labConfirmOrder.setText("Orden agregada correctamente");
 				labConfirmOrder.setTextFill(Paint.valueOf("Green"));
-
+				try {
+					restaurant.saveData();
+				} catch (IOException e) {
+				}
 			}else {
 
 				labConfirmOrder.setText("Se deben llenar todos los espacios");
@@ -1617,6 +1629,7 @@ public class RestaurantGUI {
 			restaurant.loadEmployeesData();
 			restaurant.loadIngredientsData();
 			restaurant.loadProductsData();
+			restaurant.loadOrderData();
 			restaurant.saveData();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -1631,28 +1644,18 @@ public class RestaurantGUI {
 	//main-page
 	private Thread time;
 	public void loadMainPage(){
-		State state = State.EN_PROCESO;
-		String [] obs = new String[2];
-		obs[0] = "a";
-		obs[1] = "b";
 		try {
 			restaurant.loadIngredientsData();
 			restaurant.loadEmployeesData();
 			restaurant.loadProductsData();
 			restaurant.loadClientsData();
+			restaurant.loadOrderData();
 			restaurant.saveData();
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
-			
-			//prev Order
-			OrderItem oi = new OrderItem(restaurant.getProducts().get(0), restaurant.getProducts().get(0).getSizes().get(0), restaurant.getProducts().get(0).getPrices().get(0), 4);
-			restaurant.getOrderItems().add(oi);
-			restaurant.createOrder(state, restaurant.getClientsNames().get(0), restaurant.getemployeesNames().get(0), "14/04/2021", obs);
-			restaurant.getOrderItems().clear();
-			
 			lbldateAndTime.setText(LocalDateTime.now().getDayOfMonth()+"/"+LocalDateTime.now().getMonthValue()+"/"+LocalDateTime.now().getYear()  +" "+LocalTime.now().getHour()+":"+LocalTime.now().getMinute()+":"+LocalTime.now().getSecond() );
 
 		} catch (IOException e) {
