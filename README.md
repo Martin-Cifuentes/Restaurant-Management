@@ -1,5 +1,6 @@
 # Restaurant-Management
 Creado por Martin Cifuentes y Felipe Barreto
+
 El trabajo consiste en una aplicación para un restaurante, el usuario de prueba para usar el programa tiene un usuario de A y una contraseña de 1
 Algunos cambios para la segunda entrega fueron:
 El uso de hilos para crear un reloj en la página principal 
