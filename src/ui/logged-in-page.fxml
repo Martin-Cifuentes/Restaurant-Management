@@ -14,5 +14,6 @@
       <Button layoutX="42.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnBackToMainPage" text="Atras" />
       <Button layoutX="104.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnDeleteSavedFiles" text="Borrar todos los datos guardados" />
       <Button layoutX="297.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnGoToExportOrderscsv" text="Exportar csv de pedidos" />
+      <Button layoutX="297.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnGoToExportProducts" text="Exportar csv de productos " />
    </children>
 </Pane>

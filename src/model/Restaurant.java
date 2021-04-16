@@ -717,24 +717,17 @@ public class Restaurant {
 	}
 	//TODO
 	public boolean compareDates(String d1,String d2,String d3) {
-		boolean found=true;
+		boolean found =false;
 		String[] d1Parts= d1.split("/");
 		String[] d2Parts= d2.split("/");
 		String[] d3Parts= d3.split("/");
-		if(Integer.parseInt(d1Parts[2])<=Integer.parseInt(d3Parts[2]) &&  Integer.parseInt(d2Parts[2])>=Integer.parseInt(d3Parts[2])) {
-			if(Integer.parseInt(d1Parts[1])<=Integer.parseInt(d3Parts[1]) &&  Integer.parseInt(d2Parts[1])>=Integer.parseInt(d3Parts[1])){
-				if(Integer.parseInt(d1Parts[0])<=Integer.parseInt(d3Parts[0]) &&  Integer.parseInt(d2Parts[0])>=Integer.parseInt(d3Parts[0])){
-
-				}else {
-					found = false;
-				}
-			}else {
-				found = false;
-			}
-		}else {
-			found = false;
-		}
-		return found;
+		String d1S=d1Parts[2]+"/"+d1Parts[1]+"/"+d1Parts[0];
+		String d2S=d2Parts[2]+"/"+d2Parts[1]+"/"+d2Parts[0];
+		String d3S=d3Parts[2]+"/"+d3Parts[1]+"/"+d3Parts[0];
+	      if(d1S.compareTo(d3S) <= 0 && d2S.compareTo(d3S) >= 0) {
+	      found = true;
+	      }
+	      return found;
 	}
 	//TODO 
 	public void exportData(String d1,String d2,String sep) throws FileNotFoundException {
@@ -751,7 +744,32 @@ public class Restaurant {
 				}
 				pw.println(orders.get(c).getRequestClient()+""+sep+""+tempClient.getAdress()+""+sep+""+tempClient.getPhone()+""+sep+""+orders.get(c).deliverEmployee+""+sep+""+orders.get(c).getStateString()+""+sep+""+orders.get(c).getDate()+""+sep+""+orders.get(c).getObservationsStrWhitoutLinejump()+""+orders.get(c).exportProduct(sep));
 			}
-			
+
+		}
+		pw.close();
+	}
+	//TODO	
+	public void exportProduct(String d1,String d2) throws IOException {
+		PrintWriter pw= new PrintWriter("data/ExportProducts.csv");
+		for(int i =0;i<products.size();i++ ) {
+			int timesOrdered=0;
+			double price=0;
+			for(int c=0;c<orders.size();c++) {
+				if(compareDates(d1, d2, orders.get(c).getDate())){	
+					for(int z=0;z<orders.get(c).getProductsList().size();z++) {
+						if(products.get(i).getName().equals(orders.get(c).getItems().get(z).getProductName())){
+							for(int a=0;a<products.get(i).getSizeAndPrice().size();a++) {
+								if(products.get(i).getSizeAndPrice().get(a).getSize().equals(orders.get(c).getItems().get(z).getProductSize())){
+									timesOrdered++;
+									price+=orders.get(c).getItems().get(z).getProductPrice();
+								}
+							}
+						}
+					}
+					
+				}
+			}
+			pw.println(products.get(i).getName()+";"+timesOrdered+";"+price);
 		}
 		pw.close();
 	}
