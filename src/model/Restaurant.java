@@ -529,14 +529,17 @@ public class Restaurant {
 			Random random = new Random();
 			stateChooser=  random.nextInt(4 - 1 + 1) + 1;
 			oi.add(new OrderItem(products.get(c), products.get(c).getSizeAndPrice().get(0).getSize(), products.get(c).getSizeAndPrice().get(0).getPrice(), Integer.parseInt(parts[3])));
+			ArrayList<OrderItem> oiTemp= new ArrayList<>();
+			oiTemp.addAll(oi);
+			oi.clear();
 			if(stateChooser==1) {
-				orders.add(new Order(parts[0], State.valueOf("SOLICITADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				orders.add(new Order(parts[0], State.valueOf("SOLICITADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oiTemp));
 			}else if(stateChooser==2) {
-				orders.add(new Order(parts[0], State.valueOf("ENVIADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				orders.add(new Order(parts[0], State.valueOf("ENVIADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oiTemp));
 			}else if(stateChooser==3){
-				orders.add(new Order(parts[0], State.valueOf("ENTREGADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				orders.add(new Order(parts[0], State.valueOf("ENTREGADO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oiTemp));
 			}else {
-				orders.add(new Order(parts[0], State.valueOf("EN_PROCESO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oi));
+				orders.add(new Order(parts[0], State.valueOf("EN_PROCESO"),clients.get(c).getName(), employees.get(c).getName(), parts[1],  o ,  oiTemp));
 			}
 			c++;
 			line=br.readLine();
@@ -769,7 +772,9 @@ public class Restaurant {
 					
 				}
 			}
-			pw.println(products.get(i).getName()+";"+timesOrdered+";"+price);
+			if(timesOrdered!=0) {
+				pw.println(products.get(i).getName()+";"+timesOrdered+";"+price);
+			}
 		}
 		pw.close();
 	}
