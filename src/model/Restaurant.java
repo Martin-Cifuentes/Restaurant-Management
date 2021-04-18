@@ -31,6 +31,8 @@ public class Restaurant {
 	private List<Product> menuProducts; 
 	private long start;
 	private long time;
+	private Language language;
+	private Dictionary dictionary;
 
 	public Restaurant() {
 		ingredients = new ArrayList<>();
@@ -42,6 +44,8 @@ public class Restaurant {
 		ingredientsForProduct = new  ArrayList<>();
 		sizeAndPrice = new ArrayList<>();
 		menuProducts= new ArrayList<>();
+		language = Language.ENGLISH;
+		dictionary = new Dictionary(language);
 	}
 
 	public void updateOrderProducts(String code) {
@@ -780,6 +784,28 @@ public class Restaurant {
 		}
 		pw.close();
 	}
+	
+	public void loadLenguage() throws IOException{
+		ArrayList<Word> read = new ArrayList<Word>();
+		BufferedReader br;
+		if(dictionary.getActualLanguage() == Language.SPANISH) {
+			br = new BufferedReader(new FileReader("data/ImportWordsSpanish.csv"));
+		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
+			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
+		} else {
+			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
+		}
+		String line= br.readLine();
+		String[] parts;
+		while(line!=null) {
+			parts= line.split(",");
+			read.add(new Word(parts[0],parts[1]));
+			line=br.readLine();
+		}
+		br.close();
+		
+		dictionary.setWords(read);
+	}
 
 	@Override
 	public String toString() {
@@ -837,7 +863,15 @@ public class Restaurant {
 		this.orderItems = orderItems;
 	}
 
+	public Dictionary getDictionary() {
+		return dictionary;
+	}
 
+	public void setDictionary(Dictionary dictionary) {
+		this.dictionary = dictionary;
+	}
+
+	
 
 
 

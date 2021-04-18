@@ -1,15 +1,11 @@
 package ui;
 
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -35,7 +31,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import model.Client;
-import model.Dictionary;
 import model.Employee;
 import model.Ingredient;
 import model.Language;
@@ -43,11 +38,10 @@ import model.Order;
 import model.OrderItem;
 import model.Product;
 import model.Restaurant;
-
 import model.SizeAndPrice;
 import model.State;
 import model.User;
-import model.Word;
+
 
 
 public class RestaurantGUI {
@@ -58,10 +52,7 @@ public class RestaurantGUI {
 		restaurant= new Restaurant();
 	}
 
-
 	private String currentUser;
-	private Language language = Language.ENGLISH;
-	private Dictionary dictionary = new Dictionary(language);
 	
 	public final static String SEP = "\n";
 	//main-pane
@@ -1240,360 +1231,360 @@ public class RestaurantGUI {
 	////initialize screens with languages
 	
 	void loadLanguageAddIngredientAndSizePricePage() {//1
-		btnBackIngSizeAndPrice.setText(dictionary.getValueOf("back"));
-		btnAddSizeAndPriceIngSizeAndPrice.setText(dictionary.getValueOf("Add size and price"));
-		btnAddingredientIngSizeAndPrice.setText(dictionary.getValueOf("Add ingredient"));
-		labSizeIngSizeAndPrice.setText(dictionary.getValueOf("Size"));
-		labPriceIngSizeAndPrice.setText(dictionary.getValueOf("Price"));
+		btnBackIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("back"));
+		btnAddSizeAndPriceIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Add size and price"));
+		btnAddingredientIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Add ingredient"));
+		labSizeIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Size"));
+		labPriceIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Price"));
 	}
 	
 	void loadLanguageAddIngredientPage(){//2
-		rbtnAvailable.setText(dictionary.getValueOf("Available"));
-		rbtnNotAvailable.setText(dictionary.getValueOf("Not available"));
-		labIngNameAddIngredient.setText(dictionary.getValueOf("Ingredient name"));
-		btnAddAddIngredient.setText(dictionary.getValueOf("Add"));
-		btnBackAddIngredient.setText(dictionary.getValueOf("back"));
+		rbtnAvailable.setText(restaurant.getDictionary().getValueOf("Available"));
+		rbtnNotAvailable.setText(restaurant.getDictionary().getValueOf("Not available"));
+		labIngNameAddIngredient.setText(restaurant.getDictionary().getValueOf("Ingredient name"));
+		btnAddAddIngredient.setText(restaurant.getDictionary().getValueOf("Add"));
+		btnBackAddIngredient.setText(restaurant.getDictionary().getValueOf("back"));
 	}
 	
 	void loadLanguageAddProductPage() {//3
-		btnEraseIngredientsProdPage.setText(dictionary.getValueOf("Delete ingredient"));
-		labProdNameProdPage.setText(dictionary.getValueOf("Product name"));
-		labProdTypeProdPage.setText(dictionary.getValueOf("Product type"));
-		labProdSizeProdPage.setText(dictionary.getValueOf("Size"));
-		labProdPriceProdPage.setText(dictionary.getValueOf("Size Price"));
-		btnAddSizeProdPage.setText(dictionary.getValueOf("Add size"));
-		labIngredientsProdPage.setText(dictionary.getValueOf("Ingredients"));
-		btnAddIngredientProdPage.setText(dictionary.getValueOf("Add ingredient"));
-		labSizeAndPricesToAddProdPage.setText(dictionary.getValueOf("Sizes and prices to add"));
-		labIngredientsToAddProdPage.setText(dictionary.getValueOf("Ingredients to add"));
-		btnEraseSizeAndPriceProdPage.setText(dictionary.getValueOf("Delete Size and Price"));
-		btnCreateProductProdPage.setText(dictionary.getValueOf("Create product"));
-		btnBackProdPage.setText(dictionary.getValueOf("Back"));
+		btnEraseIngredientsProdPage.setText(restaurant.getDictionary().getValueOf("Delete ingredient"));
+		labProdNameProdPage.setText(restaurant.getDictionary().getValueOf("Product name"));
+		labProdTypeProdPage.setText(restaurant.getDictionary().getValueOf("Product type"));
+		labProdSizeProdPage.setText(restaurant.getDictionary().getValueOf("Size"));
+		labProdPriceProdPage.setText(restaurant.getDictionary().getValueOf("Size Price"));
+		btnAddSizeProdPage.setText(restaurant.getDictionary().getValueOf("Add size"));
+		labIngredientsProdPage.setText(restaurant.getDictionary().getValueOf("Ingredients"));
+		btnAddIngredientProdPage.setText(restaurant.getDictionary().getValueOf("Add ingredient"));
+		labSizeAndPricesToAddProdPage.setText(restaurant.getDictionary().getValueOf("Sizes and prices to add"));
+		labIngredientsToAddProdPage.setText(restaurant.getDictionary().getValueOf("Ingredients to add"));
+		btnEraseSizeAndPriceProdPage.setText(restaurant.getDictionary().getValueOf("Delete Size and Price"));
+		btnCreateProductProdPage.setText(restaurant.getDictionary().getValueOf("Create product"));
+		btnBackProdPage.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
 	void loadLanguageAddProductToModifyOrderPage() {//4
-	    btnBackProdToModOrd.setText(dictionary.getValueOf("Back"));
-	    labAddProdToModOrd.setText(dictionary.getValueOf("Add"));
-	    labTitleProdToModOrd.setText(dictionary.getValueOf("Add product"));
-	    labProdProdToModOrd.setText(dictionary.getValueOf("Product"));
-	    labAmountProdToModOrd.setText(dictionary.getValueOf("Quantity"));
-	    labSizeProdToModOrd.setText(dictionary.getValueOf("Size"));
+	    btnBackProdToModOrd.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labAddProdToModOrd.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labTitleProdToModOrd.setText(restaurant.getDictionary().getValueOf("Add product"));
+	    labProdProdToModOrd.setText(restaurant.getDictionary().getValueOf("Product"));
+	    labAmountProdToModOrd.setText(restaurant.getDictionary().getValueOf("Quantity"));
+	    labSizeProdToModOrd.setText(restaurant.getDictionary().getValueOf("Size"));
 	}
 	
 	void loadLanguageAddProductToOrderPage() {//5
-		btnBackProdToOrd.setText(dictionary.getValueOf("Back"));
-	    labAddProdToOrd.setText(dictionary.getValueOf("Add"));
-	    labTitleProdToOrd.setText(dictionary.getValueOf("Add product"));
-	    labProdProdToOrd.setText(dictionary.getValueOf("Product"));
-	    labAmountProdToOrd.setText(dictionary.getValueOf("Quantity"));
-	    labSizeProdToOrd.setText(dictionary.getValueOf("Size"));
+		btnBackProdToOrd.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labAddProdToOrd.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labTitleProdToOrd.setText(restaurant.getDictionary().getValueOf("Add product"));
+	    labProdProdToOrd.setText(restaurant.getDictionary().getValueOf("Product"));
+	    labAmountProdToOrd.setText(restaurant.getDictionary().getValueOf("Quantity"));
+	    labSizeProdToOrd.setText(restaurant.getDictionary().getValueOf("Size"));
 	}
 	
 	void loadLanguageAdminIngredients() {//6
-		rbtnAdminIngredientsAvielable.setText(dictionary.getValueOf("Available"));
-	    rbtnAdminIngredientsNotAvailable.setText(dictionary.getValueOf("Not available"));
-	    lblNameIngredient.setText(dictionary.getValueOf("Name"));
-	    btnBackAdminIng.setText(dictionary.getValueOf("Back"));
-	    btnSaveChangesAdminIng.setText(dictionary.getValueOf("Save Changes"));
-	    btnDeleteIngredientAdmingIng.setText(dictionary.getValueOf("Delete ingredient"));
-	    labCreatedByAdminIng.setText(dictionary.getValueOf("Created by"+":"));
-	    labLastChangeAdminIng.setText(dictionary.getValueOf("Last change by"+":"));
-	    labSelectIngredientAdminIng.setText(dictionary.getValueOf("Select ingredient"));
+		rbtnAdminIngredientsAvielable.setText(restaurant.getDictionary().getValueOf("Available"));
+	    rbtnAdminIngredientsNotAvailable.setText(restaurant.getDictionary().getValueOf("Not available"));
+	    lblNameIngredient.setText(restaurant.getDictionary().getValueOf("Name"));
+	    btnBackAdminIng.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnSaveChangesAdminIng.setText(restaurant.getDictionary().getValueOf("Save Changes"));
+	    btnDeleteIngredientAdmingIng.setText(restaurant.getDictionary().getValueOf("Delete ingredient"));
+	    labCreatedByAdminIng.setText(restaurant.getDictionary().getValueOf("Created by"+":"));
+	    labLastChangeAdminIng.setText(restaurant.getDictionary().getValueOf("Last change by"+":"));
+	    labSelectIngredientAdminIng.setText(restaurant.getDictionary().getValueOf("Select ingredient"));
 	}
 	
 	void loadLanguageAdminPage() {//7
-		labUserAdminPage.setText(dictionary.getValueOf("User"));
-		labPassAdminPage.setText(dictionary.getValueOf("Password"));
-	    btnLogInAdminPage.setText(dictionary.getValueOf("Log in"));
-	    btnBackAdminPage.setText(dictionary.getValueOf("Back"));
+		labUserAdminPage.setText(restaurant.getDictionary().getValueOf("User"));
+		labPassAdminPage.setText(restaurant.getDictionary().getValueOf("Password"));
+	    btnLogInAdminPage.setText(restaurant.getDictionary().getValueOf("Log in"));
+	    btnBackAdminPage.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
 	void loadLanguageAdminProductPage() {//8
-		txtSizeOfProductAdmin.setText(dictionary.getValueOf("Size"));
-	    txtPriceOfSizeOfProductAdmin.setText(dictionary.getValueOf("Price"));
-	    lblCreatedByProduct.setText(dictionary.getValueOf("Created by"+":"));
-	    lblLastEditedByProduct.setText(dictionary.getValueOf("Last change by"+":"));
-	    lblAvialableIngredientProduct.setText(dictionary.getValueOf("Availability"));
-	    labTypeOfProdAdminProdPage.setText(dictionary.getValueOf("Product type"));
-	    btnDeleteIngredientAdminProdPage.setText(dictionary.getValueOf("Delete ingredient"));
-	    btnSaveSizeAndPriceAdminProdPage.setText(dictionary.getValueOf("Save size and price"));
-	    btnSaveChangesAdminProdPage.setText(dictionary.getValueOf("Save Changes"));
-	    btnDeleteProdAdminProdPage.setText(dictionary.getValueOf("Delete product"));
-	    btnBackAdminProdPage.setText(dictionary.getValueOf("Back"));
-	    btnDeleteSizeAndPriceAdminProdPage.setText(dictionary.getValueOf("Delete Size and Price"));
-	    labNameAdminProdPage.setText(dictionary.getValueOf("Name"));
-	    btnAddIngredientsOrSizes.setText(dictionary.getValueOf("Add ingredients or sizes"));
-	    labModProdAdminProdPage.setText(dictionary.getValueOf("Select product"));
-	    labSelectIngredientAdminProdPage.setText(dictionary.getValueOf("Select ingredient"));
-	    labSelectSizeAdminProdPage.setText(dictionary.getValueOf("Select size"));
-	    labTitleAdminProdPage.setText(dictionary.getValueOf("Modify Products"));
+		txtSizeOfProductAdmin.setText(restaurant.getDictionary().getValueOf("Size"));
+	    txtPriceOfSizeOfProductAdmin.setText(restaurant.getDictionary().getValueOf("Price"));
+	    lblCreatedByProduct.setText(restaurant.getDictionary().getValueOf("Created by"+":"));
+	    lblLastEditedByProduct.setText(restaurant.getDictionary().getValueOf("Last change by"+":"));
+	    lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Availability"));
+	    labTypeOfProdAdminProdPage.setText(restaurant.getDictionary().getValueOf("Product type"));
+	    btnDeleteIngredientAdminProdPage.setText(restaurant.getDictionary().getValueOf("Delete ingredient"));
+	    btnSaveSizeAndPriceAdminProdPage.setText(restaurant.getDictionary().getValueOf("Save size and price"));
+	    btnSaveChangesAdminProdPage.setText(restaurant.getDictionary().getValueOf("Save Changes"));
+	    btnDeleteProdAdminProdPage.setText(restaurant.getDictionary().getValueOf("Delete product"));
+	    btnBackAdminProdPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnDeleteSizeAndPriceAdminProdPage.setText(restaurant.getDictionary().getValueOf("Delete Size and Price"));
+	    labNameAdminProdPage.setText(restaurant.getDictionary().getValueOf("Name"));
+	    btnAddIngredientsOrSizes.setText(restaurant.getDictionary().getValueOf("Add ingredients or sizes"));
+	    labModProdAdminProdPage.setText(restaurant.getDictionary().getValueOf("Select product"));
+	    labSelectIngredientAdminProdPage.setText(restaurant.getDictionary().getValueOf("Select ingredient"));
+	    labSelectSizeAdminProdPage.setText(restaurant.getDictionary().getValueOf("Select size"));
+	    labTitleAdminProdPage.setText(restaurant.getDictionary().getValueOf("Modify Products"));
 	}
 	
 	void loadLanguageClientsPage() {//9
-	    tcClientName.setText(dictionary.getValueOf("Name"));
-	    tcClientLastName.setText(dictionary.getValueOf("Surname"));
-	    tcClientID.setText(dictionary.getValueOf("ID"));
-	    tcClientAdress.setText(dictionary.getValueOf("Adress"));
-	    tcClientPhone.setText(dictionary.getValueOf("Telephone"));
-	    btnAddClientCliPage.setText(dictionary.getValueOf("Add client"));
-	    btnDeleteCliPage.setText(dictionary.getValueOf("Delete"));
-	    labTitleCliPage.setText(dictionary.getValueOf("Clients"));
-	    btnBackCliPage.setText(dictionary.getValueOf("Back"));
-	    btnUpdateCliPage.setText(dictionary.getValueOf("Update"));
-	    btnModifyCliPage.setText(dictionary.getValueOf("Modify"));
-	    btnSearchClientCliPage.setText(dictionary.getValueOf("Search client"));
-	    btnImportClientsCliPage.setText(dictionary.getValueOf("Import clients"));
+	    tcClientName.setText(restaurant.getDictionary().getValueOf("Name"));
+	    tcClientLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    tcClientID.setText(restaurant.getDictionary().getValueOf("ID"));
+	    tcClientAdress.setText(restaurant.getDictionary().getValueOf("Adress"));
+	    tcClientPhone.setText(restaurant.getDictionary().getValueOf("Telephone"));
+	    btnAddClientCliPage.setText(restaurant.getDictionary().getValueOf("Add client"));
+	    btnDeleteCliPage.setText(restaurant.getDictionary().getValueOf("Delete"));
+	    labTitleCliPage.setText(restaurant.getDictionary().getValueOf("Clients"));
+	    btnBackCliPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnUpdateCliPage.setText(restaurant.getDictionary().getValueOf("Update"));
+	    btnModifyCliPage.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    btnSearchClientCliPage.setText(restaurant.getDictionary().getValueOf("Search client"));
+	    btnImportClientsCliPage.setText(restaurant.getDictionary().getValueOf("Import clients"));
 	}
 	
 	void loadLanguageCreateClient() {//10
-		txtClientObservations.setPromptText(dictionary.getValueOf("Each Observation is separated with a line break"));
-	    btnBackCreateClient.setText(dictionary.getValueOf("Back"));
-	    btnCreateCreateClient.setText(dictionary.getValueOf("Add client"));
-	    labNameCreateClient.setText(dictionary.getValueOf("Name"));
-	    labLastNameCreateClient.setText(dictionary.getValueOf("Surname"));
-	    labIDCreateClient.setText(dictionary.getValueOf("ID"));
-	    labAdressCreateClient.setText(dictionary.getValueOf("Adress"));
-	    labPhoneCreateClient.setText(dictionary.getValueOf("Telephone"));
-	    labTitleCreateClient.setText(dictionary.getValueOf("Create client"));
-	    labObsCreateClient.setText(dictionary.getValueOf("Observations"));
+		txtClientObservations.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
+	    btnBackCreateClient.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnCreateCreateClient.setText(restaurant.getDictionary().getValueOf("Add client"));
+	    labNameCreateClient.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameCreateClient.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labIDCreateClient.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labAdressCreateClient.setText(restaurant.getDictionary().getValueOf("Adress"));
+	    labPhoneCreateClient.setText(restaurant.getDictionary().getValueOf("Telephone"));
+	    labTitleCreateClient.setText(restaurant.getDictionary().getValueOf("Create client"));
+	    labObsCreateClient.setText(restaurant.getDictionary().getValueOf("Observations"));
 	}
 	
 	void loadLanguageCreateEmployee() {//11
-		btnAddCreateEmp.setText(dictionary.getValueOf("Add"));
-	    labIDCreateEmp.setText(dictionary.getValueOf("ID"));
-	    labNameCreateEmp.setText(dictionary.getValueOf("Name"));
-	    labLastNameCreateEmp.setText(dictionary.getValueOf("Surname"));
-	    labAmountOfOrdCreateEmp.setText(dictionary.getValueOf("Orders delivered"));
-	    btnBackCreateEmp.setText(dictionary.getValueOf("Back"));
-	    labTitleCreateEmp.setText(dictionary.getValueOf("Create Employee"));
+		btnAddCreateEmp.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labIDCreateEmp.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labNameCreateEmp.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameCreateEmp.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labAmountOfOrdCreateEmp.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+	    btnBackCreateEmp.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labTitleCreateEmp.setText(restaurant.getDictionary().getValueOf("Create Employee"));
 	}
 	
 	void loadLanguageCreateOrder() {//12
-		txtOrderObs.setPromptText(dictionary.getValueOf("Each Observation is separated with a line break"));
-	    btnAddAddOrder.setText(dictionary.getValueOf("Add"));
-	    labCliNameAddOrder.setText(dictionary.getValueOf("Client name"));
-	    labEmployeeOnChargeAddOrder.setText(dictionary.getValueOf("Employee in charge"));
-	    labObsAddOrder.setText(dictionary.getValueOf("Observations"));
-	    labTitleAddOrder.setText(dictionary.getValueOf("Create Order: Step 2"));
-	    labStateAddOrder.setText(dictionary.getValueOf("State"));
-	    labDateAddOrder.setText(dictionary.getValueOf("Date"));
-	    btnExitAddOrder.setText(dictionary.getValueOf("Exit"));
-	    btnBackAddOrder.setText(dictionary.getValueOf("Back"));
-	    ObservableList<String> observableListStates = FXCollections.observableArrayList(dictionary.getValueOf("Requested")
-	    											,dictionary.getValueOf("Sent"),dictionary.getValueOf("In progress")
-	    											,dictionary.getValueOf("Delivered"));
+		txtOrderObs.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
+	    btnAddAddOrder.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labCliNameAddOrder.setText(restaurant.getDictionary().getValueOf("Client name"));
+	    labEmployeeOnChargeAddOrder.setText(restaurant.getDictionary().getValueOf("Employee in charge"));
+	    labObsAddOrder.setText(restaurant.getDictionary().getValueOf("Observations"));
+	    labTitleAddOrder.setText(restaurant.getDictionary().getValueOf("Create Order: Step 2"));
+	    labStateAddOrder.setText(restaurant.getDictionary().getValueOf("State"));
+	    labDateAddOrder.setText(restaurant.getDictionary().getValueOf("Date"));
+	    btnExitAddOrder.setText(restaurant.getDictionary().getValueOf("Exit"));
+	    btnBackAddOrder.setText(restaurant.getDictionary().getValueOf("Back"));
+	    ObservableList<String> observableListStates = FXCollections.observableArrayList(restaurant.getDictionary().getValueOf("Requested")
+	    											,restaurant.getDictionary().getValueOf("Sent"),restaurant.getDictionary().getValueOf("In progress")
+	    											,restaurant.getDictionary().getValueOf("Delivered"));
 		cbOrderState.setItems(observableListStates);
 	}
 	
 	void loadLanguageCreateOrder1() {//13
-		tcCreateOrderProduct.setText(dictionary.getValueOf("Add product"));
-	    tcCreateOrderProductAmount.setText(dictionary.getValueOf("Add"));
-	    labTitleAddOrder2.setText(dictionary.getValueOf("Create Order: Step 1"));
-	    btnSearchProdAddOrder2.setText(dictionary.getValueOf("Search product"));
-	    btnDeleteProdAddOrder2.setText(dictionary.getValueOf("Delete product"));
-	    btnUpdTableAddOrder2.setText(dictionary.getValueOf("Update table"));
-	    btnBackAddOrder2.setText(dictionary.getValueOf("Back"));
-	    btnContinueAddOrder2.setText(dictionary.getValueOf("Continue"));
+		tcCreateOrderProduct.setText(restaurant.getDictionary().getValueOf("Add product"));
+	    tcCreateOrderProductAmount.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labTitleAddOrder2.setText(restaurant.getDictionary().getValueOf("Create Order: Step 1"));
+	    btnSearchProdAddOrder2.setText(restaurant.getDictionary().getValueOf("Search product"));
+	    btnDeleteProdAddOrder2.setText(restaurant.getDictionary().getValueOf("Delete product"));
+	    btnUpdTableAddOrder2.setText(restaurant.getDictionary().getValueOf("Update table"));
+	    btnBackAddOrder2.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnContinueAddOrder2.setText(restaurant.getDictionary().getValueOf("Continue"));
 	}
 	
 	void loadLanguageCreateUser() {//14
-		btnBackCreateUser.setText(dictionary.getValueOf("Back"));
-	    btnAddCreateUser.setText(dictionary.getValueOf("Add"));
-	    labNameCreateUser.setText(dictionary.getValueOf("Name"));
-	    labLastNameCreateUser.setText(dictionary.getValueOf("Surname"));
-	    labTitleCreateUser.setText(dictionary.getValueOf("Create User"));
-	    labIDCreateUser.setText(dictionary.getValueOf("ID"));
-	    labUserNameCreateUser.setText(dictionary.getValueOf("Username"));
-	    labNumOfOrdCreateUser.setText(dictionary.getValueOf("Orders delivered"));
-	    labPassCreateUser.setText(dictionary.getValueOf("Password"));
+		btnBackCreateUser.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnAddCreateUser.setText(restaurant.getDictionary().getValueOf("Add"));
+	    labNameCreateUser.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameCreateUser.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labTitleCreateUser.setText(restaurant.getDictionary().getValueOf("Create User"));
+	    labIDCreateUser.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labUserNameCreateUser.setText(restaurant.getDictionary().getValueOf("Username"));
+	    labNumOfOrdCreateUser.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+	    labPassCreateUser.setText(restaurant.getDictionary().getValueOf("Password"));
 	}
 	
 	void loadLanguageEmployeePage() {//15
-		tcName.setText(dictionary.getValueOf("Name"));
-	    tcLastName.setText(dictionary.getValueOf("Surname"));
-	    tcId.setText(dictionary.getValueOf("ID"));
-	    tcNumOfOrders.setText(dictionary.getValueOf("Orders delivered"));
-	    btnAddEmploEmploPage.setText(dictionary.getValueOf("Add employees"));
-	    btnBackEmploPage.setText(dictionary.getValueOf("Back"));
-	    labTitleEmploPage.setText(dictionary.getValueOf("Create Employee"));
-	    btnModifyEmploPage.setText(dictionary.getValueOf("Modify"));
-	    btnDeleteEmploPage.setText(dictionary.getValueOf("Delete"));
-	    btnUpdateEmploPage.setText(dictionary.getValueOf("Update"));
+		tcName.setText(restaurant.getDictionary().getValueOf("Name"));
+	    tcLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    tcId.setText(restaurant.getDictionary().getValueOf("ID"));
+	    tcNumOfOrders.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+	    btnAddEmploEmploPage.setText(restaurant.getDictionary().getValueOf("Add employees"));
+	    btnBackEmploPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labTitleEmploPage.setText(restaurant.getDictionary().getValueOf("Create Employee"));
+	    btnModifyEmploPage.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    btnDeleteEmploPage.setText(restaurant.getDictionary().getValueOf("Delete"));
+	    btnUpdateEmploPage.setText(restaurant.getDictionary().getValueOf("Update"));
 	}
 	
 	void loadLanguageExportOrdercsvPage() {//16
-		labFromExpOrds.setText(dictionary.getValueOf("From"));
-	    labTillExpOrds.setText(dictionary.getValueOf("Till"));
-	    labIncludeExpOrds.setText(dictionary.getValueOf("Include"));
-	    btnGenDataExpOrds.setText(dictionary.getValueOf("Generate file"));
-	    labColumnSepExpOrds.setText(dictionary.getValueOf("Column separator"));
-	    btnBackExpOrds.setText(dictionary.getValueOf("Back"));
+		labFromExpOrds.setText(restaurant.getDictionary().getValueOf("From"));
+	    labTillExpOrds.setText(restaurant.getDictionary().getValueOf("Till"));
+	    labIncludeExpOrds.setText(restaurant.getDictionary().getValueOf("Include"));
+	    btnGenDataExpOrds.setText(restaurant.getDictionary().getValueOf("Generate file"));
+	    labColumnSepExpOrds.setText(restaurant.getDictionary().getValueOf("Column separator"));
+	    btnBackExpOrds.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
 	void loadLanguageExportProductsPage() {//17
-		btnExportExpProd.setText(dictionary.getValueOf("Export"));
-	    btnBackExpProd.setText(dictionary.getValueOf("Back"));
-	    labIncludeExpProd.setText(dictionary.getValueOf("Include"));
-	    labFromExpProd.setText(dictionary.getValueOf("From"));
-	    labTillExpProd.setText(dictionary.getValueOf("Till"));
+		btnExportExpProd.setText(restaurant.getDictionary().getValueOf("Export"));
+	    btnBackExpProd.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labIncludeExpProd.setText(restaurant.getDictionary().getValueOf("Include"));
+	    labFromExpProd.setText(restaurant.getDictionary().getValueOf("From"));
+	    labTillExpProd.setText(restaurant.getDictionary().getValueOf("Till"));
 	}
 	
 	void loadLanguageIngredientPage() {//18
-		tcIngredient.setText(dictionary.getValueOf("Ingredient"));
-	    tcAvialable.setText(dictionary.getValueOf("Available"));
-	    btnAddIngIngPage.setText(dictionary.getValueOf("Add ingredient"));
-	    btnBackIngPage.setText(dictionary.getValueOf("Back"));
-	    btnAdminIngIngPage.setText(dictionary.getValueOf("Manage Ingredient"));
-	    btnOrgaizeByNameIngPage.setText(dictionary.getValueOf("Organize by name"));
-	    btnImportIngIngPage.setText(dictionary.getValueOf("Import ingredients"));
+		tcIngredient.setText(restaurant.getDictionary().getValueOf("Ingredient"));
+	    tcAvialable.setText(restaurant.getDictionary().getValueOf("Available"));
+	    btnAddIngIngPage.setText(restaurant.getDictionary().getValueOf("Add ingredient"));
+	    btnBackIngPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnAdminIngIngPage.setText(restaurant.getDictionary().getValueOf("Manage Ingredient"));
+	    btnOrgaizeByNameIngPage.setText(restaurant.getDictionary().getValueOf("Organize by name"));
+	    btnImportIngIngPage.setText(restaurant.getDictionary().getValueOf("Import ingredients"));
 	}
 	
 	void loadLanguageLoggedInPage() {//19
-		btnProductsLogPage.setText(dictionary.getValueOf("Products"));
-	    btnIngredientsLogPage.setText(dictionary.getValueOf("Ingredients"));
-	    btnOrdersPage.setText(dictionary.getValueOf("Orders"));
-	    btnEmployeesLogPage.setText(dictionary.getValueOf("Employees"));
-	    btnClientsLogPage.setText(dictionary.getValueOf("Clients"));
-	    btnUsersLogPage.setText(dictionary.getValueOf("Users"));
-	    btnBackLogPage.setText(dictionary.getValueOf("Back"));
-	    btnDeleteallDataLogPage.setText(dictionary.getValueOf("Delete all saved data"));
-	    btnExpOrdersLogPage.setText(dictionary.getValueOf("Export orders csv"));
-	    btnExpProdLogPage.setText(dictionary.getValueOf("Export csv of products"));
+		btnProductsLogPage.setText(restaurant.getDictionary().getValueOf("Products"));
+	    btnIngredientsLogPage.setText(restaurant.getDictionary().getValueOf("Ingredients"));
+	    btnOrdersPage.setText(restaurant.getDictionary().getValueOf("Orders"));
+	    btnEmployeesLogPage.setText(restaurant.getDictionary().getValueOf("Employees"));
+	    btnClientsLogPage.setText(restaurant.getDictionary().getValueOf("Clients"));
+	    btnUsersLogPage.setText(restaurant.getDictionary().getValueOf("Users"));
+	    btnBackLogPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnDeleteallDataLogPage.setText(restaurant.getDictionary().getValueOf("Delete all saved data"));
+	    btnExpOrdersLogPage.setText(restaurant.getDictionary().getValueOf("Export orders csv"));
+	    btnExpProdLogPage.setText(restaurant.getDictionary().getValueOf("Export csv of products"));
 	}
 	
 	void loadLanguageMainPage() {//20
-		btnMenuMainPage.setText(dictionary.getValueOf("Menu"));
-		btnAdminMainPage.setText(dictionary.getValueOf("Admin"));
-		labLanguageMainPage.setText(dictionary.getValueOf("Language"));
-		btnAplyMainPage.setText(dictionary.getValueOf("Update"));
+		btnMenuMainPage.setText(restaurant.getDictionary().getValueOf("Menu"));
+		btnAdminMainPage.setText(restaurant.getDictionary().getValueOf("Admin"));
+		labLanguageMainPage.setText(restaurant.getDictionary().getValueOf("Language"));
+		btnAplyMainPage.setText(restaurant.getDictionary().getValueOf("Update"));
 	}
 	
 	void loadLanguageMenuPage() {//21
-		btnBackMenu.setText(dictionary.getValueOf("Back"));
-	    labTitleMenu.setText(dictionary.getValueOf("Menu"));
-	    labsearchProdMenu.setText(dictionary.getValueOf("Search product"));
-	    btnSearchMenu.setText(dictionary.getValueOf("Search"));
-	    btnPreviusMenu.setText(dictionary.getValueOf("Previous"));
-	    btnNextMenu.setText(dictionary.getValueOf("Next"));
-	    btnDeleteSearchMenu.setText(dictionary.getValueOf("Clear search"));
+		btnBackMenu.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labTitleMenu.setText(restaurant.getDictionary().getValueOf("Menu"));
+	    labsearchProdMenu.setText(restaurant.getDictionary().getValueOf("Search product"));
+	    btnSearchMenu.setText(restaurant.getDictionary().getValueOf("Search"));
+	    btnPreviusMenu.setText(restaurant.getDictionary().getValueOf("Previous"));
+	    btnNextMenu.setText(restaurant.getDictionary().getValueOf("Next"));
+	    btnDeleteSearchMenu.setText(restaurant.getDictionary().getValueOf("Clear search"));
 	}
 	
 	void loadLanguageModifyClientPage() {//22
-		btnBackModCli.setText(dictionary.getValueOf("Back"));
-	    btnModifyModCli.setText(dictionary.getValueOf("Modify"));
-	    labNameModCli.setText(dictionary.getValueOf("Name"));
-	    labLastNameModCli.setText(dictionary.getValueOf("Surname"));
-	    labIDModCli.setText(dictionary.getValueOf("ID"));
-	    labAdressModCli.setText(dictionary.getValueOf("Adress"));
-	    labPhoneModCli.setText(dictionary.getValueOf("Telephone"));
-	    labTitleModCli.setText(dictionary.getValueOf("Modify Client"));
-	    labObsModCli.setText(dictionary.getValueOf("Observations"));
+		btnBackModCli.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnModifyModCli.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    labNameModCli.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameModCli.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labIDModCli.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labAdressModCli.setText(restaurant.getDictionary().getValueOf("Adress"));
+	    labPhoneModCli.setText(restaurant.getDictionary().getValueOf("Telephone"));
+	    labTitleModCli.setText(restaurant.getDictionary().getValueOf("Modify Client"));
+	    labObsModCli.setText(restaurant.getDictionary().getValueOf("Observations"));
 	}
 	
 	void loadLanguageModifyEmployeePage() {//23
-		btnModifyModEmplo.setText(dictionary.getValueOf("Modify"));
-		labIDModEmplo.setText(dictionary.getValueOf("ID"));
-		labNameModEmplo.setText(dictionary.getValueOf("Name"));
-		labLastNameModEmplo.setText(dictionary.getValueOf("Surname"));
-		labOrdAmountModEmplo.setText(dictionary.getValueOf("Orders delivered"));
-		btnBackModEmplo.setText(dictionary.getValueOf("Back"));
-	    labTitleModEmplo.setText(dictionary.getValueOf("Modify Employee"));
+		btnModifyModEmplo.setText(restaurant.getDictionary().getValueOf("Modify"));
+		labIDModEmplo.setText(restaurant.getDictionary().getValueOf("ID"));
+		labNameModEmplo.setText(restaurant.getDictionary().getValueOf("Name"));
+		labLastNameModEmplo.setText(restaurant.getDictionary().getValueOf("Surname"));
+		labOrdAmountModEmplo.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+		btnBackModEmplo.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labTitleModEmplo.setText(restaurant.getDictionary().getValueOf("Modify Employee"));
 	}
 	
 	void loadLanguageModifyOrderp1Page() {//24
-		tcModifyOrderProduct.setText(dictionary.getValueOf("Product"));
-	    tcModifyOrderProductAmount.setText(dictionary.getValueOf("Amount"));
-	    labTitleModOrd2.setText(dictionary.getValueOf("Modify Order Products"));
-	    btnSearchProdModOrd2.setText(dictionary.getValueOf("Search product"));
-	    btnDeleteProdModOrd2.setText(dictionary.getValueOf("Delete product"));
-	    btnUpdateTvModOrd2.setText(dictionary.getValueOf("Update table"));
-	    btnBackModOrd2.setText(dictionary.getValueOf("Back"));
-	    btnModifyModOrd2.setText(dictionary.getValueOf("Modify"));
-	    labcodeModOrd2.setText(dictionary.getValueOf("Code"));
+		tcModifyOrderProduct.setText(restaurant.getDictionary().getValueOf("Product"));
+	    tcModifyOrderProductAmount.setText(restaurant.getDictionary().getValueOf("Amount"));
+	    labTitleModOrd2.setText(restaurant.getDictionary().getValueOf("Modify Order Products"));
+	    btnSearchProdModOrd2.setText(restaurant.getDictionary().getValueOf("Search product"));
+	    btnDeleteProdModOrd2.setText(restaurant.getDictionary().getValueOf("Delete product"));
+	    btnUpdateTvModOrd2.setText(restaurant.getDictionary().getValueOf("Update table"));
+	    btnBackModOrd2.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnModifyModOrd2.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    labcodeModOrd2.setText(restaurant.getDictionary().getValueOf("Code"));
 	}
 	
 	void loadLanguageModifyOrderp2Page() {//25
-		txtModifyOrderObs.setPromptText(dictionary.getValueOf("Each Observation is separated with a line break"));
-	    btnModifyModOrd1.setText(dictionary.getValueOf("Modify"));
-	    labcliNameModOrd1.setText(dictionary.getValueOf("Client name"));
-	    labEmpOnChargeModOrd1.setText(dictionary.getValueOf("Product"));
-	    labObsModOrd1.setText(dictionary.getValueOf("Observations"));
-	    labTitleModOrd1.setText(dictionary.getValueOf("Modify order"));
-	    labStateModOrd1.setText(dictionary.getValueOf("State"));
-	    labDateModOrd1.setText(dictionary.getValueOf("Date"));
-	    btnExitModOrd1.setText(dictionary.getValueOf("Exit"));
-	    btnBackModOrd1.setText(dictionary.getValueOf("Back"));
-	    labcodeModOrd1.setText(dictionary.getValueOf("Code"));
-	    labActDateModOrd1.setText(dictionary.getValueOf("Current date"));
+		txtModifyOrderObs.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
+	    btnModifyModOrd1.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    labcliNameModOrd1.setText(restaurant.getDictionary().getValueOf("Client name"));
+	    labEmpOnChargeModOrd1.setText(restaurant.getDictionary().getValueOf("Product"));
+	    labObsModOrd1.setText(restaurant.getDictionary().getValueOf("Observations"));
+	    labTitleModOrd1.setText(restaurant.getDictionary().getValueOf("Modify order"));
+	    labStateModOrd1.setText(restaurant.getDictionary().getValueOf("State"));
+	    labDateModOrd1.setText(restaurant.getDictionary().getValueOf("Date"));
+	    btnExitModOrd1.setText(restaurant.getDictionary().getValueOf("Exit"));
+	    btnBackModOrd1.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labcodeModOrd1.setText(restaurant.getDictionary().getValueOf("Code"));
+	    labActDateModOrd1.setText(restaurant.getDictionary().getValueOf("Current date"));
 	}
 	
 	void loadLanguageModifyUserPage() {//26
-		btnBackModUser.setText(dictionary.getValueOf("Back"));
-	    btnModifyModUser.setText(dictionary.getValueOf("Modify"));
-	    labNameModUser.setText(dictionary.getValueOf("Name"));
-	    labLastNameModUser.setText(dictionary.getValueOf("Surname"));
-	    labTitleModUser.setText(dictionary.getValueOf("Modify User"));
-	    labIDModUser.setText(dictionary.getValueOf("ID"));
-	    labUserNameModUser.setText(dictionary.getValueOf("Username"));
-	    labNumOfOrdModUser.setText(dictionary.getValueOf("Orders delivered"));
-	    labpassModUser.setText(dictionary.getValueOf("Password"));
+		btnBackModUser.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnModifyModUser.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    labNameModUser.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameModUser.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labTitleModUser.setText(restaurant.getDictionary().getValueOf("Modify User"));
+	    labIDModUser.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labUserNameModUser.setText(restaurant.getDictionary().getValueOf("Username"));
+	    labNumOfOrdModUser.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+	    labpassModUser.setText(restaurant.getDictionary().getValueOf("Password"));
 	}
 	
 	void loadLanguageOrdersPage() {//27
-		tcOrderCode.setText(dictionary.getValueOf("Code"));
-	    tcOrderState.setText(dictionary.getValueOf("State"));
-	    tcOrderClient.setText(dictionary.getValueOf("Client"));
-	    tcOrderEmployee.setText(dictionary.getValueOf("Employee"));
-	    tcOrderDate.setText(dictionary.getValueOf("Date"));
-	    tcOrderProduct.setText(dictionary.getValueOf("Product"));
-	    tcOrderProductAmount.setText(dictionary.getValueOf("Amount"));
-	    tcOrderProductSize.setText(dictionary.getValueOf("Size"));
-	    tcOrderProductPrice.setText(dictionary.getValueOf("Price"));
-	    btnBackOrdPage.setText(dictionary.getValueOf("Back"));
-	    btnAddOrdOrdPage.setText(dictionary.getValueOf("Add order"));
-	    btnModProdOrdPage.setText(dictionary.getValueOf("Modify Products"));
-	    btnDeleteOrdPage.setText(dictionary.getValueOf("Delete"));
-	    labObsOrdPage.setText(dictionary.getValueOf("Observations"));
-	    btnUpdateOrdPage.setText(dictionary.getValueOf("Update"));
-	    labTotalOrdPage.setText(dictionary.getValueOf("Total"));
-	    btnModOrdOrdPage.setText(dictionary.getValueOf("Modify products"));
-	    btnImportOrdOrdPage.setText(dictionary.getValueOf("Import Orders"));
+		tcOrderCode.setText(restaurant.getDictionary().getValueOf("Code"));
+	    tcOrderState.setText(restaurant.getDictionary().getValueOf("State"));
+	    tcOrderClient.setText(restaurant.getDictionary().getValueOf("Client"));
+	    tcOrderEmployee.setText(restaurant.getDictionary().getValueOf("Employee"));
+	    tcOrderDate.setText(restaurant.getDictionary().getValueOf("Date"));
+	    tcOrderProduct.setText(restaurant.getDictionary().getValueOf("Product"));
+	    tcOrderProductAmount.setText(restaurant.getDictionary().getValueOf("Amount"));
+	    tcOrderProductSize.setText(restaurant.getDictionary().getValueOf("Size"));
+	    tcOrderProductPrice.setText(restaurant.getDictionary().getValueOf("Price"));
+	    btnBackOrdPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnAddOrdOrdPage.setText(restaurant.getDictionary().getValueOf("Add order"));
+	    btnModProdOrdPage.setText(restaurant.getDictionary().getValueOf("Modify Products"));
+	    btnDeleteOrdPage.setText(restaurant.getDictionary().getValueOf("Delete"));
+	    labObsOrdPage.setText(restaurant.getDictionary().getValueOf("Observations"));
+	    btnUpdateOrdPage.setText(restaurant.getDictionary().getValueOf("Update"));
+	    labTotalOrdPage.setText(restaurant.getDictionary().getValueOf("Total"));
+	    btnModOrdOrdPage.setText(restaurant.getDictionary().getValueOf("Modify products"));
+	    btnImportOrdOrdPage.setText(restaurant.getDictionary().getValueOf("Import Orders"));
 	}
 	
 	void loadLanguageProductPage() {//28
-		tcNameOfProduct.setText(dictionary.getValueOf("Name"));
-	    tcTypeOfProduct.setText(dictionary.getValueOf("Type"));
-	    btnAddProdProdPage.setText(dictionary.getValueOf("Add product"));
-	    btnAdminProdProdPage.setText(dictionary.getValueOf("Manage Products"));
-	    btnBackProductPage.setText(dictionary.getValueOf("Back"));
-	    btnImportProdProdPage.setText(dictionary.getValueOf("Import products"));
+		tcNameOfProduct.setText(restaurant.getDictionary().getValueOf("Name"));
+	    tcTypeOfProduct.setText(restaurant.getDictionary().getValueOf("Type"));
+	    btnAddProdProdPage.setText(restaurant.getDictionary().getValueOf("Add product"));
+	    btnAdminProdProdPage.setText(restaurant.getDictionary().getValueOf("Manage Products"));
+	    btnBackProductPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnImportProdProdPage.setText(restaurant.getDictionary().getValueOf("Import products"));
 	}
 	
 	void loadLanguageSearchClientPage() {//29
-		btnSearchSearchClient.setText(dictionary.getValueOf("Search"));
-	    btnBackSearchClient.setText(dictionary.getValueOf("Back"));
-	    labNameSearchClient.setText(dictionary.getValueOf("Name"));
-	    labLastNameSearchClient.setText(dictionary.getValueOf("Surname"));
-	    labIDSearchClient.setText(dictionary.getValueOf("ID"));
-	    labAdressSearchClient.setText(dictionary.getValueOf("Adress"));
-	    labPhoneSearchClient.setText(dictionary.getValueOf("Telephone"));
-	    labObsSearchClient.setText(dictionary.getValueOf("Observations"));
-	    labSearchClientByIdSearchClient.setText(dictionary.getValueOf("Search client by id"));
-	    labTimeSearchClient.setText(dictionary.getValueOf("Search time in nanoseconds"));
+		btnSearchSearchClient.setText(restaurant.getDictionary().getValueOf("Search"));
+	    btnBackSearchClient.setText(restaurant.getDictionary().getValueOf("Back"));
+	    labNameSearchClient.setText(restaurant.getDictionary().getValueOf("Name"));
+	    labLastNameSearchClient.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    labIDSearchClient.setText(restaurant.getDictionary().getValueOf("ID"));
+	    labAdressSearchClient.setText(restaurant.getDictionary().getValueOf("Adress"));
+	    labPhoneSearchClient.setText(restaurant.getDictionary().getValueOf("Telephone"));
+	    labObsSearchClient.setText(restaurant.getDictionary().getValueOf("Observations"));
+	    labSearchClientByIdSearchClient.setText(restaurant.getDictionary().getValueOf("Search client by id"));
+	    labTimeSearchClient.setText(restaurant.getDictionary().getValueOf("Search time in nanoseconds"));
 	}
 	
 	void loadLanguageUsersPage() {//30
-		tcUserUserName.setText(dictionary.getValueOf("Username"));
-	    tcUserName.setText(dictionary.getValueOf("Name"));
-	    tcUserLastName.setText(dictionary.getValueOf("Surname"));
-	    tcUserID.setText(dictionary.getValueOf("ID"));
-	    tcUserNoo.setText(dictionary.getValueOf("Orders delivered"));
-	    labTitleUserPage.setText(dictionary.getValueOf("Users"));
-	    btnBackUserPage.setText(dictionary.getValueOf("Back"));
-	    btnUpdateUserPage.setText(dictionary.getValueOf("Update"));
-	    btnaddUserUserPage.setText(dictionary.getValueOf("Add user"));
-	    btnModifyUserPage.setText(dictionary.getValueOf("Modify"));
-	    btnDeleteUserPage.setText(dictionary.getValueOf("Delete"));
+		tcUserUserName.setText(restaurant.getDictionary().getValueOf("Username"));
+	    tcUserName.setText(restaurant.getDictionary().getValueOf("Name"));
+	    tcUserLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
+	    tcUserID.setText(restaurant.getDictionary().getValueOf("ID"));
+	    tcUserNoo.setText(restaurant.getDictionary().getValueOf("Orders delivered"));
+	    labTitleUserPage.setText(restaurant.getDictionary().getValueOf("Users"));
+	    btnBackUserPage.setText(restaurant.getDictionary().getValueOf("Back"));
+	    btnUpdateUserPage.setText(restaurant.getDictionary().getValueOf("Update"));
+	    btnaddUserUserPage.setText(restaurant.getDictionary().getValueOf("Add user"));
+	    btnModifyUserPage.setText(restaurant.getDictionary().getValueOf("Modify"));
+	    btnDeleteUserPage.setText(restaurant.getDictionary().getValueOf("Delete"));
 	}
 	
 	@FXML
@@ -1616,13 +1607,13 @@ public class RestaurantGUI {
 				}
 
 				State state = null;
-				if(cbModifyOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Requested"))) {
+				if(cbModifyOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Requested"))) {
 					state = State.SOLICITADO;
-				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Sent"))) {
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Sent"))) {
 					state = State.ENVIADO;
-				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Delivered"))) {
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Delivered"))) {
 					state = State.ENTREGADO;
-				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("In progress"))) {
+				}else if(cbModifyOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("In progress"))) {
 					state = State.EN_PROCESO;
 				}
 
@@ -1631,18 +1622,18 @@ public class RestaurantGUI {
 				restaurant.updateOrder(labOrderCode.getText() ,state, cbModifyAbleClients.getValue(),
 						cbModifyAbleEmployees.getValue(), date ,observations);
 
-				labConfirmModifyOrder.setText(dictionary.getValueOf("Order successfully modified"));
+				labConfirmModifyOrder.setText(restaurant.getDictionary().getValueOf("Order successfully modified"));
 				labConfirmModifyOrder.setTextFill(Paint.valueOf("Green"));
 
 			}else {
 
-				labConfirmModifyOrder.setText(dictionary.getValueOf("All spaces must be filled"));
+				labConfirmModifyOrder.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmModifyOrder.setTextFill(Paint.valueOf("RED"));
 
 			}
 		}catch(NumberFormatException n) {
 
-			labConfirmModifyOrder.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			labConfirmModifyOrder.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			labConfirmModifyOrder.setTextFill(Paint.valueOf("RED"));
 		}
 	}
@@ -1696,7 +1687,7 @@ public class RestaurantGUI {
 				}
 			}else {
 
-				labConfirmAddOrderS1.setText(dictionary.getValueOf("At least one product must be added"));
+				labConfirmAddOrderS1.setText(restaurant.getDictionary().getValueOf("At least one product must be added"));
 				labConfirmAddOrderS1.setTextFill(Paint.valueOf("RED"));
 			}
 		}
@@ -1808,14 +1799,14 @@ public class RestaurantGUI {
 				restaurant.addOrderItem(restaurant.getProducts().get(pos), cbProductsSize.getValue(),
 						price, Integer.parseInt(txtProductCant.getText()));
 
-				labConfirmProductToOrder.setText(dictionary.getValueOf("Product successfully added to order"));
+				labConfirmProductToOrder.setText(restaurant.getDictionary().getValueOf("Product successfully added to order"));
 				labConfirmProductToOrder.setTextFill(Paint.valueOf("Green"));
 			}else {
-				labConfirmProductToOrder.setText(dictionary.getValueOf("All spaces must be filled"));
+				labConfirmProductToOrder.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch (NumberFormatException nfe) {
-			labConfirmProductToOrder.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			labConfirmProductToOrder.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			labConfirmProductToOrder.setTextFill(Paint.valueOf("RED"));
 		}
 
@@ -1829,7 +1820,7 @@ public class RestaurantGUI {
 			ObservableList<String> observableList = FXCollections.observableArrayList(restaurant.getProducts().get(pos).getSizes());
 			cbProductsSize.setItems(observableList);
 		}else {
-			labConfirmProductToOrder.setText(dictionary.getValueOf("Enter the product first to see its sizes"));
+			labConfirmProductToOrder.setText(restaurant.getDictionary().getValueOf("Enter the product first to see its sizes"));
 			labConfirmProductToOrder.setTextFill(Paint.valueOf("orange"));
 		}
 	}
@@ -1868,13 +1859,13 @@ public class RestaurantGUI {
 				}
 
 				State state = null;
-				if(cbOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Requested"))) {
+				if(cbOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Requested"))) {
 					state = State.SOLICITADO;
-				}else if(cbOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Sent"))) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Sent"))) {
 					state = State.ENVIADO;
-				}else if(cbOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("Delivered"))) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("Delivered"))) {
 					state = State.ENTREGADO;
-				}else if(cbOrderState.getValue().equalsIgnoreCase(dictionary.getValueOf("In progress"))) {
+				}else if(cbOrderState.getValue().equalsIgnoreCase(restaurant.getDictionary().getValueOf("In progress"))) {
 					state = State.EN_PROCESO;
 				}
 
@@ -1882,7 +1873,7 @@ public class RestaurantGUI {
 						cbAbleEmployees.getValue(), String.valueOf(dateTimeFormatter.format(calendarDate.getValue())) ,
 						observations);
 
-				labConfirmOrder.setText(dictionary.getValueOf("Order added successfully"));
+				labConfirmOrder.setText(restaurant.getDictionary().getValueOf("Order added successfully"));
 				labConfirmOrder.setTextFill(Paint.valueOf("Green"));
 				try {
 					restaurant.saveData();
@@ -1890,7 +1881,7 @@ public class RestaurantGUI {
 				}
 			}else {
 
-				labConfirmOrder.setText(dictionary.getValueOf("All spaces must be filled"));
+				labConfirmOrder.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmOrder.setTextFill(Paint.valueOf("RED"));
 
 				System.out.println("observaciones: " + txtOrderObs.getText() + " cliente: " + cbAbleClients.getValue() 
@@ -1900,7 +1891,7 @@ public class RestaurantGUI {
 			}
 		}catch(NumberFormatException n) {
 
-			labConfirmOrder.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			labConfirmOrder.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			labConfirmOrder.setTextFill(Paint.valueOf("RED"));
 		}
 	}
@@ -2022,7 +2013,7 @@ public class RestaurantGUI {
 			}
 		}else {
 
-			labConfirmAddOrderS1.setText(dictionary.getValueOf("At least one product must be added"));
+			labConfirmAddOrderS1.setText(restaurant.getDictionary().getValueOf("At least one product must be added"));
 			labConfirmAddOrderS1.setTextFill(Paint.valueOf("RED"));
 		}
 	}
@@ -2112,12 +2103,12 @@ public class RestaurantGUI {
 						txtModifyUsersName.getText(),txtModifyUsersLastName.getText(),
 						labModifyUserID.getText(),Integer.parseInt(txtModifyUsersNoo.getText()) );
 
-				confirmModifyUser.setText(dictionary.getValueOf("User modified successfully"));
+				confirmModifyUser.setText(restaurant.getDictionary().getValueOf("User modified successfully"));
 				confirmModifyUser.setTextFill(Paint.valueOf("Green"));
 
 			}else {
 
-				confirmModifyUser.setText(dictionary.getValueOf("All spaces must be filled"));
+				confirmModifyUser.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				confirmModifyUser.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
@@ -2139,21 +2130,21 @@ public class RestaurantGUI {
 						txtUserID.getText(),Integer.parseInt(txtUserNoo.getText()),
 						txtUserUserName.getText(),txtUserPassword.getText());
 				if(x == false) {
-					confirmCreateUser.setText(dictionary.getValueOf("User added successfully"));
+					confirmCreateUser.setText(restaurant.getDictionary().getValueOf("User added successfully"));
 					confirmCreateUser.setTextFill(Paint.valueOf("Green"));
 				}else {
-					confirmCreateUser.setText(dictionary.getValueOf("The User has an id that already exists"));
+					confirmCreateUser.setText(restaurant.getDictionary().getValueOf("The User has an id that already exists"));
 					confirmCreateUser.setTextFill(Paint.valueOf("RED"));
 				}
 
 			}else {
 
-				confirmCreateUser.setText(dictionary.getValueOf("All spaces must be filled"));
+				confirmCreateUser.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				confirmCreateUser.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
 
-			confirmCreateUser.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			confirmCreateUser.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			confirmCreateUser.setTextFill(Paint.valueOf("RED"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -2274,17 +2265,17 @@ public class RestaurantGUI {
 				restaurant.updateEmployee(txtModifyEmployeeName.getText(), txtModifyEmployeeLastName.getText(),
 						labModifyEmployeeId.getText(), Integer.parseInt(txtModifyNumOfOrders.getText()) );
 
-				confirmModifyEmployee.setText(dictionary.getValueOf("Employee successfully modified"));
+				confirmModifyEmployee.setText(restaurant.getDictionary().getValueOf("Employee successfully modified"));
 				confirmModifyEmployee.setTextFill(Paint.valueOf("Green"));
 
 			}else {
 
-				confirmModifyEmployee.setText(dictionary.getValueOf("All spaces must be filled"));
+				confirmModifyEmployee.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
 
-			confirmModifyEmployee.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			confirmModifyEmployee.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			confirmModifyEmployee.setTextFill(Paint.valueOf("RED"));
 		}
 	}
@@ -2342,10 +2333,6 @@ public class RestaurantGUI {
 
 	@FXML
 	private Label confirmModifyEmployee;
-
-
-
-
 	//product admin
 	@FXML
 	private ComboBox<String> cboxProducts;
@@ -2468,17 +2455,17 @@ public class RestaurantGUI {
 						labModifyClientID.getText(),txtModifyClientAdress.getText(),
 						txtModifyClientPhone.getText(), observations );
 
-				labConfirmModifyClient.setText(dictionary.getValueOf("Successfully modified client"));
+				labConfirmModifyClient.setText(restaurant.getDictionary().getValueOf("Successfully modified client"));
 				labConfirmModifyClient.setTextFill(Paint.valueOf("Green"));
 
 
 			}else {
-				labConfirmModifyClient.setText(dictionary.getValueOf("All spaces must be filled"));
+				labConfirmModifyClient.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
 
-			labConfirmModifyClient.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			labConfirmModifyClient.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
 		}
 	}
@@ -2499,21 +2486,21 @@ public class RestaurantGUI {
 				boolean x = restaurant.createClient(txtClientName.getText(), txtClientLastName.getText(),
 						txtClientID.getText(),txtClientAdress.getText(), txtClientPhone.getText(), observations );
 				if(!x) {
-					labConfirmClient.setText(dictionary.getValueOf("Successfully added client"));
+					labConfirmClient.setText(restaurant.getDictionary().getValueOf("Successfully added client"));
 					labConfirmClient.setTextFill(Paint.valueOf("Green"));
 				}else {
-					labConfirmClient.setText(dictionary.getValueOf("The client has an id that already exists"));
+					labConfirmClient.setText(restaurant.getDictionary().getValueOf("The client has an id that already exists"));
 					labConfirmClient.setTextFill(Paint.valueOf("RED"));
 				}
 
 			}else {
 
-				labConfirmClient.setText(dictionary.getValueOf("All spaces must be filled"));
+				labConfirmClient.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmClient.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
 
-			labConfirmModifyClient.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			labConfirmModifyClient.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			labConfirmModifyClient.setTextFill(Paint.valueOf("RED"));
 		}
 
@@ -2556,7 +2543,7 @@ public class RestaurantGUI {
 		int found= restaurant.binarySearchForClients(txtIdForSearch.getText());
 		lblTimeOfSearch.setText(""+restaurant.getTime());
 		if(found==-1) {
-			lblWarningsForSearchClientPage.setText(dictionary.getValueOf("A client with this id was not found"));
+			lblWarningsForSearchClientPage.setText(restaurant.getDictionary().getValueOf("A client with this id was not found"));
 			lblWarningsForSearchClientPage.setTextFill(Paint.valueOf("RED"));
 		}else {
 			lblNameOfSearchedClient.setText(restaurant.getClients().get(found).getName());
@@ -2674,21 +2661,21 @@ public class RestaurantGUI {
 						txtEmployeeId.getText(), Integer.parseInt(txtNumOfOrders.getText()) );
 
 				if(x == false) {
-					confirmEmployee.setText(dictionary.getValueOf("Employee added successfully"));
+					confirmEmployee.setText(restaurant.getDictionary().getValueOf("Employee added successfully"));
 					confirmEmployee.setTextFill(Paint.valueOf("Green"));
 				}else {
-					confirmEmployee.setText(dictionary.getValueOf("The employee has an id that already exists"));
+					confirmEmployee.setText(restaurant.getDictionary().getValueOf("The employee has an id that already exists"));
 					confirmEmployee.setTextFill(Paint.valueOf("RED"));
 				}
 
 			}else {
 
-				confirmEmployee.setText(dictionary.getValueOf("All spaces must be filled"));
+				confirmEmployee.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				confirmEmployee.setTextFill(Paint.valueOf("RED"));
 			}
 		}catch(NumberFormatException n) {
 
-			confirmEmployee.setText(dictionary.getValueOf("The values ​​do not correspond"));
+			confirmEmployee.setText(restaurant.getDictionary().getValueOf("The values ​​do not correspond"));
 			confirmEmployee.setTextFill(Paint.valueOf("RED"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -2752,7 +2739,7 @@ public class RestaurantGUI {
 				e.printStackTrace();
 			}
 		}else {
-			lblAdminPagewarning.setText(dictionary.getValueOf("The username or password is not correct"));
+			lblAdminPagewarning.setText(restaurant.getDictionary().getValueOf("The username or password is not correct"));
 			lblAdminPagewarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -2786,7 +2773,7 @@ public class RestaurantGUI {
 			restaurant.loadClientsData();
 			restaurant.loadOrderData();
 			restaurant.saveData();
-			loadLenguage();
+			restaurant.loadLenguage();
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("main-page.fxml"));
 			fxmlLoader.setController(this);
 			Parent login;
@@ -2823,9 +2810,9 @@ public class RestaurantGUI {
 	}
 	public void loadCbLogIn() {
 		ObservableList<String> ableLanguages;
-		if(dictionary.getActualLanguage() == Language.SPANISH) {
+		if(restaurant.getDictionary().getActualLanguage() == Language.SPANISH) {
 			ableLanguages = FXCollections.observableArrayList("ESPAÑOL", "INGLES");
-		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
+		} else if(restaurant.getDictionary().getActualLanguage() == Language.ENGLISH) {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH");
 		} else {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH");
@@ -2835,38 +2822,17 @@ public class RestaurantGUI {
 	
 	//main-page
 	@FXML
-    void btnChangeLenguage(ActionEvent event) throws IOException {
+    public void btnChangeLenguage(ActionEvent event) throws IOException {
 		if(cbLenguage.getValue().equals("SPANISH") || cbLenguage.getValue().equals("ESPAÑOL")) {
-			dictionary.setActualLanguage(Language.SPANISH);
+			restaurant.getDictionary().setActualLanguage(Language.SPANISH);
 		} else if(cbLenguage.getValue().equals("ENGLISH") || cbLenguage.getValue().equals("INGLES")) {
-			dictionary.setActualLanguage(Language.ENGLISH);
+			restaurant.getDictionary().setActualLanguage(Language.ENGLISH);
 		}
-		loadLenguage();
+		restaurant.loadLenguage();
 		loadMainPage();
     }
 	
-	public void loadLenguage() throws IOException{
-		ArrayList<Word> read = new ArrayList<Word>();
-		BufferedReader br;
-		if(dictionary.getActualLanguage() == Language.SPANISH) {
-			br = new BufferedReader(new FileReader("data/ImportWordsSpanish.csv"));
-		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
-			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
-		} else {
-			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
-		}
-		String line= br.readLine();
-		String[] parts;
-		while(line!=null) {
-			parts= line.split(",");
-			read.add(new Word(parts[0],parts[1]));
-			line=br.readLine();
-		}
-		br.close();
-		
-		dictionary.setWords(read);
-	}
-
+	
 	//main-page
 	@FXML
 	public void btnAdmin(ActionEvent event) {
@@ -2896,14 +2862,14 @@ public class RestaurantGUI {
 			mainPane.getChildren().setAll(login);
 			time.interrupt();
 			if(restaurant.getProducts().isEmpty()) {
-				lblWarningMenu.setText(dictionary.getValueOf("There are no products"));
+				lblWarningMenu.setText(restaurant.getDictionary().getValueOf("There are no products"));
 				lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			}else {
 				restaurant.resetMenuProducts();
 				lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
 				lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
-				lblSizeAndPriceOfProductMenu.setText(dictionary.getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
-				lblIngredientOfProductMenu.setText(dictionary.getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+				lblSizeAndPriceOfProductMenu.setText(restaurant.getDictionary().getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+				lblIngredientOfProductMenu.setText(restaurant.getDictionary().getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
 				lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 			}
 			lblSizeAndPriceOfProductMenu.setWrapText(true);
@@ -2922,15 +2888,15 @@ public class RestaurantGUI {
 			currentProductSelected--;
 			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
 			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
-			lblSizeAndPriceOfProductMenu.setText(dictionary.getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
-			lblIngredientOfProductMenu.setText(dictionary.getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getDictionary().getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getDictionary().getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
 			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 		}catch(NullPointerException e) {
-			lblWarningMenu.setText(dictionary.getValueOf("This is the first product, there is no previous"));
+			lblWarningMenu.setText(restaurant.getDictionary().getValueOf("This is the first product, there is no previous"));
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			currentProductSelected++;
 		}catch(IndexOutOfBoundsException e) {
-			lblWarningMenu.setText(dictionary.getValueOf("This is the first product, there is no previous"));
+			lblWarningMenu.setText(restaurant.getDictionary().getValueOf("This is the first product, there is no previous"));
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			currentProductSelected++;
 		}
@@ -2958,15 +2924,15 @@ public class RestaurantGUI {
 			currentProductSelected++;
 			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
 			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
-			lblSizeAndPriceOfProductMenu.setText(dictionary.getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
-			lblIngredientOfProductMenu.setText(dictionary.getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getDictionary().getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getDictionary().getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
 			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 		}catch(NullPointerException e) {
-			lblWarningMenu.setText(dictionary.getValueOf("This is the last product"));
+			lblWarningMenu.setText(restaurant.getDictionary().getValueOf("This is the last product"));
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			currentProductSelected--;
 		}catch(IndexOutOfBoundsException e) {
-			lblWarningMenu.setText(dictionary.getValueOf("This is the last product"));
+			lblWarningMenu.setText(restaurant.getDictionary().getValueOf("This is the last product"));
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));
 			currentProductSelected--;
 		}
@@ -2977,13 +2943,13 @@ public class RestaurantGUI {
 		currentProductSelected=0;
 		restaurant.searchMenuProducts(txtSearchProduct.getText());
 		if(restaurant.getMenuProducts().isEmpty()) {
-			lblWarningMenu.setText(dictionary.getValueOf("There are no products related with") + " " +txtSearchProduct.getText());
+			lblWarningMenu.setText(restaurant.getDictionary().getValueOf("There are no products related with") + " " +txtSearchProduct.getText());
 			lblWarningMenu.setTextFill(Paint.valueOf("Red"));	
 		}else {
 			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
 			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
-			lblSizeAndPriceOfProductMenu.setText(dictionary.getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
-			lblIngredientOfProductMenu.setText(dictionary.getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getDictionary().getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getDictionary().getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
 			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 		}
 
@@ -3001,8 +2967,8 @@ public class RestaurantGUI {
 			restaurant.resetMenuProducts();
 			lblNameOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getName());
 			lblTypeOfProductMenu.setText(restaurant.getMenuProducts().get(currentProductSelected).getType());
-			lblSizeAndPriceOfProductMenu.setText(dictionary.getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
-			lblIngredientOfProductMenu.setText(dictionary.getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
+			lblSizeAndPriceOfProductMenu.setText(restaurant.getDictionary().getValueOf("Size and prices")+restaurant.getMenuProducts().get(currentProductSelected).sizeAndPriceToString());
+			lblIngredientOfProductMenu.setText(restaurant.getDictionary().getValueOf("Ingredients")+restaurant.getMenuProducts().get(currentProductSelected).ingredientsToString());
 			lblNUmberOfProducts.setText((currentProductSelected+1)+"/"+(restaurant.getMenuProducts().size()));
 		}
 		lblSizeAndPriceOfProductMenu.setWrapText(true);
@@ -3064,7 +3030,7 @@ public class RestaurantGUI {
 	void btnExportOrders(ActionEvent event) {
 		try {
 			restaurant.exportData(dateTimeFormatter.format(dPDate1.getValue()).toString(), dateTimeFormatter.format(dPDate2.getValue()).toString(), txtSep.getText());
-			lblExportOrderscsvWarning.setText(dictionary.getValueOf("The file was generated successfully"));
+			lblExportOrderscsvWarning.setText(restaurant.getDictionary().getValueOf("The file was generated successfully"));
 			lblExportOrderscsvWarning.setTextFill(Paint.valueOf("Green"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -3116,7 +3082,7 @@ public class RestaurantGUI {
 			}
 		};
 		exportProducts.start();
-		lblexportProductWarnigns.setText(dictionary.getValueOf("The file was generated successfully"));
+		lblexportProductWarnigns.setText(restaurant.getDictionary().getValueOf("The file was generated successfully"));
 		lblexportProductWarnigns.setTextFill(Paint.valueOf("Green"));
 	}
 
@@ -3227,7 +3193,7 @@ public class RestaurantGUI {
 			loadTableViewIngredient();
 			restaurant.saveData();
 		}catch(IOException e) {
-			lblIngredientPageWarning.setText(dictionary.getValueOf("Ingredients file not found"));
+			lblIngredientPageWarning.setText(restaurant.getDictionary().getValueOf("Ingredients file not found"));
 			lblIngredientPageWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -3260,10 +3226,10 @@ public class RestaurantGUI {
 				if(!restaurant.addIngredient(txtNameIgredient.getText(), avialable)) {
 					restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setCreatedBy(currentUser);
 					restaurant.getIngredients().get(restaurant.getIngredients().size()-1).setLastEditedBy(currentUser);
-					lblAddIngredient.setText(dictionary.getValueOf("Ingredient added correctly"));
+					lblAddIngredient.setText(restaurant.getDictionary().getValueOf("Ingredient added correctly"));
 					lblAddIngredient.setTextFill(Paint.valueOf("Green"));
 				}else {
-					lblAddIngredient.setText(dictionary.getValueOf("There is already an ingredient with this name"));
+					lblAddIngredient.setText(restaurant.getDictionary().getValueOf("There is already an ingredient with this name"));
 					lblAddIngredient.setTextFill(Paint.valueOf("Red"));
 				}
 			} catch (IOException e) {
@@ -3271,7 +3237,7 @@ public class RestaurantGUI {
 				e.printStackTrace();
 			}
 		}else {
-			lblAddIngredient.setText(dictionary.getValueOf("All spaces must be filled"));
+			lblAddIngredient.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 			lblAddIngredient.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -3406,7 +3372,7 @@ public class RestaurantGUI {
 			}
 		}
 		if(found) {
-			lblAdminIngredientWarning.setText(dictionary.getValueOf("The ingredient cannot be deleted because a product is using it"));
+			lblAdminIngredientWarning.setText(restaurant.getDictionary().getValueOf("The ingredient cannot be deleted because a product is using it"));
 			lblAdminIngredientWarning.setTextFill(Paint.valueOf("Red"));
 		}else {
 			restaurant.getIngredients().remove(cboxIngredients.getSelectionModel().getSelectedIndex());
@@ -3451,7 +3417,7 @@ public class RestaurantGUI {
 				rbtnAdminIngredientsNotAvailable.setSelected(true);
 			}
 		}catch(ArrayIndexOutOfBoundsException a){
-			lblNameIngredient.setText(dictionary.getValueOf("The ingredient was deleted"));
+			lblNameIngredient.setText(restaurant.getDictionary().getValueOf("The ingredient was deleted"));
 			lblIngredientCreatedBy.setText("");
 			lblIngredientLastEditedBy.setText("");
 			rbtnAdminIngredientsAvielable.setSelected(false);
@@ -3464,7 +3430,7 @@ public class RestaurantGUI {
 	public void btnAddProduct(ActionEvent event) {
 		lblAddProductWarning.setText("");
 		if(txtNameOfProduct.getText().equals("") || txtTypeOfProduct.getText().equals("") || restaurant.getIngredientsForProduct().isEmpty() || restaurant.getSizeAndPrice().isEmpty()) {
-			lblAddProductWarning.setText(dictionary.getValueOf("All spaces must be filled"));
+			lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}else {
 			try {
@@ -3476,7 +3442,7 @@ public class RestaurantGUI {
 					restaurant.getProducts().get(restaurant.getProducts().size()-1).setCreatedBy(currentUser);
 					restaurant.getProducts().get(restaurant.getProducts().size()-1).setLastEditedBy(currentUser);
 				}else {
-					lblAddProductWarning.setText(dictionary.getValueOf("There is already a product") + ": "+txtNameOfProduct.getText());
+					lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("There is already a product") + ": "+txtNameOfProduct.getText());
 					lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 				}
 			} catch (IOException e) {
@@ -3491,7 +3457,7 @@ public class RestaurantGUI {
 	public void btnClearSizeAndPrice(ActionEvent event) {
 		restaurant.resetsizeAndPriceArray();
 		lblSizeAndPriceOfProducts.setText("");
-		lblAddProductWarning.setText(dictionary.getValueOf("Product sizes deleted"));
+		lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("Product sizes deleted"));
 		lblAddProductWarning.setTextFill(Paint.valueOf("Green"));
 		txtSizeOfProduct.clear();
 		txtPriceOfSizeOfProduct.clear();
@@ -3521,7 +3487,7 @@ public class RestaurantGUI {
 	public void btnClearIngredientsForProduct(ActionEvent event) {
 		restaurant.resetProductIngredientArray();
 		lblIngredientsForProduct.setText("");
-		lblAddProductWarning.setText(dictionary.getValueOf("Product ingredients deleted")+" \n test");
+		lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("Product ingredients deleted")+" \n test");
 		lblAddProductWarning.setTextFill(Paint.valueOf("Green"));
 	}
 
@@ -3530,7 +3496,7 @@ public class RestaurantGUI {
 	public void btnAddSizeAndPriceForProduct(ActionEvent event) {
 		lblAddProductWarning.setText("");
 		if(txtSizeOfProduct.getText().equals("")) {
-			lblAddProductWarning.setText(dictionary.getValueOf("All spaces must be filled"));
+			lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 			txtSizeOfProduct.clear();
 			txtPriceOfSizeOfProduct.clear();
@@ -3542,11 +3508,11 @@ public class RestaurantGUI {
 					txtSizeOfProduct.clear();
 					txtPriceOfSizeOfProduct.clear();
 				}else {
-					lblAddProductWarning.setText(dictionary.getValueOf("The price must be a number"));
+					lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("The price must be a number"));
 					lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 				}
 			}catch (NumberFormatException e) {
-				lblAddProductWarning.setText(dictionary.getValueOf("This size has already been added"));
+				lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("This size has already been added"));
 				lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 			}
 		}
@@ -3562,11 +3528,11 @@ public class RestaurantGUI {
 
 				lblIngredientsForProduct.setText(lblIngredientsForProduct.getText()+" "+restaurant.getIngredientsForProduct().get(restaurant.getIngredientsForProduct().size()-1).getIngredients()+" , ");
 			}else {
-				lblAddProductWarning.setText(dictionary.getValueOf("This ingredient has already been added"));
+				lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("This ingredient has already been added"));
 				lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 			}
 		}else {
-			lblAddProductWarning.setText(dictionary.getValueOf("Select an ingredient"));
+			lblAddProductWarning.setText(restaurant.getDictionary().getValueOf("Select an ingredient"));
 			lblAddProductWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -3671,9 +3637,9 @@ public class RestaurantGUI {
 	public void btnCboxIngredientsOfProduct(ActionEvent event) {
 		if(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()!=-1) {
 			if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex()).isAvialable()) {
-				lblAvialableIngredientProduct.setText(dictionary.getValueOf("Is available"));
+				lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Is available"));
 			}else {
-				lblAvialableIngredientProduct.setText(dictionary.getValueOf("Not available"));
+				lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Not available"));
 			}
 
 		}
@@ -3718,7 +3684,7 @@ public class RestaurantGUI {
 				txtSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getSize());
 				txtPriceOfSizeOfProductAdmin.setText(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().get(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex()).getPrice()+"");
 			}catch(NumberFormatException e) {
-				lblProductAdminWarnings.setText(dictionary.getValueOf("Enter a valid number"));
+				lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("Enter a valid number"));
 				lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
 			}
 		}
@@ -3727,14 +3693,14 @@ public class RestaurantGUI {
 	@FXML
 	public void btnDeleteIngredientFromProduct(ActionEvent event) {
 		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size()==1) {
-			lblProductAdminWarnings.setText(dictionary.getValueOf("Product must have at least 1 ingredient"));
+			lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("Product must have at least 1 ingredient"));
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
 		}else {
 			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().remove(cboxIngredientsOfProduct.getSelectionModel().getSelectedIndex());
 			cboxIngredientsOfProduct.getItems().clear();
-			lblProductAdminWarnings.setText(dictionary.getValueOf("The ingredient has been was deleted"));
+			lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("The ingredient has been was deleted"));
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
-			lblAvialableIngredientProduct.setText(dictionary.getValueOf("Availability"));
+			lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Availability"));
 			for(int c=0;c<restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().size();c++) {
 				cboxIngredientsOfProduct.getItems().add(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getIngredients().get(c).getIngredients());
 			}
@@ -3745,7 +3711,7 @@ public class RestaurantGUI {
 	@FXML
 	public void btnDeleteSizeAndPrice(ActionEvent event) {
 		if(restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().size()==1) {
-			lblProductAdminWarnings.setText(dictionary.getValueOf("The product must be at least 1 size"));
+			lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("The product must be at least 1 size"));
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
 		}else{
 			restaurant.getProducts().get(cboxProducts.getSelectionModel().getSelectedIndex()).getSizeAndPrice().remove(cboxSizeAndPriceOfProduct.getSelectionModel().getSelectedIndex());
@@ -3771,11 +3737,11 @@ public class RestaurantGUI {
 		for(int c=0;c<restaurant.getProducts().size();c++) {
 			cboxProducts.getItems().add(restaurant.getProducts().get(c).getName());
 		}
-		lblAvialableIngredientProduct.setText(dictionary.getValueOf("Availability"));
-		lblProductAdminWarnings.setText(dictionary.getValueOf("The product was deleted"));
+		lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Availability"));
+		lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("The product was deleted"));
 		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
-		lblLastEditedByProduct.setText(dictionary.getValueOf("Last change by")+": ");
-		lblCreatedByProduct.setText(dictionary.getValueOf("Created by")+": ");
+		lblLastEditedByProduct.setText(restaurant.getDictionary().getValueOf("Last change by")+": ");
+		lblCreatedByProduct.setText(restaurant.getDictionary().getValueOf("Created by")+": ");
 	}
 
 	@FXML
@@ -3797,11 +3763,11 @@ public class RestaurantGUI {
 		txtTypeOfProductAdmin.clear();
 		cboxIngredientsOfProduct.getItems().clear();
 		cboxSizeAndPriceOfProduct.getItems().clear();
-		lblAvialableIngredientProduct.setText(dictionary.getValueOf("Availability"));
-		lblProductAdminWarnings.setText(dictionary.getValueOf("The product was saved"));
+		lblAvialableIngredientProduct.setText(restaurant.getDictionary().getValueOf("Availability"));
+		lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("The product was saved"));
 		lblProductAdminWarnings.setTextFill(Paint.valueOf("Green"));
-		lblLastEditedByProduct.setText(dictionary.getValueOf("Last change by")+": ");
-		lblCreatedByProduct.setText(dictionary.getValueOf("Created by")+": ");
+		lblLastEditedByProduct.setText(restaurant.getDictionary().getValueOf("Last change by")+": ");
+		lblCreatedByProduct.setText(restaurant.getDictionary().getValueOf("Created by")+": ");
 
 	}
 
@@ -3846,7 +3812,7 @@ public class RestaurantGUI {
 				e.printStackTrace();
 			}
 		}else {
-			lblProductAdminWarnings.setText(dictionary.getValueOf("Select a product please"));
+			lblProductAdminWarnings.setText(restaurant.getDictionary().getValueOf("Select a product please"));
 			lblProductAdminWarnings.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -3863,15 +3829,15 @@ public class RestaurantGUI {
 			}
 			if(found) {
 
-				lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("The product already has this ingredient"));
+				lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("The product already has this ingredient"));
 				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 			}else {
 				restaurant.getProducts().get(selectedProduct).getIngredients().add(restaurant.getIngredients().get(cboxAddIngredientAdmin.getSelectionModel().getSelectedIndex()));
-				lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("The ingredient was added to the product"));
+				lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("The ingredient was added to the product"));
 				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Green"));
 			}
 		}catch(ArrayIndexOutOfBoundsException e) {
-			lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("Select an ingredient"));
+			lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("Select an ingredient"));
 			lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 		}
 	}
@@ -3913,7 +3879,7 @@ public class RestaurantGUI {
 	@FXML
 	public void btnAddSizeAndPriceToProduct(ActionEvent event) {
 		if(txtPriceOfSizeOfProductAdmin.getText().equals("") || txtSizeOfProductAdmin.getText().equals("")) {
-			lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("Fill in all the fields for the size"));
+			lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("Fill in all the fields for the size"));
 			lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 		}else {
 			try {
@@ -3927,16 +3893,16 @@ public class RestaurantGUI {
 				}
 
 				if(found) {
-					lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("This size has already been added"));
+					lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("This size has already been added"));
 					lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 				}else {
 					restaurant.getProducts().get(selectedProduct).addSizeAndPrice(new SizeAndPrice(txtAddSizeToProductAdmin.getText(),Double.parseDouble(txtAddSizeToProductAdmin.getText())));
-					lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("A size was added"));
+					lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("A size was added"));
 					lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Green"));
 				}
 
 			}catch (NumberFormatException e) {
-				lblAddIngredientAndSizePriceWarning.setText(dictionary.getValueOf("Enter a valid number"));
+				lblAddIngredientAndSizePriceWarning.setText(restaurant.getDictionary().getValueOf("Enter a valid number"));
 				lblAddIngredientAndSizePriceWarning.setTextFill(Paint.valueOf("Red"));
 			}
 		}

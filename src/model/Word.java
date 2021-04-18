@@ -1,8 +1,8 @@
 package model;
 
 public class Word {
-	public String code;
-	public String value;
+	private String code;
+	private String value;
 	
 	public Word(String c, String v) {
 		this.code = c;

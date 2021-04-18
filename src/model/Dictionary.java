@@ -3,8 +3,9 @@ package model;
 import java.util.ArrayList;
 
 public class Dictionary {
-	public static Language actualLanguage;
-	public static ArrayList<Word> words;
+	private Language actualLanguage;
+	private ArrayList<Word> words;
+	
 	public Dictionary(Language al) {
 		actualLanguage = al;
 	}
@@ -36,7 +37,7 @@ public class Dictionary {
 	}
 
 	public void setWords(ArrayList<Word> words) {
-		Dictionary.words = words;
+		this.words = words;
 	}
 
 	public Language getActualLanguage() {
