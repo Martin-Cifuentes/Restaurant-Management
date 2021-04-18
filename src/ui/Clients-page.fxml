@@ -10,9 +10,9 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="31.0" layoutY="136.0" mnemonicParsing="false" onAction="#createClient" text="Agregar cliente" />
-      <Button layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#eraseClient" text="Borrar" />
-      <Label layoutX="285.0" layoutY="19.0" text="Clientes">
+      <Button fx:id="btnAddClientCliPage" layoutX="31.0" layoutY="136.0" mnemonicParsing="false" onAction="#createClient" text="Agregar cliente" />
+      <Button fx:id="btnDeleteCliPage" layoutX="31.0" layoutY="194.0" mnemonicParsing="false" onAction="#eraseClient" text="Borrar" />
+      <Label fx:id="labTitleCliPage" layoutX="285.0" layoutY="19.0" text="Clientes">
          <font>
             <Font size="29.0" />
          </font>
@@ -26,11 +26,11 @@
             <TableColumn fx:id="tcClientPhone" prefWidth="82.0" text="Telefono" />
         </columns>
       </TableView>
-      <Button layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReturnToLoggedInPage" text="Atras" />
+      <Button fx:id="btnBackCliPage" layoutX="31.0" layoutY="28.0" mnemonicParsing="false" onAction="#btnReturnToLoggedInPage" text="Atras" />
       <ListView fx:id="lvClients" layoutX="210.0" layoutY="350.0" prefHeight="143.0" prefWidth="356.0" />
-      <Button layoutX="31.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClients" text="Actualizar" />
-      <Button layoutX="29.0" layoutY="242.0" mnemonicParsing="false" onAction="#openModifyClient" text="Modificar" />
-      <Button layoutX="29.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnSearchClient" text="Buscar cliente " />
-      <Button layoutX="27.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnImportClients" text="Importar clientes" />
+      <Button fx:id="btnUpdateCliPage" layoutX="31.0" layoutY="85.0" mnemonicParsing="false" onAction="#btnClients" text="Actualizar" />
+      <Button fx:id="btnModifyCliPage" layoutX="29.0" layoutY="242.0" mnemonicParsing="false" onAction="#openModifyClient" text="Modificar" />
+      <Button fx:id="btnSearchClientCliPage" layoutX="29.0" layoutY="290.0" mnemonicParsing="false" onAction="#btnSearchClient" text="Buscar cliente " />
+      <Button fx:id="btnImportClientsCliPage" layoutX="27.0" layoutY="365.0" mnemonicParsing="false" onAction="#btnImportClients" text="Importar clientes" />
    </children>
 </Pane>

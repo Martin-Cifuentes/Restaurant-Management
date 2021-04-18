@@ -5,15 +5,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="104.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadProducts" text="Productos" />
-      <Button layoutX="194.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadIngredient" text="Ingredientes" />
+      <Button fx:id="btnProductsLogPage" layoutX="104.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadProducts" text="Productos" />
+      <Button fx:id="btnIngredientsLogPage" layoutX="194.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnLoadIngredient" text="Ingredientes" />
       <Button fx:id="btnOrdersPage" layoutX="104.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Ordenes" />
-      <Button layoutX="194.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Empleados" />
-      <Button layoutX="104.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClients" text="Clientes" />
-      <Button layoutX="194.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnUsers" text="Users" />
-      <Button layoutX="42.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnBackToMainPage" text="Atras" />
-      <Button layoutX="104.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnDeleteSavedFiles" text="Borrar todos los datos guardados" />
-      <Button layoutX="297.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnGoToExportOrderscsv" text="Exportar csv de pedidos" />
-      <Button layoutX="297.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnGoToExportProducts" text="Exportar csv de productos " />
+      <Button fx:id="btnEmployeesLogPage" layoutX="194.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnEmpleados" text="Empleados" />
+      <Button fx:id="btnClientsLogPage" layoutX="104.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnClients" text="Clientes" />
+      <Button fx:id="btnUsersLogPage" layoutX="194.0" layoutY="190.0" mnemonicParsing="false" onAction="#btnUsers" text="Usuarios" />
+      <Button fx:id="btnBackLogPage" layoutX="42.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnBackToMainPage" text="Atras" />
+      <Button fx:id="btnDeleteallDataLogPage" layoutX="104.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnDeleteSavedFiles" text="Borrar todos los datos guardados" />
+      <Button fx:id="btnExpOrdersLogPage" layoutX="297.0" layoutY="125.0" mnemonicParsing="false" onAction="#btnGoToExportOrderscsv" text="Exportar csv de pedidos" />
+      <Button fx:id="btnExpProdLogPage" layoutX="297.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnGoToExportProducts" text="Exportar csv de productos " />
    </children>
 </Pane>

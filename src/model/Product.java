@@ -75,9 +75,9 @@ public class Product extends History implements Serializable {
 	}
 	
 	public String sizeAndPriceToString() {
-		String s="Tamaños: ";
+		String s=": ";
 		for(int c=0;c<sizeAndPrice.size();c++) {
-			s+=sizeAndPrice.get(c).getSize()+" con precio de: $"+sizeAndPrice.get(c).getPrice()+" \n";
+			s+=sizeAndPrice.get(c).getSize()+"\n$"+sizeAndPrice.get(c).getPrice()+" \n";
 		}
 		return s;
 	}
@@ -102,7 +102,7 @@ public class Product extends History implements Serializable {
 		String s="";
 		for(int c=0;c<ingredients.size();c++) {
 			if(c==0) {
-				s="Ingredientes: "+ingredients.get(c).getIngredients()+", ";
+				s=": "+ingredients.get(c).getIngredients()+", ";
 			}else if(c%3==0) {
 				if(c==ingredients.size()-1) {
 					s+="\ny "+ingredients.get(c).getIngredients();

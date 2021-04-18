@@ -8,26 +8,26 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="447.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnClearIngredientsForProduct" text="Borrar ingredientes" />
-      <Label layoutX="149.0" layoutY="94.0" text="Nombre del producto" />
+      <Button fx:id="btnEraseIngredientsProdPage" layoutX="447.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnClearIngredientsForProduct" text="Borrar ingredientes" />
+      <Label fx:id="labProdNameProdPage" layoutX="149.0" layoutY="94.0" text="Nombre del producto" />
       <TextField fx:id="txtPriceOfSizeOfProduct" layoutX="149.0" layoutY="243.0" />
       <TextField fx:id="txtTypeOfProduct" layoutX="149.0" layoutY="159.0" />
       <TextField fx:id="txtSizeOfProduct" layoutX="149.0" layoutY="201.0" />
       <TextField fx:id="txtNameOfProduct" layoutX="149.0" layoutY="111.0" />
-      <Label layoutX="151.0" layoutY="142.0" text="Tipo de producto" />
-      <Label layoutX="149.0" layoutY="184.0" text="Tamaño" />
-      <Label layoutX="149.0" layoutY="226.0" text="Precio del tamaño" />
-      <Button layoutX="314.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnAddSizeAndPriceForProduct" text="Añadir tamaño" />
+      <Label fx:id="labProdTypeProdPage" layoutX="151.0" layoutY="142.0" text="Tipo de producto" />
+      <Label fx:id="labProdSizeProdPage" layoutX="149.0" layoutY="184.0" text="Tamaño" />
+      <Label fx:id="labProdPriceProdPage" layoutX="149.0" layoutY="226.0" text="Precio del tamaño" />
+      <Button fx:id="btnAddSizeProdPage" layoutX="314.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnAddSizeAndPriceForProduct" text="Añadir tamaño" />
       <ComboBox fx:id="cboxIngredientsForProduct" layoutX="148.0" layoutY="294.0" prefWidth="150.0" />
-      <Label layoutX="147.0" layoutY="277.0" text="Ingredientes" />
-      <Button layoutX="317.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnIngredientForProduct" text="Añadir ingrediente" />
-      <Label layoutX="141.0" layoutY="335.0" prefHeight="17.0" prefWidth="165.0" text="Tamaños y precios para añadir:" />
-      <Label layoutX="147.0" layoutY="364.0" prefHeight="17.0" prefWidth="148.0" text="Ingredientes para añadir: " />
+      <Label fx:id="labIngredientsProdPage" layoutX="147.0" layoutY="277.0" text="Ingredientes" />
+      <Button fx:id="btnAddIngredientProdPage" layoutX="317.0" layoutY="294.0" mnemonicParsing="false" onAction="#btnIngredientForProduct" text="Añadir ingrediente" />
+      <Label fx:id="labSizeAndPricesToAddProdPage" layoutX="141.0" layoutY="335.0" prefHeight="17.0" prefWidth="165.0" text="Tamaños y precios para añadir:" />
+      <Label fx:id="labIngredientsToAddProdPage" layoutX="147.0" layoutY="364.0" prefHeight="17.0" prefWidth="148.0" text="Ingredientes para añadir: " />
       <Label fx:id="lblSizeAndPriceOfProducts" layoutX="341.0" layoutY="335.0" prefHeight="17.0" prefWidth="330.0" />
       <Label fx:id="lblIngredientsForProduct" layoutX="311.0" layoutY="364.0" prefHeight="17.0" prefWidth="336.0" />
       <Label fx:id="lblAddProductWarning" layoutX="148.0" layoutY="424.0" prefHeight="17.0" prefWidth="512.0" />
-      <Button layoutX="422.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnClearSizeAndPrice" text="Borrar tamaños y precios" />
-      <Button layoutX="143.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnAddProduct" text="Crear producto" />
-      <Button layoutX="608.0" layoutY="46.0" mnemonicParsing="false" onAction="#btnAddProductToProduct" text="atras" />
+      <Button fx:id="btnEraseSizeAndPriceProdPage" layoutX="422.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnClearSizeAndPrice" text="Borrar tamaños y precios" />
+      <Button fx:id="btnCreateProductProdPage" layoutX="143.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnAddProduct" text="Crear producto" />
+      <Button fx:id="btnBackProdPage" layoutX="36.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnAddProductToProduct" text="atras" />
    </children>
 </Pane>

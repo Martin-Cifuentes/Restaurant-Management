@@ -10,13 +10,13 @@
    <children>
       <DatePicker fx:id="dPDate1" layoutX="115.0" layoutY="149.0" />
       <DatePicker fx:id="dPDate2" layoutX="390.0" layoutY="149.0" />
-      <Label layoutX="61.0" layoutY="153.0" text="Desde" />
-      <Label layoutX="350.0" layoutY="153.0" text="Hasta" />
-      <Label layoutX="61.0" layoutY="104.0" text="Incluir pedidos de " />
-      <Button layoutX="299.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnExportOrders" text="Generar archivo " />
+      <Label fx:id="labFromExpOrds" layoutX="61.0" layoutY="153.0" text="Desde" />
+      <Label fx:id="labTillExpOrds" layoutX="350.0" layoutY="153.0" text="Hasta" />
+      <Label fx:id="labIncludeExpOrds" layoutX="61.0" layoutY="104.0" text="Incluir pedidos de " />
+      <Button fx:id="btnGenDataExpOrds" layoutX="299.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnExportOrders" text="Generar archivo " />
       <Label fx:id="lblExportOrderscsvWarning" layoutX="336.0" layoutY="299.0" text="Label" />
       <TextField fx:id="txtSep" layoutX="61.0" layoutY="214.0" text=";" />
-      <Label layoutX="61.0" layoutY="190.0" text="Separador de columnas" />
-      <Button layoutX="42.0" layoutY="49.0" mnemonicParsing="false" onAction="#btnbackToLoggedInPage" text="Atras" />
+      <Label fx:id="labColumnSepExpOrds" layoutX="61.0" layoutY="190.0" text="Separador de columnas" />
+      <Button fx:id="btnBackExpOrds" layoutX="42.0" layoutY="49.0" mnemonicParsing="false" onAction="#btnbackToLoggedInPage" text="Atras" />
    </children>
 </Pane>

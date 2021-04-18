@@ -10,15 +10,15 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtNameIgredient" layoutX="149.0" layoutY="141.0" />
-      <Label layoutX="149.0" layoutY="118.0" text="Nombre del ingrediente" />
+      <Label fx:id="labIngNameAddIngredient" layoutX="149.0" layoutY="118.0" text="Nombre del ingrediente" />
       <RadioButton fx:id="rbtnAvailable" layoutX="404.0" layoutY="127.0" mnemonicParsing="false" text="Disponible">
          <toggleGroup>
             <ToggleGroup fx:id="available" />
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="rbtnNotAvailable" layoutX="404.0" layoutY="158.0" mnemonicParsing="false" text="No disponible" toggleGroup="$available" />
-      <Button layoutX="298.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnAddINgredient" prefHeight="25.0" prefWidth="95.0" text="añadir" />
-      <Button layoutX="621.0" layoutY="62.0" mnemonicParsing="false" onAction="#btnBackToIngredient" text="atras" />
+      <Button fx:id="btnAddAddIngredient" layoutX="298.0" layoutY="305.0" mnemonicParsing="false" onAction="#btnAddINgredient" prefHeight="25.0" prefWidth="95.0" text="añadir" />
+      <Button fx:id="btnBackAddIngredient" layoutX="42.0" layoutY="44.0" mnemonicParsing="false" onAction="#btnBackToIngredient" text="atras" />
       <Label fx:id="lblAddIngredient" layoutX="336.0" layoutY="274.0" />
    </children>
 </Pane>

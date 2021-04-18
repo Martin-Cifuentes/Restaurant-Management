@@ -9,14 +9,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="44.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnClients" text="atras" />
-      <Button layoutX="236.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnModifyClient" prefHeight="25.0" prefWidth="95.0" text="Modificar" />
-      <Label layoutX="105.0" layoutY="100.0" text="Nombre" />
-      <Label layoutX="105.0" layoutY="140.0" text="Apellido" />
-      <Label layoutX="121.0" layoutY="182.0" text="ID" />
-      <Label layoutX="100.0" layoutY="221.0" text="Dirteccion" />
-      <Label layoutX="98.0" layoutY="259.0" text="Telefono" />
-      <Label layoutX="186.0" layoutY="20.0" text="Modificar Cliente">
+      <Button fx:id="btnBackModCli" layoutX="44.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnClients" text="atras" />
+      <Button fx:id="btnModifyModCli" layoutX="236.0" layoutY="412.0" mnemonicParsing="false" onAction="#btnModifyClient" prefHeight="25.0" prefWidth="95.0" text="Modificar" />
+      <Label fx:id="labNameModCli" layoutX="105.0" layoutY="100.0" text="Nombre" />
+      <Label fx:id="labLastNameModCli" layoutX="105.0" layoutY="140.0" text="Apellido" />
+      <Label fx:id="labIDModCli" layoutX="121.0" layoutY="182.0" text="ID" />
+      <Label fx:id="labAdressModCli" layoutX="100.0" layoutY="221.0" text="Dirección" />
+      <Label fx:id="labPhoneModCli" layoutX="98.0" layoutY="259.0" text="Teléfono" />
+      <Label fx:id="labTitleModCli" layoutX="186.0" layoutY="20.0" text="Modificar Cliente">
          <font>
             <Font size="33.0" />
          </font>
@@ -26,7 +26,7 @@
       <TextField fx:id="txtModifyClientAdress" layoutX="182.0" layoutY="217.0" prefHeight="25.0" prefWidth="203.0" />
       <TextField fx:id="txtModifyClientPhone" layoutX="182.0" layoutY="255.0" prefHeight="25.0" prefWidth="203.0" />
       <TextArea fx:id="txtModifyClientObservations" layoutX="181.0" layoutY="299.0" prefHeight="68.0" prefWidth="290.0" promptText="Cada observación se separa con un salto de linea" />
-      <Label layoutX="86.0" layoutY="325.0" text="Observaciones" />
+      <Label fx:id="labObsModCli" layoutX="86.0" layoutY="325.0" text="Observaciones" />
       <Label fx:id="labConfirmModifyClient" layoutX="296.0" layoutY="383.0" />
       <Label fx:id="labModifyClientID" layoutX="182.0" layoutY="182.0" />
    </children>

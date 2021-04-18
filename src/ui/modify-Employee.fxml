@@ -8,21 +8,21 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="269.0" layoutY="314.0" mnemonicParsing="false" onAction="#modifyEmployee" prefHeight="25.0" prefWidth="94.0" text="Modificar" />
-      <Label layoutX="142.0" layoutY="192.0" text="Id" />
-      <Label layoutX="129.0" layoutY="94.0" prefHeight="17.0" prefWidth="47.0" text="Nombre" />
-      <Label layoutX="129.0" layoutY="143.0" prefHeight="17.0" prefWidth="47.0" text="Apellido" />
+      <Button fx:id="btnModifyModEmplo" layoutX="269.0" layoutY="314.0" mnemonicParsing="false" onAction="#modifyEmployee" prefHeight="25.0" prefWidth="94.0" text="Modificar" />
+      <Label fx:id="labIDModEmplo" layoutX="142.0" layoutY="192.0" text="Id" />
+      <Label fx:id="labNameModEmplo" layoutX="129.0" layoutY="94.0" prefHeight="17.0" prefWidth="47.0" text="Nombre" />
+      <Label fx:id="labLastNameModEmplo" layoutX="129.0" layoutY="143.0" prefHeight="17.0" prefWidth="47.0" text="Apellido" />
       <TextField fx:id="txtModifyEmployeeName" layoutX="225.0" layoutY="90.0" prefHeight="25.0" prefWidth="183.0" />
       <TextField fx:id="txtModifyEmployeeLastName" layoutX="226.0" layoutY="139.0" prefHeight="25.0" prefWidth="183.0" />
       <TextField fx:id="txtModifyNumOfOrders" layoutX="226.0" layoutY="238.0" prefHeight="25.0" prefWidth="183.0" />
-      <Label layoutX="84.0" layoutY="242.0" text="Cantidad de ordenes" />
-      <Label layoutX="201.0" layoutY="24.0" text="Modificar Empleado">
+      <Label fx:id="labOrdAmountModEmplo" layoutX="84.0" layoutY="242.0" text="Cantidad de ordenes" />
+      <Label fx:id="labTitleModEmplo" layoutX="201.0" layoutY="24.0" text="Modificar Empleado">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
       <Label fx:id="confirmModifyEmployee" layoutX="286.0" layoutY="359.0" />
-      <Button layoutX="37.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnAtrasCrearEmpleados" prefHeight="25.0" prefWidth="47.0" text="Atras" />
+      <Button fx:id="btnBackModEmplo" layoutX="37.0" layoutY="31.0" mnemonicParsing="false" onAction="#btnAtrasCrearEmpleados" prefHeight="25.0" prefWidth="47.0" text="Atras" />
       <Label fx:id="labModifyEmployeeId" layoutX="226.0" layoutY="192.0" />
    </children>
 </Pane>

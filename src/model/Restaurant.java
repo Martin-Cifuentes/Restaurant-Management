@@ -64,7 +64,7 @@ public class Restaurant {
 		orders.set(pos,order);
 
 	}
-
+	
 	public void createOrder(State state, String clientName, String employeeName, String date, String[] obs) {
 		String code = randomCode();
 		int exist = searchOrder(code);
@@ -560,6 +560,8 @@ public class Restaurant {
 		}
 		br.close();
 	}
+	
+	
 	//se importan productos
 	public void importProductData(String user) throws IOException{
 		List<Ingredient> TmpIngredients = new ArrayList<>();

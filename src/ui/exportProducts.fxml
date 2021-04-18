@@ -5,16 +5,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <DatePicker fx:id="dpExportProductsDp1" layoutX="118.0" layoutY="181.0" />
       <DatePicker fx:id="dpExportProductsDp2" layoutX="427.0" layoutY="181.0" />
-      <Button layoutX="324.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnExportProducts" text="Exportar" />
-      <Button layoutX="37.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnBackToLoggedInPageFromProducts" text="Atras" />
+      <Button fx:id="btnExportExpProd" layoutX="324.0" layoutY="386.0" mnemonicParsing="false" onAction="#btnExportProducts" text="Exportar" />
+      <Button fx:id="btnBackExpProd" layoutX="37.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnBackToLoggedInPageFromProducts" text="Atras" />
       <Label fx:id="lblexportProductWarnigns" layoutX="336.0" layoutY="361.0" />
-      <Label layoutX="45.0" layoutY="131.0" text="El reporte se generara desde" />
-      <Label layoutX="73.0" layoutY="185.0" text="De" />
-      <Label layoutX="393.0" layoutY="185.0" prefHeight="17.0" prefWidth="34.0" text="Hasta" />
+      <Label fx:id="labIncludeExpProd" layoutX="45.0" layoutY="131.0" text="El reporte se generara desde" />
+      <Label fx:id="labFromExpProd" layoutX="73.0" layoutY="185.0" text="De" />
+      <Label fx:id="labTillExpProd" layoutX="393.0" layoutY="185.0" prefHeight="17.0" prefWidth="34.0" text="Hasta" />
    </children>
 </Pane>

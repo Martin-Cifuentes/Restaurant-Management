@@ -9,24 +9,24 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="38.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnAtrasCrearUsers" text="Atras" />
-      <Button layoutX="253.0" layoutY="353.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="76.0" text="Crear" />
-      <Label layoutX="139.0" layoutY="176.0" text="Nombre" />
-      <Label layoutX="145.0" layoutY="216.0" text="Apellido" />
-      <Label layoutX="211.0" layoutY="22.0" text="Crear usuario">
+      <Button fx:id="btnBackCreateUser" layoutX="38.0" layoutY="41.0" mnemonicParsing="false" onAction="#btnAtrasCrearUsers" text="Atras" />
+      <Button fx:id="btnAddCreateUser" layoutX="253.0" layoutY="353.0" mnemonicParsing="false" onAction="#addUser" prefHeight="25.0" prefWidth="76.0" text="Crear" />
+      <Label fx:id="labNameCreateUser" layoutX="139.0" layoutY="176.0" text="Nombre" />
+      <Label fx:id="labLastNameCreateUser" layoutX="145.0" layoutY="216.0" text="Apellido" />
+      <Label fx:id="labTitleCreateUser" layoutX="211.0" layoutY="22.0" text="Crear usuario">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <Label layoutX="161.0" layoutY="257.0" text="ID" />
-      <Label layoutX="94.0" layoutY="92.0" text="Nombre de usuario" />
-      <Label layoutX="81.0" layoutY="293.0" text="Numero de ordenes" />
+      <Label fx:id="labIDCreateUser" layoutX="161.0" layoutY="257.0" text="ID" />
+      <Label fx:id="labUserNameCreateUser" layoutX="94.0" layoutY="92.0" text="Nombre de usuario" />
+      <Label fx:id="labNumOfOrdCreateUser" layoutX="81.0" layoutY="293.0" text="Numero de ordenes" />
       <TextField fx:id="txtUserName" layoutX="217.0" layoutY="172.0" />
       <TextField fx:id="txtUserLastName" layoutX="217.0" layoutY="212.0" />
       <TextField fx:id="txtUserID" layoutX="217.0" layoutY="253.0" />
       <TextField fx:id="txtUserUserName" layoutX="217.0" layoutY="88.0" />
       <TextField fx:id="txtUserNoo" layoutX="217.0" layoutY="289.0" />
-      <Label layoutX="131.0" layoutY="132.0" text="Contraseña" />
+      <Label fx:id="labPassCreateUser" layoutX="131.0" layoutY="132.0" text="Contraseña" />
       <PasswordField fx:id="txtUserPassword" layoutX="217.0" layoutY="128.0" />
       <Label fx:id="confirmCreateUser" layoutX="273.0" layoutY="322.0" />
    </children>

@@ -8,23 +8,23 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="618.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnMenutoMain" text="atras" />
-      <Label layoutX="303.0" layoutY="48.0" text="Menu">
+      <Button fx:id="btnBackMenu" layoutX="618.0" layoutY="23.0" mnemonicParsing="false" onAction="#btnMenutoMain" text="atras" />
+      <Label fx:id="labTitleMenu" layoutX="303.0" layoutY="48.0" text="Menu">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label layoutX="65.0" layoutY="102.0" text="Buscar producto" />
+      <Label fx:id="labsearchProdMenu" layoutX="65.0" layoutY="102.0" text="Buscar producto" />
       <TextField fx:id="txtSearchProduct" layoutX="65.0" layoutY="119.0" />
-      <Button layoutX="226.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnSearchProduct" text="Buscar" />
+      <Button fx:id="btnSearchMenu" layoutX="226.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnSearchProduct" text="Buscar" />
       <Label fx:id="lblNameOfProductMenu" layoutX="186.0" layoutY="182.0" text="Nombre del producto" />
       <Label fx:id="lblTypeOfProductMenu" layoutX="186.0" layoutY="206.0" text="Tipo" />
       <Label fx:id="lblSizeAndPriceOfProductMenu" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" layoutX="186.0" layoutY="234.0" prefHeight="77.0" prefWidth="344.0" text="Tamaño y precios " textOverrun="WORD_ELLIPSIS" />
       <Label fx:id="lblIngredientOfProductMenu" alignment="TOP_LEFT" layoutX="184.0" layoutY="311.0" prefHeight="77.0" prefWidth="344.0" text="Ingredientes" />
       <Label fx:id="lblNUmberOfProducts" layoutX="299.0" layoutY="414.0" text="Numero de productos" />
-      <Button layoutX="258.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnBackProduct" text="Anterio" />
-      <Button layoutX="397.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnNextProduct" text="Siguiente" />
+      <Button fx:id="btnPreviusMenu" layoutX="258.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnBackProduct" text="Anterior" />
+      <Button fx:id="btnNextMenu" layoutX="397.0" layoutY="431.0" mnemonicParsing="false" onAction="#btnNextProduct" text="Siguiente" />
       <Label fx:id="lblWarningMenu" layoutX="299.0" layoutY="397.0" prefHeight="17.0" prefWidth="344.0" />
-      <Button layoutX="287.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnResetSearch" text="Borrar busqueda" />
+      <Button fx:id="btnDeleteSearchMenu" layoutX="287.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnResetSearch" text="Borrar busqueda" />
    </children>
 </Pane>

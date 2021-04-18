@@ -8,23 +8,23 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField fx:id="txtIdForSearch" layoutX="68.0" layoutY="89.0" />
-      <Button layoutX="231.0" layoutY="89.0" mnemonicParsing="false" onAction="#bntSearchForId" text="Buscar" />
-      <Button layoutX="614.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBackToClientPage" text="Atras" />
-      <Label layoutX="231.0" layoutY="198.0" text="Nombre:" />
+      <Button fx:id="btnSearchSearchClient" layoutX="231.0" layoutY="89.0" mnemonicParsing="false" onAction="#bntSearchForId" text="Buscar" />
+      <Button fx:id="btnBackSearchClient" layoutX="614.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnBackToClientPage" text="Atras" />
+      <Label fx:id="labNameSearchClient" layoutX="231.0" layoutY="198.0" text="Nombre:" />
       <Label fx:id="lblNameOfSearchedClient" layoutX="284.0" layoutY="198.0" />
-      <Label layoutX="231.0" layoutY="223.0" text="Apellido:" />
-      <Label layoutX="231.0" layoutY="250.0" text="Id:" />
+      <Label fx:id="labLastNameSearchClient" layoutX="231.0" layoutY="223.0" text="Apellido:" />
+      <Label fx:id="labIDSearchClient" layoutX="231.0" layoutY="250.0" text="Id:" />
       <Label fx:id="lblLastNameOfSearchedClient" layoutX="284.0" layoutY="223.0" />
       <Label fx:id="lblIdOfSearchedClient" layoutX="254.0" layoutY="250.0" />
-      <Label layoutX="232.0" layoutY="277.0" text="Direción:" />
+      <Label fx:id="labAdressSearchClient" layoutX="232.0" layoutY="277.0" text="Direción:" />
       <Label fx:id="lblAdressOfSearchedClient" layoutX="284.0" layoutY="277.0" />
-      <Label layoutX="230.0" layoutY="302.0" text="Celular: " />
+      <Label fx:id="labPhoneSearchClient" layoutX="230.0" layoutY="302.0" text="Teléfono:" />
       <Label fx:id="lblPhoneOfSearchedClient" layoutX="277.0" layoutY="302.0" />
-      <Label layoutX="230.0" layoutY="329.0" text="Observaciones:" />
+      <Label fx:id="labObsSearchClient" layoutX="230.0" layoutY="329.0" text="Observaciones:" />
       <Label fx:id="lblObservationsOfSearchedClient" layoutX="322.0" layoutY="329.0" />
-      <Label layoutX="68.0" layoutY="65.0" text="Buscar cliente por id" />
+      <Label fx:id="labSearchClientByIdSearchClient" layoutX="68.0" layoutY="65.0" text="Buscar cliente por id" />
       <Label fx:id="lblWarningsForSearchClientPage" layoutX="254.0" layoutY="408.0" prefHeight="17.0" prefWidth="438.0" />
-      <Label layoutX="68.0" layoutY="126.0" prefHeight="17.0" prefWidth="221.0" text="Tiempo de busqueda en nanosegundos:" />
+      <Label fx:id="labTimeSearchClient" layoutX="68.0" layoutY="126.0" prefHeight="17.0" prefWidth="221.0" text="Tiempo de busqueda en nanosegundos:" />
       <Label fx:id="lblTimeOfSearch" layoutX="284.0" layoutY="126.0" />
    </children>
 </Pane>

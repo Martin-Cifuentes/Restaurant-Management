@@ -10,26 +10,26 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="296.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifyOrder" prefHeight="25.0" prefWidth="103.0" text="Modificar" />
-      <Label layoutX="41.0" layoutY="137.0" text="Nombre del Cliente" />
-      <Label layoutX="41.0" layoutY="224.0" text="Empleado a cargo" />
+      <Button fx:id="btnModifyModOrd1" layoutX="296.0" layoutY="415.0" mnemonicParsing="false" onAction="#modifyOrder" prefHeight="25.0" prefWidth="103.0" text="Modificar" />
+      <Label fx:id="labcliNameModOrd1" layoutX="41.0" layoutY="137.0" text="Nombre del Cliente" />
+      <Label fx:id="labEmpOnChargeModOrd1" layoutX="41.0" layoutY="224.0" text="Empleado a cargo" />
       <TextArea fx:id="txtModifyOrderObs" layoutX="376.0" layoutY="224.0" prefHeight="82.0" prefWidth="286.0" promptText="Cada observacion se separa con un salto de linea" />
-      <Label layoutX="376.0" layoutY="203.0" text="Observaciones" />
-      <Label layoutX="242.0" layoutY="32.0" text="Modificar Orden">
+      <Label fx:id="labObsModOrd1" layoutX="376.0" layoutY="203.0" text="Observaciones" />
+      <Label fx:id="labTitleModOrd1" layoutX="242.0" layoutY="32.0" text="Modificar Orden">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="41.0" layoutY="317.0" text="Estado de entrega" />
+      <Label fx:id="labStateModOrd1" layoutX="41.0" layoutY="317.0" text="Estado de entrega" />
       <DatePicker fx:id="modifyCalendarDate" layoutX="448.0" layoutY="133.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="384.0" layoutY="137.0" text="Fecha" />
-      <Button layoutX="39.0" layoutY="71.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Salir" />
+      <Label fx:id="labDateModOrd1" layoutX="384.0" layoutY="137.0" text="Fecha" />
+      <Button fx:id="btnExitModOrd1" layoutX="39.0" layoutY="71.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Salir" />
       <ChoiceBox fx:id="cbModifyOrderState" layoutX="164.0" layoutY="313.0" prefWidth="150.0" />
-      <Button layoutX="37.0" layoutY="28.0" mnemonicParsing="false" text="Atras" />
+      <Button fx:id="btnBackModOrd1" layoutX="37.0" layoutY="28.0" mnemonicParsing="false" text="Atras" />
       <ChoiceBox fx:id="cbModifyAbleClients" layoutX="164.0" layoutY="133.0" prefHeight="25.0" prefWidth="150.0" />
       <ChoiceBox fx:id="cbModifyAbleEmployees" layoutX="164.0" layoutY="220.0" prefHeight="25.0" prefWidth="150.0" />
-      <Label layoutX="498.0" layoutY="330.0" text="Código:" />
-      <Label layoutX="486.0" layoutY="88.0" text="Fecha actual" />
+      <Label fx:id="labcodeModOrd1" layoutX="498.0" layoutY="330.0" text="Código:" />
+      <Label fx:id="labActDateModOrd1" layoutX="486.0" layoutY="88.0" text="Fecha actual" />
       <Label fx:id="oldDate" layoutX="505.0" layoutY="105.0" />
       <Label fx:id="labOrderCode" layoutX="498.0" layoutY="359.0" />
       <Label fx:id="labConfirmModifyOrder" layoutX="334.0" layoutY="368.0" />

@@ -10,12 +10,12 @@
    <children>
       <TextField fx:id="txtAddPriceForProductAdmin" layoutX="151.0" layoutY="172.0" />
       <TextField fx:id="txtAddSizeToProductAdmin" layoutX="151.0" layoutY="113.0" />
-      <Button layoutX="609.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnAddIngredientAndSizePriceToAdminProduct" text="atras" />
-      <Button layoutX="338.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnAddSizeAndPriceToProduct" prefHeight="25.0" prefWidth="149.0" text="añadir tamaño y precio" />
+      <Button fx:id="btnBackIngSizeAndPrice" layoutX="40.0" layoutY="33.0" mnemonicParsing="false" onAction="#btnAddIngredientAndSizePriceToAdminProduct" text="atras" />
+      <Button fx:id="btnAddSizeAndPriceIngSizeAndPrice" layoutX="338.0" layoutY="172.0" mnemonicParsing="false" onAction="#btnAddSizeAndPriceToProduct" prefHeight="25.0" prefWidth="149.0" text="añadir tamaño y precio" />
       <ComboBox fx:id="cboxAddIngredientAdmin" layoutX="150.0" layoutY="238.0" prefWidth="150.0" promptText="Ingredientes" />
-      <Button layoutX="338.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnAddIngredientToProduct" text="añadir ingrediente" />
+      <Button fx:id="btnAddingredientIngSizeAndPrice" layoutX="338.0" layoutY="238.0" mnemonicParsing="false" onAction="#btnAddIngredientToProduct" text="añadir ingrediente" />
       <Label fx:id="lblAddIngredientAndSizePriceWarning" layoutX="150.0" layoutY="334.0" prefHeight="17.0" prefWidth="552.0" />
-      <Label layoutX="150.0" layoutY="96.0" text="Tamaño" />
-      <Label layoutX="150.0" layoutY="155.0" text="Precio" />
+      <Label fx:id="labSizeIngSizeAndPrice" layoutX="150.0" layoutY="96.0" text="Tamaño" />
+      <Label fx:id="labPriceIngSizeAndPrice" layoutX="150.0" layoutY="155.0" text="Precio" />
    </children>
 </Pane>

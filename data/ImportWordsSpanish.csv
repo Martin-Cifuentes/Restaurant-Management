@@ -1,0 +1,181 @@
+A client with this id was not found,No se encontró un cliente con esta identificación
+A size was added,Se agregó un tamaño
+Add,Agregar
+Add client,Agregar cliente
+Add employees,Agregar empleados
+Add ingredient,Agregar ingrediente
+Add ingredients or sizes,Agregue ingredientes o tamaños
+Add order,Agregar orden
+Add product,Añadir Producto
+Add size,Agregar tamaño
+Add size and price,Agregar tamaño y precio
+Add user,Agregar usuario
+Admin,Administrador
+Adress,Dirección
+All spaces must be filled,Todos los espacios deben llenarse
+At least one product must be added,Se debe agregar al menos un producto
+Availability,Disponibilidad
+Available,Disponible
+Back,atrás
+Clear search,Borrar búsqueda
+Clear size and price,Tamaño y precio claros
+Clear sizes and prices,Tamaños y precios claros
+Client,Cliente
+Client name,Nombre del cliente
+Clients,Clientela
+Code,Código
+Column separator,Separador de columnas
+Continue,Continuar
+Create client,Crear cliente
+Create Employee,Crear empleado
+Create Order: Step 1,Crear pedido: paso 1
+Create Order: Step 2,Crear pedido: paso 2
+Create product,Crear producto
+Create User,Crear usuario
+Created by,Creado por
+Current date,Fecha actual
+Customer name,Nombre del cliente
+Customers,Clientes
+Date,Fecha
+Delete,Borrar
+Delete all saved data,Eliminar todos los datos guardados
+Delete ingredient,Eliminar ingrediente
+Delete Ingredients,Eliminar ingredientes
+Delete product,Eliminar producto
+Delete Size and Price,Eliminar tamaño y precio
+Delivered,Entregado
+Delivery status,Estado de entrega
+Each Observation is separated with a line break,Cada observación está separada con un salto de línea.
+Employee,Empleado
+Employee added successfully,Empleado agregado exitosamente
+Employee in charge,Empleado a cargo
+Employee successfully modified,Empleado modificado correctamente
+Employees,Empleados
+Enter a valid number,Ingrese un numero valido
+Enter the product first to see its sizes,Ingrese el producto primero para ver sus tamaños
+Erase,Borrar
+Exit,Salida
+Export,Exportar
+Export csv of products,Exportar csv de productos
+Export orders csv,Exportar pedidos csv
+Fill in all the fields for the size,Complete todos los campos para el tamaño
+Find customer,Encontrar cliente
+Find product,Encontrar producto
+From,De
+Generate file,Generar archivo
+ID,ID
+Import clients,Importar clientes
+Import ingredients,Importar ingredientes
+Import orders,Importar pedidos
+Import products,Importar productos
+In progress,En curso
+Include,Incluir
+Ingredient,Ingrediente
+Ingredient added correctly,Ingrediente agregado correctamente
+Ingredient name,Nombre del ingrediente
+Ingredients,Ingredientes
+Ingredients file not found,Archivo de ingredientes no encontrado
+Ingredients to add,Ingredientes para agregar
+Is available,Está disponible
+Language,Idioma
+Last change by,Último cambio por
+Log in,Iniciar sesión
+Look for,Buscar
+Manage Ingredient,Administrar ingrediente
+Manage Products,Gestionar productos
+Menu,Menú
+Modify,Modificar
+Modify Client,Modificar cliente
+Modify Employee,Modificar empleado
+Modify order,Modificar orden
+Modify Order Products,Modificar productos de pedido
+Modify Products,Modificar productos
+Modify User,Modificar usuario
+Name,Nombre
+Next,próximo
+Not available,No disponible
+Number of orders,Numero de ordenes
+Number of products,Número de productos
+Observations,Observaciones
+Order added successfully,Pedido agregado con éxito
+Order quantity,Ordene la cantidad
+Order successfully modified,Pedido modificado correctamente
+Orders,Pedidos
+Orders delivered,Pedidos entregados
+Organize by name,Organizar por nombre
+Password,Contraseña
+Previous,Anterior
+Price,Precio
+Product,Producto
+Product ingredients deleted,Ingredientes del producto eliminados
+Product must have at least 1 ingredient,El producto debe tener al menos 1 ingrediente
+Product name,Nombre del producto
+Product sizes deleted,Tamaños de producto eliminados
+Product successfully added to order,Producto añadido correctamente al pedido
+Product type,Tipo de producto
+Products,Productos
+Quantity,Cantidad
+Requested,Solicitado
+Save Changes,Guardar cambios
+Save size and price,Ahorre tamaño y precio
+Search,Buscar
+Search client,Cliente de búsqueda
+Search client by id,Buscar cliente por id
+Search product,Buscar producto
+Search time in nanoseconds,Tiempo de búsqueda en nanosegundos
+Select a product please,Seleccione un producto por favor
+Select an ingredient,Seleccione un ingrediente
+Select ingredient,Seleccionar ingrediente
+Select product,Seleccionar producto
+Select size,Selecciona el tamaño
+Sent,Enviado
+Since,Desde
+Size,Tamaño
+Size and prices,Tamaño y precios
+Size field must be filled,Se debe completar el campo de tamaño
+Size Price,Tamaño Precio
+Sizes and prices to add,Tamaños y precios para agregar
+Sport,Deporte
+State,Expresar
+Successfully added client,Cliente agregado exitosamente
+Successfully modified client,Cliente modificado con éxito
+Surname,Apellido
+Telephone,Teléfono
+The client has an id that already exists,El cliente tiene una identificación que ya existe.
+The employee has an id that already exists,El empleado tiene una identificación que ya existe.
+The file was generated successfully,El archivo se generó con éxito
+The ingredient cannot be deleted because a product is using it,El ingrediente no se puede eliminar porque un producto lo está usando
+The ingredient has been deleted,El ingrediente ha sido eliminado
+The ingredient was added to the product,El ingrediente se agregó al producto.
+The ingredient was erased,El ingrediente fue borrado
+The price must be a number,El precio debe ser un número
+The product already has this ingredient,El producto ya tiene este ingrediente.
+The product must be at least 1 size,El producto debe tener al menos 1 talla
+The product was deleted,El producto fue eliminado
+The product was saved,El producto fue guardado
+The report will be generated from,El informe se generará a partir de
+The User has an id that already exists,El usuario tiene una identificación que ya existe
+The username or password is not correct,El nombre de usuario o la contraseña no son correctos
+The values ??do not correspond,Los valores no corresponden
+There are no products related to,No hay productos relacionados con
+There are no products related with,No hay productos relacionados con
+There are no products,No hay productos.
+There is already a product,Ya hay un producto
+There is already an ingredient with this name,Ya existe un ingrediente con este nombre
+This ingredient has already been added,Este ingrediente ya ha sido agregado
+"This is the first product, there is no previous","Este es el primer producto, no hay anterior"
+This is the last product,Este es el ultimo producto
+This product is already this size,Este producto ya tiene este tamaño
+This size has already been added,Este tamaño ya ha sido agregado
+Till,Hasta
+To create,Crear
+Total,Total
+Type,Tipo
+Until,Hasta que
+Update,Actualizar
+Update table,Actualizar tabla
+User,Usuario
+User added successfully,Usuario agregado exitosamente
+User modified successfully,Usuario modificado correctamente
+Username,Nombre de usuario
+Users,Usuarios

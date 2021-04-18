@@ -16,3 +16,5 @@ Se puede importar ordenes (tenga en cuenta que debe importar primero clientes, i
 Se puede generar el reporte de ordenes 
 
 Se puede generar el reporte de productos 
+
+Ahora la aplicación cuenta con internacionalidad, cuenta con inglés y español pero puede agregarse cualquier idioma por medio de un archivo csv

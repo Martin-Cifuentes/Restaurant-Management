@@ -15,15 +15,16 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="rbtnAdminIngredientsNotAvailable" layoutX="237.0" layoutY="169.0" mnemonicParsing="false" text="No disponible" toggleGroup="$adminIngredoeint" />
-      <Button layoutX="600.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnAdminIngredientsToIngredients" text="Atras" />
-      <Button layoutX="366.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnSaveIngredient" text="Salvar cambios" />
-      <Button layoutX="237.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnDeleteIngredient" text="Borrar ingrediente" />
+      <Button fx:id="btnBackAdminIng" layoutX="51.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnAdminIngredientsToIngredients" text="Atras" />
+      <Button fx:id="btnSaveChangesAdminIng" layoutX="366.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnSaveIngredient" text="Salvar cambios" />
+      <Button fx:id="btnDeleteIngredientAdmingIng" layoutX="237.0" layoutY="341.0" mnemonicParsing="false" onAction="#btnDeleteIngredient" text="Borrar ingrediente" />
       <Label fx:id="lblNameIngredient" layoutX="237.0" layoutY="116.0" text="nombre" />
       <ComboBox fx:id="cboxIngredients" layoutX="51.0" layoutY="112.0" onAction="#cBoxChangeIngredient" prefWidth="150.0" />
-      <Label layoutX="237.0" layoutY="200.0" text="Creado por:" />
-      <Label layoutX="237.0" layoutY="233.0" text="Ultimo cambio por:" />
+      <Label fx:id="labCreatedByAdminIng" layoutX="237.0" layoutY="200.0" text="Creado por:" />
+      <Label fx:id="labLastChangeAdminIng" layoutX="237.0" layoutY="233.0" text="Ultimo cambio por:" />
       <Label fx:id="lblIngredientCreatedBy" layoutX="307.0" layoutY="200.0" text="Label" />
       <Label fx:id="lblIngredientLastEditedBy" layoutX="352.0" layoutY="233.0" text="Label" />
       <Label fx:id="lblAdminIngredientWarning" layoutX="189.0" layoutY="315.0" prefHeight="17.0" prefWidth="471.0" />
+      <Label fx:id="labSelectIngredientAdminIng" layoutX="51.0" layoutY="85.0" text="Seleccione Ingrediente" />
    </children>
 </Pane>

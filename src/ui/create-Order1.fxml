@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="218.0" layoutY="25.0" text="Crear Orden Paso 1">
+      <Label fx:id="labTitleAddOrder2" layoutX="215.0" layoutY="25.0" text="Crear Orden: Paso 1">
          <font>
             <Font size="29.0" />
          </font>
@@ -20,11 +20,11 @@
           <TableColumn fx:id="tcCreateOrderProductAmount" prefWidth="91.0" text="Cantidad" />
         </columns>
       </TableView>
-      <Button layoutX="204.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct" text="Buscar producto" />
-      <Button layoutX="380.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEraseProductFromOrder" text="Borrar producto" />
-      <Button layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Actualizar tabla" />
-      <Button layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Cancelar" />
-      <Button layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnOpenAddOrder" text="Continuar" />
+      <Button fx:id="btnSearchProdAddOrder2" layoutX="204.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct" text="Buscar producto" />
+      <Button fx:id="btnDeleteProdAddOrder2" layoutX="380.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEraseProductFromOrder" text="Borrar producto" />
+      <Button fx:id="btnUpdTableAddOrder2" layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Actualizar tabla" />
+      <Button fx:id="btnBackAddOrder2" layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Atras" />
+      <Button fx:id="btnContinueAddOrder2" layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#btnOpenAddOrder" text="Continuar" />
       <Label fx:id="labConfirmAddOrderS1" layoutX="328.0" layoutY="401.0" />
    </children>
 </Pane>

@@ -10,10 +10,10 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="36.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOrdersToLoggedIn" text="Atras" />
-      <Button layoutX="562.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Agregar Orden" />
-      <Button layoutX="284.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar Productos" />
-      <Button layoutX="421.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
+      <Button fx:id="btnBackOrdPage" layoutX="36.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOrdersToLoggedIn" text="Atras" />
+      <Button fx:id="btnAddOrdOrdPage" layoutX="561.0" layoutY="35.0" mnemonicParsing="false" onAction="#btnOpenAddOrderS1" text="Agregar Orden" />
+      <Button fx:id="btnModProdOrdPage" layoutX="284.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Modificar Productos" />
+      <Button fx:id="btnDeleteOrdPage" layoutX="421.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnEraseOrder" prefHeight="25.0" prefWidth="66.0" text="Borrar" />
       <Label layoutX="292.0" layoutY="26.0" text="Ordenes">
          <font>
             <Font size="29.0" />
@@ -29,9 +29,9 @@
         </columns>
       </TableView>
       <ListView fx:id="lvOrdersObs" layoutX="58.0" layoutY="367.0" prefHeight="128.0" prefWidth="161.0" />
-      <Label layoutX="61.0" layoutY="343.0" text="Observaciones" />
-      <Button layoutX="32.0" layoutY="81.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Actualizar" />
-      <Label layoutX="610.0" layoutY="403.0" prefHeight="17.0" prefWidth="32.0" text="Total:" />
+      <Label fx:id="labObsOrdPage" layoutX="61.0" layoutY="343.0" text="Observaciones" />
+      <Button fx:id="btnUpdateOrdPage" layoutX="36.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOrdersPage" text="Actualizar" />
+      <Label fx:id="labTotalOrdPage" layoutX="610.0" layoutY="403.0" prefHeight="17.0" prefWidth="32.0" text="Total:" />
       <Label fx:id="labTotalPrice" layoutX="600.0" layoutY="431.0" prefHeight="17.0" prefWidth="52.0" />
       <TableView fx:id="tvOrderItems" layoutX="232.0" layoutY="343.0" prefHeight="155.0" prefWidth="337.0">
         <columns>
@@ -41,7 +41,7 @@
             <TableColumn fx:id="tcOrderProductPrice" prefWidth="85.0" text="Precio" />
         </columns>
       </TableView>
-      <Button layoutX="168.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyOrder2" text="Modificar Orden" />
-      <Button layoutX="11.0" layoutY="119.0" mnemonicParsing="false" onAction="#btnImportOrders" text="Importar ordenes" />
+      <Button fx:id="btnModOrdOrdPage" layoutX="168.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnOpenModifyOrder2" text="Modificar Orden" />
+      <Button fx:id="btnImportOrdOrdPage" layoutX="555.0" layoutY="88.0" mnemonicParsing="false" onAction="#btnImportOrders" text="Importar ordenes" />
    </children>
 </Pane>

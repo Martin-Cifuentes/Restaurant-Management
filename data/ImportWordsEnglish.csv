@@ -1,0 +1,181 @@
+A client with this id was not found,A client with this id was not found
+A size was added,A size was added
+Add,Add
+Add client,Add client
+Add employees,Add employees
+Add ingredient,Add ingredient
+Add ingredients or sizes,Add ingredients or sizes
+Add order,Add order
+Add product,Add product
+Add size,Add size
+Add size and price,Add size and price
+Add user,Add user
+Admin,Administrator
+Adress,Adress
+All spaces must be filled,All spaces must be filled
+At least one product must be added,At least one product must be added
+Availability,Availability
+Available,Available
+Back,Back
+Clear search,Clear search
+Clear size and price,Clear size and price
+Clear sizes and prices,Clear sizes and prices
+Client,Client
+Client name,Client name
+Clients,Clients
+Code,Code
+Column separator,Column separator
+Continue,Continue
+Create client,Create client
+Create Employee,Create Employee
+Create Order: Step 1,Create Order: Step 1
+Create Order: Step 2,Create Order: Step 2
+Create product,Create product
+Create User,Create User
+Created by,Created by
+Current date,Current date
+Customer name,Customer name
+Customers,Customers
+Date,Date
+Delete,Delete
+Delete all saved data,Delete all saved data
+Delete ingredient,Delete ingredient
+Delete Ingredients,Delete Ingredients
+Delete product,Delete product
+Delete Size and Price,Delete Size and Price
+Delivered,Delivered
+Delivery status,Delivery status
+Each Observation is separated with a line break,Each Observation is separated with a line break
+Employee,Employee
+Employee added successfully,Employee added successfully
+Employee in charge,Employee in charge
+Employee successfully modified,Employee successfully modified
+Employees,Employees
+Enter a valid number,Enter a valid number
+Enter the product first to see its sizes,Enter the product first to see its sizes
+Erase,Erase
+Exit,Exit
+Export,Export
+Export csv of products,Export csv of products
+Export orders csv,Export orders csv
+Fill in all the fields for the size,Fill in all the fields for the size
+Find customer,Find customer
+Find product,Find product
+From,From
+Generate file,Generate file
+ID,ID
+Import clients,Import clients
+Import ingredients,Import ingredients
+Import orders,Import orders
+Import products,Import products
+In progress,In progress
+Include,Include
+Ingredient,Ingredient
+Ingredient added correctly,Ingredient added correctly
+Ingredient name,Ingredient name
+Ingredients,Ingredients
+Ingredients file not found,Ingredients file not found
+Ingredients to add,Ingredients to add
+Is available,Is available
+Language,Language
+Last change by,Last change by
+Log in,Log in
+Look for,Look for
+Manage Ingredient,Manage Ingredient
+Manage Products,Manage Products
+Menu,Menu
+Modify,Modify
+Modify Client,Modify Client
+Modify Employee,Modify Employee
+Modify order,Modify order
+Modify Order Products,Modify Order Products
+Modify Products,Modify Products
+Modify User,Modify User
+Name,Name
+Next,Next
+Not available,Not available
+Number of orders,Number of orders
+Number of products,Number of products
+Observations,Observations
+Order added successfully,Order added successfully
+Order quantity,Order quantity
+Order successfully modified,Order successfully modified
+Orders,Orders
+Orders delivered,Orders delivered
+Organize by name,Organize by name
+Password,Password
+Previous,Previous
+Price,Price
+Product,Product
+Product ingredients deleted,Product ingredients deleted
+Product must have at least 1 ingredient,Product must have at least 1 ingredient
+Product name,Product name
+Product sizes deleted,Product sizes deleted
+Product successfully added to order,Product successfully added to order
+Product type,Product type
+Products,Products
+Quantity,Quantity
+Requested,Requested
+Save Changes,Save Changes
+Save size and price,Save size and price
+Search,Search
+Search client,Search client
+Search client by id,Search client by id
+Search product,Search product
+Search time in nanoseconds,Search time in nanoseconds
+Select a product please,Select a product please
+Select an ingredient,Select an ingredient
+Select ingredient,Select ingredient
+Select product,Select product
+Select size,Select size
+Sent,Sent
+Since,Since
+Size,Size
+Size and prices,Size and prices
+Size field must be filled,Size field must be filled
+Size Price,Size Price
+Sizes and prices to add,Sizes and prices to add
+Sport,Sport
+State,State
+Successfully added client,Successfully added client
+Successfully modified client,Successfully modified client
+Surname,Surname
+Telephone,Telephone
+The client has an id that already exists,The client has an id that already exists
+The employee has an id that already exists,The employee has an id that already exists
+The file was generated successfully,The file was generated successfully
+The ingredient cannot be deleted because a product is using it,The ingredient cannot be deleted because a product is using it
+The ingredient has been deleted,The ingredient has been was deleted
+The ingredient was added to the product,The ingredient was added to the product
+The ingredient was erased,The ingredient was erased
+The price must be a number,The price must be a number
+The product already has this ingredient,The product already has this ingredient
+The product must be at least 1 size,The product must be at least 1 size
+The product was deleted,The product was deleted
+The product was saved,The product was saved
+The report will be generated from,The report will be generated from
+The User has an id that already exists,The User has an id that already exists
+The username or password is not correct,The username or password is not correct
+The values ??do not correspond,The values ??do not correspond
+There are no products related to,There are no products related to
+There are no products related with,There are no products related with
+There are no products,There are no products
+There is already a product,There is already a product
+There is already an ingredient with this name,There is already an ingredient with this name
+This ingredient has already been added,This ingredient has already been added
+"This is the first product, there is no previous","This is the first product, there is no previous"
+This is the last product,This is the last product
+This product is already this size,This product is already this size
+This size has already been added,This size has already been added
+Till,Till
+To create,To create
+Total,Total
+Type,Type
+Until,Until
+Update,Update
+Update table,Update table
+User,User
+User added successfully,User added successfully
+User modified successfully,User modified successfully
+Username,Username
+Users,Users

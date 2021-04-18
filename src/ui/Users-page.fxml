@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="200.0" layoutY="23.0" text="Lista de Usuarios">
+      <Label fx:id="labTitleUserPage" layoutX="284.0" layoutY="24.0" text="Usuarios">
          <font>
             <Font size="27.0" />
          </font>
@@ -23,10 +23,10 @@
             <TableColumn fx:id="tcUserNoo" prefWidth="129.0" text="Numero de ordenes" />
         </columns>
       </TableView>
-      <Button layoutX="51.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnUsersToLoggedInPage" text="Atras" />
-      <Button layoutX="51.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnUsers" text="Actualizar" />
-      <Button layoutX="539.0" layoutY="43.0" mnemonicParsing="false" onAction="#createUser" text="Agregar usuario" />
-      <Button layoutX="207.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnOpenModifyUser" text="Modificar" />
-      <Button layoutX="376.0" layoutY="149.0" mnemonicParsing="false" onAction="#eraseUser" text="Borrar" />
+      <Button fx:id="btnBackUserPage" layoutX="51.0" layoutY="43.0" mnemonicParsing="false" onAction="#btnUsersToLoggedInPage" text="Atras" />
+      <Button fx:id="btnUpdateUserPage" layoutX="51.0" layoutY="78.0" mnemonicParsing="false" onAction="#btnUsers" text="Actualizar" />
+      <Button fx:id="btnaddUserUserPage" layoutX="539.0" layoutY="43.0" mnemonicParsing="false" onAction="#createUser" text="Agregar usuario" />
+      <Button fx:id="btnModifyUserPage" layoutX="207.0" layoutY="149.0" mnemonicParsing="false" onAction="#btnOpenModifyUser" text="Modificar" />
+      <Button fx:id="btnDeleteUserPage" layoutX="376.0" layoutY="149.0" mnemonicParsing="false" onAction="#eraseUser" text="Borrar" />
    </children>
 </Pane>

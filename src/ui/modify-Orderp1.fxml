@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="684.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="149.0" layoutY="25.0" text="Modificar Productos de Orden">
+      <Label fx:id="labTitleModOrd2" layoutX="149.0" layoutY="25.0" text="Modificar Productos de Orden">
          <font>
             <Font size="29.0" />
          </font>
@@ -20,13 +20,13 @@
           <TableColumn fx:id="tcModifyOrderProductAmount" prefWidth="91.0" text="Cantidad" />
         </columns>
       </TableView>
-      <Button layoutX="204.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct2" text="Buscar producto" />
-      <Button layoutX="380.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEraseProductFromModifyOrder" text="Borrar producto" />
-      <Button layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Actualizar tabla" />
-      <Button layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Cancelar" />
-      <Button layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#modifyOrderProducts" text="Modificar" />
+      <Button fx:id="btnSearchProdModOrd2" layoutX="204.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnOpenSearchProduct2" text="Buscar producto" />
+      <Button fx:id="btnDeleteProdModOrd2" layoutX="380.0" layoutY="126.0" mnemonicParsing="false" onAction="#btnEraseProductFromModifyOrder" text="Borrar producto" />
+      <Button fx:id="btnUpdateTvModOrd2" layoutX="39.0" layoutY="68.0" mnemonicParsing="false" onAction="#btnOpenModifyPage" text="Actualizar tabla" />
+      <Button fx:id="btnBackModOrd2" layoutX="39.0" layoutY="34.0" mnemonicParsing="false" onAction="#btnCloseCreateOrder" text="Atras" />
+      <Button fx:id="btnModifyModOrd2" layoutX="308.0" layoutY="440.0" mnemonicParsing="false" onAction="#modifyOrderProducts" text="Modificar" />
       <Label fx:id="labConfirmModifyOrderS1" layoutX="328.0" layoutY="401.0" />
       <Label fx:id="labOrderCode2" layoutX="522.0" layoutY="256.0" />
-      <Label layoutX="501.0" layoutY="220.0" text="Código:" />
+      <Label fx:id="labcodeModOrd2" layoutX="501.0" layoutY="220.0" text="Código:" />
    </children>
 </Pane>
