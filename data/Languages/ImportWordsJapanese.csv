@@ -1,0 +1,181 @@
+﻿A client with this id was not found,找不到具有此ID的客户
+A size was added,尺寸增加了
+Add,添加
+Add client,添加客户
+Add employees,新增员工
+Add ingredient,添加成分
+Add ingredients or sizes,添加成分或尺寸
+Add order,新增订单
+Add product,添加产品
+Add size,新增尺寸
+Add size and price,添加尺寸和价格
+Add user,添加用户
+Admin,行政人员
+Adress,地址
+All spaces must be filled,所有空格都必须填写
+At least one product must be added,至少必须添加一种产品
+Availability,可用性
+Available,可用的
+Back,后退
+Clear search,清除搜寻
+Clear size and price,清晰的尺寸和价格
+Clear sizes and prices,清晰的尺寸和价格
+Client,客户
+Client name,客户名称
+Clients,客户群
+Code,代码
+Column separator,柱分离器
+Continue,继续
+Create client,建立客户
+Create Employee,创建员工
+Create Order: Step 1,创建订单：步骤1
+Create Order: Step 2,创建订单：步骤2
+Create product,创建产品
+Create User,创建用户
+Created by,由...制作
+Current date,当前的日期
+Customer name,顾客姓名
+Customers,顾客
+Date,日期
+Delete,删除
+Delete all saved data,删除所有保存的数据
+Delete ingredient,删除成分
+Delete Ingredients,删除成分
+Delete product,删除产品
+Delete Size and Price,删除大小和价格
+Delivered,发表
+Delivery status,邮寄状态
+Each Observation is separated with a line break,每个观察值之间都用换行符分隔
+Employee,员工
+Employee added successfully,员工添加成功
+Employee in charge,负责员工
+Employee successfully modified,员工修改成功
+Employees,雇员
+Enter a valid number,输入有效号码
+Enter the product first to see its sizes,首先输入产品以查看其尺寸
+Erase,擦除
+Exit,出口
+Export,出口
+Export csv of products,出口产品的CSV
+Export orders csv,出口订单csv
+Fill in all the fields for the size,填写所有字段以获取尺寸
+Find customer,寻找客户
+Find product,查找产品
+From,从
+Generate file,产生档案
+ID,ID
+Import clients,导入客户
+Import ingredients,进口原料
+Import orders,进口订单
+Import products,进口产品
+In progress,进行中
+Include,包括
+Ingredient,成分
+Ingredient added correctly,成分正确添加
+Ingredient name,成分名称
+Ingredients,原料
+Ingredients file not found,找不到成分文件
+Ingredients to add,要添加的成分
+Is available,有空
+Language,语
+Last change by,最后更改者
+Log in,登录
+Look for,寻找
+Manage Ingredient,管理成分
+Manage Products,管理产品
+Menu,菜单
+Modify,调整
+Modify Client,修改客户端
+Modify Employee,修改员工
+Modify order,修改订单
+Modify Order Products,修改订单产品
+Modify Products,修改产品
+Modify User,修改用户
+Name,名称
+Next,下一个
+Not available,无法使用
+Number of orders,订单数
+Number of products,产品数量
+Observations,观察结果
+Order added successfully,订单已成功添加
+Order quantity,订单数量
+Order successfully modified,订单修改成功
+Orders,命令
+Orders delivered,订单已交付
+Organize by name,按名称组织
+Password,密码
+Previous,以前的
+Price,价格
+Product,产品
+Product ingredients deleted,产品成分已删除
+Product must have at least 1 ingredient,产品必须至少含有一种成分
+Product name,产品名称
+Product sizes deleted,产品尺寸已删除
+Product successfully added to order,产品已成功添加到订单
+Product type,产品类别
+Products,产品
+Quantity,数量
+Requested,已要求
+Save Changes,保存更改
+Save size and price,节省尺寸和价格
+Search,搜索
+Search client,搜索客户
+Search client by id,按ID搜索客户端
+Search product,搜索商品
+Search time in nanoseconds,搜索时间（以纳秒为单位）
+Select a product please,请选择产品
+Select an ingredient,选择一种成分
+Select ingredient,选择成分
+Select product,选择产品
+Select size,选择大小
+Sent,发送
+Since,自从
+Size,尺寸
+Size and prices,尺寸和价格
+Size field must be filled,尺寸字段必须填写
+Size Price,尺寸价格
+Sizes and prices to add,要添加的尺寸和价格
+Sport,运动
+State,状态
+Successfully added client,成功添加客户端
+Successfully modified client,成功修改客户端
+Surname,姓
+Telephone,电话
+The client has an id that already exists,客户端的ID已存在
+The employee has an id that already exists,员工的ID已经存在
+The file was generated successfully,文件已成功生成
+The ingredient cannot be deleted because a product is using it,该成分不能删除，因为产品正在使用它
+The ingredient has been deleted,该成分已被删除
+The ingredient was added to the product,成分已添加到产品中
+The ingredient was erased,成分已删除
+The price must be a number,价格必须是数字
+The product already has this ingredient,产品已经有此成分
+The product must be at least 1 size,产品尺寸必须至少为1
+The product was deleted,该产品已删除
+The product was saved,产品已保存
+The report will be generated from,该报告将从
+The User has an id that already exists,用户的ID已经存在
+The username or password is not correct,用户名或密码不正确
+The values ??do not correspond,值不对应
+There are no products related to,没有相关产品
+There are no products related with,没有与以下产品相关的产品
+There are no products,没有产品
+There is already a product,已经有商品
+There is already an ingredient with this name,已经有这个名字的成分
+This ingredient has already been added,该成分已被添加
+"This is the first product, there is no previous",这是第一个产品，没有以前的产品
+This is the last product,这是最后一个产品
+This product is already this size,这个商品已经是这个尺寸
+This size has already been added,此大小已被添加
+Till,直到
+To create,去创造
+Total,全部的
+Type,类型
+Until,直到
+Update,更新
+Update table,更新表
+User,用户
+User added successfully,用户添加成功
+User modified successfully,用户修改成功
+Username,用户名
+Users,用户数

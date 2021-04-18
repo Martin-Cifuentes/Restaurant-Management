@@ -1,0 +1,181 @@
+﻿A client with this id was not found,Клиент с таким идентификатором не найден
+A size was added,Размер был добавлен
+Add,Добавлять
+Add client,Добавить клиента
+Add employees,Добавить сотрудников
+Add ingredient,Добавить ингредиент
+Add ingredients or sizes,Добавьте ингредиенты или размеры
+Add order,Добавить заказ
+Add product,Добавить товар
+Add size,Добавить размер
+Add size and price,Добавьте размер и цену
+Add user,Добавить пользователя
+Admin,Администратор
+Adress,Адрес
+All spaces must be filled,Все поля должны быть заполнены
+At least one product must be added,Должен быть добавлен хотя бы один продукт
+Availability,Доступность
+Available,Имеется в наличии
+Back,Назад
+Clear search,Очистить поиск
+Clear size and price,Понятный размер и цена
+Clear sizes and prices,Четкие размеры и цены
+Client,Клиент
+Client name,Имя клиента
+Clients,Клиенты
+Code,Код
+Column separator,Разделитель столбцов
+Continue,Продолжать
+Create client,Создать клиента
+Create Employee,Создать сотрудника
+Create Order: Step 1,Создание заказа: шаг 1
+Create Order: Step 2,Создание заказа: шаг 2
+Create product,Создать продукт
+Create User,Создать пользователя
+Created by,Создано
+Current date,Текущая дата
+Customer name,Имя покупателя
+Customers,Клиенты
+Date,Дата
+Delete,Удалить
+Delete all saved data,Удалить все сохраненные данные
+Delete ingredient,Удалить ингредиент
+Delete Ingredients,Удалить ингредиенты
+Delete product,Удалить продукт
+Delete Size and Price,Удалить размер и цену
+Delivered,Доставленный
+Delivery status,Статус доставки
+Each Observation is separated with a line break,Каждое наблюдение отделяется разрывом строки
+Employee,Работник
+Employee added successfully,Сотрудник успешно добавлен
+Employee in charge,Ответственный сотрудник
+Employee successfully modified,Сотрудник успешно изменен
+Employees,Сотрудники
+Enter a valid number,Введите действительный номер
+Enter the product first to see its sizes,"Сначала введите товар, чтобы увидеть его размеры"
+Erase,Стереть
+Exit,Выход
+Export,Экспорт
+Export csv of products,Экспорт csv продукции
+Export orders csv,Экспортные заказы csv
+Fill in all the fields for the size,Заполните все поля для размера
+Find customer,Найти клиента
+Find product,Найти продукт
+From,Из
+Generate file,Создать файл
+ID,Я БЫ
+Import clients,Импортировать клиентов
+Import ingredients,Импорт ингредиентов
+Import orders,Импорт заказов
+Import products,Импортные товары
+In progress,В ходе выполнения
+Include,Включать
+Ingredient,Ингредиент
+Ingredient added correctly,Ингредиент добавлен правильно
+Ingredient name,Название ингредиента
+Ingredients,Ингредиенты
+Ingredients file not found,Файл с ингредиентами не найден
+Ingredients to add,Ингредиенты для добавления
+Is available,Доступен
+Language,Язык
+Last change by,Последнее изменение от
+Log in,Авторизоваться
+Look for,Ищу
+Manage Ingredient,Управление ингредиентом
+Manage Products,Управление продуктами
+Menu,Меню
+Modify,Изменить
+Modify Client,Изменить клиента
+Modify Employee,Изменить сотрудника
+Modify order,Изменить порядок
+Modify Order Products,Изменить продукты заказа
+Modify Products,Изменить продукты
+Modify User,Изменить пользователя
+Name,Имя
+Next,Следующий
+Not available,Недоступен
+Number of orders,Количество заказов
+Number of products,Количество продуктов
+Observations,Наблюдения
+Order added successfully,Заказ успешно добавлен
+Order quantity,Количество заказа
+Order successfully modified,Заказ успешно изменен
+Orders,Заказы
+Orders delivered,Заказы доставлены
+Organize by name,Организовать по имени
+Password,Пароль
+Previous,Предыдущий
+Price,Цена
+Product,Продукт
+Product ingredients deleted,Компоненты продукта удалены
+Product must have at least 1 ingredient,В продукте должен быть как минимум 1 ингредиент.
+Product name,Наименование товара
+Product sizes deleted,Размеры товара удалены
+Product successfully added to order,Товар успешно добавлен в заказ
+Product type,Тип продукта
+Products,Продукты
+Quantity,Количество
+Requested,Запрошено
+Save Changes,Сохранить изменения
+Save size and price,Сохранить размер и цену
+Search,Поиск
+Search client,Поисковый клиент
+Search client by id,Поиск клиента по id
+Search product,Искать продукт
+Search time in nanoseconds,Время поиска в наносекундах
+Select a product please,Выберите продукт пожалуйста
+Select an ingredient,Выберите ингредиент
+Select ingredient,Выберите ингредиент
+Select product,Выбрать продукт
+Select size,Выберите размер
+Sent,Отправил
+Since,С
+Size,Размер
+Size and prices,Размер и цены
+Size field must be filled,Поле размера должно быть заполнено
+Size Price,Размер Цена
+Sizes and prices to add,Размеры и цены добавить
+Sport,Спорт
+State,Состояние
+Successfully added client,Клиент успешно добавлен
+Successfully modified client,Клиент успешно изменен
+Surname,Фамилия
+Telephone,телефон
+The client has an id that already exists,"У клиента есть идентификатор, который уже существует"
+The employee has an id that already exists,У сотрудника уже есть идентификатор
+The file was generated successfully,Файл был успешно сгенерирован
+The ingredient cannot be deleted because a product is using it,"Ингредиент нельзя удалить, потому что он используется в продукте"
+The ingredient has been deleted,Ингредиент был удален
+The ingredient was added to the product,Ингредиент был добавлен в продукт
+The ingredient was erased,Ингредиент был удален
+The price must be a number,Цена должна быть числом
+The product already has this ingredient,В продукте уже есть этот ингредиент
+The product must be at least 1 size,Изделие должно быть не менее 1 размера.
+The product was deleted,Товар был удален
+The product was saved,Товар был сохранен
+The report will be generated from,Отчет будет сформирован из
+The User has an id that already exists,"У пользователя есть идентификатор, который уже существует"
+The username or password is not correct,Имя пользователя или пароль неверны
+The values ??do not correspond,Значения не соответствуют
+There are no products related to,"Нет товаров, связанных с"
+There are no products related with,"Нет товаров, связанных с"
+There are no products,Нет товаров
+There is already a product,Уже есть товар
+There is already an ingredient with this name,Ингредиент с таким названием уже существует
+This ingredient has already been added,Этот ингредиент уже добавлен
+"This is the first product, there is no previous","Это первый продукт, предыдущего нет."
+This is the last product,Это последний продукт
+This product is already this size,Этот продукт уже этого размера
+This size has already been added,Этот размер уже добавлен
+Till,Пока
+To create,Создавать
+Total,Общее
+Type,Тип
+Until,До того как
+Update,Обновлять
+Update table,Обновить таблицу
+User,Пользователь
+User added successfully,Пользователь успешно добавлен
+User modified successfully,Пользователь успешно изменен
+Username,Имя пользователя
+Users,Пользователи

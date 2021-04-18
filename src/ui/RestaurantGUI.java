@@ -2810,12 +2810,15 @@ public class RestaurantGUI {
 	}
 	public void loadCbLogIn() {
 		ObservableList<String> ableLanguages;
-		if(restaurant.getDictionary().getActualLanguage() == Language.SPANISH) {
-			ableLanguages = FXCollections.observableArrayList("ESPAÑOL", "INGLES");
-		} else if(restaurant.getDictionary().getActualLanguage() == Language.ENGLISH) {
-			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH");
+		/*if(restaurant.getDictionary().getActualLanguage() == Language.SPANISH) {
+			ableLanguages = FXCollections.observableArrayList("ESPAÑOL", "INGLES", "PORTUGUES","ITALIANO",
+																"FRANCES","COREANO","CHINO","JAPONES","RUSO","ALEMAN");
+		} else*/ if(restaurant.getDictionary().getActualLanguage() == Language.ENGLISH) {
+			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
+																"FRENCH","KOREAN","CHINISE","JAPANESE","RUSIAN","GERMAN");
 		} else {
-			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH");
+			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
+																"FRENCH","KOREAN","CHINISE","JAPANESE","RUSIAN","GERMAN");
 		}
 		cbLenguage.setItems(ableLanguages);
 	}
@@ -2827,6 +2830,22 @@ public class RestaurantGUI {
 			restaurant.getDictionary().setActualLanguage(Language.SPANISH);
 		} else if(cbLenguage.getValue().equals("ENGLISH") || cbLenguage.getValue().equals("INGLES")) {
 			restaurant.getDictionary().setActualLanguage(Language.ENGLISH);
+		}else if(cbLenguage.getValue().equals("PORTUGUESE") || cbLenguage.getValue().equals("PORTUGUESE")) {
+			restaurant.getDictionary().setActualLanguage(Language.PORTUGUESE);
+		}else if(cbLenguage.getValue().equals("ITALIAN") || cbLenguage.getValue().equals("ITALIAN")) {
+			restaurant.getDictionary().setActualLanguage(Language.ITALIAN);
+		}else if(cbLenguage.getValue().equals("FRENCH") || cbLenguage.getValue().equals("FRENCH")) {
+			restaurant.getDictionary().setActualLanguage(Language.FRENCH);
+		}else if(cbLenguage.getValue().equals("GERMAN") || cbLenguage.getValue().equals("GERMAN")) {
+			restaurant.getDictionary().setActualLanguage(Language.GERMAN);
+		}else if(cbLenguage.getValue().equals("KOREAN") || cbLenguage.getValue().equals("KOREAN")) {
+			restaurant.getDictionary().setActualLanguage(Language.KOREAN);
+		}else if(cbLenguage.getValue().equals("CHINISE") || cbLenguage.getValue().equals("CHINISE")) {
+			restaurant.getDictionary().setActualLanguage(Language.CHINISE);
+		}else if(cbLenguage.getValue().equals("JAPANESE") || cbLenguage.getValue().equals("JAPANESE")) {
+			restaurant.getDictionary().setActualLanguage(Language.JAPANESE);
+		}else if(cbLenguage.getValue().equals("RUSIAN") || cbLenguage.getValue().equals("RUSIAN")) {
+			restaurant.getDictionary().setActualLanguage(Language.RUSIAN);
 		}
 		restaurant.loadLenguage();
 		loadMainPage();
