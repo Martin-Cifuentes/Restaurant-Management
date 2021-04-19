@@ -179,7 +179,7 @@ public class Restaurant {
 	}
 
 
-	//se añade un ingrediente
+	//se aÃ±ade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) throws IOException {
 		boolean found=false;
 		for(int c=0;c<ingredients.size() && !found;c++) {
@@ -487,7 +487,7 @@ public class Restaurant {
 		return x;
 	}
 
-	//se ve si se pone la contraseña correcta del admin
+	//se ve si se pone la contraseÃ±a correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
 		for(int c=0; c< employees.size() && !found;c++) {
