@@ -1,0 +1,181 @@
+﻿A client with this id was not found,이 ID를 가진 클라이언트를 찾을 수 없습니다.
+A size was added,사이즈가 추가되었습니다
+Add,더하다
+Add client,클라이언트 추가
+Add employees,직원 추가
+Add ingredient,성분 추가
+Add ingredients or sizes,재료 또는 크기 추가
+Add order,주문 추가
+Add product,제품 추가
+Add size,크기 추가
+Add size and price,크기 및 가격 추가
+Add user,사용자 추가
+Admin,관리자
+Adress,주소
+All spaces must be filled,모든 공간을 채워야합니다.
+At least one product must be added,제품을 하나 이상 추가해야합니다.
+Availability,유효성
+Available,유효한
+Back,뒤
+Clear search,명확한 검색
+Clear size and price,명확한 크기와 가격
+Clear sizes and prices,명확한 크기와 가격
+Client,고객
+Client name,고객 이름
+Clients,클라이언트
+Code,암호
+Column separator,컬럼 구분자
+Continue,계속하다
+Create client,클라이언트 생성
+Create Employee,직원 생성
+Create Order: Step 1,주문 생성 : 1 단계
+Create Order: Step 2,주문 생성 : 2 단계
+Create product,제품 생성
+Create User,사용자 생성
+Created by,작성자
+Current date,현재 날짜
+Customer name,고객 이름
+Customers,고객
+Date,데이트
+Delete,지우다
+Delete all saved data,저장된 모든 데이터 삭제
+Delete ingredient,성분 삭제
+Delete Ingredients,재료 삭제
+Delete product,제품 삭제
+Delete Size and Price,크기 및 가격 삭제
+Delivered,배달 됨
+Delivery status,배송 상황
+Each Observation is separated with a line break,각 관찰은 줄 바꿈으로 구분됩니다.
+Employee,종업원
+Employee added successfully,직원이 성공적으로 추가되었습니다.
+Employee in charge,담당자
+Employee successfully modified,직원이 성공적으로 수정되었습니다.
+Employees,직원
+Enter a valid number,유효한 번호를 입력하세요.
+Enter the product first to see its sizes,크기를 보려면 먼저 제품을 입력하십시오.
+Erase,삭제
+Exit,출구
+Export,수출
+Export csv of products,제품 CSV 내보내기
+Export orders csv,수출 주문 CSV
+Fill in all the fields for the size,크기에 대한 모든 필드를 채우십시오.
+Find customer,고객 찾기
+Find product,제품 찾기
+From,에서
+Generate file,파일 생성
+ID,신분증
+Import clients,클라이언트 가져 오기
+Import ingredients,수입 원료
+Import orders,수입 주문
+Import products,수입품
+In progress,진행 중
+Include,포함
+Ingredient,성분
+Ingredient added correctly,성분이 올바르게 추가됨
+Ingredient name,성분명
+Ingredients,성분
+Ingredients file not found,재료 파일을 찾을 수 없습니다.
+Ingredients to add,추가 할 재료
+Is available,사용할 수 있습니다
+Language,언어
+Last change by,마지막 변경
+Log in,로그인
+Look for,찾다
+Manage Ingredient,성분 관리
+Manage Products,제품 관리
+Menu,메뉴
+Modify,수정
+Modify Client,클라이언트 수정
+Modify Employee,직원 수정
+Modify order,주문 수정
+Modify Order Products,주문 제품 수정
+Modify Products,제품 수정
+Modify User,사용자 수정
+Name,이름
+Next,다음
+Not available,사용할 수 없습니다
+Number of orders,주문 수
+Number of products,제품 수
+Observations,관찰
+Order added successfully,주문이 성공적으로 추가되었습니다.
+Order quantity,주문 수량
+Order successfully modified,주문이 성공적으로 수정되었습니다.
+Orders,명령
+Orders delivered,배송 된 주문
+Organize by name,이름으로 정리
+Password,암호
+Previous,이전
+Price,가격
+Product,생성물
+Product ingredients deleted,제품 성분이 삭제되었습니다.
+Product must have at least 1 ingredient,제품에는 성분이 1 개 이상 있어야합니다.
+Product name,상품명
+Product sizes deleted,제품 크기가 삭제되었습니다.
+Product successfully added to order,제품이 주문에 성공적으로 추가되었습니다.
+Product type,상품 유형
+Products,제품
+Quantity,수량
+Requested,요청 됨
+Save Changes,변경 사항을 저장하다
+Save size and price,크기와 가격 절약
+Search,검색
+Search client,클라이언트 검색
+Search client by id,ID로 클라이언트 검색
+Search product,제품 검색
+Search time in nanoseconds,나노초 단위의 검색 시간
+Select a product please,제품을 선택하세요
+Select an ingredient,재료 선택
+Select ingredient,재료 선택
+Select product,제품 선택
+Select size,사이즈를 선택하다
+Sent,보냄
+Since,이후
+Size,크기
+Size and prices,크기 및 가격
+Size field must be filled,크기 필드를 채워야합니다.
+Size Price,사이즈 가격
+Sizes and prices to add,추가 할 크기 및 가격
+Sport,스포츠
+State,상태
+Successfully added client,클라이언트를 성공적으로 추가했습니다.
+Successfully modified client,클라이언트를 성공적으로 수정했습니다.
+Surname,성
+Telephone,전화
+The client has an id that already exists,클라이언트에 이미 존재하는 ID가 있습니다.
+The employee has an id that already exists,직원에게 이미 존재하는 ID가 있습니다.
+The file was generated successfully,파일이 성공적으로 생성되었습니다.
+The ingredient cannot be deleted because a product is using it,제품이 사용 중이므로 성분을 삭제할 수 없습니다.
+The ingredient has been deleted,재료가 삭제되었습니다
+The ingredient was added to the product,성분이 제품에 추가되었습니다
+The ingredient was erased,성분이 지워졌습니다
+The price must be a number,가격은 숫자 여야합니다.
+The product already has this ingredient,제품에 이미이 성분이 있습니다
+The product must be at least 1 size,상품은 1 사이즈 이상이어야합니다.
+The product was deleted,제품이 삭제되었습니다
+The product was saved,제품이 저장되었습니다
+The report will be generated from,보고서는 다음에서 생성됩니다.
+The User has an id that already exists,사용자에게 이미 존재하는 ID가 있습니다.
+The username or password is not correct,사용자 이름 또는 비밀번호가 올바르지 않습니다.
+The values ??do not correspond,값은 ?? 일치하지 않습니다
+There are no products related to,관련 상품이 없습니다.
+There are no products related with,관련 상품이 없습니다.
+There are no products,상품이 없습니다
+There is already a product,이미 상품이 있습니다
+There is already an ingredient with this name,이 이름의 재료가 이미 있습니다.
+This ingredient has already been added,이 성분은 이미 추가되었습니다
+"This is the first product, there is no previous",이것은 첫 번째 제품이며 이전이 없습니다.
+This is the last product,이것은 마지막 제품입니다
+This product is already this size,이 상품은 이미이 사이즈입니다
+This size has already been added,이 크기는 이미 추가되었습니다.
+Till,까지
+To create,만들다
+Total,합계
+Type,유형
+Until,까지
+Update,최신 정보
+Update table,테이블 업데이트
+User,사용자
+User added successfully,사용자가 성공적으로 추가되었습니다.
+User modified successfully,사용자가 성공적으로 수정되었습니다.
+Username,사용자 이름
+Users,사용자

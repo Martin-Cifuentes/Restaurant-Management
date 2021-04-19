@@ -16,6 +16,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Restaurant {
 
@@ -178,7 +179,7 @@ public class Restaurant {
 	}
 
 
-	//se añade un ingrediente
+	//se aÃ±ade un ingrediente
 	public boolean addIngredient(String name, boolean avialable) throws IOException {
 		boolean found=false;
 		for(int c=0;c<ingredients.size() && !found;c++) {
@@ -486,7 +487,7 @@ public class Restaurant {
 		return x;
 	}
 
-	//se ve si se pone la contraseña correcta del admin
+	//se ve si se pone la contraseÃ±a correcta del admin
 	public boolean logInAdmin(String userName,String password) {
 		boolean found=false;
 		for(int c=0; c< employees.size() && !found;c++) {
@@ -789,19 +790,37 @@ public class Restaurant {
 		ArrayList<Word> read = new ArrayList<Word>();
 		BufferedReader br;
 		if(dictionary.getActualLanguage() == Language.SPANISH) {
-			br = new BufferedReader(new FileReader("data/ImportWordsSpanish.csv"));
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsSpanish.csv"));
 		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
-			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
-		} else {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsEnglish.csv"));
+		} else if(dictionary.getActualLanguage() == Language.CHINISE) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsChinese.csv"));
+		} else if(dictionary.getActualLanguage() == Language.FRENCH) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsFrench.csv"));
+		} else if(dictionary.getActualLanguage() == Language.GERMAN) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsGerman.csv"));
+		} else if(dictionary.getActualLanguage() == Language.ITALIAN) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsItalian.csv"));
+		} else if(dictionary.getActualLanguage() == Language.JAPANESE) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsJapanese.csv"));
+		} else if(dictionary.getActualLanguage() == Language.KOREAN) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsKorean.csv"));
+		} else if(dictionary.getActualLanguage() == Language.PORTUGUESE) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsPortuguese.csv"));
+		} else if(dictionary.getActualLanguage() == Language.RUSIAN) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsRussian.csv"));
+		} else  {
 			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
 		}
+		Scanner sc = new Scanner(System.in);
 		String line= br.readLine();
 		String[] parts;
 		while(line!=null) {
 			parts= line.split(",");
+			System.out.println(line);
 			read.add(new Word(parts[0],parts[1]));
 			line=br.readLine();
-		}
+		}//br.readLine()
 		br.close();
 		
 		dictionary.setWords(read);

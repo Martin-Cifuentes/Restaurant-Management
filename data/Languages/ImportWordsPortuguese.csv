@@ -1,0 +1,181 @@
+A client with this id was not found,Um cliente com este id não foi encontrado
+A size was added,Um tamanho foi adicionado
+Add,Adicionar
+Add client,Adicionar cliente
+Add employees,Adicionar funcionários
+Add ingredient,Adicionar ingrediente
+Add ingredients or sizes,Adicione ingredientes ou tamanhos
+Add order,Adicionar pedido
+Add product,Adicionar produto
+Add size,Adicionar tamanho
+Add size and price,Adicionar tamanho e preço
+Add user,Adicionar usuário
+Admin,Administrador
+Adress,Endereço
+All spaces must be filled,Todos os espaços devem ser preenchidos
+At least one product must be added,Deve ser adicionado pelo menos um produto
+Availability,Disponibilidade
+Available,Disponível
+Back,Voltar
+Clear search,Limpar pesquisa
+Clear size and price,Tamanho e preço claros
+Clear sizes and prices,Tamanhos e preços claros
+Client,Cliente
+Client name,Nome do cliente
+Clients,Clientes
+Code,Código
+Column separator,Separador de coluna
+Continue,Prosseguir
+Create client,Criar cliente
+Create Employee,Criar Funcionário
+Create Order: Step 1,Criar pedido: Etapa 1
+Create Order: Step 2,Criar pedido: etapa 2
+Create product,Criar produto
+Create User,Criar usuário
+Created by,Criado por
+Current date,Data atual
+Customer name,Nome do cliente
+Customers,Clientes
+Date,Data
+Delete,Excluir
+Delete all saved data,Exclua todos os dados salvos
+Delete ingredient,Excluir ingrediente
+Delete Ingredients,Apagar Ingredientes
+Delete product,Excluir produto
+Delete Size and Price,Excluir tamanho e preço
+Delivered,Entregue
+Delivery status,Status de entrega
+Each Observation is separated with a line break,Cada observação é separada por uma quebra de linha
+Employee,Empregado
+Employee added successfully,Funcionário adicionado com sucesso
+Employee in charge,Funcionário responsável
+Employee successfully modified,Funcionário modificado com sucesso
+Employees,Funcionários
+Enter a valid number,Insira um número válido
+Enter the product first to see its sizes,Insira o produto primeiro para ver seus tamanhos
+Erase,Apagar
+Exit,Saída
+Export,Exportar
+Export csv of products,Exportar csv de produtos
+Export orders csv,Exportar pedidos csv
+Fill in all the fields for the size,Preencha todos os campos para o tamanho
+Find customer,Encontre o cliente
+Find product,Encontre o produto
+From,A partir de
+Generate file,Gerar arquivo
+ID,EU IA
+Import clients,Clientes de importação
+Import ingredients,Ingredientes de importação
+Import orders,Pedidos de importação
+Import products,Produtos de importação
+In progress,Em andamento
+Include,Incluir
+Ingredient,Ingrediente
+Ingredient added correctly,Ingrediente adicionado corretamente
+Ingredient name,Nome do ingrediente
+Ingredients,Ingredientes
+Ingredients file not found,Arquivo de ingredientes não encontrado
+Ingredients to add,Ingredientes para adicionar
+Is available,Está disponível
+Language,Língua
+Last change by,Última alteração por
+Log in,Conecte-se
+Look for,Olhe para
+Manage Ingredient,Gerenciar Ingrediente
+Manage Products,Gerenciar produtos
+Menu,Cardápio
+Modify,Modificar
+Modify Client,Cliente de modificação
+Modify Employee,Modificar Funcionário
+Modify order,Ordem modificada
+Modify Order Products,Modificar produtos do pedido
+Modify Products,Modificar produtos
+Modify User,Modificar usuário
+Name,Nome
+Next,Próximo
+Not available,Não disponível
+Number of orders,Número de encomendas
+Number of products,Número de produtos
+Observations,Observações
+Order added successfully,Pedido adicionado com sucesso
+Order quantity,Quantidade do pedido
+Order successfully modified,Pedido modificado com sucesso
+Orders,Pedidos
+Orders delivered,Pedidos entregues
+Organize by name,Organizar por nome
+Password,Senha
+Previous,Anterior
+Price,Preço
+Product,produtos
+Product ingredients deleted,Ingredientes do produto excluídos
+Product must have at least 1 ingredient,O produto deve ter pelo menos 1 ingrediente
+Product name,Nome do Produto
+Product sizes deleted,Tamanhos de produtos excluídos
+Product successfully added to order,Produto adicionado ao pedido com sucesso
+Product type,Tipo de Produto
+Products,Produtos
+Quantity,Quantidade
+Requested,Requeridos
+Save Changes,Salvar alterações
+Save size and price,Economize tamanho e preço
+Search,Procurar
+Search client,Cliente de pesquisa
+Search client by id,Pesquisar cliente por id
+Search product,Produto de pesquisa
+Search time in nanoseconds,Tempo de pesquisa em nanossegundos
+Select a product please,Selecione um produto por favor
+Select an ingredient,Selecione um ingrediente
+Select ingredient,Selecione o ingrediente
+Select product,Selecione o produto
+Select size,Selecione o tamanho
+Sent,Enviei
+Since,Desde a
+Size,Tamanho
+Size and prices,Tamanho e preços
+Size field must be filled,O campo de tamanho deve ser preenchido
+Size Price,Preço do tamanho
+Sizes and prices to add,Tamanhos e preços a adicionar
+Sport,Esporte
+State,Estado
+Successfully added client,Cliente adicionado com sucesso
+Successfully modified client,Cliente modificado com sucesso
+Surname,Sobrenome
+Telephone,Telefone
+The client has an id that already exists,O cliente tem um id que já existe
+The employee has an id that already exists,O funcionário tem um id que já existe
+The file was generated successfully,O arquivo foi gerado com sucesso
+The ingredient cannot be deleted because a product is using it,O ingrediente não pode ser excluído porque um produto o está usando
+The ingredient has been deleted,O ingrediente foi deletado
+The ingredient was added to the product,O ingrediente foi adicionado ao produto
+The ingredient was erased,O ingrediente foi apagado
+The price must be a number,O preço deve ser um número
+The product already has this ingredient,O produto já tem esse ingrediente
+The product must be at least 1 size,O produto deve ter pelo menos 1 tamanho
+The product was deleted,O produto foi excluído
+The product was saved,O produto foi salvo
+The report will be generated from,O relatório será gerado a partir de
+The User has an id that already exists,O usuário possui um id que já existe
+The username or password is not correct,O nome de usuário ou senha não está correto
+The values ??do not correspond,Os valores ?? não correspondem
+There are no products related to,Não há produtos relacionados a
+There are no products related with,Não há produtos relacionados com
+There are no products,Não há produtos
+There is already a product,Já existe um produto
+There is already an ingredient with this name,Já existe um ingrediente com este nome
+This ingredient has already been added,Este ingrediente já foi adicionado
+"This is the first product, there is no previous","Este é o primeiro produto, não há anterior"
+This is the last product,Este é o ultimo produto
+This product is already this size,Este produto já tem este tamanho
+This size has already been added,Este tamanho já foi adicionado
+Till,Até
+To create,Para criar
+Total,Total
+Type,Modelo
+Until,Até
+Update,Atualizar
+Update table,Tabela de atualização
+User,Do utilizador
+User added successfully,Usuário adicionado com sucesso
+User modified successfully,Usuário modificado com sucesso
+Username,Nome do usuário
+Users,Nome do usuário
