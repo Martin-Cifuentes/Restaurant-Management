@@ -751,7 +751,7 @@ public class Restaurant {
 						tempClient=clients.get(i);
 					}
 				}
-				pw.println(orders.get(c).getRequestClient()+""+sep+""+tempClient.getAdress()+""+sep+""+tempClient.getPhone()+""+sep+""+orders.get(c).deliverEmployee+""+sep+""+orders.get(c).getStateString()+""+sep+""+orders.get(c).getDate()+""+sep+""+orders.get(c).getObservationsStrWhitoutLinejump()+""+orders.get(c).exportProduct(sep));
+				pw.println(orders.get(c).getRequestClient()+""+sep+""+tempClient.getAdress()+""+sep+""+tempClient.getPhone()+""+sep+""+orders.get(c).getDeliverEmployee()+""+sep+""+orders.get(c).getStateString()+""+sep+""+orders.get(c).getDate()+""+sep+""+orders.get(c).getObservationsStrWhitoutLinejump()+""+orders.get(c).exportProduct(sep));
 			}
 
 		}
