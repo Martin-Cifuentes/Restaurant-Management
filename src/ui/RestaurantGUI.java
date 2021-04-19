@@ -2794,10 +2794,10 @@ public class RestaurantGUI {
 																"FRANCES","COREANO","CHINO","JAPONES","RUSO","ALEMAN");
 		} else*/ if(restaurant.getDictionary().getActualLanguage() == Language.ENGLISH) {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
-																"FRENCH","GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
+																/*"FRENCH",*/"GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
 		} else {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
-																"FRENCH","GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
+																/*"FRENCH",*/"GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
 		}
 		cbLenguage.setItems(ableLanguages);
 	}
@@ -2813,9 +2813,9 @@ public class RestaurantGUI {
 			restaurant.getDictionary().setActualLanguage(Language.PORTUGUESE);
 		}else if(cbLenguage.getValue().equals("ITALIAN") || cbLenguage.getValue().equals("ITALIAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.ITALIAN);
-		}else if(cbLenguage.getValue().equals("FRENCH") || cbLenguage.getValue().equals("FRENCH")) {
+		}/*else if(cbLenguage.getValue().equals("FRENCH") || cbLenguage.getValue().equals("FRENCH")) {
 			restaurant.getDictionary().setActualLanguage(Language.FRENCH);
-		}else if(cbLenguage.getValue().equals("GERMAN") || cbLenguage.getValue().equals("GERMAN")) {
+		}*/else if(cbLenguage.getValue().equals("GERMAN") || cbLenguage.getValue().equals("GERMAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.GERMAN);
 		}/*else if(cbLenguage.getValue().equals("KOREAN") || cbLenguage.getValue().equals("KOREAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.KOREAN);
@@ -2909,6 +2909,7 @@ public class RestaurantGUI {
 			Parent login;
 			login = fxmlLoader.load();
 			mainPane.getChildren().setAll(login);
+			loadCbLogIn();
 			loadLanguageMainPage();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

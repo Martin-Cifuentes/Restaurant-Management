@@ -792,9 +792,9 @@ public class Restaurant {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsSpanish.csv"));
 		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsEnglish.csv"));
-		} else if(dictionary.getActualLanguage() == Language.FRENCH) {
+		} /*else if(dictionary.getActualLanguage() == Language.FRENCH) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsFrench.csv"));
-		} else if(dictionary.getActualLanguage() == Language.GERMAN) {
+		} */else if(dictionary.getActualLanguage() == Language.GERMAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsGerman.csv"));
 		} else if(dictionary.getActualLanguage() == Language.ITALIAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsItalian.csv"));
