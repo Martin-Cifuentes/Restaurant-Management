@@ -16,7 +16,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Restaurant {
 
@@ -812,7 +811,6 @@ public class Restaurant {
 		} else  {
 			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
 		}
-		Scanner sc = new Scanner(System.in);
 		String line= br.readLine();
 		String[] parts;
 		while(line!=null) {
