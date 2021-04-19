@@ -17,4 +17,4 @@ Se puede generar el reporte de ordenes
 
 Se puede generar el reporte de productos 
 
-Ahora la aplicación cuenta con internacionalidad, cuenta con inglés y español pero puede agregarse cualquier idioma por medio de un archivo csv
+Ahora la aplicación cuenta con internacionalidad, cuenta con inglés, español, italiano, alemán y portugués.
