@@ -16,7 +16,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Restaurant {
 
@@ -793,26 +792,25 @@ public class Restaurant {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsSpanish.csv"));
 		} else if(dictionary.getActualLanguage() == Language.ENGLISH) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsEnglish.csv"));
-		} else if(dictionary.getActualLanguage() == Language.CHINISE) {
-			br = new BufferedReader(new FileReader("data/Languages/ImportWordsChinese.csv"));
 		} else if(dictionary.getActualLanguage() == Language.FRENCH) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsFrench.csv"));
 		} else if(dictionary.getActualLanguage() == Language.GERMAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsGerman.csv"));
 		} else if(dictionary.getActualLanguage() == Language.ITALIAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsItalian.csv"));
-		} else if(dictionary.getActualLanguage() == Language.JAPANESE) {
+		} else if(dictionary.getActualLanguage() == Language.PORTUGUESE) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsPortuguese.csv"));
+		} /*else if(dictionary.getActualLanguage() == Language.JAPANESE) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsJapanese.csv"));
 		} else if(dictionary.getActualLanguage() == Language.KOREAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsKorean.csv"));
-		} else if(dictionary.getActualLanguage() == Language.PORTUGUESE) {
-			br = new BufferedReader(new FileReader("data/Languages/ImportWordsPortuguese.csv"));
 		} else if(dictionary.getActualLanguage() == Language.RUSIAN) {
 			br = new BufferedReader(new FileReader("data/Languages/ImportWordsRussian.csv"));
-		} else  {
+		} else if(dictionary.getActualLanguage() == Language.CHINISE) {
+			br = new BufferedReader(new FileReader("data/Languages/ImportWordsChinese.csv"));
+		}*/else  {
 			br = new BufferedReader(new FileReader("data/ImportWordsEnglish.csv"));
 		}
-		Scanner sc = new Scanner(System.in);
 		String line= br.readLine();
 		String[] parts;
 		while(line!=null) {

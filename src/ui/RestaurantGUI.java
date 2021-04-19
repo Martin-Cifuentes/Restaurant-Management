@@ -2815,10 +2815,10 @@ public class RestaurantGUI {
 																"FRANCES","COREANO","CHINO","JAPONES","RUSO","ALEMAN");
 		} else*/ if(restaurant.getDictionary().getActualLanguage() == Language.ENGLISH) {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
-																"FRENCH","KOREAN","CHINISE","JAPANESE","RUSIAN","GERMAN");
+																"FRENCH","GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
 		} else {
 			ableLanguages = FXCollections.observableArrayList("SPANISH", "ENGLISH", "PORTUGUESE","ITALIAN",
-																"FRENCH","KOREAN","CHINISE","JAPANESE","RUSIAN","GERMAN");
+																"FRENCH","GERMAN"/*,"KOREAN","CHINISE","JAPANESE","RUSIAN"*/);
 		}
 		cbLenguage.setItems(ableLanguages);
 	}
@@ -2838,7 +2838,7 @@ public class RestaurantGUI {
 			restaurant.getDictionary().setActualLanguage(Language.FRENCH);
 		}else if(cbLenguage.getValue().equals("GERMAN") || cbLenguage.getValue().equals("GERMAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.GERMAN);
-		}else if(cbLenguage.getValue().equals("KOREAN") || cbLenguage.getValue().equals("KOREAN")) {
+		}/*else if(cbLenguage.getValue().equals("KOREAN") || cbLenguage.getValue().equals("KOREAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.KOREAN);
 		}else if(cbLenguage.getValue().equals("CHINISE") || cbLenguage.getValue().equals("CHINISE")) {
 			restaurant.getDictionary().setActualLanguage(Language.CHINISE);
@@ -2846,7 +2846,7 @@ public class RestaurantGUI {
 			restaurant.getDictionary().setActualLanguage(Language.JAPANESE);
 		}else if(cbLenguage.getValue().equals("RUSIAN") || cbLenguage.getValue().equals("RUSIAN")) {
 			restaurant.getDictionary().setActualLanguage(Language.RUSIAN);
-		}
+		}*/
 		restaurant.loadLenguage();
 		loadMainPage();
     }
