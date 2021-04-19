@@ -280,9 +280,6 @@ public class RestaurantGUI {
 	@FXML
 	private TextField txtClientPhone;
 
-
-	/*@FXML
-    private Button btnModifyClient;*/
 	@FXML
 	private TextArea txtClientObservations;
 
@@ -388,18 +385,6 @@ public class RestaurantGUI {
 	@FXML
 	private TableColumn<Order, String> tcOrderDate;
 
-	/*@FXML
-    private ListView<String> lvOrderProductsPrice;
-
-    @FXML
-    private ListView<String> lvOrderProductsCant;
-
-    @FXML
-    private ListView<String> lvOrderProducts;
-
-    @FXML
-    private ListView<String> lvOrderProductsSize;*/
-
 	@FXML
 	private TableView<OrderItem> tvOrderItems;
 
@@ -429,11 +414,6 @@ public class RestaurantGUI {
 	@FXML
 	private Label labConfirmAddOrderS1;
 
-	/*@FXML
-	private TextField txtClientOrderName;
-
-    @FXML
-	private TextField txtEmployeeOrderName;*/
 	@FXML
 	private ChoiceBox<String> cbAbleClients;
 
@@ -1230,7 +1210,7 @@ public class RestaurantGUI {
     
 	////initialize screens with languages
 	
-	void loadLanguageAddIngredientAndSizePricePage() {//1
+	public void loadLanguageAddIngredientAndSizePricePage() {//1
 		btnBackIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("back"));
 		btnAddSizeAndPriceIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Add size and price"));
 		btnAddingredientIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Add ingredient"));
@@ -1238,7 +1218,7 @@ public class RestaurantGUI {
 		labPriceIngSizeAndPrice.setText(restaurant.getDictionary().getValueOf("Price"));
 	}
 	
-	void loadLanguageAddIngredientPage(){//2
+	public void loadLanguageAddIngredientPage(){//2
 		rbtnAvailable.setText(restaurant.getDictionary().getValueOf("Available"));
 		rbtnNotAvailable.setText(restaurant.getDictionary().getValueOf("Not available"));
 		labIngNameAddIngredient.setText(restaurant.getDictionary().getValueOf("Ingredient name"));
@@ -1246,7 +1226,7 @@ public class RestaurantGUI {
 		btnBackAddIngredient.setText(restaurant.getDictionary().getValueOf("back"));
 	}
 	
-	void loadLanguageAddProductPage() {//3
+	public void loadLanguageAddProductPage() {//3
 		btnEraseIngredientsProdPage.setText(restaurant.getDictionary().getValueOf("Delete ingredient"));
 		labProdNameProdPage.setText(restaurant.getDictionary().getValueOf("Product name"));
 		labProdTypeProdPage.setText(restaurant.getDictionary().getValueOf("Product type"));
@@ -1262,7 +1242,7 @@ public class RestaurantGUI {
 		btnBackProdPage.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
-	void loadLanguageAddProductToModifyOrderPage() {//4
+	public void loadLanguageAddProductToModifyOrderPage() {//4
 	    btnBackProdToModOrd.setText(restaurant.getDictionary().getValueOf("Back"));
 	    labAddProdToModOrd.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labTitleProdToModOrd.setText(restaurant.getDictionary().getValueOf("Add product"));
@@ -1271,7 +1251,7 @@ public class RestaurantGUI {
 	    labSizeProdToModOrd.setText(restaurant.getDictionary().getValueOf("Size"));
 	}
 	
-	void loadLanguageAddProductToOrderPage() {//5
+	public void loadLanguageAddProductToOrderPage() {//5
 		btnBackProdToOrd.setText(restaurant.getDictionary().getValueOf("Back"));
 	    labAddProdToOrd.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labTitleProdToOrd.setText(restaurant.getDictionary().getValueOf("Add product"));
@@ -1280,7 +1260,7 @@ public class RestaurantGUI {
 	    labSizeProdToOrd.setText(restaurant.getDictionary().getValueOf("Size"));
 	}
 	
-	void loadLanguageAdminIngredients() {//6
+	public void loadLanguageAdminIngredients() {//6
 		rbtnAdminIngredientsAvielable.setText(restaurant.getDictionary().getValueOf("Available"));
 	    rbtnAdminIngredientsNotAvailable.setText(restaurant.getDictionary().getValueOf("Not available"));
 	    lblNameIngredient.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1292,14 +1272,14 @@ public class RestaurantGUI {
 	    labSelectIngredientAdminIng.setText(restaurant.getDictionary().getValueOf("Select ingredient"));
 	}
 	
-	void loadLanguageAdminPage() {//7
+	public void loadLanguageAdminPage() {//7
 		labUserAdminPage.setText(restaurant.getDictionary().getValueOf("User"));
 		labPassAdminPage.setText(restaurant.getDictionary().getValueOf("Password"));
 	    btnLogInAdminPage.setText(restaurant.getDictionary().getValueOf("Log in"));
 	    btnBackAdminPage.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
-	void loadLanguageAdminProductPage() {//8
+	public void loadLanguageAdminProductPage() {//8
 		txtSizeOfProductAdmin.setText(restaurant.getDictionary().getValueOf("Size"));
 	    txtPriceOfSizeOfProductAdmin.setText(restaurant.getDictionary().getValueOf("Price"));
 	    lblCreatedByProduct.setText(restaurant.getDictionary().getValueOf("Created by"+":"));
@@ -1320,7 +1300,7 @@ public class RestaurantGUI {
 	    labTitleAdminProdPage.setText(restaurant.getDictionary().getValueOf("Modify Products"));
 	}
 	
-	void loadLanguageClientsPage() {//9
+	public void loadLanguageClientsPage() {//9
 	    tcClientName.setText(restaurant.getDictionary().getValueOf("Name"));
 	    tcClientLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
 	    tcClientID.setText(restaurant.getDictionary().getValueOf("ID"));
@@ -1336,7 +1316,7 @@ public class RestaurantGUI {
 	    btnImportClientsCliPage.setText(restaurant.getDictionary().getValueOf("Import clients"));
 	}
 	
-	void loadLanguageCreateClient() {//10
+	public void loadLanguageCreateClient() {//10
 		txtClientObservations.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
 	    btnBackCreateClient.setText(restaurant.getDictionary().getValueOf("Back"));
 	    btnCreateCreateClient.setText(restaurant.getDictionary().getValueOf("Add client"));
@@ -1349,7 +1329,7 @@ public class RestaurantGUI {
 	    labObsCreateClient.setText(restaurant.getDictionary().getValueOf("Observations"));
 	}
 	
-	void loadLanguageCreateEmployee() {//11
+	public void loadLanguageCreateEmployee() {//11
 		btnAddCreateEmp.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labIDCreateEmp.setText(restaurant.getDictionary().getValueOf("ID"));
 	    labNameCreateEmp.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1359,7 +1339,7 @@ public class RestaurantGUI {
 	    labTitleCreateEmp.setText(restaurant.getDictionary().getValueOf("Create Employee"));
 	}
 	
-	void loadLanguageCreateOrder() {//12
+	public void loadLanguageCreateOrder() {//12
 		txtOrderObs.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
 	    btnAddAddOrder.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labCliNameAddOrder.setText(restaurant.getDictionary().getValueOf("Client name"));
@@ -1376,7 +1356,7 @@ public class RestaurantGUI {
 		cbOrderState.setItems(observableListStates);
 	}
 	
-	void loadLanguageCreateOrder1() {//13
+	public void loadLanguageCreateOrder1() {//13
 		tcCreateOrderProduct.setText(restaurant.getDictionary().getValueOf("Add product"));
 	    tcCreateOrderProductAmount.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labTitleAddOrder2.setText(restaurant.getDictionary().getValueOf("Create Order: Step 1"));
@@ -1387,7 +1367,7 @@ public class RestaurantGUI {
 	    btnContinueAddOrder2.setText(restaurant.getDictionary().getValueOf("Continue"));
 	}
 	
-	void loadLanguageCreateUser() {//14
+	public void loadLanguageCreateUser() {//14
 		btnBackCreateUser.setText(restaurant.getDictionary().getValueOf("Back"));
 	    btnAddCreateUser.setText(restaurant.getDictionary().getValueOf("Add"));
 	    labNameCreateUser.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1399,7 +1379,7 @@ public class RestaurantGUI {
 	    labPassCreateUser.setText(restaurant.getDictionary().getValueOf("Password"));
 	}
 	
-	void loadLanguageEmployeePage() {//15
+	public void loadLanguageEmployeePage() {//15
 		tcName.setText(restaurant.getDictionary().getValueOf("Name"));
 	    tcLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
 	    tcId.setText(restaurant.getDictionary().getValueOf("ID"));
@@ -1412,7 +1392,7 @@ public class RestaurantGUI {
 	    btnUpdateEmploPage.setText(restaurant.getDictionary().getValueOf("Update"));
 	}
 	
-	void loadLanguageExportOrdercsvPage() {//16
+	public void loadLanguageExportOrdercsvPage() {//16
 		labFromExpOrds.setText(restaurant.getDictionary().getValueOf("From"));
 	    labTillExpOrds.setText(restaurant.getDictionary().getValueOf("Till"));
 	    labIncludeExpOrds.setText(restaurant.getDictionary().getValueOf("Include"));
@@ -1421,7 +1401,7 @@ public class RestaurantGUI {
 	    btnBackExpOrds.setText(restaurant.getDictionary().getValueOf("Back"));
 	}
 	
-	void loadLanguageExportProductsPage() {//17
+	public void loadLanguageExportProductsPage() {//17
 		btnExportExpProd.setText(restaurant.getDictionary().getValueOf("Export"));
 	    btnBackExpProd.setText(restaurant.getDictionary().getValueOf("Back"));
 	    labIncludeExpProd.setText(restaurant.getDictionary().getValueOf("Include"));
@@ -1429,7 +1409,7 @@ public class RestaurantGUI {
 	    labTillExpProd.setText(restaurant.getDictionary().getValueOf("Till"));
 	}
 	
-	void loadLanguageIngredientPage() {//18
+	public void loadLanguageIngredientPage() {//18
 		tcIngredient.setText(restaurant.getDictionary().getValueOf("Ingredient"));
 	    tcAvialable.setText(restaurant.getDictionary().getValueOf("Available"));
 	    btnAddIngIngPage.setText(restaurant.getDictionary().getValueOf("Add ingredient"));
@@ -1439,7 +1419,7 @@ public class RestaurantGUI {
 	    btnImportIngIngPage.setText(restaurant.getDictionary().getValueOf("Import ingredients"));
 	}
 	
-	void loadLanguageLoggedInPage() {//19
+	public void loadLanguageLoggedInPage() {//19
 		btnProductsLogPage.setText(restaurant.getDictionary().getValueOf("Products"));
 	    btnIngredientsLogPage.setText(restaurant.getDictionary().getValueOf("Ingredients"));
 	    btnOrdersPage.setText(restaurant.getDictionary().getValueOf("Orders"));
@@ -1452,14 +1432,14 @@ public class RestaurantGUI {
 	    btnExpProdLogPage.setText(restaurant.getDictionary().getValueOf("Export csv of products"));
 	}
 	
-	void loadLanguageMainPage() {//20
+	public void loadLanguageMainPage() {//20
 		btnMenuMainPage.setText(restaurant.getDictionary().getValueOf("Menu"));
 		btnAdminMainPage.setText(restaurant.getDictionary().getValueOf("Admin"));
 		labLanguageMainPage.setText(restaurant.getDictionary().getValueOf("Language"));
 		btnAplyMainPage.setText(restaurant.getDictionary().getValueOf("Update"));
 	}
 	
-	void loadLanguageMenuPage() {//21
+	public void loadLanguageMenuPage() {//21
 		btnBackMenu.setText(restaurant.getDictionary().getValueOf("Back"));
 	    labTitleMenu.setText(restaurant.getDictionary().getValueOf("Menu"));
 	    labsearchProdMenu.setText(restaurant.getDictionary().getValueOf("Search product"));
@@ -1469,7 +1449,7 @@ public class RestaurantGUI {
 	    btnDeleteSearchMenu.setText(restaurant.getDictionary().getValueOf("Clear search"));
 	}
 	
-	void loadLanguageModifyClientPage() {//22
+	public void loadLanguageModifyClientPage() {//22
 		btnBackModCli.setText(restaurant.getDictionary().getValueOf("Back"));
 	    btnModifyModCli.setText(restaurant.getDictionary().getValueOf("Modify"));
 	    labNameModCli.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1481,7 +1461,7 @@ public class RestaurantGUI {
 	    labObsModCli.setText(restaurant.getDictionary().getValueOf("Observations"));
 	}
 	
-	void loadLanguageModifyEmployeePage() {//23
+	public void loadLanguageModifyEmployeePage() {//23
 		btnModifyModEmplo.setText(restaurant.getDictionary().getValueOf("Modify"));
 		labIDModEmplo.setText(restaurant.getDictionary().getValueOf("ID"));
 		labNameModEmplo.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1491,7 +1471,7 @@ public class RestaurantGUI {
 	    labTitleModEmplo.setText(restaurant.getDictionary().getValueOf("Modify Employee"));
 	}
 	
-	void loadLanguageModifyOrderp1Page() {//24
+	public void loadLanguageModifyOrderp1Page() {//24
 		tcModifyOrderProduct.setText(restaurant.getDictionary().getValueOf("Product"));
 	    tcModifyOrderProductAmount.setText(restaurant.getDictionary().getValueOf("Amount"));
 	    labTitleModOrd2.setText(restaurant.getDictionary().getValueOf("Modify Order Products"));
@@ -1503,7 +1483,7 @@ public class RestaurantGUI {
 	    labcodeModOrd2.setText(restaurant.getDictionary().getValueOf("Code"));
 	}
 	
-	void loadLanguageModifyOrderp2Page() {//25
+	public void loadLanguageModifyOrderp2Page() {//25
 		txtModifyOrderObs.setPromptText(restaurant.getDictionary().getValueOf("Each Observation is separated with a line break"));
 	    btnModifyModOrd1.setText(restaurant.getDictionary().getValueOf("Modify"));
 	    labcliNameModOrd1.setText(restaurant.getDictionary().getValueOf("Client name"));
@@ -1518,7 +1498,7 @@ public class RestaurantGUI {
 	    labActDateModOrd1.setText(restaurant.getDictionary().getValueOf("Current date"));
 	}
 	
-	void loadLanguageModifyUserPage() {//26
+	public void loadLanguageModifyUserPage() {//26
 		btnBackModUser.setText(restaurant.getDictionary().getValueOf("Back"));
 	    btnModifyModUser.setText(restaurant.getDictionary().getValueOf("Modify"));
 	    labNameModUser.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1530,7 +1510,7 @@ public class RestaurantGUI {
 	    labpassModUser.setText(restaurant.getDictionary().getValueOf("Password"));
 	}
 	
-	void loadLanguageOrdersPage() {//27
+	public void loadLanguageOrdersPage() {//27
 		tcOrderCode.setText(restaurant.getDictionary().getValueOf("Code"));
 	    tcOrderState.setText(restaurant.getDictionary().getValueOf("State"));
 	    tcOrderClient.setText(restaurant.getDictionary().getValueOf("Client"));
@@ -1551,7 +1531,7 @@ public class RestaurantGUI {
 	    btnImportOrdOrdPage.setText(restaurant.getDictionary().getValueOf("Import Orders"));
 	}
 	
-	void loadLanguageProductPage() {//28
+	public void loadLanguageProductPage() {//28
 		tcNameOfProduct.setText(restaurant.getDictionary().getValueOf("Name"));
 	    tcTypeOfProduct.setText(restaurant.getDictionary().getValueOf("Type"));
 	    btnAddProdProdPage.setText(restaurant.getDictionary().getValueOf("Add product"));
@@ -1560,7 +1540,7 @@ public class RestaurantGUI {
 	    btnImportProdProdPage.setText(restaurant.getDictionary().getValueOf("Import products"));
 	}
 	
-	void loadLanguageSearchClientPage() {//29
+	public void loadLanguageSearchClientPage() {//29
 		btnSearchSearchClient.setText(restaurant.getDictionary().getValueOf("Search"));
 	    btnBackSearchClient.setText(restaurant.getDictionary().getValueOf("Back"));
 	    labNameSearchClient.setText(restaurant.getDictionary().getValueOf("Name"));
@@ -1573,7 +1553,7 @@ public class RestaurantGUI {
 	    labTimeSearchClient.setText(restaurant.getDictionary().getValueOf("Search time in nanoseconds"));
 	}
 	
-	void loadLanguageUsersPage() {//30
+	public void loadLanguageUsersPage() {//30
 		tcUserUserName.setText(restaurant.getDictionary().getValueOf("Username"));
 	    tcUserName.setText(restaurant.getDictionary().getValueOf("Name"));
 	    tcUserLastName.setText(restaurant.getDictionary().getValueOf("Surname"));
@@ -1588,7 +1568,7 @@ public class RestaurantGUI {
 	}
 	
 	@FXML
-	void modifyOrder(ActionEvent event) {
+	public void modifyOrder(ActionEvent event) {
 		String[] observations;
 
 		try {
@@ -1639,7 +1619,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnImportOrders(ActionEvent event){
+	public void btnImportOrders(ActionEvent event){
 		try {
 			restaurant.importOrders(currentUser);
 			restaurant.saveData();
@@ -1648,13 +1628,13 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void modifyOrderProducts(ActionEvent event) {
+	public void modifyOrderProducts(ActionEvent event) {
 		System.out.println(labOrderCode2.getText());
 		restaurant.updateOrderProducts(labOrderCode2.getText());
 	}
 
 	@FXML
-	void btnOpenModifyOrder2(ActionEvent event) {
+	public void btnOpenModifyOrder2(ActionEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
 
@@ -1694,7 +1674,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnCloseCreateOrder(ActionEvent event) {
+	public void btnCloseCreateOrder(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
 			fxmlLoader.setController(this);
@@ -1710,7 +1690,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnEraseProductFromModifyOrder(ActionEvent event) {
+	public void btnEraseProductFromModifyOrder(ActionEvent event) {
 		if(tvListModifyOrderProducts.getSelectionModel().getSelectedItem() != null) {
 			OrderItem prod = tvListModifyOrderProducts.getSelectionModel().getSelectedItem();
 			int o = restaurant.searchOrderItem(prod.getProductName(), prod.getProductSize());
@@ -1719,7 +1699,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenModifyPage(ActionEvent event) {
+	public void btnOpenModifyPage(ActionEvent event) {
 		if(tvOrders.getSelectionModel().getSelectedItem() != null) {
 			Order order = tvOrders.getSelectionModel().getSelectedItem();
 			int pos = restaurant.searchOrder(order.getCode());
@@ -1739,7 +1719,7 @@ public class RestaurantGUI {
 		}
 	}
 
-	void loadTvModifyProductsFromOrder(int pos) {
+	public void loadTvModifyProductsFromOrder(int pos) {
 		if(restaurant.getOrderItems().isEmpty()) {
 			restaurant.getOrderItems().addAll(restaurant.getOrders().get(pos).getItems());
 		}
@@ -1752,7 +1732,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenSearchProduct(ActionEvent event) {
+	public void btnOpenSearchProduct(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToOrder-page.fxml"));
 			fxmlLoader.setController(this);
@@ -1769,7 +1749,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenSearchProduct2(ActionEvent event) {
+	public void btnOpenSearchProduct2(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("addProductToModifyOrder-page.fxml"));
 			fxmlLoader.setController(this);
@@ -1790,7 +1770,7 @@ public class RestaurantGUI {
 
 
 	@FXML
-	void btnAddProductToOrder(ActionEvent event) {
+	public void btnAddProductToOrder(ActionEvent event) {
 		try {
 			if(Integer.parseInt(txtProductCant.getText()) != 0 && !cbProductsToOrder.getValue().equals("") && !cbProductsSize.getValue().equals("")) {
 				int pos = restaurant.searchProduct(cbProductsToOrder.getValue());
@@ -1813,7 +1793,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void findProduct(MouseEvent event) {
+	public void findProduct(MouseEvent event) {
 		if(cbProductsToOrder.getValue() != null) {
 			String prodName = cbProductsToOrder.getValue();
 			int pos = restaurant.searchProduct(prodName);
@@ -1827,7 +1807,7 @@ public class RestaurantGUI {
 
 
 	@FXML
-	void btnBackToCreateOrder(ActionEvent event) {
+	public void btnBackToCreateOrder(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
 			fxmlLoader.setController(this);
@@ -1842,7 +1822,7 @@ public class RestaurantGUI {
 
 	//create-Order
 	@FXML
-	void addOrder(ActionEvent event) {
+	public void addOrder(ActionEvent event) {
 		String[] observations;
 
 		try {
@@ -1897,7 +1877,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnEraseProductFromOrder(ActionEvent event) {
+	public void btnEraseProductFromOrder(ActionEvent event) {
 		if(tvListOrderProducts.getSelectionModel().getSelectedItem() != null) {
 			OrderItem prod = tvListOrderProducts.getSelectionModel().getSelectedItem();
 			int o = restaurant.searchOrderItem(prod.getProduct().getName(),prod.getProductSize());
@@ -1907,7 +1887,7 @@ public class RestaurantGUI {
 
 
 	@FXML
-	void btnBackToOrders(ActionEvent event) {
+	public void btnBackToOrders(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("Orders-page.fxml"));
 			fxmlLoader.setController(this);
@@ -1922,7 +1902,6 @@ public class RestaurantGUI {
 
 
 
-	//Orders-page
 
 
 	//Orders-page
@@ -1969,7 +1948,7 @@ public class RestaurantGUI {
 
 
 
-	void loadTvShowProductsFromOrder(int pos) {
+	public void loadTvShowProductsFromOrder(int pos) {
 		ObservableList<OrderItem> observableList;
 		observableList = FXCollections.observableArrayList(restaurant.getOrders().get(pos).getItems());
 
@@ -1982,7 +1961,7 @@ public class RestaurantGUI {
 
 	}
 
-	void loadTvProductsFromOrder() {
+	public void loadTvProductsFromOrder() {
 		if(restaurant.getOrderItems() != null) {
 			ObservableList<OrderItem> observableList;
 			observableList = FXCollections.observableArrayList(restaurant.getOrderItems());
@@ -1993,7 +1972,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenAddOrder(ActionEvent event) {
+	public void btnOpenAddOrder(ActionEvent event) {
 		if(!restaurant.getOrderItems().isEmpty()) {
 			try {
 				FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order.fxml"));
@@ -2019,7 +1998,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnOpenAddOrderS1(ActionEvent event) {
+	public void btnOpenAddOrderS1(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("create-Order1.fxml"));
 			fxmlLoader.setController(this);
@@ -2035,7 +2014,7 @@ public class RestaurantGUI {
 	}
 
 	@FXML
-	void btnUpdateModifyPage(ActionEvent event) {
+	public void btnUpdateModifyPage(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("modify-Orderp1.fxml"));
 			fxmlLoader.setController(this);
@@ -3014,7 +2993,7 @@ public class RestaurantGUI {
 
 	//Logged-in-page
 	@FXML
-	void btnGoToExportOrderscsv(ActionEvent event) {
+	public void btnGoToExportOrderscsv(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("ExportOrdercsv.fxml"));
 			fxmlLoader.setController(this);
@@ -3030,7 +3009,7 @@ public class RestaurantGUI {
 
 	//Logged-in-page
 	@FXML
-	void btnGoToExportProducts(ActionEvent event) {
+	public void btnGoToExportProducts(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("exportProducts.fxml"));
 			fxmlLoader.setController(this);
@@ -3046,7 +3025,7 @@ public class RestaurantGUI {
 
 	//export orders csv
 	@FXML
-	void btnExportOrders(ActionEvent event) {
+	public void btnExportOrders(ActionEvent event) {
 		try {
 			restaurant.exportData(dateTimeFormatter.format(dPDate1.getValue()).toString(), dateTimeFormatter.format(dPDate2.getValue()).toString(), txtSep.getText());
 			lblExportOrderscsvWarning.setText(restaurant.getDictionary().getValueOf("The file was generated successfully"));
@@ -3058,7 +3037,7 @@ public class RestaurantGUI {
 	}
 	//export orders csv
 	@FXML
-	void btnbackToLoggedInPage(ActionEvent event) {
+	public void btnbackToLoggedInPage(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
 			fxmlLoader.setController(this);
@@ -3073,7 +3052,7 @@ public class RestaurantGUI {
 	}
 	//export products
 	@FXML
-	void btnBackToLoggedInPageFromProducts(ActionEvent event) {
+	public void btnBackToLoggedInPageFromProducts(ActionEvent event) {
 		try {
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("logged-in-page.fxml"));
 			fxmlLoader.setController(this);
@@ -3089,7 +3068,7 @@ public class RestaurantGUI {
 	//export products
 	private Thread exportProducts;
 	@FXML
-	void btnExportProducts(ActionEvent event) {
+	public void btnExportProducts(ActionEvent event) {
 		exportProducts = new Thread(){
 			@Override
 			public void run() {

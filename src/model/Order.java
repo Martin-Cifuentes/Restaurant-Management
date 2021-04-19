@@ -9,16 +9,13 @@ public class Order implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public String code;
-	public State state;
-	public String requestClient;
-	public String deliverEmployee;
-	public String date;
-	public ArrayList<String> observations;
-	/*public ArrayList<Product> productsList;
-	public ArrayList<String> productsSizes;
-	public ArrayList<Integer> quantityOfProduct;*/
-	public ArrayList<OrderItem> items;
+	private String code;
+	private State state;
+	private String requestClient;
+	private String deliverEmployee;
+	private String date;
+	private ArrayList<String> observations;
+	private ArrayList<OrderItem> items;
 	
 	public Order(String c, State s, String rc, String de, String d, ArrayList<String> o, ArrayList<OrderItem> oi) {
 		this.code = c;//
@@ -28,8 +25,6 @@ public class Order implements Serializable {
 		this.date = d;//
 		this.observations = o;//
 		this.items = oi;
-		/*this.productsList = pl;
-		this.quantityOfProduct = qp;*/
 	}
 	
 	
