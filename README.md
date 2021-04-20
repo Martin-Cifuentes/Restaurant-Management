@@ -18,3 +18,5 @@ Se puede generar el reporte de ordenes
 Se puede generar el reporte de productos 
 
 Ahora la aplicación cuenta con internacionalidad, cuenta con inglés, español, italiano, alemán y portugués.
+
+Se trabajo en los requerimientos funcionales y en el diagrama de clases que ahora se encuentran en un mismo pdf
