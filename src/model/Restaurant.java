@@ -815,7 +815,6 @@ public class Restaurant {
 		String[] parts;
 		while(line!=null) {
 			parts= line.split(",");
-			System.out.println(line);
 			read.add(new Word(parts[0],parts[1]));
 			line=br.readLine();
 		}//br.readLine()
