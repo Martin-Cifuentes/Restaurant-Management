@@ -1864,10 +1864,6 @@ public class RestaurantGUI {
 				labConfirmOrder.setText(restaurant.getDictionary().getValueOf("All spaces must be filled"));
 				labConfirmOrder.setTextFill(Paint.valueOf("RED"));
 
-				System.out.println("observaciones: " + txtOrderObs.getText() + " cliente: " + cbAbleClients.getValue() 
-				+ " empleado: " + cbAbleEmployees.getValue() + " dia: " + calendarDate.getValue() + 
-				" orderitems: " + restaurant.getOrderItems() + " estado: " + cbOrderState.getValue());
-
 			}
 		}catch(NumberFormatException n) {
 
